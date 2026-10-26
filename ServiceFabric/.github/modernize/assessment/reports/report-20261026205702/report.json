@@ -1,8 +1,0 @@
-{
-  "metadata": {
-    "id": "20261026205702",
-    "generated_at": "2026-10-26T20:57:02.1701473Z",
-    "note": "Security-only report: AppCAT could not analyze the Service Fabric solution because it contains legacy .sfproj projects without source .csproj files."
-  },
-  "security": []
-}

@@ -1,22 +1,62 @@
 # Security Assessment Report
 
 **Generated:** 
-2026-10-26T20:57:02.1701473Z
+2026-10-26T20:59:50.2360923Z
 
 ## Summary
 
 | Metric | Count |
 |--------|-------|
-| Total Findings | 0 |
-| CVE Vulnerabilities | 0 |
-| CWE Vulnerabilities | 0 |
+| Total Findings | 
+2
+ |
+| CVE Vulnerabilities | 
+0
+ |
+| CWE Vulnerabilities | 
+2
+ |
 | Total Rules Assessed | 
 59
  |
 | Rules Passed | 
-59
+57
  |
 
-## No security vulnerabilities found.
+### By Severity
 
-The assessment did not detect any CVE or CWE vulnerabilities in the codebase.
+| Severity | Count |
+|----------|-------|
+| optional | 2 |
+
+## CWE Findings (Code-Level Vulnerabilities)
+
+### 
+CWE-259
+: 
+Use of Hard-coded Password
+- **Category:** 
+Credentials & Secrets
+- **Severity:** 
+optional
+- **Story Points:** 
+5
+- **Files:** 
+eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml
+
+The SQL container manifest provides the SA_PASSWORD environment variable as a literal value at line 24, so the SQL administrative credential is stored in deployment configuration rather than retrieved from a secret store.
+
+### 
+CWE-798
+: 
+Use of Hard-coded Credentials
+- **Category:** 
+Credentials & Secrets
+- **Severity:** 
+optional
+- **Story Points:** 
+5
+- **Files:** 
+eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml
+
+The SQL container manifest provides the SA_PASSWORD environment variable as a literal value at line 24, so the SQL administrative credential is stored in deployment configuration rather than retrieved from a secret store.

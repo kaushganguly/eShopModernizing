@@ -1,15 +1,44 @@
 {
-  "GeneratedAt": "2026-10-26T20:57:02.1701473Z",
+  "GeneratedAt": "2026-10-26T20:59:50.2360923Z",
   "ProjectPath": "ServiceFabric",
   "Summary": {
-    "TotalFindings": 0,
+    "TotalFindings": 2,
     "CveCount": 0,
-    "CweCount": 0,
-    "BySeverity": {},
-    "ByCategory": {},
+    "CweCount": 2,
+    "BySeverity": {
+      "optional": 2
+    },
+    "ByCategory": {
+      "Credentials & Secrets": 2
+    },
     "TotalRulesAssessed": 59,
-    "RulesPassed": 59
+    "RulesPassed": 57
   },
   "CveFindings": [],
-  "CweFindings": []
+  "CweFindings": [
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Files": [
+        "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml"
+      ],
+      "Explanation": "The SQL container manifest provides the SA_PASSWORD environment variable as a literal value at line 24, so the SQL administrative credential is stored in deployment configuration rather than retrieved from a secret store."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Files": [
+        "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml"
+      ],
+      "Explanation": "The SQL container manifest provides the SA_PASSWORD environment variable as a literal value at line 24, so the SQL administrative credential is stored in deployment configuration rather than retrieved from a secret store."
+    }
+  ]
 }
