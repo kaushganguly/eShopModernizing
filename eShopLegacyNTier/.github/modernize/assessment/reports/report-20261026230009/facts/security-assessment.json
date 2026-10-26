@@ -1,0 +1,168 @@
+{
+  "GeneratedAt": "2026-10-26T23:05:28.546283+00:00",
+  "ProjectPath": "eShopLegacyNTier",
+  "Summary": {
+    "TotalFindings": 10,
+    "CveCount": 1,
+    "CweCount": 9,
+    "BySeverity": {
+      "mandatory": 1,
+      "optional": 2,
+      "potential": 7
+    },
+    "ByCategory": {
+      "CVE": 1,
+      "Code Quality": 2,
+      "Concurrency & Synchronization": 3,
+      "Credentials & Secrets": 1,
+      "File & Path Security": 2,
+      "Injection Attacks": 1
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 50
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2024-21907",
+      "Name": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: HIGH\n\nAffected dependencies:\n  - Newtonsoft.Json:6.0.4 (declared at src\\eShopWinForms\\packages.config:5; project assembly reference at src\\eShopWinForms\\eShopWinForms.csproj:63 and package HintPath at src\\eShopWinForms\\eShopWinForms.csproj:64).\n\nAffected range: < 13.0.1. Highly nested JSON can cause stack overflow or excessive CPU/memory consumption, resulting in denial of service. This is a dependency-version finding; application exploitability was not tested.\n\nRecommended fix:\n  - Upgrade Newtonsoft.Json to 13.0.1 or later after compatibility review. No dependency versions or application files were changed.\n\nAssessment coverage and limitations:\n  - Required dotnet list package --include-transitive --format json exited 1 because Microsoft.WebApplication.targets was unavailable.\n  - Fallback inspected both packages.config files and both project files, including PackageReference, assembly Reference/HintPath and ProjectReference declarations. The three distinct detected NuGet coordinates were EntityFramework:6.1.3, Microsoft.AspNet.WebApi.Client:5.2.3 and Newtonsoft.Json:6.0.4. Manifest versions were corroborated with package HintPaths; assembly identity versions were not mistaken for NuGet versions. No PackageReference or ProjectReference declarations were found.\n  - All three installed-version declarations were checked with the runtime advisory tool and the paginated public GitHub Advisories API (ecosystem nuget). No active advisories were returned for EntityFramework:6.1.3 or Microsoft.AspNet.WebApi.Client:5.2.3. Withdrawn duplicate GHSA-8rfx-6mr3-5jh3 was excluded.\n  - packages.config is a flat installed-package list and does not reliably distinguish direct from transitive packages. Resolved transitive dependency graph completeness could not be verified; undeclared dependencies and .NET Framework/platform vulnerabilities are outside this NuGet assessment. No restore, build, tests or linters were run.",
+      "Files": [
+        "src\\eShopWinForms\\packages.config:5",
+        "src\\eShopWinForms\\eShopWinForms.csproj:63",
+        "src\\eShopWinForms\\eShopWinForms.csproj:64"
+      ],
+      "Explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: HIGH\n\nAffected dependencies:\n  - Newtonsoft.Json:6.0.4 (declared at src\\eShopWinForms\\packages.config:5; project assembly reference at src\\eShopWinForms\\eShopWinForms.csproj:63 and package HintPath at src\\eShopWinForms\\eShopWinForms.csproj:64).\n\nAffected range: < 13.0.1. Highly nested JSON can cause stack overflow or excessive CPU/memory consumption, resulting in denial of service. This is a dependency-version finding; application exploitability was not tested.\n\nRecommended fix:\n  - Upgrade Newtonsoft.Json to 13.0.1 or later after compatibility review. No dependency versions or application files were changed.\n\nAssessment coverage and limitations:\n  - Required dotnet list package --include-transitive --format json exited 1 because Microsoft.WebApplication.targets was unavailable.\n  - Fallback inspected both packages.config files and both project files, including PackageReference, assembly Reference/HintPath and ProjectReference declarations. The three distinct detected NuGet coordinates were EntityFramework:6.1.3, Microsoft.AspNet.WebApi.Client:5.2.3 and Newtonsoft.Json:6.0.4. Manifest versions were corroborated with package HintPaths; assembly identity versions were not mistaken for NuGet versions. No PackageReference or ProjectReference declarations were found.\n  - All three installed-version declarations were checked with the runtime advisory tool and the paginated public GitHub Advisories API (ecosystem nuget). No active advisories were returned for EntityFramework:6.1.3 or Microsoft.AspNet.WebApi.Client:5.2.3. Withdrawn duplicate GHSA-8rfx-6mr3-5jh3 was excluded.\n  - packages.config is a flat installed-package list and does not reliably distinguish direct from transitive packages. Resolved transitive dependency graph completeness could not be verified; undeclared dependencies and .NET Framework/platform vulnerabilities are outside this NuGet assessment. No restore, build, tests or linters were run."
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "eShopLegacyNTier\\src\\eShopWinForms\\Views\\CatalogView.cs",
+        "eShopLegacyNTier\\src\\eShopWinForms\\Controllers\\CatalogController.cs"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems lines 50-61 allocates an Image with Image.FromFile and a thumbnail with GetThumbnailImage for each catalog item without disposing either. The source image is no longer needed after thumbnail creation. ClearGrid lines 39-42 clears rows without releasing the thumbnail Image objects. CatalogController.LoadCatalogItems lines 75-84 repeats both methods on filter changes, retaining unmanaged GDI/image resources until nondeterministic finalization and permitting repeated resource pressure."
+    },
+    {
+      "Id": "CWE-775",
+      "Name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "Files": [
+        "eShopLegacyNTier\\src\\eShopWinForms\\Views\\CatalogView.cs",
+        "eShopLegacyNTier\\src\\eShopWinForms\\Controllers\\CatalogController.cs"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems lines 57-59 opens each catalog image via Image.FromFile but never disposes the resulting source Image after making its thumbnail. Image.FromFile keeps the underlying file locked until Image.Dispose/finalization. CatalogController.LoadCatalogItems lines 75-84 and filterChanged lines 27-30 repeatedly execute this path, so file resources remain open beyond their effective lifetime rather than being deterministically released."
+    },
+    {
+      "Id": "CWE-567",
+      "Name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "Files": [
+        "eShopLegacyNTier\\src\\eShopWCFService\\CatalogService.svc.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\Models\\CatalogItem.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\Models\\CatalogItemsStock.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\Web.config"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem lines 65-70 reads the shared database maximum Id, increments it locally, then inserts; CatalogItem lines 13-15 disables database-generated identifiers. Independent requests to the configured basicHttp WCF endpoint can interleave and choose the same primary key, causing one SaveChanges to fail. The same allocation race exists for stock at CatalogService lines 113-116, with DatabaseGeneratedOption.None at CatalogItemsStock lines 22-25. There is no cross-request transaction/serialization spanning MAX and insert; the implicit SaveChanges transaction starts too late to protect the preceding read. This is shared-database concurrency, not simultaneous access to a single DbContext. Primary keys prevent duplicate-key persistence, but do not prevent failed requests. Additionally CreateAvailableStock lines 101-116 checks for an existing item/date before insertion without a unique item/date constraint, allowing duplicate logical stock rows when interleaved requests observe absence and later choose different IDs."
+    },
+    {
+      "Id": "CWE-662",
+      "Name": "Improper Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "Files": [
+        "eShopLegacyNTier\\src\\eShopWCFService\\CatalogService.svc.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\Models\\CatalogItem.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\Models\\CatalogItemsStock.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\Web.config"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem lines 65-70 reads the shared database maximum Id, increments it locally, then inserts; CatalogItem lines 13-15 disables database-generated identifiers. Independent requests to the configured basicHttp WCF endpoint can interleave and choose the same primary key, causing one SaveChanges to fail. The same allocation race exists for stock at CatalogService lines 113-116, with DatabaseGeneratedOption.None at CatalogItemsStock lines 22-25. There is no cross-request transaction/serialization spanning MAX and insert; the implicit SaveChanges transaction starts too late to protect the preceding read. This is shared-database concurrency, not simultaneous access to a single DbContext. Primary keys prevent duplicate-key persistence, but do not prevent failed requests. Additionally CreateAvailableStock lines 101-116 checks for an existing item/date before insertion without a unique item/date constraint, allowing duplicate logical stock rows when interleaved requests observe absence and later choose different IDs."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "Files": [
+        "eShopLegacyNTier\\src\\eShopWCFService\\CatalogService.svc.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\Models\\CatalogItem.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\Models\\CatalogItemsStock.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\Web.config"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem lines 65-70 reads the shared database maximum Id, increments it locally, then inserts; CatalogItem lines 13-15 disables database-generated identifiers. Independent requests to the configured basicHttp WCF endpoint can interleave and choose the same primary key, causing one SaveChanges to fail. The same allocation race exists for stock at CatalogService lines 113-116, with DatabaseGeneratedOption.None at CatalogItemsStock lines 22-25. There is no cross-request transaction/serialization spanning MAX and insert; the implicit SaveChanges transaction starts too late to protect the preceding read. This is shared-database concurrency, not simultaneous access to a single DbContext. Primary keys prevent duplicate-key persistence, but do not prevent failed requests. Additionally CreateAvailableStock lines 101-116 checks for an existing item/date before insertion without a unique item/date constraint, allowing duplicate logical stock rows when interleaved requests observe absence and later choose different IDs."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "Files": [
+        "eShopLegacyNTier\\src\\eShopWCFService\\CatalogService.svc.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\Web.config"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem, UpdateCatalogItem and RemoveCatalogItem (lines 65-82), and CreateAvailableStock (lines 99-117), modify persistent catalog/pricing and inventory data exposed through WCF OperationContracts. These security-relevant write paths call SaveChanges without any application audit/logging of the operation, affected record, caller, outcome or failure. Web.config lines 22-43 defines service behavior without serviceSecurityAudit or an application audit facility. Ordinary host access logs, if enabled externally, would not establish record-level change auditing. Finding is absence of an application audit trail, not proof of disabled infrastructure logging."
+    },
+    {
+      "Id": "CWE-22",
+      "Name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 8,
+      "Description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+      "Files": [
+        "eShopLegacyNTier\\src\\eShopWinForms\\Views\\CatalogView.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\CatalogService.svc.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\ICatalogService.cs"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems lines 55-59 appends catalogItem.Picturefilename to the catalog assets directory and passes it to Image.FromFile without validating traversal segments. Remote ICatalogService.CreateCatalogItem/UpdateCatalogItem accept CatalogItem records and persist Picturefilename (CatalogService lines 65-76); GetCatalogItems returns those records to CatalogController.LoadCatalogItems and this image sink. A relative filename containing .. segments can make the desktop client read/decode an image outside the intended assets directory under its own permissions. Absolute-path override is not established because the sink uses string concatenation, not Path.Combine. UWP storage/upload helpers are excluded from the WinForms project and have no reachable application callers."
+    },
+    {
+      "Id": "CWE-23",
+      "Name": "Relative Path Traversal",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+      "Files": [
+        "eShopLegacyNTier\\src\\eShopWinForms\\Views\\CatalogView.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\CatalogService.svc.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\ICatalogService.cs"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems lines 55-59 appends catalogItem.Picturefilename to the catalog assets directory and passes it to Image.FromFile without validating traversal segments. Remote ICatalogService.CreateCatalogItem/UpdateCatalogItem accept CatalogItem records and persist Picturefilename (CatalogService lines 65-76); GetCatalogItems returns those records to CatalogController.LoadCatalogItems and this image sink. A relative filename containing .. segments can make the desktop client read/decode an image outside the intended assets directory under its own permissions. Absolute-path override is not established because the sink uses string concatenation, not Path.Combine. UWP storage/upload helpers are excluded from the WinForms project and have no reachable application callers."
+    },
+    {
+      "Id": "CWE-99",
+      "Name": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "Category": "Injection Attacks",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "Files": [
+        "eShopLegacyNTier\\src\\eShopWinForms\\Views\\CatalogView.cs",
+        "eShopLegacyNTier\\src\\eShopWinForms\\Controllers\\CatalogController.cs",
+        "eShopLegacyNTier\\src\\eShopWCFService\\CatalogService.svc.cs"
+      ],
+      "Explanation": "Remote catalog records accepted by CatalogService.CreateCatalogItem/UpdateCatalogItem (lines 65-76) include Picturefilename. CatalogController.LoadCatalogItems (lines 75-84) forwards service results into CatalogView.SetCatalogItems (lines 48-61), which uses this unrestricted resource identifier in Image.FromFile (line 58). Relative parent-directory sequences can select and decode local image resources outside Assets/Images/Catalog with desktop-user permissions; there is no directory-containment or filename allowlist check."
+    }
+  ]
+}
