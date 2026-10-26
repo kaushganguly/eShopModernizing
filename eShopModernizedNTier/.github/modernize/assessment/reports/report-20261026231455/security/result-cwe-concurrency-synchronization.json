@@ -1,0 +1,105 @@
+{
+  "input_name": "CWE - Concurrency & Synchronization",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Assessed 6 CWE rules in Concurrency & Synchronization: 2 FOUND, 4 NOT_FOUND",
+    "confidence": "medium",
+    "evidence": [
+      "Full existing application assessment, including unchanged source, scoped exclusively to eShopModernizedNTier. Reviewed 27 first-party source/config/project files plus Docker Compose configuration; source-to-sink inspection and whole-scope pattern searches, not a diff review.",
+      "Limitations: static source analysis only; application not executed, no exploit or load tests, runtime deployment/ACLs and platform internals not inspected. Generated code, obj/bin, .vs, temp and vendor artifacts excluded from CWE checklist source review. NOT_FOUND means no confirmed pattern in reviewed first-party code, not proof of absence. Specialist returned change-only results and was not used as full-workspace evidence.",
+      "All service mutations, instance/static state, startup and HiLo locking reviewed. Active service code has missing synchronization for shared database ID allocation. Commented-out singleton registrations and mock-only mutable lists do not establish active multithreaded singleton/shared-memory vulnerabilities. HiLo uses a private instance lock with automatic release; no incorrect lock acquisition/release or failed synchronization mechanism was confirmed. CWE-567 retained NOT_FOUND for shared in-memory/static data; database races are represented under CWE-662/CWE-820."
+    ],
+    "values": [
+      {
+        "id": "CWE-543",
+        "name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+        "evidence": {
+          "explanation": "",
+          "files": []
+        }
+      },
+      {
+        "id": "CWE-567",
+        "name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+        "evidence": {
+          "explanation": "",
+          "files": []
+        }
+      },
+      {
+        "id": "CWE-662",
+        "name": "Improper Synchronization",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+        "evidence": {
+          "explanation": "Confidence: high for non-atomic ID allocation; medium for deployed concurrent exploitability. CatalogService.CreateCatalogItem reads the shared database MAX(Id), increments it in process and later inserts. CreateAvailableStock similarly performs an existence check and MAX(StockId)+1 before SaveChanges. IDs explicitly use DatabaseGeneratedOption.None. Concurrent requests handled by separate WCF instances can both read the same maximum before either commits; the second insert then fails on the duplicate key, causing request/inventory-update failure. SaveChanges transactions do not encompass the earlier MAX read; there is no explicit encompassing serializable transaction or cross-request synchronization. WCF default per-session/per-call handling does not globally serialize separate clients. No stress test or deployment concurrency observation was performed. Database uniqueness may prevent corruption but does not prevent the failing request. CWE-662 and CWE-820 describe this same root cause, not independent exploits.",
+          "files": [
+            "src\\eShopWCFService\\CatalogService.svc.cs:65-70",
+            "src\\eShopWCFService\\CatalogService.svc.cs:99-117",
+            "src\\eShopWCFService\\Models\\CatalogItem.cs:13-15",
+            "src\\eShopWCFService\\Models\\CatalogItemsStock.cs:22-25"
+          ]
+        }
+      },
+      {
+        "id": "CWE-667",
+        "name": "Improper Locking",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product does not properly acquire or release a lock on a resource, leading to unexpected resource state changes and behaviors.",
+        "evidence": {
+          "explanation": "",
+          "files": []
+        }
+      },
+      {
+        "id": "CWE-820",
+        "name": "Missing Synchronization",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+        "evidence": {
+          "explanation": "Confidence: high for non-atomic ID allocation; medium for deployed concurrent exploitability. CatalogService.CreateCatalogItem reads the shared database MAX(Id), increments it in process and later inserts. CreateAvailableStock similarly performs an existence check and MAX(StockId)+1 before SaveChanges. IDs explicitly use DatabaseGeneratedOption.None. Concurrent requests handled by separate WCF instances can both read the same maximum before either commits; the second insert then fails on the duplicate key, causing request/inventory-update failure. SaveChanges transactions do not encompass the earlier MAX read; there is no explicit encompassing serializable transaction or cross-request synchronization. WCF default per-session/per-call handling does not globally serialize separate clients. No stress test or deployment concurrency observation was performed. Database uniqueness may prevent corruption but does not prevent the failing request. CWE-662 and CWE-820 describe this same root cause, not independent exploits.",
+          "files": [
+            "src\\eShopWCFService\\CatalogService.svc.cs:65-70",
+            "src\\eShopWCFService\\CatalogService.svc.cs:99-117",
+            "src\\eShopWCFService\\Models\\CatalogItem.cs:13-15",
+            "src\\eShopWCFService\\Models\\CatalogItemsStock.cs:22-25"
+          ]
+        }
+      },
+      {
+        "id": "CWE-821",
+        "name": "Incorrect Synchronization",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes a shared resource in a concurrent manner, but it does not correctly synchronize access to the resource.",
+        "evidence": {
+          "explanation": "",
+          "files": []
+        }
+      }
+    ]
+  },
+  "timestamp": "2026-10-26T23:23:57.3878150Z"
+}

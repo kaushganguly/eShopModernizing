@@ -1,0 +1,4984 @@
+{
+  "version": "1.0.0",
+  "producer": ".NET AppCAT CLI",
+  "metadata": {
+    "analysisStartTime": "2026-10-26T23:14:55.9095699Z",
+    "analysisEndTime": "2026-10-26T23:14:58.9910952Z",
+    "privacyMode": "Restricted",
+    "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2271074",
+    "targetIds": [
+      "AppService.Windows",
+      "AppService.Linux",
+      "AKS.Linux",
+      "AKS.Windows",
+      "ACA",
+      "AppServiceContainer.Linux",
+      "AppServiceContainer.Windows",
+      "AppServiceManagedInstance.Windows"
+    ],
+    "targetDisplayNames": [
+      "Azure App Service",
+      "Azure Kubernetes Service",
+      "Azure Container Apps",
+      "Azure App Service Container",
+      "Azure App Service Managed Instance"
+    ],
+    "os": [
+      "windows",
+      "linux"
+    ]
+  },
+  "summary": {
+    "totalProjects": 3,
+    "totalIssues": 8,
+    "totalIncidents": 103,
+    "totalEffort": 121,
+    "charts": {
+      "severity": {
+        "mandatory": 0,
+        "optional": 6,
+        "potential": 97,
+        "information": 0
+      },
+      "category": {
+        "Runtime": 1,
+        "Database": 2,
+        "Security": 2,
+        "Scale": 2,
+        "Local": 96
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "src\\eShopWCFService\\eShopWCFService.csproj",
+      "issues": 4,
+      "storyPoints": 15,
+      "properties": {
+        "appName": "eShopWCFService",
+        "frameworks": [
+          ".NETFramework,Version=v4.6.1"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ]
+      },
+      "incidents": [
+        {
+          "ruleId": "Runtime.0002",
+          "incidentId": "6e325b5b-2df0-4c8a-bc9b-d169ab1499df",
+          "location": "src\\eShopWCFService\\eShopWCFService.csproj",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "information",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "information",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "optional",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Database.0002",
+          "incidentId": "72bd75df-d9f4-43ed-8516-354b3b6b5fd1",
+          "location": "src\\eShopWCFService\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Database.0003",
+          "incidentId": "c1f9a1c2-d8e9-473a-84b0-ad0b803d2c02",
+          "location": "src\\eShopWCFService\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "optional",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Security.0002",
+          "incidentId": "73c061b1-8be4-405e-856b-c3352ebd9160",
+          "location": "src\\eShopWCFService\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "optional",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Security.0002",
+          "incidentId": "08d3d2c6-489b-428c-8e01-d2df37a10202",
+          "location": "src\\eShopWCFService\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "optional",
+              "effort": 3
+            }
+          },
+          "labels": []
+        }
+      ]
+    },
+    {
+      "path": "src\\eShopWinForms\\eShopWinForms.csproj",
+      "issues": 4,
+      "storyPoints": 53,
+      "properties": {
+        "appName": "eShopWinForms",
+        "frameworks": [
+          "net6.0-windows"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ]
+      },
+      "incidents": [
+        {
+          "ruleId": "Scale.0001",
+          "incidentId": "301c668a-b46e-40a1-a629-3ab07c8f47aa",
+          "location": "src\\eShopWinForms\\eShopWinForms.csproj",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "optional",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0003",
+          "incidentId": "c7316d98-99c5-48a3-bd79-5db52f2260ae",
+          "location": "src\\eShopWinForms\\Views\\CatalogView.cs",
+          "locationKind": "File",
+          "line": 57,
+          "column": 28,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0007",
+          "incidentId": "77dd1c6b-2663-47ca-a7e0-1e437ecffa3a",
+          "location": "src\\eShopWinForms\\Views\\CatalogView.cs",
+          "locationKind": "File",
+          "line": 56,
+          "column": 35,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "information",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "a08e00f8-24a3-4b45-b00e-d094a4401a4f",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 158,
+          "column": 87,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "cb46ba52-0cc3-486d-bb85-8e376e260683",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 16,
+          "column": 86,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "68e0cfaa-5c46-4ba0-b1d1-f786d89a1d52",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 195,
+          "column": 86,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "61850b4f-bf09-473b-b3ff-17b2d7ec6c00",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 299,
+          "column": 87,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "c6a628f7-2df7-4b22-b776-d6c986e46dec",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 232,
+          "column": 92,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "dce7d27b-afc5-40c0-a429-60385076f0dd",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 399,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "c6bbd87a-54ad-4118-8d29-6ebdedde9172",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 402,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "92ba8ae9-6f30-458c-89a9-e0a8ec26dfd6",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 399,
+          "column": 134,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "23b1652c-e5bc-4173-9d2d-47596aa59866",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 402,
+          "column": 134,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "16ff1a65-4349-44fb-928c-7c3f000b98fb",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 405,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "e21b0a5c-fe1f-4243-8f4d-4f99c308d0f8",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 408,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "f4552f2c-8026-4a1f-8dc0-e25e2ebac7c7",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 405,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "f948555a-8808-4f91-a1ec-a95c2e7793ca",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 408,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "5aa72028-2cf1-48c7-93ae-580be84132cf",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 369,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "3830c8bf-1ede-44a8-a932-4eb201205843",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 372,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "a55db5f1-4464-40b8-a107-38437501dea2",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 369,
+          "column": 129,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "2b9ef6c4-0514-469e-93bb-c6167c7b3728",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 372,
+          "column": 129,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "5a49f756-38bb-4fbe-ba02-2ea057f7519c",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 393,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "f243becc-a934-4bca-8919-e47b2b9f2b56",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 396,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "9c16aa9f-64a2-4a95-a9f3-abd3762e924f",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 393,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "87f84929-dee0-4aeb-b6a8-279ad322dd10",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 396,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "b06cd690-22e7-4c94-a46a-cc64b6f17bc0",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 375,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "2eced497-0911-4a56-a569-3f2422dba979",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 378,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "eb0d737c-da82-4813-b743-e883799f188a",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 375,
+          "column": 130,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "149ae9dc-d738-4116-8119-56c19db0d08a",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 378,
+          "column": 130,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "c5de680d-05b0-473b-8ba7-b43cbff7fad5",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 381,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "842f2b22-f00e-490a-869e-c2222db38caf",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 384,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "0276faa6-09f5-4657-a572-f7929fcb3321",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 381,
+          "column": 129,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "fe4a8d06-789d-4909-b482-61bd351224e0",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 384,
+          "column": 129,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "bb189fb2-3bc0-487f-9946-0b0d3d2eae3d",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 387,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "00067520-107f-4dc6-b698-48695425b259",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 390,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "b1888173-f94d-480b-9787-86fd8c528a1d",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 387,
+          "column": 129,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "776e9ca8-4744-4a84-a796-0dbdcfcdd214",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 390,
+          "column": 129,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "ed18eae0-9fb2-435b-8bb1-b7a451874be7",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 423,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "b2406c7b-18c9-4777-8817-cf46476e6c90",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 426,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "7ad3de7d-fa61-49c1-b832-b235933c4d7b",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 423,
+          "column": 125,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "c4d0fc72-7264-47ed-9631-05860907d558",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 426,
+          "column": 125,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "0f561275-1ebb-4424-be2e-1a546e44ad6f",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 417,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "e749b10d-9e4a-4991-a0ab-73f51bedead9",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 420,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "612a7dc0-26d9-41d3-a01d-392b41beb8e7",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 417,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "eed2a075-fb1b-4d44-b8d9-a22acacd55e0",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 420,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "cfe5ec41-992f-4cce-a1a9-e83b9151e489",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 411,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "78f85c7d-d162-4f48-a18a-bec369aef297",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 414,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "96cb19d6-6c70-4ebd-a9d2-ecc5a2a267f2",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 411,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "ce1fbfa6-7b67-4a74-aee0-3cb6735854f3",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 414,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "be94ab05-55a9-416c-bc70-b9713ed9c6c0",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 608,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        }
+      ]
+    },
+    {
+      "path": "src\\eShopWinForms\\eShopWinForms.fx.csproj",
+      "issues": 4,
+      "storyPoints": 53,
+      "properties": {
+        "appName": "eShopWinForms.fx",
+        "frameworks": [
+          ".NETFramework,Version=v4.7.1"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ]
+      },
+      "incidents": [
+        {
+          "ruleId": "Scale.0001",
+          "incidentId": "0bec6f17-d1f6-4335-bc53-4eb77ef83f91",
+          "location": "src\\eShopWinForms\\eShopWinForms.fx.csproj",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "optional",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0003",
+          "incidentId": "5149bda6-6176-4039-944c-8154902f2bbd",
+          "location": "src\\eShopWinForms\\Views\\CatalogView.cs",
+          "locationKind": "File",
+          "line": 57,
+          "column": 28,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0007",
+          "incidentId": "e794cd06-3f8d-40ee-a5fd-7291e8be2a1e",
+          "location": "src\\eShopWinForms\\Views\\CatalogView.cs",
+          "locationKind": "File",
+          "line": 56,
+          "column": 35,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "information",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "99db62c4-c8d8-4086-8fca-561dc4522888",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 158,
+          "column": 87,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "f6991972-2184-4d58-85a1-db9f02bde35f",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 16,
+          "column": 86,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "94155751-c2ea-45da-84cf-02ec8de7d558",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 195,
+          "column": 86,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "0f4fb922-d8af-4363-97ea-88542ccd88fe",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 299,
+          "column": 87,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "330311e2-7f69-4de4-a884-08363bc1b77c",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 232,
+          "column": 92,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "d6cf74ca-d0b9-4383-95d8-ce67f78fd813",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 399,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "2b769cec-6052-4adb-949d-584dc55b7904",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 402,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "34c59914-7f96-4ef2-9ef2-6919b67322b8",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 399,
+          "column": 134,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "8b4625be-5edc-4084-b284-f9f14db3950d",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 402,
+          "column": 134,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "befdc0bf-5f67-4ce4-87fb-073f7b75fb7a",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 405,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "0f680a0b-614d-4bce-a6ba-644dc1b5ae84",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 408,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "d67a2133-e010-4c0d-adbd-00ad88d1d80c",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 405,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "8fc6f4a1-d621-4189-be28-c3028c4b2205",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 408,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "0a3f8c52-f1ba-4219-8086-6f22a45747fa",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 369,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "db1bd5c3-d403-40bd-aae6-86bef7fe1034",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 372,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "0b7dd71c-4d31-46a4-a7ea-4cc61a8dae77",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 369,
+          "column": 129,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "a3c933a7-1256-49e4-bdbf-ef1bfe93a308",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 372,
+          "column": 129,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "cd144b33-7411-4366-ae30-0f9b2eb6223a",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 393,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "9299d6ea-14f4-46ec-953a-79610fa3bc30",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 396,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "44163f9a-450f-4bd5-a9ea-427aa317132e",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 393,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "e176bb08-0f20-44fe-a845-1a786574869f",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 396,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "e0246839-d427-4fff-868a-a17a2c1afbff",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 375,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "3b341452-8ebb-4640-bffb-c6e612aa3d70",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 378,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "c6017eaf-9ba0-46a2-a613-29e87ebb61e4",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 375,
+          "column": 130,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "72b6bae3-82b4-4ff2-bad8-1ee22f27d655",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 378,
+          "column": 130,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "69049e50-3aba-4e1c-8183-fbefe8705a59",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 381,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "5be63632-d949-4479-b4a9-c81652a4b839",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 384,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "721276c0-5848-4b7c-89fc-6876217c69a4",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 381,
+          "column": 129,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "766cd6a2-b3ca-4e5d-9bb8-7720ebf6a605",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 384,
+          "column": 129,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "50c6bbd4-78f1-4b3b-b815-e9973ccb6b4f",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 387,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "296065a8-a555-4ed3-a473-9d28dc37f09b",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 390,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "5471a363-dd01-4411-9eb6-3af1fd4d3864",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 387,
+          "column": 129,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "30bd7d5b-8c94-4b71-9c94-fd8508b0c48c",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 390,
+          "column": 129,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "b3d622b0-d4fb-438e-a155-915613c980fa",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 423,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "27053e0b-1fb5-4d02-80d3-bee0fdf80f90",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 426,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "8524306b-e360-4df9-b7d2-c9bdbdc5cc84",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 423,
+          "column": 125,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "6f164794-7bea-4c05-9c12-9e2d9c9c726c",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 426,
+          "column": 125,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "0a932efa-d464-4c5a-8009-70b305cfc46c",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 417,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "90ae5d91-413d-4513-856f-8c75ea6dadbb",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 420,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "d95b8a0f-1766-4a6b-be36-aab8ce6d0309",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 417,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "4365b275-dbee-4934-8c01-1b76305742eb",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 420,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "45f03984-623d-42d1-be60-8143421983f8",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 411,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "d385d571-65ff-4298-b300-58448fab0442",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 414,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "48b34d4c-88c2-485f-93bb-5ee9c6c89b75",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 411,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "e14cb67b-5eaa-4e30-be01-25e61a0be4ca",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 414,
+          "column": 131,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "ba915bf1-0195-4664-abab-47ae982c36c1",
+          "location": "src\\eShopWinForms\\Connected Services\\eShopServiceReference\\Reference.cs",
+          "locationKind": "File",
+          "line": 608,
+          "column": 63,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "Runtime.0002": {
+      "id": "Runtime.0002",
+      "description": "Upgrade to newer target framework to get better cloud experience.\n\nIf you are targeting Managed Instance on Azure App Service, validate on .NET Framework 4.8 or move to .NET 10. Persist any runtime prerequisites via install scripts; test in staging before production.\n\nWhile if targeting other Azure compute services:\n\nApplication targeting .NET framework lower than 4.7.1 might missing features that would be needed for some cloud scenarios like scaling or getting secrets from secure external sources.\n\nAzure App Service runs apps on .NET Framework 4.8 or .NET Framework 3.5. Apps running on on .NET Framework versions older than .NET Framework 4.8 could have potential compatibility issues. It is recommended to test your application running on .NET Framework 4.8. Note that it is not necessary to re-target to .NET Framework 4.8, only to validate that the app correctly runs on that version of .NET Framework.\n\nIn the long term it is also recommended to upgrade your application to latest supported .NET 8+ which would significantly increase performance of your application. Use tools like .NET Upgrade Assistant to help with upgrading your application to newer .NET.",
+      "title": "Upgrade to newer target framework to get better cloud experience",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "title": "[Managed Instance] Install scripts",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2347059"
+        },
+        {
+          "title": ".NET Framework Breaking Changes",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2250029"
+        },
+        {
+          "title": ".NET Framework 4.8 on App Service",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2251730"
+        },
+        {
+          "title": "Upgrade to latest .NET with Upgrade Assistant",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2202641"
+        }
+      ],
+      "labels": []
+    },
+    "Database.0002": {
+      "id": "Database.0002",
+      "description": "SQL database connection detected.\n\nEnsure the database is available/reachable on Azure.\n\nIf it is not, there are multiple ways you can move your data to Azure:\n    1. Migrate to Azure SQL Database.\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don’t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
+      "title": "SQL database connection detected",
+      "severity": "potential",
+      "effort": 3,
+      "links": [
+        {
+          "title": "Migrate SQL Server database to Azure",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2251731"
+        },
+        {
+          "title": "Azure SQL Managed Instance",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2251613"
+        },
+        {
+          "title": "Azure Migrate",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2252410"
+        }
+      ],
+      "labels": []
+    },
+    "Database.0003": {
+      "id": "Database.0003",
+      "description": "System.Data.SqlClient dependency is detected.\n\nWhile System.Data.SqlClient will work in Azure, the newer Microsoft.Data.SqlClient package is the primary .NET SQL client moving forward and receiving the latest features. For example, Microsoft.Data.SqlClient easily allows use of Azure Managed Identity from a connection string.",
+      "title": "System.Data.SqlClient dependency detected",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242668"
+        }
+      ],
+      "labels": []
+    },
+    "Security.0002": {
+      "id": "Security.0002",
+      "description": "Connection strings without configuration builders detected.  \n\n Keeping connection strings directly in the app is not the best practice and might introduce security risks, increased maintenance, scalability challenges or compliance standards (such as PCI DSS, GDPR, etc.). \n\n Instead, it is recommended to use configuration builders to get secrets from secure sources in Azure environment.",
+      "title": "Connection strings without configuration builders detected",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "title": "Configuration builders",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2250915"
+        },
+        {
+          "title": "Storing application secrets",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2250916"
+        },
+        {
+          "title": "Centralized app configuration and security",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2250733"
+        }
+      ],
+      "labels": []
+    },
+    "Scale.0001": {
+      "id": "Scale.0001",
+      "description": "Static content detected.\n\nYour current approach of serving static content directly might lead to increased costs, performance issues, maintenance challenges (requiring application redeployment for content changes), and security risks.\n\nConsider moving static content to Azure Blob Storage and adding Azure CDN.",
+      "title": "Static content detected",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "title": "Azure Blob Storage",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2250574"
+        },
+        {
+          "title": "Azure CDN",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2250392"
+        }
+      ],
+      "labels": []
+    },
+    "Local.0003": {
+      "id": "Local.0003",
+      "description": "Your application has local or network IO operations.\n\nIf you are targeting Managed Instance on Azure App Service, move persistent I/O to storage mounts (Azure Files/UNC). Keep local writes to temp only; connect to external dependencies via private endpoints/VNet to reduce latency.\n\nIO operations outside of the application folder might not be available on Azure App Service. Review and ensure IO APIs are attempting to access paths that will be available when your app is running on App Service sandbox. If you choose the containerized hosting option, your scenario still might be broken or have scalability issues.\n\nPossible solutions:\n    1. Files that the application needs can be deployed with the application or put in Azure Storage. You can use Azure Storage File Shares as a drop-in replacement for on-premises file share.\n    2. Other services that the application depends on might need to be migrated to Azure, this way you will get the benefit of lower latency in the cloud.\n    3. If your application needs to depend on services that run on-premise, you can connect your Azure and local networks with ExpressRoute, Hybrid Connections, or VPN solutions.",
+      "title": "Local or network IO operations detected",
+      "severity": "potential",
+      "effort": 3,
+      "links": [
+        {
+          "title": "[Managed Instance] Storage mounts",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2346952"
+        },
+        {
+          "title": "Azure file share",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242591"
+        },
+        {
+          "title": "ExpressRoute",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2250577"
+        },
+        {
+          "title": "Hybrid Connections",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242588"
+        },
+        {
+          "title": "Connect an on-prem network",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242591"
+        },
+        {
+          "title": "Design to scale out",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2251007"
+        }
+      ],
+      "labels": []
+    },
+    "Local.0007": {
+      "id": "Local.0007",
+      "description": "Local OS environment access detected.\n\nIf you are targeting Managed Instance on Azure App Service, Read config via App Settings or App Configuration; avoid machine‑specific environment APIs. Persist environment setup via install scripts when needed.\n\nWhen running in Azure App Service environment, your application can read environment variables that you define in App Service settings. Using environment API other than reading environment variables might indicate that your application depends on some local machine's features and might be broken on App Service sandbox or not scale well. Review your scenarios and either refactor them to be more cloud friendly or choose the option in App Service to host your application in the sandbox for Windows Container Web Apps.\n\nIf you choose to use other Azure hosting options such as Azure Container Apps (ACA) or Azure Kubernetes Service (AKS), environment APIs might work, however scaling still might be an issue.",
+      "title": "Local OS environment access detected",
+      "severity": "potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "General App Service sandbox restrictions",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2250496"
+        },
+        {
+          "title": "App Service sandbox for Windows Container Web Apps",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2251963"
+        },
+        {
+          "title": "Design to scale out",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2251007"
+        }
+      ],
+      "labels": []
+    },
+    "Local.0006": {
+      "id": "Local.0006",
+      "description": "Your application has hardcoded URLs that might correspond to services that are not accessible on Azure.\n\nReview and ensure that the application is attempting to access URLs that would be available from Azure. You might need to migrate those services to Azure too, this way you will get the benefit of lower latency in the cloud.\n\nIf your application needs to depend on services that run on-premises, you can connect your Azure and local networks with ExpressRoute, Hybrid Connections, or VPN solutions.",
+      "title": "Hardcoded URLs detected",
+      "severity": "potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "ExpressRoute",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2250577"
+        },
+        {
+          "title": "Hybrid Connections",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242588"
+        },
+        {
+          "title": "Connect an on-prem network",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242591"
+        }
+      ],
+      "labels": []
+    }
+  },
+  "security": [
+    {
+      "id": "CVE-2024-0056",
+      "title": "Microsoft.Data.SqlClient and System.Data.SqlClient vulnerable to SQL Data Provider Security Feature Bypass",
+      "category": "CVE",
+      "severity": "mandatory",
+      "description": "[CVE-2024-0056](https://github.com/advisories/GHSA-98g6-xh36-x2p7): Microsoft.Data.SqlClient and System.Data.SqlClient vulnerable to SQL Data Provider Security Feature Bypass \n\nSeverity: high\n\nAffected dependencies:\n- System.Data.SqlClient@4.8.1 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected < 4.8.6; patched: 4.8.6\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "evidence": {
+        "files": [],
+        "explanation": "[CVE-2024-0056](https://github.com/advisories/GHSA-98g6-xh36-x2p7): Microsoft.Data.SqlClient and System.Data.SqlClient vulnerable to SQL Data Provider Security Feature Bypass \n\nSeverity: high\n\nAffected dependencies:\n- System.Data.SqlClient@4.8.1 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected < 4.8.6; patched: 4.8.6\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CVE-2018-8292",
+      "title": ".NET Core Information Disclosure",
+      "category": "CVE",
+      "severity": "mandatory",
+      "description": "[CVE-2018-8292](https://github.com/advisories/GHSA-7jgj-8wvc-jh57): .NET Core Information Disclosure\n\nSeverity: high\n\nAffected dependencies:\n- System.Net.Http@4.3.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected < 4.3.4; patched: 4.3.4\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "evidence": {
+        "files": [],
+        "explanation": "[CVE-2018-8292](https://github.com/advisories/GHSA-7jgj-8wvc-jh57): .NET Core Information Disclosure\n\nSeverity: high\n\nAffected dependencies:\n- System.Net.Http@4.3.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected < 4.3.4; patched: 4.3.4\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CVE-2024-21907",
+      "title": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "category": "CVE",
+      "severity": "mandatory",
+      "description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: high\n\nAffected dependencies:\n- Newtonsoft.Json@10.0.1 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected < 13.0.1; patched: 13.0.1\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "evidence": {
+        "files": [],
+        "explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: high\n\nAffected dependencies:\n- Newtonsoft.Json@10.0.1 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected < 13.0.1; patched: 13.0.1\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CVE-2022-41064",
+      "title": ".NET Information Disclosure Vulnerability",
+      "category": "CVE",
+      "severity": "optional",
+      "description": "[CVE-2022-41064](https://github.com/advisories/GHSA-8g2p-5pqh-5jmc): .NET Information Disclosure Vulnerability\n\nSeverity: medium\n\nAffected dependencies:\n- System.Data.SqlClient@4.8.1 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected <= 4.8.4; patched: 4.8.5\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "evidence": {
+        "files": [],
+        "explanation": "[CVE-2022-41064](https://github.com/advisories/GHSA-8g2p-5pqh-5jmc): .NET Information Disclosure Vulnerability\n\nSeverity: medium\n\nAffected dependencies:\n- System.Data.SqlClient@4.8.1 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected <= 4.8.4; patched: 4.8.5\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CVE-2022-34716",
+      "title": ".NET Information Disclosure Vulnerability",
+      "category": "CVE",
+      "severity": "optional",
+      "description": "[CVE-2022-34716](https://github.com/advisories/GHSA-vh55-786g-wjwj): .NET Information Disclosure Vulnerability\n\nSeverity: medium\n\nAffected dependencies:\n- System.Security.Cryptography.Xml@4.7.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected <= 4.7.0; patched: 4.7.1\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "evidence": {
+        "files": [],
+        "explanation": "[CVE-2022-34716](https://github.com/advisories/GHSA-vh55-786g-wjwj): .NET Information Disclosure Vulnerability\n\nSeverity: medium\n\nAffected dependencies:\n- System.Security.Cryptography.Xml@4.7.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected <= 4.7.0; patched: 4.7.1\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CVE-2019-0820",
+      "title": "Regular Expression Denial of Service in System.Text.RegularExpressions",
+      "category": "CVE",
+      "severity": "mandatory",
+      "description": "[CVE-2019-0820](https://github.com/advisories/GHSA-cmhx-cq75-c4mj): Regular Expression Denial of Service in System.Text.RegularExpressions\n\nSeverity: high\n\nAffected dependencies:\n- System.Text.RegularExpressions@4.3.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected >= 4.3.0, < 4.3.1; patched: 4.3.1\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "evidence": {
+        "files": [],
+        "explanation": "[CVE-2019-0820](https://github.com/advisories/GHSA-cmhx-cq75-c4mj): Regular Expression Denial of Service in System.Text.RegularExpressions\n\nSeverity: high\n\nAffected dependencies:\n- System.Text.RegularExpressions@4.3.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected >= 4.3.0, < 4.3.1; patched: 4.3.1\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CVE-2021-24112",
+      "title": ".NET Core Remote Code Execution Vulnerability",
+      "category": "CVE",
+      "severity": "mandatory",
+      "description": "[CVE-2021-24112](https://github.com/advisories/GHSA-rxg9-xrhp-64gj): .NET Core Remote Code Execution Vulnerability\n\nSeverity: critical\n\nAffected dependencies:\n- System.Drawing.Common@4.7.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected >= 4.0.0, < 4.7.2; patched: 4.7.2\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "evidence": {
+        "files": [],
+        "explanation": "[CVE-2021-24112](https://github.com/advisories/GHSA-rxg9-xrhp-64gj): .NET Core Remote Code Execution Vulnerability\n\nSeverity: critical\n\nAffected dependencies:\n- System.Drawing.Common@4.7.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected >= 4.0.0, < 4.7.2; patched: 4.7.2\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CWE-772",
+      "title": "Missing Release of Resource after Effective Lifetime",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "evidence": {
+        "files": [
+          "src\\eShopWinForms\\Views\\CatalogView.cs:39-42",
+          "src\\eShopWinForms\\Views\\CatalogView.cs:48-62"
+        ],
+        "explanation": "Confidence: high for missing deterministic release; medium for denial-of-service impact. CatalogView.SetCatalogItems creates an Image with Image.FromFile at line 58 and derives a thumbnail at line 59 but never disposes the original image, whose effective lifetime ends after thumbnail creation. System.Drawing keeps the source file locked until Image.Dispose or eventual finalization. ClearGrid removes rows at line 41 without explicit thumbnail disposal. Repeated filter changes reload images and can accumulate native image/file resources and prolonged file locks; no load test measured exhaustion and GC/finalization may eventually release them. This is a desktop resource-lifetime issue, not demonstrated remote code execution."
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-775",
+      "title": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "evidence": {
+        "files": [
+          "src\\eShopWinForms\\Views\\CatalogView.cs:39-42",
+          "src\\eShopWinForms\\Views\\CatalogView.cs:48-62"
+        ],
+        "explanation": "Confidence: high for missing deterministic release; medium for denial-of-service impact. CatalogView.SetCatalogItems creates an Image with Image.FromFile at line 58 and derives a thumbnail at line 59 but never disposes the original image, whose effective lifetime ends after thumbnail creation. System.Drawing keeps the source file locked until Image.Dispose or eventual finalization. ClearGrid removes rows at line 41 without explicit thumbnail disposal. Repeated filter changes reload images and can accumulate native image/file resources and prolonged file locks; no load test measured exhaustion and GC/finalization may eventually release them. This is a desktop resource-lifetime issue, not demonstrated remote code execution."
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-662",
+      "title": "Improper Synchronization",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "evidence": {
+        "files": [
+          "src\\eShopWCFService\\CatalogService.svc.cs:65-70",
+          "src\\eShopWCFService\\CatalogService.svc.cs:99-117",
+          "src\\eShopWCFService\\Models\\CatalogItem.cs:13-15",
+          "src\\eShopWCFService\\Models\\CatalogItemsStock.cs:22-25"
+        ],
+        "explanation": "Confidence: high for non-atomic ID allocation; medium for deployed concurrent exploitability. CatalogService.CreateCatalogItem reads the shared database MAX(Id), increments it in process and later inserts. CreateAvailableStock similarly performs an existence check and MAX(StockId)+1 before SaveChanges. IDs explicitly use DatabaseGeneratedOption.None. Concurrent requests handled by separate WCF instances can both read the same maximum before either commits; the second insert then fails on the duplicate key, causing request/inventory-update failure. SaveChanges transactions do not encompass the earlier MAX read; there is no explicit encompassing serializable transaction or cross-request synchronization. WCF default per-session/per-call handling does not globally serialize separate clients. No stress test or deployment concurrency observation was performed. Database uniqueness may prevent corruption but does not prevent the failing request. CWE-662 and CWE-820 describe this same root cause, not independent exploits."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-820",
+      "title": "Missing Synchronization",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "evidence": {
+        "files": [
+          "src\\eShopWCFService\\CatalogService.svc.cs:65-70",
+          "src\\eShopWCFService\\CatalogService.svc.cs:99-117",
+          "src\\eShopWCFService\\Models\\CatalogItem.cs:13-15",
+          "src\\eShopWCFService\\Models\\CatalogItemsStock.cs:22-25"
+        ],
+        "explanation": "Confidence: high for non-atomic ID allocation; medium for deployed concurrent exploitability. CatalogService.CreateCatalogItem reads the shared database MAX(Id), increments it in process and later inserts. CreateAvailableStock similarly performs an existence check and MAX(StockId)+1 before SaveChanges. IDs explicitly use DatabaseGeneratedOption.None. Concurrent requests handled by separate WCF instances can both read the same maximum before either commits; the second insert then fails on the duplicate key, causing request/inventory-update failure. SaveChanges transactions do not encompass the earlier MAX read; there is no explicit encompassing serializable transaction or cross-request synchronization. WCF default per-session/per-call handling does not globally serialize separate clients. No stress test or deployment concurrency observation was performed. Database uniqueness may prevent corruption but does not prevent the failing request. CWE-662 and CWE-820 describe this same root cause, not independent exploits."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-259",
+      "title": "Use of Hard-coded Password",
+      "category": "Credentials & Secrets",
+      "severity": "optional",
+      "description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "evidence": {
+        "files": [
+          "docker-compose.override.yml:7",
+          "docker-compose.override.yml:13",
+          "docker-compose.override.yml:18"
+        ],
+        "explanation": "Confidence: high that reusable credentials are hard-coded; deployment use not verified. Docker Compose supplies a literal SQL administrator password through SA_PASSWORD, embeds the same authentication secret in the application ConnectionString, and provides a literal password argument to the sqlcmd healthcheck. All password values are [REDACTED]. CatalogConfiguration.ConnectionString (src\\\\eShopWCFService\\\\Models\\\\Infrastructure\\\\CatalogConfiguration.cs:16-17) reads the environment and EntityModel consumes it. Anyone with access to the tracked configuration obtains the configured database credential if deployed unchanged; host port mapping also exposes SQL subject to host firewall/network policy. This is repository configuration evidence, not proof the credential is currently active."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-778",
+      "title": "Insufficient Logging",
+      "category": "Credentials & Secrets",
+      "severity": "potential",
+      "description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "evidence": {
+        "files": [
+          "src\\eShopWCFService\\CatalogService.svc.cs:65-83",
+          "src\\eShopWCFService\\CatalogService.svc.cs:99-117",
+          "src\\eShopWCFService\\ICatalogService.cs:25-32"
+        ],
+        "explanation": "Confidence: high for absence of application-level mutation audit events; medium for deployed audit coverage. CatalogService.CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and CreateAvailableStock mutate catalog/inventory state and call SaveChanges without recording actor, operation, target or outcome. Full first-party source/config search found no audit logger or event source. Remote catalog/inventory changes therefore have no application-supplied security audit trail. IIS request logs, SQL audit or other deployment-level monitoring might exist outside this repository and were not inspected; this finding does not assert their absence."
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-798",
+      "title": "Use of Hard-coded Credentials",
+      "category": "Credentials & Secrets",
+      "severity": "optional",
+      "description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "evidence": {
+        "files": [
+          "docker-compose.override.yml:7",
+          "docker-compose.override.yml:13",
+          "docker-compose.override.yml:18"
+        ],
+        "explanation": "Confidence: high that reusable credentials are hard-coded; deployment use not verified. Docker Compose supplies a literal SQL administrator password through SA_PASSWORD, embeds the same authentication secret in the application ConnectionString, and provides a literal password argument to the sqlcmd healthcheck. All password values are [REDACTED]. CatalogConfiguration.ConnectionString (src\\\\eShopWCFService\\\\Models\\\\Infrastructure\\\\CatalogConfiguration.cs:16-17) reads the environment and EntityModel consumes it. Anyone with access to the tracked configuration obtains the configured database credential if deployed unchanged; host port mapping also exposes SQL subject to host firewall/network policy. This is repository configuration evidence, not proof the credential is currently active."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-22",
+      "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "category": "File & Path Security",
+      "severity": "optional",
+      "description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+      "evidence": {
+        "files": [
+          "src\\eShopWinForms\\Views\\CatalogView.cs:48-61",
+          "src\\eShopWCFService\\CatalogService.svc.cs:65-76",
+          "src\\eShopWCFService\\Models\\CatalogItem.cs:24-25",
+          "src\\eShopWCFService\\ICatalogService.cs:27-30"
+        ],
+        "explanation": "Confidence: high for path escape, medium for practical impact. CatalogView.SetCatalogItems concatenates service-controlled Picturefilename into the catalog image directory at line 57 and calls Image.FromFile at line 58 without canonicalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the DataMember unchanged, and the WCF contract exposes these operations. A caller able to modify catalog data can supply ..\\\\ segments to open a local image outside the intended catalog directory under the desktop user identity, or crash rendering for invalid paths. Only image decoding/display is demonstrated, not arbitrary file exfiltration or remote code execution. Endpoint reachability and deployed authorization were not runtime-tested."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-23",
+      "title": "Relative Path Traversal",
+      "category": "File & Path Security",
+      "severity": "optional",
+      "description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+      "evidence": {
+        "files": [
+          "src\\eShopWinForms\\Views\\CatalogView.cs:48-61",
+          "src\\eShopWCFService\\CatalogService.svc.cs:65-76",
+          "src\\eShopWCFService\\Models\\CatalogItem.cs:24-25",
+          "src\\eShopWCFService\\ICatalogService.cs:27-30"
+        ],
+        "explanation": "Confidence: high for path escape, medium for practical impact. CatalogView.SetCatalogItems concatenates service-controlled Picturefilename into the catalog image directory at line 57 and calls Image.FromFile at line 58 without canonicalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the DataMember unchanged, and the WCF contract exposes these operations. A caller able to modify catalog data can supply ..\\\\ segments to open a local image outside the intended catalog directory under the desktop user identity, or crash rendering for invalid paths. Only image decoding/display is demonstrated, not arbitrary file exfiltration or remote code execution. Endpoint reachability and deployed authorization were not runtime-tested."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-99",
+      "title": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "category": "Injection Attacks",
+      "severity": "potential",
+      "description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "evidence": {
+        "files": [
+          "src\\eShopWinForms\\Views\\CatalogView.cs:55-59",
+          "src\\eShopWCFService\\CatalogService.svc.cs:65-76"
+        ],
+        "explanation": "Confidence: high for uncontrolled image resource identifier; impact conditional on catalog write access and image readability. CatalogView.SetCatalogItems appends the WCF/DB-provided Picturefilename to a trusted asset directory and opens it with Image.FromFile. CreateCatalogItem and UpdateCatalogItem accept that member without restricting it. A modified catalog record with relative traversal selects a local image outside the intended directory or causes a rendering exception. This overlaps the path-traversal finding; it is not an independent arbitrary-code-execution finding. No runtime exploit performed."
+      },
+      "storyPoint": 3
+    }
+  ],
+  "securityAssessment": {
+    "minimumCveSeverity": "medium",
+    "summary": {
+      "TotalFindings": 17,
+      "CveCount": 7,
+      "CweCount": 10,
+      "BySeverity": {
+        "mandatory": 5,
+        "optional": 6,
+        "potential": 6
+      },
+      "ByCategory": {
+        "CVE": 7,
+        "Code Quality": 2,
+        "Concurrency & Synchronization": 2,
+        "Credentials & Secrets": 3,
+        "File & Path Security": 2,
+        "Injection Attacks": 1
+      },
+      "TotalRulesAssessed": 59,
+      "RulesPassed": 49
+    },
+    "limitations": [
+      "Static assessment of the full existing eShopModernizedNTier application; no application source was modified and no runtime exploitation, load testing or deployment verification was performed.",
+      "The dependency CLI failed because Microsoft.WebApplication.targets was unavailable. Fallback inspected scoped package manifests, project references and existing project.assets.json; 114 distinct dependency/version coordinates were queried in four successful GitHub advisory API batches. Assets may be stale and a freshly restored complete service transitive dependency graph was unavailable.",
+      "CVE findings identify affected versions recorded in existing resolved assets, not verified deployed packages or demonstrated exploitability. Minimum CVE severity: medium. Transitive packages have no direct declaration location attributed.",
+      "CWE source review excluded generated code, obj/bin, .vs, temp and vendor artifacts. NOT_FOUND means no confirmed pattern in the reviewed first-party sources, not proof of absence.",
+      "CWE classifications can overlap: path traversal/resource injection, hard-coded password/credential, image resource/handle leaks and stock synchronization findings may describe the same underlying issue. Counts are rule matches, not independent exploits."
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "input_name": "CWE - File & Path Security",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Assessed 5 CWE rules in File & Path Security: 2 FOUND, 3 NOT_FOUND",
+    "confidence": "medium",
+    "evidence": [
+      "Full existing application assessment, including unchanged source, scoped exclusively to eShopModernizedNTier. Reviewed 27 first-party source/config/project files plus Docker Compose configuration; source-to-sink inspection and whole-scope pattern searches, not a diff review.",
+      "Limitations: static source analysis only; application not executed, no exploit or load tests, runtime deployment/ACLs and platform internals not inspected. Generated code, obj/bin, .vs, temp and vendor artifacts excluded from CWE checklist source review. NOT_FOUND means no confirmed pattern in reviewed first-party code, not proof of absence. Specialist returned change-only results and was not used as full-workspace evidence.",
+      "All file/image and XML entry points inspected. No uploads or custom XML parser/DTD resolver found. String concatenation prefixes the path, so absolute-path replacement alone was not confirmed (CWE-36 NOT_FOUND). Standard WCF SOAP parsing is not by itself evidence of XXE."
+    ],
+    "values": [
+      {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+        "status": "FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 8,
+        "description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+        "evidence": {
+          "files": [
+            "src\\eShopWinForms\\Views\\CatalogView.cs:48-61",
+            "src\\eShopWCFService\\CatalogService.svc.cs:65-76",
+            "src\\eShopWCFService\\Models\\CatalogItem.cs:24-25",
+            "src\\eShopWCFService\\ICatalogService.cs:27-30"
+          ],
+          "explanation": "Confidence: high for path escape, medium for practical impact. CatalogView.SetCatalogItems concatenates service-controlled Picturefilename into the catalog image directory at line 57 and calls Image.FromFile at line 58 without canonicalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the DataMember unchanged, and the WCF contract exposes these operations. A caller able to modify catalog data can supply ..\\\\ segments to open a local image outside the intended catalog directory under the desktop user identity, or crash rendering for invalid paths. Only image decoding/display is demonstrated, not arbitrary file exfiltration or remote code execution. Endpoint reachability and deployed authorization were not runtime-tested."
+        }
+      },
+      {
+        "id": "CWE-23",
+        "name": "Relative Path Traversal",
+        "status": "FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 5,
+        "description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+        "evidence": {
+          "files": [
+            "src\\eShopWinForms\\Views\\CatalogView.cs:48-61",
+            "src\\eShopWCFService\\CatalogService.svc.cs:65-76",
+            "src\\eShopWCFService\\Models\\CatalogItem.cs:24-25",
+            "src\\eShopWCFService\\ICatalogService.cs:27-30"
+          ],
+          "explanation": "Confidence: high for path escape, medium for practical impact. CatalogView.SetCatalogItems concatenates service-controlled Picturefilename into the catalog image directory at line 57 and calls Image.FromFile at line 58 without canonicalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the DataMember unchanged, and the WCF contract exposes these operations. A caller able to modify catalog data can supply ..\\\\ segments to open a local image outside the intended catalog directory under the desktop user identity, or crash rendering for invalid paths. Only image decoding/display is demonstrated, not arbitrary file exfiltration or remote code execution. Endpoint reachability and deployed authorization were not runtime-tested."
+        }
+      },
+      {
+        "id": "CWE-36",
+        "name": "Absolute Path Traversal",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 5,
+        "description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize absolute path sequences such as /abs/path that can resolve to a location that is outside of that directory.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "id": "CWE-434",
+        "name": "Unrestricted Upload of File with Dangerous Type",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "mandatory",
+        "storyPoint": 8,
+        "description": "The product allows the upload or transfer of dangerous file types that are automatically processed within its environment.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "id": "CWE-611",
+        "name": "Improper Restriction of XML External Entity Reference",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 5,
+        "description": "The product processes an XML document that can contain XML entities with URIs that resolve to documents outside of the intended sphere of control, causing the product to embed incorrect documents into its output.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2026-10-26T23:21:54.7120712Z"
+}
