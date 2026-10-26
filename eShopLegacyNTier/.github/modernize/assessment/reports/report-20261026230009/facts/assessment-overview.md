@@ -25,4 +25,4 @@ This assessment covers only `eShopLegacyNTier`. The following supplementary docu
 - [Core assessment data](../report.json)
 - [.NET 10 upgrade assessment](../scenarios/dotnet-version-upgrade/assessment.md)
 
-The upgrade assessment tool emitted its artifacts outside the requested output directory despite the supplied settings; its five generated artifacts were copied unchanged into this versioned report.
+The upgrade assessment tool emitted its artifacts outside the requested output directory despite the supplied settings; its five generated artifacts were copied into this versioned report, with trailing whitespace normalized in the Markdown.
