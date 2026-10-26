@@ -1,0 +1,210 @@
+{
+  "GeneratedAt": "2026-10-26T19:19:47.5367195Z",
+  "ProjectPath": ".",
+  "Summary": {
+    "TotalFindings": 15,
+    "CveCount": 8,
+    "CweCount": 7,
+    "BySeverity": {
+      "mandatory": 4,
+      "optional": 8,
+      "potential": 3
+    },
+    "ByCategory": {
+      "Code Quality": 3,
+      "CVE": 8,
+      "File & Path Security": 3,
+      "Injection Attacks": 1
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 52
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2026-40021",
+      "Name": "Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - log4net:2.0.10 (range < 3.3.0; patched: not specified)",
+      "Files": [
+        "src/eShopLegacyMVC/packages.config:10",
+        "eShopPorted/eShopPorted.csproj:13"
+      ],
+      "Explanation": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - log4net:2.0.10 (range < 3.3.0; patched: not specified)"
+    },
+    {
+      "Id": "CVE-2024-21907",
+      "Name": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: HIGH\n\nAffected dependencies:\n  - Newtonsoft.Json:12.0.1 (range < 13.0.1; patched: not specified)",
+      "Files": [
+        "src/eShopLegacyMVC/packages.config:29"
+      ],
+      "Explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: HIGH\n\nAffected dependencies:\n  - Newtonsoft.Json:12.0.1 (range < 13.0.1; patched: not specified)"
+    },
+    {
+      "Id": "CVE-2025-55315",
+      "Name": "Microsoft Security Advisory CVE-2025-55315: .NET Security Feature Bypass Vulnerability",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2025-55315](https://github.com/advisories/GHSA-5rrx-jjjq-q2r5): Microsoft Security Advisory CVE-2025-55315: .NET Security Feature Bypass Vulnerability\n\nSeverity: CRITICAL\n\nAffected dependencies:\n  - Microsoft.AspNetCore.Server.Kestrel.Core:2.2.0 (range <= 2.3.0; patched: not specified)",
+      "Files": [],
+      "Explanation": "[CVE-2025-55315](https://github.com/advisories/GHSA-5rrx-jjjq-q2r5): Microsoft Security Advisory CVE-2025-55315: .NET Security Feature Bypass Vulnerability\n\nSeverity: CRITICAL\n\nAffected dependencies:\n  - Microsoft.AspNetCore.Server.Kestrel.Core:2.2.0 (range <= 2.3.0; patched: not specified)"
+    },
+    {
+      "Id": "CVE-2022-41064",
+      "Name": ".NET Information Disclosure Vulnerability",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2022-41064](https://github.com/advisories/GHSA-8g2p-5pqh-5jmc): .NET Information Disclosure Vulnerability\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - System.Data.SqlClient:4.6.1 (range <= 4.8.4; patched: not specified)",
+      "Files": [],
+      "Explanation": "[CVE-2022-41064](https://github.com/advisories/GHSA-8g2p-5pqh-5jmc): .NET Information Disclosure Vulnerability\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - System.Data.SqlClient:4.6.1 (range <= 4.8.4; patched: not specified)"
+    },
+    {
+      "Id": "CVE-2024-0056",
+      "Name": "Microsoft.Data.SqlClient and System.Data.SqlClient vulnerable to SQL Data Provider Security Feature Bypass ",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-0056](https://github.com/advisories/GHSA-98g6-xh36-x2p7): Microsoft.Data.SqlClient and System.Data.SqlClient vulnerable to SQL Data Provider Security Feature Bypass \n\nSeverity: HIGH\n\nAffected dependencies:\n  - System.Data.SqlClient:4.6.1 (range < 4.8.6; patched: not specified)",
+      "Files": [],
+      "Explanation": "[CVE-2024-0056](https://github.com/advisories/GHSA-98g6-xh36-x2p7): Microsoft.Data.SqlClient and System.Data.SqlClient vulnerable to SQL Data Provider Security Feature Bypass \n\nSeverity: HIGH\n\nAffected dependencies:\n  - System.Data.SqlClient:4.6.1 (range < 4.8.6; patched: not specified)"
+    },
+    {
+      "Id": "CVE-2021-26701",
+      "Name": ".NET Core Remote Code Execution Vulnerability",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2021-26701](https://github.com/advisories/GHSA-ghhp-997w-qr28): .NET Core Remote Code Execution Vulnerability\n\nSeverity: CRITICAL\n\nAffected dependencies:\n  - System.Text.Encodings.Web:4.5.0 (range >= 4.0.0, < 4.5.1; patched: not specified)",
+      "Files": [],
+      "Explanation": "[CVE-2021-26701](https://github.com/advisories/GHSA-ghhp-997w-qr28): .NET Core Remote Code Execution Vulnerability\n\nSeverity: CRITICAL\n\nAffected dependencies:\n  - System.Text.Encodings.Web:4.5.0 (range >= 4.0.0, < 4.5.1; patched: not specified)"
+    },
+    {
+      "Id": "CVE-2019-1075",
+      "Name": "Open redirect in ASP.NET Core",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2019-1075](https://github.com/advisories/GHSA-prrf-397v-83xh): Open redirect in ASP.NET Core\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - Microsoft.AspNetCore.Server.IIS:2.2.0 (range >= 2.2.0, < 2.2.6; patched: not specified)",
+      "Files": [],
+      "Explanation": "[CVE-2019-1075](https://github.com/advisories/GHSA-prrf-397v-83xh): Open redirect in ASP.NET Core\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - Microsoft.AspNetCore.Server.IIS:2.2.0 (range >= 2.2.0, < 2.2.6; patched: not specified)"
+    },
+    {
+      "Id": "CVE-2022-34716",
+      "Name": ".NET Information Disclosure Vulnerability",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2022-34716](https://github.com/advisories/GHSA-vh55-786g-wjwj): .NET Information Disclosure Vulnerability\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - System.Security.Cryptography.Xml:4.5.0 (range <= 4.7.0; patched: not specified)",
+      "Files": [],
+      "Explanation": "[CVE-2022-34716](https://github.com/advisories/GHSA-vh55-786g-wjwj): .NET Information Disclosure Vulnerability\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - System.Security.Cryptography.Xml:4.5.0 (range <= 4.7.0; patched: not specified)"
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-477",
+      "Name": "Use of Obsolete Function",
+      "Category": "Code Quality",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "The code uses deprecated or obsolete functions, which suggests that the code has not been actively reviewed or maintained.",
+      "Files": [
+        "eShopLegacy.Utilities/Serializing.cs:11",
+        "eShopLegacy.Utilities/Serializing.cs:19"
+      ],
+      "Explanation": "Serializing.SerializeBinary and DeserializeBinary instantiate BinaryFormatter. BinaryFormatter is obsolete in current .NET releases, and the helper remains used by the application for binary serialization."
+    },
+    {
+      "Id": "CWE-681",
+      "Name": "Incorrect Conversion between Numeric Types",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "Files": [
+        "src/eShopLegacyMVC/Models/Infrastructure/CatalogDBInitializer.cs:328-329",
+        "src/eShopLegacyMVC/Models/CatalogItemHiLoGenerator.cs:22-23"
+      ],
+      "Explanation": "Both catalog ID generators obtain an Int64 sequence value and cast it directly to Int32 without a range check. Values outside the Int32 range can be truncated/wrapped before use as catalog IDs."
+    },
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "eShopLegacy.Utilities/Serializing.cs:8-14",
+        "eShopPorted/Controllers/Api/FilesController.cs:28-32"
+      ],
+      "Explanation": "SerializeBinary allocates and returns a MemoryStream without disposing it; FilesController serializes catalog data and passes the stream to Ok without disposing it, leaving resource lifetime to an external formatter."
+    },
+    {
+      "Id": "CWE-22",
+      "Name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 8,
+      "Description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+      "Files": [
+        "src/eShopLegacyMVC/Controllers/PicController.cs:39",
+        "src/eShopLegacyMVC/Controllers/CatalogController.cs:63",
+        "eShopPorted/Controllers/PicController.cs:40",
+        "eShopPorted/Controllers/CatalogController.cs:62"
+      ],
+      "Explanation": "Both picture controllers combine a fixed image root with `CatalogItem.PictureFileName` and read the resulting path without verifying containment. The MVC create/edit actions bind `PictureFileName` from request data, allowing path traversal sequences to persist in the catalog item and be used by the picture endpoint."
+    },
+    {
+      "Id": "CWE-23",
+      "Name": "Relative Path Traversal",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+      "Files": [
+        "src/eShopLegacyMVC/Controllers/PicController.cs:39",
+        "src/eShopLegacyMVC/Controllers/CatalogController.cs:63",
+        "eShopPorted/Controllers/PicController.cs:40",
+        "eShopPorted/Controllers/CatalogController.cs:62"
+      ],
+      "Explanation": "The request-bound `PictureFileName` is passed to `Path.Combine` with the image root and then used by `File.ReadAllBytes` without rejecting `..` segments or checking the canonical resolved path. Relative traversal can therefore read files outside the intended image directory."
+    },
+    {
+      "Id": "CWE-36",
+      "Name": "Absolute Path Traversal",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize absolute path sequences such as /abs/path that can resolve to a location that is outside of the restricted directory.",
+      "Files": [
+        "src/eShopLegacyMVC/Controllers/PicController.cs:39",
+        "src/eShopLegacyMVC/Controllers/CatalogController.cs:63",
+        "eShopPorted/Controllers/PicController.cs:40",
+        "eShopPorted/Controllers/CatalogController.cs:62"
+      ],
+      "Explanation": "The picture controllers use the request-bound `PictureFileName` as the second `Path.Combine` argument. A rooted path can replace the intended root, and the resulting path is read with `File.ReadAllBytes` without an absolute-path containment check."
+    },
+    {
+      "Id": "CWE-99",
+      "Name": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "Category": "Injection Attacks",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "Files": [
+        "src/eShopLegacyMVC/Controllers/PicController.cs:39",
+        "src/eShopLegacyMVC/Controllers/CatalogController.cs:63",
+        "eShopPorted/Controllers/PicController.cs:40",
+        "eShopPorted/Controllers/CatalogController.cs:62"
+      ],
+      "Explanation": "The picture endpoints use the catalog item's request-bindable PictureFileName as a file resource identifier and read that resource without limiting it to the image directory. The user-controlled identifier may resolve to an unintended file resource."
+    }
+  ]
+}
