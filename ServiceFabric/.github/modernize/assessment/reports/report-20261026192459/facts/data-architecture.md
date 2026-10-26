@@ -1,0 +1,1 @@
+> ERROR: No recognized data access patterns or entities found at ServiceFabric. The workspace includes a SQL Server container definition, but not the application database access code or entity models.

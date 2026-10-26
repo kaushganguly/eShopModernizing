@@ -1,0 +1,1 @@
+> ERROR: No recognized API endpoints found at ServiceFabric. The application container source code is not included in this workspace; only deployment manifests and container image references are available.
