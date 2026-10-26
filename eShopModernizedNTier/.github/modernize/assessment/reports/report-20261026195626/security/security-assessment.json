@@ -1,0 +1,32 @@
+{
+  "GeneratedAt": "2026-10-26T20:07:29.374301+00:00",
+  "ProjectPath": "eShopModernizedNTier",
+  "Status": "partial",
+  "MinimumCveSeverity": "medium",
+  "Summary": {
+    "TotalFindings": 0,
+    "CveCount": 0,
+    "CweCount": 0,
+    "BySeverity": {
+      "mandatory": 0,
+      "optional": 0,
+      "potential": 0
+    },
+    "ByCategory": {},
+    "TotalRulesAssessed": 17,
+    "RulesPassed": 17,
+    "TotalRulesRequested": 59,
+    "RulesNotAssessed": 42
+  },
+  "CveFindings": [],
+  "CweFindings": [],
+  "Limitations": [
+    "Dependency enumeration command failed (exit 1): Microsoft.WebApplication.targets unavailable. Manifest fallback covered 8 unique direct NuGet package/version pairs across 9 declarations; transitive dependencies unassessed.",
+    "GitHub exact-version advisory REST queries succeeded with zero advisories; gh authentication failed. No npm manifests found. Minimum CVE severity for merging: medium.",
+    "File/path and injection specialists supplied static source tracing: 17 rules assessed, no confirmed findings. No runtime or deployment validation; generated code, tests and dependencies excluded.",
+    "Memory safety (15), code quality (16), credentials/secrets (5), concurrency (6): 42 rules NOT_ASSESSED. Required security-review specialist restricted its review to changed code; later scans explicitly blocked. No clean results fabricated.",
+    "Raw blocked files use status error and rule status NOT_ASSESSED rather than misrepresenting successful FOUND/NOT_FOUND assessments. Schema extension documents incomplete coverage.",
+    "No findings is not a clean bill of health; assessment incomplete.",
+    "Follow-up retried sequentially with explicit full-source authorization. Specialist confirmed changed-lines-only operational scope still prevents existing-source review; 0 files inspected and no rule conclusions established. Completion requires a read-only security assessor permitted to report findings outside changed lines."
+  ]
+}
