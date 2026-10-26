@@ -1,0 +1,15 @@
+{
+  "GeneratedAt": "2026-10-26T20:57:02.1701473Z",
+  "ProjectPath": "ServiceFabric",
+  "Summary": {
+    "TotalFindings": 0,
+    "CveCount": 0,
+    "CweCount": 0,
+    "BySeverity": {},
+    "ByCategory": {},
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 59
+  },
+  "CveFindings": [],
+  "CweFindings": []
+}
