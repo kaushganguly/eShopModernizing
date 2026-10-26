@@ -1,0 +1,46 @@
+{
+  "GeneratedAt": "2026-10-26T20:02:34.7371293Z",
+  "ProjectPath": "ServiceFabric",
+  "Summary": {
+    "TotalFindings": 2,
+    "CveCount": 0,
+    "CweCount": 2,
+    "BySeverity": {
+      "mandatory": 0,
+      "optional": 2,
+      "potential": 0
+    },
+    "ByCategory": {
+      "Credentials & Secrets": 2
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 57
+  },
+  "CveFindings": [],
+  "CweFindings": [
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Files": [
+        "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24"
+      ],
+      "Explanation": "The SQL container service manifest assigns a static password value to the SA_PASSWORD environment variable. The secret value is intentionally omitted."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Files": [
+        "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24"
+      ],
+      "Explanation": "The SQL container service manifest assigns a static password value to the SA_PASSWORD environment variable. The secret value is intentionally omitted."
+    }
+  ]
+}
