@@ -57,5 +57,37 @@
       "incidents": []
     }
   ],
-  "rules": {}
+  "rules": {},
+  "security": [
+    {
+      "id": "CWE-259",
+      "title": "Use of Hard-coded Password",
+      "category": "Credentials & Secrets",
+      "severity": "optional",
+      "description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "evidence": {
+        "files": [
+          "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml",
+          "ServiceFabric-ARM-Templates-Scripts/pro-eshop-sfwin-cluster-ARM-SECURED-tests/parameters.json"
+        ],
+        "explanation": "Sensitive password values are embedded in deployment configuration: the SQL service manifest defines the SQL administrator password, and the ARM test parameter file contains a cluster administrator password. Values are intentionally masked in this assessment. The example client-secret field in DeploymentHelper.cs is a placeholder and is not counted as a live credential."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-798",
+      "title": "Use of Hard-coded Credentials",
+      "category": "Credentials & Secrets",
+      "severity": "optional",
+      "description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "evidence": {
+        "files": [
+          "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml",
+          "ServiceFabric-ARM-Templates-Scripts/pro-eshop-sfwin-cluster-ARM-SECURED-tests/parameters.json"
+        ],
+        "explanation": "Sensitive password values are embedded in deployment configuration: the SQL service manifest defines the SQL administrator password, and the ARM test parameter file contains a cluster administrator password. Values are intentionally masked in this assessment. The example client-secret field in DeploymentHelper.cs is a placeholder and is not counted as a live credential."
+      },
+      "storyPoint": 5
+    }
+  ]
 }
