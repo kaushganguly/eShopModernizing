@@ -564,7 +564,7 @@
       "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
       "evidence": {
         "files": [
-          "src/eShopLegacyWebForms/Models/CatalogItemHiLoGenerator.cs:22",
+          "src/eShopLegacyWebForms/Models/CatalogItemHiLoGenerator.cs:23",
           "src/eShopLegacyWebForms/Models/Infrastructure/dbo.catalog_hilo.Sequence.sql:4-9"
         ],
         "explanation": "CatalogItemHiLoGenerator.GetNextSequenceValue queries a SQL Server BIGINT sequence (the sequence script permits values through 9223372036854775807) into Int64 and immediately casts it to int. Once the sequence exceeds Int32.MaxValue, the identifier can overflow/wrap and produce incorrect or colliding catalog IDs."
@@ -649,3 +649,4 @@
     }
   ]
 }
+

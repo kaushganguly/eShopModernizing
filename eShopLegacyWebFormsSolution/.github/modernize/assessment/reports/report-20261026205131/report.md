@@ -138,7 +138,7 @@
 <details id="CWE-681_Incorrect_Conversion_between_Numeric_Types">
 <summary><b>CWE-681: Incorrect Conversion between Numeric Types</b> — affected files</summary>
 
-- `src/eShopLegacyWebForms/Models/CatalogItemHiLoGenerator.cs:22`
+- `src/eShopLegacyWebForms/Models/CatalogItemHiLoGenerator.cs:23`
 - `src/eShopLegacyWebForms/Models/Infrastructure/dbo.catalog_hilo.Sequence.sql:4-9`
 
 </details>
