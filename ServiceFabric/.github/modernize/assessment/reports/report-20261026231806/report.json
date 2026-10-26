@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "note": "Core application assessment could not analyze source projects: ServiceFabric contains legacy .sfproj deployment projects and no .csproj application projects.",
+    "generated_at": "2026-10-26T23:18:06.1010658Z",
+    "id": "20261026231806"
+  },
+  "security": [
+    {
+      "title": "Use of Hard-coded Password",
+      "description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "severity": "optional",
+      "id": "CWE-259",
+      "category": "Credentials & Secrets",
+      "storyPoint": 5,
+      "evidence": {
+        "explanation": "The SQL container manifest declares the SQL Server SA password as a literal value in an EnvironmentVariable. The literal is intentionally omitted from this report.",
+        "files": [
+          "ServiceFabric/eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24"
+        ]
+      }
+    },
+    {
+      "title": "Use of Hard-coded Credentials",
+      "description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "severity": "optional",
+      "id": "CWE-798",
+      "category": "Credentials & Secrets",
+      "storyPoint": 5,
+      "evidence": {
+        "explanation": "The SQL container manifest declares the SQL Server SA password as a literal value in an EnvironmentVariable. The literal is intentionally omitted from this report.",
+        "files": [
+          "ServiceFabric/eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24"
+        ]
+      }
+    }
+  ],
+  "rules": {},
+  "projects": [
+    {
+      "properties": {
+        "tools": [
+          "MSBuild"
+        ],
+        "languages": [
+          ".NET"
+        ],
+        "appName": "ServiceFabric",
+        "repo": "ServiceFabric",
+        "frameworks": [
+          "Service Fabric",
+          ".NET Framework 4.6.1/4.6.2 metadata"
+        ],
+        "description": "Core AppCAT and .NET upgrade findings are unavailable: the solution contains three legacy .sfproj deployment projects and no .csproj application projects; container image internals are outside this workspace."
+      },
+      "incidents": []
+    }
+  ]
+}
