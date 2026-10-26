@@ -15,5 +15,6 @@ Scope: `eShopLegacyNTier` only. These supplementary documents describe the check
 
 - The [core report](../report.json) was generated with AppCAT `1.0.1127`, restricted privacy mode, and both scoped projects. Its issue counts depend on the selected deployment target.
 - The [.NET upgrade assessment](../scenarios/dotnet-version-upgrade/assessment.md) targets `net10.0`, as requested. WinForms requires a Windows-specific target for an eventual migration; counts against plain `net10.0` are not a direct migration-effort estimate.
+- The [security assessment](../security/security-assessment.md) includes CVEs of medium severity or higher and sequential analysis across six CWE categories. Its raw result arrays are preserved alongside the merged assessment. Findings describe existing code; runtime exploitability and deployment controls were not verified.
 - Architecture documentation is a static source assessment, not a verification of a running deployment or live database schema.
 - No application code, dependencies, or target frameworks were changed.
