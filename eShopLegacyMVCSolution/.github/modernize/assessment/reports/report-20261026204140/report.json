@@ -2021,9 +2021,11 @@
       "evidence": {
         "files": [
           "src/eShopLegacyMVC/Modules/ApplicationModule.cs",
-          "src/eShopLegacyMVC/Services/CatalogServiceMock.cs"
+          "src/eShopLegacyMVC/Services/CatalogServiceMock.cs",
+          "eShopPorted/Modules/ApplicationModule.cs",
+          "eShopPorted/Services/CatalogServiceMock.cs"
         ],
-        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance (ApplicationModule.cs:18-22). The singleton stores catalogItems in a mutable List and reads, modifies, and removes entries without synchronization (CatalogServiceMock.cs:12,33-67); concurrent requests can race while accessing shared catalog state."
+        "explanation": "Both ApplicationModule implementations register CatalogServiceMock as a SingleInstance when mock data is enabled (legacy ApplicationModule.cs:18-22; ported ApplicationModule.cs:18-22). Each mock service holds and mutates a shared List<CatalogItem> without synchronization (CatalogServiceMock.cs:12,33-67). The ported application has UseMockData enabled by default, so concurrent requests access shared mutable catalog state."
       },
       "storyPoint": 5
     },
@@ -2036,9 +2038,11 @@
       "evidence": {
         "files": [
           "src/eShopLegacyMVC/Modules/ApplicationModule.cs",
-          "src/eShopLegacyMVC/Services/CatalogServiceMock.cs"
+          "src/eShopLegacyMVC/Services/CatalogServiceMock.cs",
+          "eShopPorted/Modules/ApplicationModule.cs",
+          "eShopPorted/Services/CatalogServiceMock.cs"
         ],
-        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance (ApplicationModule.cs:18-22). The singleton stores catalogItems in a mutable List and reads, modifies, and removes entries without synchronization (CatalogServiceMock.cs:12,33-67); concurrent requests can race while accessing shared catalog state."
+        "explanation": "Both ApplicationModule implementations register CatalogServiceMock as a SingleInstance when mock data is enabled (legacy ApplicationModule.cs:18-22; ported ApplicationModule.cs:18-22). Each mock service holds and mutates a shared List<CatalogItem> without synchronization (CatalogServiceMock.cs:12,33-67). The ported application has UseMockData enabled by default, so concurrent requests access shared mutable catalog state."
       },
       "storyPoint": 5
     },
@@ -2051,9 +2055,11 @@
       "evidence": {
         "files": [
           "src/eShopLegacyMVC/Modules/ApplicationModule.cs",
-          "src/eShopLegacyMVC/Services/CatalogServiceMock.cs"
+          "src/eShopLegacyMVC/Services/CatalogServiceMock.cs",
+          "eShopPorted/Modules/ApplicationModule.cs",
+          "eShopPorted/Services/CatalogServiceMock.cs"
         ],
-        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance (ApplicationModule.cs:18-22). The singleton stores catalogItems in a mutable List and reads, modifies, and removes entries without synchronization (CatalogServiceMock.cs:12,33-67); concurrent requests can race while accessing shared catalog state."
+        "explanation": "Both ApplicationModule implementations register CatalogServiceMock as a SingleInstance when mock data is enabled (legacy ApplicationModule.cs:18-22; ported ApplicationModule.cs:18-22). Each mock service holds and mutates a shared List<CatalogItem> without synchronization (CatalogServiceMock.cs:12,33-67). The ported application has UseMockData enabled by default, so concurrent requests access shared mutable catalog state."
       },
       "storyPoint": 8
     },
@@ -2066,9 +2072,11 @@
       "evidence": {
         "files": [
           "src/eShopLegacyMVC/Modules/ApplicationModule.cs",
-          "src/eShopLegacyMVC/Services/CatalogServiceMock.cs"
+          "src/eShopLegacyMVC/Services/CatalogServiceMock.cs",
+          "eShopPorted/Modules/ApplicationModule.cs",
+          "eShopPorted/Services/CatalogServiceMock.cs"
         ],
-        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance (ApplicationModule.cs:18-22). The singleton stores catalogItems in a mutable List and reads, modifies, and removes entries without synchronization (CatalogServiceMock.cs:12,33-67); concurrent requests can race while accessing shared catalog state."
+        "explanation": "Both ApplicationModule implementations register CatalogServiceMock as a SingleInstance when mock data is enabled (legacy ApplicationModule.cs:18-22; ported ApplicationModule.cs:18-22). Each mock service holds and mutates a shared List<CatalogItem> without synchronization (CatalogServiceMock.cs:12,33-67). The ported application has UseMockData enabled by default, so concurrent requests access shared mutable catalog state."
       },
       "storyPoint": 8
     },
@@ -2131,6 +2139,20 @@
         "explanation": "PicController.Index uses CatalogItem.PictureFileName to select a filesystem resource through Path.Combine and File.ReadAllBytes (PicController.cs:38-45). The value is bound from catalog create/edit request data (CatalogController.cs:62,100), so external data controls which file resource is read."
       },
       "storyPoint": 3
+    },
+    {
+      "id": "CWE-502",
+      "title": "Deserialization of Untrusted Data",
+      "category": "Injection Attacks",
+      "severity": "mandatory",
+      "description": "The product deserializes untrusted data without sufficiently ensuring that the resulting data will be valid.",
+      "evidence": {
+        "files": [
+          "eShopLegacy.Utilities/Serializing.cs"
+        ],
+        "explanation": "Serializing.DeserializeBinary accepts a Stream and passes it directly to BinaryFormatter.Deserialize without validating the input or restricting the resulting type (Serializing.cs:17-21). The method is public in the shared utility project, so callers can supply untrusted serialized data."
+      },
+      "storyPoint": 13
     }
   ]
 }
