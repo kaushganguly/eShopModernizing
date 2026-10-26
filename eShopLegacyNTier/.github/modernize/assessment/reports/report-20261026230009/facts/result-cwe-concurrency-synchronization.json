@@ -1,0 +1,109 @@
+{
+  "input_name": "CWE - Concurrency & Synchronization",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Assessed 6 CWE rules in Concurrency & Synchronization: 3 FOUND, 3 NOT_FOUND",
+    "values": [
+      {
+        "id": "CWE-543",
+        "name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "id": "CWE-567",
+        "name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+        "evidence": {
+          "files": [
+            "eShopLegacyNTier\\src\\eShopWCFService\\CatalogService.svc.cs",
+            "eShopLegacyNTier\\src\\eShopWCFService\\Models\\CatalogItem.cs",
+            "eShopLegacyNTier\\src\\eShopWCFService\\Models\\CatalogItemsStock.cs",
+            "eShopLegacyNTier\\src\\eShopWCFService\\Web.config"
+          ],
+          "explanation": "CatalogService.CreateCatalogItem lines 65-70 reads the shared database maximum Id, increments it locally, then inserts; CatalogItem lines 13-15 disables database-generated identifiers. Independent requests to the configured basicHttp WCF endpoint can interleave and choose the same primary key, causing one SaveChanges to fail. The same allocation race exists for stock at CatalogService lines 113-116, with DatabaseGeneratedOption.None at CatalogItemsStock lines 22-25. There is no cross-request transaction/serialization spanning MAX and insert; the implicit SaveChanges transaction starts too late to protect the preceding read. This is shared-database concurrency, not simultaneous access to a single DbContext. Primary keys prevent duplicate-key persistence, but do not prevent failed requests. Additionally CreateAvailableStock lines 101-116 checks for an existing item/date before insertion without a unique item/date constraint, allowing duplicate logical stock rows when interleaved requests observe absence and later choose different IDs."
+        }
+      },
+      {
+        "id": "CWE-662",
+        "name": "Improper Synchronization",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+        "evidence": {
+          "files": [
+            "eShopLegacyNTier\\src\\eShopWCFService\\CatalogService.svc.cs",
+            "eShopLegacyNTier\\src\\eShopWCFService\\Models\\CatalogItem.cs",
+            "eShopLegacyNTier\\src\\eShopWCFService\\Models\\CatalogItemsStock.cs",
+            "eShopLegacyNTier\\src\\eShopWCFService\\Web.config"
+          ],
+          "explanation": "CatalogService.CreateCatalogItem lines 65-70 reads the shared database maximum Id, increments it locally, then inserts; CatalogItem lines 13-15 disables database-generated identifiers. Independent requests to the configured basicHttp WCF endpoint can interleave and choose the same primary key, causing one SaveChanges to fail. The same allocation race exists for stock at CatalogService lines 113-116, with DatabaseGeneratedOption.None at CatalogItemsStock lines 22-25. There is no cross-request transaction/serialization spanning MAX and insert; the implicit SaveChanges transaction starts too late to protect the preceding read. This is shared-database concurrency, not simultaneous access to a single DbContext. Primary keys prevent duplicate-key persistence, but do not prevent failed requests. Additionally CreateAvailableStock lines 101-116 checks for an existing item/date before insertion without a unique item/date constraint, allowing duplicate logical stock rows when interleaved requests observe absence and later choose different IDs."
+        }
+      },
+      {
+        "id": "CWE-667",
+        "name": "Improper Locking",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product does not properly acquire or release a lock on a resource, leading to unexpected resource state changes and behaviors.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "id": "CWE-820",
+        "name": "Missing Synchronization",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+        "evidence": {
+          "files": [
+            "eShopLegacyNTier\\src\\eShopWCFService\\CatalogService.svc.cs",
+            "eShopLegacyNTier\\src\\eShopWCFService\\Models\\CatalogItem.cs",
+            "eShopLegacyNTier\\src\\eShopWCFService\\Models\\CatalogItemsStock.cs",
+            "eShopLegacyNTier\\src\\eShopWCFService\\Web.config"
+          ],
+          "explanation": "CatalogService.CreateCatalogItem lines 65-70 reads the shared database maximum Id, increments it locally, then inserts; CatalogItem lines 13-15 disables database-generated identifiers. Independent requests to the configured basicHttp WCF endpoint can interleave and choose the same primary key, causing one SaveChanges to fail. The same allocation race exists for stock at CatalogService lines 113-116, with DatabaseGeneratedOption.None at CatalogItemsStock lines 22-25. There is no cross-request transaction/serialization spanning MAX and insert; the implicit SaveChanges transaction starts too late to protect the preceding read. This is shared-database concurrency, not simultaneous access to a single DbContext. Primary keys prevent duplicate-key persistence, but do not prevent failed requests. Additionally CreateAvailableStock lines 101-116 checks for an existing item/date before insertion without a unique item/date constraint, allowing duplicate logical stock rows when interleaved requests observe absence and later choose different IDs."
+        }
+      },
+      {
+        "id": "CWE-821",
+        "name": "Incorrect Synchronization",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes a shared resource in a concurrent manner, but it does not correctly synchronize access to the resource.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      }
+    ],
+    "confidence": "high",
+    "evidence": [
+      "Assessed existing authored WCF request handlers, SQL-backed state, entity key mappings, hosting configuration and desktop/helper threading. Confirmed non-atomic shared-database read/allocate/write sequences across independent WCF requests. Overlapping FOUND rules classify the same race family, not three independent vulnerabilities. No authored lock-acquire/release misuse or incorrectly implemented explicit synchronization primitive found. Singleton<T> is a dormant UWP helper excluded from project Compile items and has no reachable callers; it also uses ConcurrentDictionary. CatalogServiceMock and stub CatalogServiceClient are not selected by CatalogService.svc or Program.Main. Generated sources excluded."
+    ]
+  },
+  "execution_time_seconds": 0,
+  "timestamp": "2026-10-26T23:04:39.6366394Z"
+}
