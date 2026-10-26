@@ -1,0 +1,142 @@
+{
+  "GeneratedAt": "2026-10-26T20:04:23.7420956Z",
+  "ProjectPath": ".",
+  "Summary": {
+    "TotalFindings": 9,
+    "CveCount": 1,
+    "CweCount": 8,
+    "BySeverity": {
+      "mandatory": 1,
+      "optional": 1,
+      "potential": 7
+    },
+    "ByCategory": {
+      "CVE": 1,
+      "Injection Attacks": 1,
+      "Code Quality": 3,
+      "Concurrency & Synchronization": 4
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 51
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2024-21907",
+      "Name": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Newtonsoft.Json versions before 13.0.1 mishandle deeply nested data, which can cause excessive CPU and memory use or a stack overflow denial of service. Severity: HIGH. Affected dependency: Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyWebForms/packages.config:31). Recommended patched version: 13.0.1 or later.",
+      "Files": [
+        "src/eShopLegacyWebForms/packages.config:31"
+      ],
+      "Explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Newtonsoft.Json versions before 13.0.1 mishandle deeply nested data, which can cause excessive CPU and memory use or a stack overflow denial of service. Severity: HIGH. Affected dependency: Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyWebForms/packages.config:31). Recommended patched version: 13.0.1 or later."
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-681",
+      "Name": "Incorrect Conversion between Numeric Types",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "Files": [
+        "src/eShopLegacyWebForms/Models/Infrastructure/CatalogDBInitializer.cs:327-328",
+        "src/eShopLegacyWebForms/Models/CatalogItemHiLoGenerator.cs:22-23"
+      ],
+      "Explanation": "CatalogDBInitializer.GetSequenceIdFromSelectedDBSequence and CatalogItemHiLoGenerator.GetNextSequenceValue convert the database sequence result from Int64 to Int32 using explicit casts. Values beyond the Int32 range wrap/truncate in the unchecked context, producing incorrect catalog identifiers."
+    },
+    {
+      "Id": "CWE-682",
+      "Name": "Incorrect Calculation",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+      "Files": [
+        "src/eShopLegacyWebForms/Services/CatalogService.cs:30",
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:25",
+        "src/eShopLegacyWebForms/Default.aspx.cs:26-28"
+      ],
+      "Explanation": "The catalog page accepts page size and index as route integers and computes pageSize * pageIndex for Skip in both CatalogService and CatalogServiceMock. The unchecked multiplication can overflow and produce an incorrect or negative pagination offset."
+    },
+    {
+      "Id": "CWE-789",
+      "Name": "Memory Allocation with Excessive Size Value",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+      "Files": [
+        "src/eShopLegacyWebForms/Default.aspx.cs:26-28",
+        "src/eShopLegacyWebForms/Services/CatalogService.cs:26-32"
+      ],
+      "Explanation": "Default.Page_Load accepts an arbitrary positive or very large route size and passes it to GetCatalogItemsPaginated; CatalogService applies Take(pageSize) then materializes all selected rows with ToList without a maximum page size, allowing an oversized response to consume excessive resources."
+    },
+    {
+      "Id": "CWE-543",
+      "Name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "Files": [
+        "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12-16",
+        "src/eShopLegacyWebForms/Global.asax.cs:53-54"
+      ],
+      "Explanation": "When UseMockData is true, ApplicationModule registers CatalogServiceMock as SingleInstance. The singleton owns a mutable List<CatalogItem> and its create, update, and remove operations mutate that list without synchronization, so concurrent Web Forms requests can race."
+    },
+    {
+      "Id": "CWE-567",
+      "Name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "Files": [
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12",
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:48-67"
+      ],
+      "Explanation": "CatalogServiceMock exposes its shared catalogItems list to concurrent request handlers. CreateCatalogItem, UpdateCatalogItem, and RemoveCatalogItem mutate or replace list elements without a lock while readers enumerate the same list."
+    },
+    {
+      "Id": "CWE-662",
+      "Name": "Improper Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "Files": [
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:48-67"
+      ],
+      "Explanation": "CatalogServiceMock performs concurrent mutations and enumeration against its singleton-owned catalogItems List without exclusive synchronization, allowing collection corruption or inconsistent catalog data."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "Files": [
+        "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:48-67"
+      ],
+      "Explanation": "The application selects the singleton mock catalog service when UseMockData is enabled, but CatalogServiceMock does not synchronize its shared mutable catalogItems list across concurrent requests."
+    },
+    {
+      "Id": "CWE-79",
+      "Name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "Category": "Injection Attacks",
+      "Severity": "optional",
+      "StoryPoint": 8,
+      "Description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+      "Files": [
+        "src/eShopLegacyWebForms/Catalog/Details.aspx:14"
+      ],
+      "Explanation": "Catalog/Details.aspx binds product.Name directly to an asp:Label Text property. The value is entered through the catalog maintenance form and persisted; the Label writes its Text as HTML rather than encoding it, allowing stored markup to be emitted to other users."
+    }
+  ]
+}
