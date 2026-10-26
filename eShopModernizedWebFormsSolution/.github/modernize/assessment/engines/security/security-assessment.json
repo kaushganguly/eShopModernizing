@@ -1,0 +1,153 @@
+{
+  "GeneratedAt": "2026-10-26T20:02:01.5552924Z",
+  "ProjectPath": ".",
+  "Summary": {
+    "TotalFindings": 10,
+    "CveCount": 2,
+    "CweCount": 8,
+    "BySeverity": {
+      "mandatory": 0,
+      "optional": 5,
+      "potential": 5
+    },
+    "ByCategory": {
+      "Code Quality": 4,
+      "Injection Attacks": 2,
+      "Credentials & Secrets": 2,
+      "CVE": 2
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 51
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2024-21319",
+      "Name": "Microsoft ASP.NET Core project templates vulnerable to denial of service",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Microsoft ASP.NET Core project templates vulnerable to denial of service\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at packages.config:53, affected range < 5.7.0; patched )\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at packages.config:53, affected range >= 6.5.0, < 6.34.0; patched )\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at packages.config:53, affected range >= 7.0.0-preview, < 7.1.2; patched )\n\nRecommended fix: upgrade to the first patched version listed above where available.",
+      "Files": [
+        "src/eShopModernizedWebForms/packages.config:53"
+      ],
+      "Explanation": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Microsoft ASP.NET Core project templates vulnerable to denial of service\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at packages.config:53, affected range < 5.7.0; patched )\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at packages.config:53, affected range >= 6.5.0, < 6.34.0; patched )\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at packages.config:53, affected range >= 7.0.0-preview, < 7.1.2; patched )\n\nRecommended fix: upgrade to the first patched version listed above where available."
+    },
+    {
+      "Id": "CVE-2026-40021",
+      "Name": "Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - log4net:2.0.10 (declared at packages.config:11, affected range < 3.3.0; patched )\n\nRecommended fix: upgrade to the first patched version listed above where available.",
+      "Files": [
+        "src/eShopModernizedWebForms/packages.config:11"
+      ],
+      "Explanation": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - log4net:2.0.10 (declared at packages.config:11, affected range < 3.3.0; patched )\n\nRecommended fix: upgrade to the first patched version listed above where available."
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-681",
+      "Name": "Incorrect Conversion between Numeric Types",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "Files": [
+        "src/eShopModernizedWebForms/Models/CatalogItemHiLoGenerator.cs:19-20",
+        "src/eShopModernizedWebForms/Models/Infrastructure/CatalogDBInitializer.cs:323-326",
+        "src/eShopModernizedWebForms/Models/Infrastructure/dbo.catalog_hilo.Sequence.sql:4-9"
+      ],
+      "Explanation": "CatalogItemHiLoGenerator and CatalogDBInitializer convert SQL bigint sequence values to int without a range check. The catalog sequence is defined as bigint with a maximum of 9223372036854775807, so values beyond Int32 range wrap when used as catalog IDs."
+    },
+    {
+      "Id": "CWE-682",
+      "Name": "Incorrect Calculation",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+      "Files": [
+        "src/eShopModernizedWebForms/Default.aspx.cs:31-35",
+        "src/eShopModernizedWebForms/Services/CatalogService.cs:24-30",
+        "src/eShopModernizedWebForms/ViewModel/PaginatedItemsViewModel.cs:18-24"
+      ],
+      "Explanation": "The route-provided page size and index are converted and used without range checks. `pageSize * pageIndex` can overflow in the paging query, and a zero pageSize causes division by zero when TotalPages is calculated, disrupting requests."
+    },
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:107-115"
+      ],
+      "Explanation": "UpLoadImageFromFile opens a FileStream with File.OpenRead and never disposes it after UploadFromStream completes. InitializeCatalogImages invokes this helper repeatedly, leaving file handles open."
+    },
+    {
+      "Id": "CWE-775",
+      "Name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "Files": [
+        "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:107-115"
+      ],
+      "Explanation": "UpLoadImageFromFile opens a file handle using File.OpenRead but does not close or dispose the stream after uploading."
+    },
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Files": [
+        "docker-compose.override.yml:21"
+      ],
+      "Explanation": "The local SQL Server service supplies a fixed literal SA_PASSWORD in the committed Docker Compose override instead of resolving it from a secret source. The value is intentionally omitted here."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Files": [
+        "docker-compose.override.yml:21"
+      ],
+      "Explanation": "A SQL Server credential is embedded as a fixed literal in the committed Docker Compose override at the SA_PASSWORD setting. The credential value is intentionally omitted here."
+    },
+    {
+      "Id": "CWE-79",
+      "Name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "Category": "Injection Attacks",
+      "Severity": "optional",
+      "StoryPoint": 8,
+      "Description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+      "Files": [
+        "src/eShopModernizedWebForms/Catalog/Details.aspx:16",
+        "src/eShopModernizedWebForms/Catalog/Details.aspx:23",
+        "src/eShopModernizedWebForms/Catalog/Edit.aspx.cs:69-70"
+      ],
+      "Explanation": "Catalog item Name and Description are accepted from editable form fields in Edit.Save_Click (Edit.aspx.cs:69-70) and rendered through data-bound asp:Label Text properties without explicit HTML encoding in Details.aspx:16,23. This creates a stored cross-site scripting path."
+    },
+    {
+      "Id": "CWE-99",
+      "Name": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "Category": "Injection Attacks",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "Files": [
+        "src/eShopModernizedWebForms/Catalog/PicUploader.asmx.cs:40-41",
+        "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:87-97"
+      ],
+      "Explanation": "UploadImage accepts the request itemId and uploaded file name from the client (PicUploader.asmx.cs:40-41). ImageAzureStorage.UploadTempImage concatenates the parsed itemId and untrusted HttpPostedFile.FileName into the Azure blob identifier (ImageAzureStorage.cs:89,93), allowing the caller to select blob resource names outside the caller-specific scope."
+    }
+  ]
+}
