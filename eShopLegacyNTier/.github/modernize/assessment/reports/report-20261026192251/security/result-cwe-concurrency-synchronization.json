@@ -1,0 +1,102 @@
+{
+  "input_name": "CWE - Concurrency & Synchronization",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "confidence": "high",
+    "evidence": [
+      "Baseline eShopLegacyNTier WCF service lifecycle, EF model/database allocation, static state and project Compile lists reviewed. No custom lock acquisition or deployed singleton was found. UWP Singleton helper is excluded from compilation; ConcurrentDictionary presence alone is not a deployed singleton vulnerability. Shared resource is the database across WCF instances; no unsafe shared DbContext assertion made. No concurrency/load test or database access performed."
+    ],
+    "values": [
+      {
+        "id": "CWE-543",
+        "name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "id": "CWE-567",
+        "name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "id": "CWE-662",
+        "name": "Improper Synchronization",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+        "evidence": {
+          "files": [
+            "eShopLegacyNTier/src/eShopWCFService/CatalogService.svc.cs:65-70",
+            "eShopLegacyNTier/src/eShopWCFService/Models/CatalogItem.cs:13-15",
+            "eShopLegacyNTier/src/eShopWCFService/Web.config:37-40"
+          ],
+          "explanation": "CatalogService.CreateCatalogItem reads the shared database maximum Id at line 67, increments it at line 68 and inserts at lines 69-70 without a transaction covering both read and insert or cross-instance synchronization. CatalogItem disables database-generated IDs at lines 13-15. Concurrent SOAP calls handled by separate WCF service instances can read the same maximum and attempt the same primary key; one insert can fail with a duplicate-key exception. WCF default per-instance single concurrency does not serialize access across all instances. A service-reachable actor issuing concurrent creations can induce intermittent legitimate write failures. Database primary-key constraints prevent duplicate committed identifiers; no data overwrite or lasting global outage established. Requires overlapping requests against the same database, not runtime reproduced. CWE-662 and CWE-820 are overlapping classifications of this missing atomicity, not two independent defects."
+        }
+      },
+      {
+        "id": "CWE-667",
+        "name": "Improper Locking",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product does not properly acquire or release a lock on a resource, leading to unexpected resource state changes and behaviors.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "id": "CWE-820",
+        "name": "Missing Synchronization",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+        "evidence": {
+          "files": [
+            "eShopLegacyNTier/src/eShopWCFService/CatalogService.svc.cs:65-70",
+            "eShopLegacyNTier/src/eShopWCFService/Models/CatalogItem.cs:13-15",
+            "eShopLegacyNTier/src/eShopWCFService/Web.config:37-40"
+          ],
+          "explanation": "CatalogService.CreateCatalogItem reads the shared database maximum Id at line 67, increments it at line 68 and inserts at lines 69-70 without a transaction covering both read and insert or cross-instance synchronization. CatalogItem disables database-generated IDs at lines 13-15. Concurrent SOAP calls handled by separate WCF service instances can read the same maximum and attempt the same primary key; one insert can fail with a duplicate-key exception. WCF default per-instance single concurrency does not serialize access across all instances. A service-reachable actor issuing concurrent creations can induce intermittent legitimate write failures. Database primary-key constraints prevent duplicate committed identifiers; no data overwrite or lasting global outage established. Requires overlapping requests against the same database, not runtime reproduced. CWE-662 and CWE-820 are overlapping classifications of this missing atomicity, not two independent defects."
+        }
+      },
+      {
+        "id": "CWE-821",
+        "name": "Incorrect Synchronization",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes a shared resource in a concurrent manner, but it does not correctly synchronize access to the resource.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      }
+    ],
+    "finding": "Assessed 6 CWE rules in Concurrency & Synchronization: 2 FOUND, 4 NOT_FOUND"
+  },
+  "execution_time_seconds": 0,
+  "timestamp": "2026-10-26T19:28:36.0024972Z"
+}
