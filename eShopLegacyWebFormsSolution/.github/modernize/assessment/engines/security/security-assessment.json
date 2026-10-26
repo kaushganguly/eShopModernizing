@@ -1,0 +1,117 @@
+{
+  "GeneratedAt": "2026-10-26T21:08:00Z",
+  "ProjectPath": ".",
+  "Summary": {
+    "TotalFindings": 7,
+    "CveCount": 1,
+    "CweCount": 6,
+    "BySeverity": {
+      "mandatory": 1,
+      "optional": 1,
+      "potential": 5
+    },
+    "ByCategory": {
+      "Code Quality": 1,
+      "Concurrency & Synchronization": 4,
+      "CVE": 1,
+      "Injection Attacks": 1
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 53
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2024-21907",
+      "Name": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Newtonsoft.Json versions before 13.0.1 can consume excessive CPU and memory or cause a StackOverflowException when processing deeply nested JSON.\n\nSeverity: HIGH (CVSS 7.5).\n\nAffected dependency: Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyWebForms/packages.config:31).\n\nRecommended fix: Upgrade Newtonsoft.Json to 13.0.1 or later, or enforce a bounded MaxDepth in JsonSerializerSettings.",
+      "Files": [
+        "src/eShopLegacyWebForms/packages.config:31"
+      ],
+      "Explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Newtonsoft.Json versions before 13.0.1 can consume excessive CPU and memory or cause a StackOverflowException when processing deeply nested JSON.\n\nSeverity: HIGH (CVSS 7.5).\n\nAffected dependency: Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyWebForms/packages.config:31).\n\nRecommended fix: Upgrade Newtonsoft.Json to 13.0.1 or later, or enforce a bounded MaxDepth in JsonSerializerSettings."
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-681",
+      "Name": "Incorrect Conversion between Numeric Types",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "Files": [
+        "src/eShopLegacyWebForms/Models/CatalogItemHiLoGenerator.cs:23",
+        "src/eShopLegacyWebForms/Models/Infrastructure/dbo.catalog_hilo.Sequence.sql:4-9"
+      ],
+      "Explanation": "CatalogItemHiLoGenerator.GetNextSequenceValue queries a SQL Server BIGINT sequence (the sequence script permits values through 9223372036854775807) into Int64 and immediately casts it to int. Once the sequence exceeds Int32.MaxValue, the identifier can overflow/wrap and produce incorrect or colliding catalog IDs."
+    },
+    {
+      "Id": "CWE-543",
+      "Name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "Files": [
+        "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,48-67"
+      ],
+      "Explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a single shared instance. Its mutable catalogItems List is read and mutated by request operations in GetCatalogItemsPaginated, CreateCatalogItem, UpdateCatalogItem, and RemoveCatalogItem without a lock, allowing concurrent requests to race."
+    },
+    {
+      "Id": "CWE-567",
+      "Name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "Files": [
+        "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,48-67"
+      ],
+      "Explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a single shared instance. Its mutable catalogItems List is read and mutated by request operations in GetCatalogItemsPaginated, CreateCatalogItem, UpdateCatalogItem, and RemoveCatalogItem without a lock, allowing concurrent requests to race."
+    },
+    {
+      "Id": "CWE-662",
+      "Name": "Improper Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "Files": [
+        "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,48-67"
+      ],
+      "Explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a single shared instance. Its mutable catalogItems List is read and mutated by request operations in GetCatalogItemsPaginated, CreateCatalogItem, UpdateCatalogItem, and RemoveCatalogItem without a lock, allowing concurrent requests to race."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the shared resource.",
+      "Files": [
+        "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,48-67"
+      ],
+      "Explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a single shared instance. Its mutable catalogItems List is read and mutated by request operations in GetCatalogItemsPaginated, CreateCatalogItem, UpdateCatalogItem, and RemoveCatalogItem without a lock, allowing concurrent requests to race."
+    },
+    {
+      "Id": "CWE-79",
+      "Name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "Category": "Injection Attacks",
+      "Severity": "optional",
+      "StoryPoint": 8,
+      "Description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+      "Files": [
+        "src/eShopLegacyWebForms/Catalog/Details.aspx:21",
+        "src/eShopLegacyWebForms/Catalog/Create.aspx.cs:37",
+        "src/eShopLegacyWebForms/Catalog/Edit.aspx.cs:55"
+      ],
+      "Explanation": "Catalog descriptions and names are accepted from TextBox inputs in Create_Click and Save_Click, persisted through CatalogService, and then data-bound to asp:Label Text values in Details.aspx (for example, Description at line 21). Label output is rendered as page content without an explicit encoding step, allowing stored markup/script to execute for users viewing the catalog."
+    }
+  ]
+}
