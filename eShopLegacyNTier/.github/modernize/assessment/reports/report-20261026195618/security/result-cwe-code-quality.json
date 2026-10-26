@@ -1,0 +1,218 @@
+[
+  {
+    "severity": "potential",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-130",
+    "name": "Improper Handling of Length Parameter Inconsistency",
+    "category": "Code Quality",
+    "storyPoint": 3,
+    "description": "The product parses a formatted message or structure, but it does not handle or incorrectly handles a length field that is inconsistent with the actual length of the associated data."
+  },
+  {
+    "severity": "potential",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-456",
+    "name": "Missing Initialization of a Variable",
+    "category": "Code Quality",
+    "storyPoint": 2,
+    "description": "The product does not initialize critical variables, which causes the execution environment to use unexpected values."
+  },
+  {
+    "severity": "potential",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-457",
+    "name": "Use of Uninitialized Variable",
+    "category": "Code Quality",
+    "storyPoint": 2,
+    "description": "The code uses a variable that has not been initialized, leading to unpredictable or unintended results."
+  },
+  {
+    "severity": "optional",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-477",
+    "name": "Use of Obsolete Function",
+    "category": "Code Quality",
+    "storyPoint": 1,
+    "description": "The code uses deprecated or obsolete functions, which suggests that the code has not been actively reviewed or maintained."
+  },
+  {
+    "severity": "optional",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-570",
+    "name": "Expression is Always False",
+    "category": "Code Quality",
+    "storyPoint": 1,
+    "description": "The product contains an expression that will always evaluate to false."
+  },
+  {
+    "severity": "optional",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-571",
+    "name": "Expression is Always True",
+    "category": "Code Quality",
+    "storyPoint": 1,
+    "description": "The product contains an expression that will always evaluate to true."
+  },
+  {
+    "severity": "potential",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-606",
+    "name": "Unchecked Input for Loop Condition",
+    "category": "Code Quality",
+    "storyPoint": 3,
+    "description": "The product does not properly check inputs that are used for loop conditions, potentially leading to a denial of service or other consequences because of excessive looping."
+  },
+  {
+    "severity": "potential",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-665",
+    "name": "Improper Initialization",
+    "category": "Code Quality",
+    "storyPoint": 3,
+    "description": "The product does not initialize or incorrectly initializes a resource, which might leave the resource in an unexpected state when it is accessed or used."
+  },
+  {
+    "severity": "potential",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-681",
+    "name": "Incorrect Conversion between Numeric Types",
+    "category": "Code Quality",
+    "storyPoint": 3,
+    "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur."
+  },
+  {
+    "severity": "potential",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-682",
+    "name": "Incorrect Calculation",
+    "category": "Code Quality",
+    "storyPoint": 5,
+    "description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management."
+  },
+  {
+    "severity": "potential",
+    "status": "FOUND",
+    "evidence": {
+      "explanation": "CatalogView.SetCatalogItems creates an Image with Image.FromFile at line 58, makes a separate thumbnail at 59, and discards the original Image reference without Dispose. Image.FromFile retains the backing file lock until Image disposal; each filter-triggered reload repeats this allocation. ClearGrid at 39-42 removes rows without explicitly releasing thumbnail Images. This confirms missing deterministic release of image/native resources and backing image file handles, with repeated refresh resource pressure and locked image files. CWE-772 and CWE-775 describe overlapping aspects of this same lifetime defect; exhaustion timing was not measured.",
+      "files": [
+        "src\\eShopWinForms\\Views\\CatalogView.cs:48",
+        "src\\eShopWinForms\\Views\\CatalogView.cs:58",
+        "src\\eShopWinForms\\Views\\CatalogView.cs:39"
+      ]
+    },
+    "id": "CWE-772",
+    "name": "Missing Release of Resource after Effective Lifetime",
+    "category": "Code Quality",
+    "storyPoint": 3,
+    "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed."
+  },
+  {
+    "severity": "potential",
+    "status": "FOUND",
+    "evidence": {
+      "explanation": "CatalogView.SetCatalogItems creates an Image with Image.FromFile at line 58, makes a separate thumbnail at 59, and discards the original Image reference without Dispose. Image.FromFile retains the backing file lock until Image disposal; each filter-triggered reload repeats this allocation. ClearGrid at 39-42 removes rows without explicitly releasing thumbnail Images. This confirms missing deterministic release of image/native resources and backing image file handles, with repeated refresh resource pressure and locked image files. CWE-772 and CWE-775 describe overlapping aspects of this same lifetime defect; exhaustion timing was not measured.",
+      "files": [
+        "src\\eShopWinForms\\Views\\CatalogView.cs:48",
+        "src\\eShopWinForms\\Views\\CatalogView.cs:58",
+        "src\\eShopWinForms\\Views\\CatalogView.cs:39"
+      ]
+    },
+    "id": "CWE-775",
+    "name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+    "category": "Code Quality",
+    "storyPoint": 3,
+    "description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed."
+  },
+  {
+    "severity": "optional",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-783",
+    "name": "Operator Precedence Logic Error",
+    "category": "Code Quality",
+    "storyPoint": 1,
+    "description": "The product uses an expression in which operator precedence causes incorrect logic to be used."
+  },
+  {
+    "severity": "potential",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-789",
+    "name": "Memory Allocation with Excessive Size Value",
+    "category": "Code Quality",
+    "storyPoint": 5,
+    "description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated."
+  },
+  {
+    "severity": "potential",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-835",
+    "name": "Loop with Unreachable Exit Condition ('Infinite Loop')",
+    "category": "Code Quality",
+    "storyPoint": 3,
+    "description": "The product contains an iteration or loop with an exit condition that cannot be reached, i.e., an infinite loop."
+  },
+  {
+    "severity": "potential",
+    "status": "NOT_FOUND",
+    "evidence": {
+      "explanation": "",
+      "files": []
+    },
+    "id": "CWE-1057",
+    "name": "Data Access Operations Outside of Expected Data Manager Component",
+    "category": "Code Quality",
+    "storyPoint": 5,
+    "description": "The product uses a dedicated, central data manager component as required by design, but it contains code that performs data-access operations that do not use this data manager."
+  }
+]
