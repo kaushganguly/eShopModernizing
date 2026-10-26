@@ -1,0 +1,74 @@
+{
+  "GeneratedAt": "2026-10-26T20:44:18.0000000Z",
+  "ProjectPath": ".",
+  "Summary": {
+    "TotalFindings": 4,
+    "CveCount": 1,
+    "CweCount": 3,
+    "BySeverity": {
+      "mandatory": 1,
+      "potential": 3
+    },
+    "ByCategory": {
+      "CVE": 1,
+      "Code Quality": 1,
+      "Concurrency & Synchronization": 1,
+      "Credentials & Secrets": 1
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 56
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2024-21907",
+      "Name": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: HIGH\n\nAffected dependencies:\n  - Newtonsoft.Json:6.0.4 (declared at eShopLegacyNTier/src/eShopWinForms/packages.config:5)\n\nRecommended fix:\n  - Upgrade Newtonsoft.Json to 13.0.1 or later",
+      "Files": [
+        "eShopLegacyNTier/src/eShopWinForms/packages.config:5",
+        "eShopLegacyNTier/src/eShopWinForms/eShopWinForms.csproj:63"
+      ],
+      "Explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: HIGH\n\nAffected dependencies:\n  - Newtonsoft.Json:6.0.4 (declared at eShopLegacyNTier/src/eShopWinForms/packages.config:5)\n\nRecommended fix:\n  - Upgrade Newtonsoft.Json to 13.0.1 or later"
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "eShopLegacyNTier/src/eShopWinForms/Program.cs"
+      ],
+      "Explanation": "Program.Main creates eShopServiceReference.CatalogServiceClient (a WCF ClientBase, which must be closed) at line 584 and never closes or disposes it."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "Files": [
+        "eShopLegacyNTier/src/eShopWCFService/CatalogService.svc.cs"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem (lines 141-144) and CreateAvailableStock (lines 187-190) compute the next primary key as Max(Id)+1 and save without any locking or transaction, so concurrent WCF calls can generate duplicate keys or lose updates."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "Files": [
+        "eShopLegacyNTier/src/eShopWCFService/CatalogService.svc.cs"
+      ],
+      "Explanation": "The WCF service performs create, update and remove operations on catalog data (lines 139-157) without any audit or security event logging; no logging framework is used anywhere in the solution."
+    }
+  ]
+}
