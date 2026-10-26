@@ -1,0 +1,181 @@
+{
+  "GeneratedAt": "2026-10-26T20:01:49.460Z",
+  "ProjectPath": "eShopModernizedMVCSolution",
+  "Summary": {
+    "TotalFindings": 12,
+    "CveCount": 2,
+    "CweCount": 10,
+    "BySeverity": {
+      "mandatory": 0,
+      "optional": 4,
+      "potential": 8
+    },
+    "ByCategory": {
+      "CVE": 2,
+      "Code Quality": 3,
+      "Concurrency & Synchronization": 4,
+      "Credentials & Secrets": 3
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 49
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2026-40021",
+      "Name": "Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net versions before 3.3.0 fail to sanitize forbidden XML 1.0 characters in MDC keys and values or identity data when the XML layouts are used, which can silently drop log events. The declared log4net version 2.0.12 falls in the affected range (< 3.3.0). The project currently configures PatternLayout rather than either affected XML layout, so the vulnerable feature is not observed as enabled. Recommended fix: upgrade to log4net 3.3.0 or later. The legacy NuGet CLI dependency-tree command could not load Microsoft.WebApplication.targets; this result is based on packages.config direct dependencies only.",
+      "Files": [
+        "src/eShopModernizedMVC/packages.config:10"
+      ],
+      "Explanation": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net versions before 3.3.0 fail to sanitize forbidden XML 1.0 characters in MDC keys and values or identity data when the XML layouts are used, which can silently drop log events. The declared log4net version 2.0.12 falls in the affected range (< 3.3.0). The project currently configures PatternLayout rather than either affected XML layout, so the vulnerable feature is not observed as enabled. Recommended fix: upgrade to log4net 3.3.0 or later. The legacy NuGet CLI dependency-tree command could not load Microsoft.WebApplication.targets; this result is based on packages.config direct dependencies only."
+    },
+    {
+      "Id": "CVE-2024-21319",
+      "Name": "Microsoft ASP.NET Core project templates vulnerable to denial of service",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): the advisory maps the affected ranges for Microsoft.IdentityModel.JsonWebTokens and System.IdentityModel.Tokens.Jwt. The declared versions 5.6.0 are below the first patched version 5.7.0. Applicability caveat: the advisory describes ASP.NET Core projects generated with affected JWT-auth templates; this target is ASP.NET MVC 5 on .NET Framework and uses OWIN OpenID Connect, so the template-specific exploit preconditions were not confirmed. Recommended fix for affected package usage: upgrade the declared packages to patched versions. The legacy NuGet CLI dependency-tree command could not load Microsoft.WebApplication.targets; this result is based on packages.config direct dependencies only.",
+      "Files": [
+        "src/eShopModernizedMVC/packages.config:51",
+        "src/eShopModernizedMVC/packages.config:97"
+      ],
+      "Explanation": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): the advisory maps the affected ranges for Microsoft.IdentityModel.JsonWebTokens and System.IdentityModel.Tokens.Jwt. The declared versions 5.6.0 are below the first patched version 5.7.0. Applicability caveat: the advisory describes ASP.NET Core projects generated with affected JWT-auth templates; this target is ASP.NET MVC 5 on .NET Framework and uses OWIN OpenID Connect, so the template-specific exploit preconditions were not confirmed. Recommended fix for affected package usage: upgrade the declared packages to patched versions. The legacy NuGet CLI dependency-tree command could not load Microsoft.WebApplication.targets; this result is based on packages.config direct dependencies only."
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-681",
+      "Name": "Incorrect Conversion between Numeric Types",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "Files": [
+        "src/eShopModernizedMVC/Models/CatalogItemHiLoGenerator.cs:20",
+        "src/eShopModernizedMVC/Models/Infrastructure/CatalogDBInitializer.cs:327"
+      ],
+      "Explanation": "Both methods cast the Int64 returned by a database sequence directly to Int32 without range checking. Values above the Int32 range can wrap or truncate, producing incorrect catalog identifiers."
+    },
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:111"
+      ],
+      "Explanation": "UpLoadImageFromFile opens a FileStream with File.OpenRead and uploads from it, but never disposes the stream. Repeated initialization can retain file handles beyond their effective lifetime."
+    },
+    {
+      "Id": "CWE-775",
+      "Name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "Files": [
+        "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:111"
+      ],
+      "Explanation": "UpLoadImageFromFile opens a file handle via File.OpenRead and does not close or dispose it after UploadFromStream completes, potentially leaking handles during repeated image initialization."
+    },
+    {
+      "Id": "CWE-543",
+      "Name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "Files": [
+        "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-15",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:47-65"
+      ],
+      "Explanation": "CatalogServiceMock is registered as a single instance while storing mutable catalogItems in a List<CatalogItem>. Concurrent request methods enumerate, add, replace, and remove entries without synchronization, permitting races and inconsistent list state."
+    },
+    {
+      "Id": "CWE-567",
+      "Name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "Files": [
+        "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-15",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:47-65"
+      ],
+      "Explanation": "CatalogServiceMock is registered as a single instance while storing mutable catalogItems in a List<CatalogItem>. Concurrent request methods enumerate, add, replace, and remove entries without synchronization, permitting races and inconsistent list state."
+    },
+    {
+      "Id": "CWE-662",
+      "Name": "Improper Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "Files": [
+        "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-15",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:47-65"
+      ],
+      "Explanation": "CatalogServiceMock is registered as a single instance while storing mutable catalogItems in a List<CatalogItem>. Concurrent request methods enumerate, add, replace, and remove entries without synchronization, permitting races and inconsistent list state."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "Files": [
+        "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-15",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:47-65"
+      ],
+      "Explanation": "CatalogServiceMock is registered as a single instance while storing mutable catalogItems in a List<CatalogItem>. Concurrent request methods enumerate, add, replace, and remove entries without synchronization, permitting races and inconsistent list state."
+    },
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Files": [
+        "docker-compose.override.nosql.yml:21"
+      ],
+      "Explanation": "The SQL Server service configuration contains a literal administrator password in the compose environment. The fixed credential is used by the container for inbound database authentication; its value is intentionally omitted here."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "Files": [
+        "src/eShopModernizedMVC/Controllers/AccountController.cs:16",
+        "src/eShopModernizedMVC/Controllers/AccountController.cs:25"
+      ],
+      "Explanation": "Sign-in and sign-out actions log only that processing began. The application has no corresponding logging of authentication success, failure, or outcome, leaving security-critical authentication events unaudited."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Files": [
+        "docker-compose.override.nosql.yml:21"
+      ],
+      "Explanation": "The SQL Server container is configured with a hard-coded administrator credential rather than a per-deployment secret. Credential contents are omitted here."
+    }
+  ]
+}
