@@ -1,0 +1,89 @@
+{
+  "input_name": "CWE - Concurrency & Synchronization",
+  "status": "success",
+  "result": {
+    "values": [
+      {
+        "id": "CWE-543",
+        "name": "Singleton Pattern without Synchronization",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-567",
+        "name": "Unsynchronized Access to Shared Data",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-662",
+        "name": "Improper Synchronization",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-667",
+        "name": "Improper Locking",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-820",
+        "name": "Missing Synchronization",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "optional",
+        "storyPoint": 3,
+        "description": "Read-then-write ID generation without synchronization.",
+        "evidence": {
+          "files": [
+            "src/eShopWCFService/CatalogService.svc.cs:73-78",
+            "src/eShopWCFService/CatalogService.svc.cs:104-110"
+          ],
+          "explanation": "CreateCatalogItem and CreateAvailableStock compute Max(Id)+1 and then insert without a transaction or lock, so concurrent requests can generate duplicate keys."
+        }
+      },
+      {
+        "id": "CWE-821",
+        "name": "Incorrect Synchronization",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      }
+    ]
+  }
+}

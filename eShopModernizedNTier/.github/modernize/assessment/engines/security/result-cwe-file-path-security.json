@@ -1,0 +1,73 @@
+{
+  "input_name": "CWE - File & Path Security",
+  "status": "success",
+  "result": {
+    "values": [
+      {
+        "id": "CWE-22",
+        "name": "Path Traversal",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-23",
+        "name": "Relative Path Traversal",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-36",
+        "name": "Absolute Path Traversal",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-434",
+        "name": "Unrestricted File Upload",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-611",
+        "name": "XML External Entity Reference",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      }
+    ]
+  }
+}
