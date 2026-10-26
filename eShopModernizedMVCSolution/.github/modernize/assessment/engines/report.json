@@ -1,0 +1,744 @@
+{
+  "version": "1.0.0",
+  "producer": ".NET AppCAT CLI",
+  "metadata": {
+    "analysisStartTime": "2026-10-26T20:53:49.208219Z",
+    "analysisEndTime": "2026-10-26T20:53:51.1383629Z",
+    "privacyMode": "Restricted",
+    "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2271074",
+    "targetIds": [
+      "AppService.Windows",
+      "AppService.Linux",
+      "AKS.Linux",
+      "AKS.Windows",
+      "ACA",
+      "AppServiceContainer.Linux",
+      "AppServiceContainer.Windows",
+      "AppServiceManagedInstance.Windows"
+    ],
+    "targetDisplayNames": [
+      "Azure App Service",
+      "Azure Kubernetes Service",
+      "Azure Container Apps",
+      "Azure App Service Container",
+      "Azure App Service Managed Instance"
+    ],
+    "os": [
+      "windows",
+      "linux"
+    ]
+  },
+  "summary": {
+    "totalProjects": 1,
+    "totalIssues": 7,
+    "totalIncidents": 8,
+    "totalEffort": 26,
+    "charts": {
+      "severity": {
+        "mandatory": 1,
+        "optional": 3,
+        "potential": 4,
+        "information": 0
+      },
+      "category": {
+        "Security": 3,
+        "Scale": 1,
+        "Database": 2,
+        "Identity": 1,
+        "Local": 1
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "src\\eShopModernizedMVC\\eShopModernizedMVC.csproj",
+      "issues": 7,
+      "storyPoints": 26,
+      "properties": {
+        "appName": "eShopModernizedMVC",
+        "frameworks": [
+          ".NETFramework,Version=v4.7.2"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ]
+      },
+      "incidents": [
+        {
+          "ruleId": "Security.0103",
+          "incidentId": "bced01a4-145b-441a-9610-e917b290b858",
+          "location": "src\\eShopModernizedMVC\\eShopModernizedMVC.csproj",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 5
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Security.0103",
+          "incidentId": "064d7c30-874d-4e7f-a787-ce9f449f24c1",
+          "location": "src\\eShopModernizedMVC\\eShopModernizedMVC.csproj",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 5
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Scale.0001",
+          "incidentId": "286769af-aa03-424b-bd98-be075655c440",
+          "location": "src\\eShopModernizedMVC\\eShopModernizedMVC.csproj",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "optional",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Database.0002",
+          "incidentId": "fabcbcfe-2da4-40b7-9063-87dbd60ac446",
+          "location": "src\\eShopModernizedMVC\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Database.0003",
+          "incidentId": "3ee3dc7d-2f63-4748-bc4b-8b4b0657be42",
+          "location": "src\\eShopModernizedMVC\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "optional",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Identity.0002",
+          "incidentId": "33a604f2-05ee-4992-a835-6c7dee18af5f",
+          "location": "src\\eShopModernizedMVC\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "mandatory",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Security.0003",
+          "incidentId": "227db528-c509-46cd-bfd7-39584e8fff56",
+          "location": "src\\eShopModernizedMVC\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "mandatory",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "b6b5b6dd-0382-4618-bf0c-225e32bbeaae",
+          "location": "src\\eShopModernizedMVC\\App_Start\\SqlAccessTokenProvider.cs",
+          "locationKind": "File",
+          "line": 30,
+          "column": 45,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "Security.0103": {
+      "id": "Security.0103",
+      "description": "Certificate management packages or configurations detected. This may indicate the application is using local or custom certificate handling, which could require adjustments when migrating to Azure. Consider using Azure Key Vault Certificates for secure storage, lifecycle management, and integration with Azure services.",
+      "title": "Certificate management dependency detected",
+      "severity": "potential",
+      "effort": 5,
+      "links": [
+        {
+          "title": "About Azure Key Vault certificates",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2335741"
+        }
+      ],
+      "labels": []
+    },
+    "Scale.0001": {
+      "id": "Scale.0001",
+      "description": "Static content detected.\n\nYour current approach of serving static content directly might lead to increased costs, performance issues, maintenance challenges (requiring application redeployment for content changes), and security risks.\n\nConsider moving static content to Azure Blob Storage and adding Azure CDN.",
+      "title": "Static content detected",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "title": "Azure Blob Storage",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2250574"
+        },
+        {
+          "title": "Azure CDN",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2250392"
+        }
+      ],
+      "labels": []
+    },
+    "Database.0002": {
+      "id": "Database.0002",
+      "description": "SQL database connection detected.\n\nEnsure the database is available/reachable on Azure.\n\nIf it is not, there are multiple ways you can move your data to Azure:\n    1. Migrate to Azure SQL Database.\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don’t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
+      "title": "SQL database connection detected",
+      "severity": "potential",
+      "effort": 3,
+      "links": [
+        {
+          "title": "Migrate SQL Server database to Azure",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2251731"
+        },
+        {
+          "title": "Azure SQL Managed Instance",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2251613"
+        },
+        {
+          "title": "Azure Migrate",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2252410"
+        }
+      ],
+      "labels": []
+    },
+    "Database.0003": {
+      "id": "Database.0003",
+      "description": "System.Data.SqlClient dependency is detected.\n\nWhile System.Data.SqlClient will work in Azure, the newer Microsoft.Data.SqlClient package is the primary .NET SQL client moving forward and receiving the latest features. For example, Microsoft.Data.SqlClient easily allows use of Azure Managed Identity from a connection string.",
+      "title": "System.Data.SqlClient dependency detected",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242668"
+        }
+      ],
+      "labels": []
+    },
+    "Identity.0002": {
+      "id": "Identity.0002",
+      "description": "Your app is using windows authentication which is not supported on Azure App Service, Azure Container Apps and Azure Kubernetes Service.\n\nAzure App Service provides built-in authentication and authorization capabilities, so you can sign in users and access data by writing minimal or no code in your web app.\n\nFollow the link below for more information.\"",
+      "title": "Windows authentication detected",
+      "severity": "mandatory",
+      "effort": 3,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242883"
+        }
+      ],
+      "labels": []
+    },
+    "Security.0003": {
+      "id": "Security.0003",
+      "description": "Hardcoded sensitive data detected.\n\nIf you are targeting Managed Instance on Azure App Service, externalize secrets to Key Vault/App Configuration; use managed identity instead of passwords or embedded connection strings.\n\nWhile if targeting other Azure compute services:\n\nAvoid placing sensitive data such as passwords, ids, tokens etc., directly in config files and code since it compromises the security of your application.\n\nUse Azure App Configuration or Azure KeyVault to store secrets.",
+      "title": "Hardcoded sensitive data detected",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "title": "Centralized app configuration and security",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2250733"
+        }
+      ],
+      "labels": []
+    },
+    "Local.0006": {
+      "id": "Local.0006",
+      "description": "Your application has hardcoded URLs that might correspond to services that are not accessible on Azure.\n\nReview and ensure that the application is attempting to access URLs that would be available from Azure. You might need to migrate those services to Azure too, this way you will get the benefit of lower latency in the cloud.\n\nIf your application needs to depend on services that run on-premises, you can connect your Azure and local networks with ExpressRoute, Hybrid Connections, or VPN solutions.",
+      "title": "Hardcoded URLs detected",
+      "severity": "potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "ExpressRoute",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2250577"
+        },
+        {
+          "title": "Hybrid Connections",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242588"
+        },
+        {
+          "title": "Connect an on-prem network",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242591"
+        }
+      ],
+      "labels": []
+    }
+  },
+  "security": [
+    {
+      "id": "CVE-2026-40021",
+      "title": "Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters",
+      "category": "CVE",
+      "severity": "optional",
+      "description": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - log4net:2.0.12 (declared at packages.config:10; affected range < 3.3.0)\n\nRecommended fix:\n  - Upgrade log4net to 3.3.0 or later",
+      "evidence": {
+        "files": [
+          "eShopModernizedMVCSolution/src/eShopModernizedMVC/packages.config:10"
+        ],
+        "explanation": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - log4net:2.0.12 (declared at packages.config:10; affected range < 3.3.0)\n\nRecommended fix:\n  - Upgrade log4net to 3.3.0 or later"
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CVE-2024-21319",
+      "title": "Microsoft ASP.NET Core project templates vulnerable to denial of service",
+      "category": "CVE",
+      "severity": "optional",
+      "description": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Microsoft ASP.NET Core project templates vulnerable to denial of service\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at packages.config:51; affected range < 5.7.0)\n  - System.IdentityModel.Tokens.Jwt:5.6.0 (declared at packages.config:97; affected range < 5.7.0)\n\nRecommended fix:\n  - Upgrade Microsoft.IdentityModel.JsonWebTokens to 5.7.0 or later\n  - Upgrade System.IdentityModel.Tokens.Jwt to 5.7.0 or later",
+      "evidence": {
+        "files": [
+          "eShopModernizedMVCSolution/src/eShopModernizedMVC/packages.config:51",
+          "eShopModernizedMVCSolution/src/eShopModernizedMVC/packages.config:97"
+        ],
+        "explanation": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Microsoft ASP.NET Core project templates vulnerable to denial of service\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at packages.config:51; affected range < 5.7.0)\n  - System.IdentityModel.Tokens.Jwt:5.6.0 (declared at packages.config:97; affected range < 5.7.0)\n\nRecommended fix:\n  - Upgrade Microsoft.IdentityModel.JsonWebTokens to 5.7.0 or later\n  - Upgrade System.IdentityModel.Tokens.Jwt to 5.7.0 or later"
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CWE-681",
+      "title": "Incorrect Conversion between Numeric Types",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "evidence": {
+        "files": [
+          "src/eShopModernizedMVC/Models/Infrastructure/CatalogDBInitializer.cs:324-328",
+          "src/eShopModernizedMVC/Models/CatalogItemHiLoGenerator.cs:19-20"
+        ],
+        "explanation": "CatalogDBInitializer.GetSequenceIdFromSelectedDBSequence and CatalogItemHiLoGenerator.GetNextSequenceValue cast the Int64 value returned from the database sequence to int without checking its range (CatalogDBInitializer.cs:327; CatalogItemHiLoGenerator.cs:20). Once the sequence exceeds the Int32 range, the value can wrap and be used as a catalog item or catalog entity identifier."
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-772",
+      "title": "Missing Release of Resource after Effective Lifetime",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "evidence": {
+        "files": [
+          "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:109-117"
+        ],
+        "explanation": "ImageAzureStorage.UpLoadImageFromFile opens a FileStream with File.OpenRead, uploads it, and exits without disposing or closing the stream (lines 111-116), retaining a file resource after the upload has completed."
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-775",
+      "title": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "evidence": {
+        "files": [
+          "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:109-117"
+        ],
+        "explanation": "ImageAzureStorage.UpLoadImageFromFile opens a file handle through File.OpenRead and never closes or disposes it after UploadFromStream returns (lines 111-116), leaking the handle beyond its required lifetime."
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-543",
+      "title": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "evidence": {
+        "files": [
+          "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+          "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-16,47-65"
+        ],
+        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance service. The singleton owns a mutable List<CatalogItem>; CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and reads access that list without a lock, so concurrent web requests can race while reading or changing it."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-567",
+      "title": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "evidence": {
+        "files": [
+          "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+          "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-16,47-65"
+        ],
+        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance service. The singleton owns a mutable List<CatalogItem>; CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and reads access that list without a lock, so concurrent web requests can race while reading or changing it."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-662",
+      "title": "Improper Synchronization",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "evidence": {
+        "files": [
+          "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+          "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-16,47-65"
+        ],
+        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance service. The singleton owns a mutable List<CatalogItem>; CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and reads access that list without a lock, so concurrent web requests can race while reading or changing it."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-820",
+      "title": "Missing Synchronization",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "evidence": {
+        "files": [
+          "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+          "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-16,47-65"
+        ],
+        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance service. The singleton owns a mutable List<CatalogItem>; CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and reads access that list without a lock, so concurrent web requests can race while reading or changing it."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-259",
+      "title": "Use of Hard-coded Password",
+      "category": "Credentials & Secrets",
+      "severity": "optional",
+      "description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "evidence": {
+        "files": [
+          "docker-compose.override.yml:6,21",
+          "docker-compose.override.nosql.yml:6"
+        ],
+        "explanation": "The checked-in Docker Compose overrides contain literal database authentication passwords in the SQL connection string and SA_PASSWORD environment assignment. These fixed credentials are used to authenticate to the SQL container; the values are intentionally omitted here."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-732",
+      "title": "Incorrect Permission Assignment for Critical Resource",
+      "category": "Credentials & Secrets",
+      "severity": "optional",
+      "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
+      "evidence": {
+        "files": [
+          "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:39-48,89-101",
+          "src/eShopModernizedMVC/Controllers/PicController.cs:25-39"
+        ],
+        "explanation": "InitializeCatalogImages assigns BlobContainerPublicAccessType.Blob to the entire pics container, and UploadTempImage writes user-submitted images into that same container. Because the upload endpoint accepts requests without an authorization attribute, temporary uploads in the shared container are publicly readable rather than restricted to an intended user."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-778",
+      "title": "Insufficient Logging",
+      "category": "Credentials & Secrets",
+      "severity": "potential",
+      "description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "evidence": {
+        "files": [
+          "src/eShopModernizedMVC/App_Start/Startup.Auth.cs:55-62"
+        ],
+        "explanation": "The OpenID Connect AuthenticationFailed callback handles authentication failures and redirects with the exception message, but it does not record the failure in the application log. This leaves a security-critical sign-in failure event without an audit log entry."
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-798",
+      "title": "Use of Hard-coded Credentials",
+      "category": "Credentials & Secrets",
+      "severity": "optional",
+      "description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "evidence": {
+        "files": [
+          "docker-compose.override.yml:6,21",
+          "docker-compose.override.nosql.yml:6"
+        ],
+        "explanation": "The checked-in Docker Compose overrides embed fixed database credentials in configuration instead of obtaining them from a runtime secret source. The secret values are intentionally omitted here."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-434",
+      "title": "Unrestricted Upload of File with Dangerous Type",
+      "category": "File & Path Security",
+      "severity": "mandatory",
+      "description": "The product allows the upload or transfer of dangerous file types that are automatically processed within its environment.",
+      "evidence": {
+        "files": [
+          "src/eShopModernizedMVC/Controllers/PicController.cs:27-46",
+          "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:46-48,89-101"
+        ],
+        "explanation": "PicController.UploadImage validates only that Image.FromStream can decode the content as JPEG, PNG, or GIF; it does not bind the validated format to the submitted filename or MIME type. ImageAzureStorage.UploadTempImage then uses the client-controlled file.FileName as the blob name and file.ContentType as the stored content type. The same service makes the pics container publicly readable (lines 46-48), so uploaded content may be served publicly under attacker-selected metadata."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-99",
+      "title": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "category": "Injection Attacks",
+      "severity": "potential",
+      "description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "evidence": {
+        "files": [
+          "src/eShopModernizedMVC/Controllers/CatalogController.cs:124,129-132",
+          "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:67-86"
+        ],
+        "explanation": "CatalogController.Edit binds client-supplied TempImageName (line 124) and passes it to ImageAzureStorage.UpdateImage (line 131). UpdateImage only removes the literal '/pics/' prefix before using the remaining input as a blob name with GetBlockBlobReference, then copies from and deletes that blob (lines 72-86). There is no validation that the identifier refers to the expected temporary image, allowing the request to select another blob resource within the container."
+      },
+      "storyPoint": 3
+    }
+  ]
+}

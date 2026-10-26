@@ -1,0 +1,219 @@
+{
+  "GeneratedAt": "2026-10-26T21:00:54.6931400Z",
+  "ProjectPath": "eShopModernizedMVCSolution",
+  "Summary": {
+    "TotalFindings": 15,
+    "CveCount": 2,
+    "CweCount": 13,
+    "BySeverity": {
+      "mandatory": 1,
+      "optional": 5,
+      "potential": 9
+    },
+    "ByCategory": {
+      "Code Quality": 3,
+      "Concurrency & Synchronization": 4,
+      "Credentials & Secrets": 4,
+      "CVE": 2,
+      "File & Path Security": 1,
+      "Injection Attacks": 1
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 46
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2026-40021",
+      "Name": "Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - log4net:2.0.12 (declared at packages.config:10; affected range < 3.3.0)\n\nRecommended fix:\n  - Upgrade log4net to 3.3.0 or later",
+      "Files": [
+        "eShopModernizedMVCSolution/src/eShopModernizedMVC/packages.config:10"
+      ],
+      "Explanation": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - log4net:2.0.12 (declared at packages.config:10; affected range < 3.3.0)\n\nRecommended fix:\n  - Upgrade log4net to 3.3.0 or later"
+    },
+    {
+      "Id": "CVE-2024-21319",
+      "Name": "Microsoft ASP.NET Core project templates vulnerable to denial of service",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Microsoft ASP.NET Core project templates vulnerable to denial of service\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at packages.config:51; affected range < 5.7.0)\n  - System.IdentityModel.Tokens.Jwt:5.6.0 (declared at packages.config:97; affected range < 5.7.0)\n\nRecommended fix:\n  - Upgrade Microsoft.IdentityModel.JsonWebTokens to 5.7.0 or later\n  - Upgrade System.IdentityModel.Tokens.Jwt to 5.7.0 or later",
+      "Files": [
+        "eShopModernizedMVCSolution/src/eShopModernizedMVC/packages.config:51",
+        "eShopModernizedMVCSolution/src/eShopModernizedMVC/packages.config:97"
+      ],
+      "Explanation": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Microsoft ASP.NET Core project templates vulnerable to denial of service\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at packages.config:51; affected range < 5.7.0)\n  - System.IdentityModel.Tokens.Jwt:5.6.0 (declared at packages.config:97; affected range < 5.7.0)\n\nRecommended fix:\n  - Upgrade Microsoft.IdentityModel.JsonWebTokens to 5.7.0 or later\n  - Upgrade System.IdentityModel.Tokens.Jwt to 5.7.0 or later"
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-681",
+      "Name": "Incorrect Conversion between Numeric Types",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "Files": [
+        "src/eShopModernizedMVC/Models/Infrastructure/CatalogDBInitializer.cs:324-328",
+        "src/eShopModernizedMVC/Models/CatalogItemHiLoGenerator.cs:19-20"
+      ],
+      "Explanation": "CatalogDBInitializer.GetSequenceIdFromSelectedDBSequence and CatalogItemHiLoGenerator.GetNextSequenceValue cast the Int64 value returned from the database sequence to int without checking its range (CatalogDBInitializer.cs:327; CatalogItemHiLoGenerator.cs:20). Once the sequence exceeds the Int32 range, the value can wrap and be used as a catalog item or catalog entity identifier."
+    },
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:109-117"
+      ],
+      "Explanation": "ImageAzureStorage.UpLoadImageFromFile opens a FileStream with File.OpenRead, uploads it, and exits without disposing or closing the stream (lines 111-116), retaining a file resource after the upload has completed."
+    },
+    {
+      "Id": "CWE-775",
+      "Name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "Files": [
+        "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:109-117"
+      ],
+      "Explanation": "ImageAzureStorage.UpLoadImageFromFile opens a file handle through File.OpenRead and never closes or disposes it after UploadFromStream returns (lines 111-116), leaking the handle beyond its required lifetime."
+    },
+    {
+      "Id": "CWE-543",
+      "Name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "Files": [
+        "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-16,47-65"
+      ],
+      "Explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance service. The singleton owns a mutable List<CatalogItem>; CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and reads access that list without a lock, so concurrent web requests can race while reading or changing it."
+    },
+    {
+      "Id": "CWE-567",
+      "Name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "Files": [
+        "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-16,47-65"
+      ],
+      "Explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance service. The singleton owns a mutable List<CatalogItem>; CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and reads access that list without a lock, so concurrent web requests can race while reading or changing it."
+    },
+    {
+      "Id": "CWE-662",
+      "Name": "Improper Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "Files": [
+        "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-16,47-65"
+      ],
+      "Explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance service. The singleton owns a mutable List<CatalogItem>; CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and reads access that list without a lock, so concurrent web requests can race while reading or changing it."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "Files": [
+        "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-16,47-65"
+      ],
+      "Explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance service. The singleton owns a mutable List<CatalogItem>; CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and reads access that list without a lock, so concurrent web requests can race while reading or changing it."
+    },
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Files": [
+        "docker-compose.override.yml:6,21",
+        "docker-compose.override.nosql.yml:6"
+      ],
+      "Explanation": "The checked-in Docker Compose overrides contain literal database authentication passwords in the SQL connection string and SA_PASSWORD environment assignment. These fixed credentials are used to authenticate to the SQL container; the values are intentionally omitted here."
+    },
+    {
+      "Id": "CWE-732",
+      "Name": "Incorrect Permission Assignment for Critical Resource",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
+      "Files": [
+        "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:39-48,89-101",
+        "src/eShopModernizedMVC/Controllers/PicController.cs:25-39"
+      ],
+      "Explanation": "InitializeCatalogImages assigns BlobContainerPublicAccessType.Blob to the entire pics container, and UploadTempImage writes user-submitted images into that same container. Because the upload endpoint accepts requests without an authorization attribute, temporary uploads in the shared container are publicly readable rather than restricted to an intended user."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "Files": [
+        "src/eShopModernizedMVC/App_Start/Startup.Auth.cs:55-62"
+      ],
+      "Explanation": "The OpenID Connect AuthenticationFailed callback handles authentication failures and redirects with the exception message, but it does not record the failure in the application log. This leaves a security-critical sign-in failure event without an audit log entry."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Files": [
+        "docker-compose.override.yml:6,21",
+        "docker-compose.override.nosql.yml:6"
+      ],
+      "Explanation": "The checked-in Docker Compose overrides embed fixed database credentials in configuration instead of obtaining them from a runtime secret source. The secret values are intentionally omitted here."
+    },
+    {
+      "Id": "CWE-434",
+      "Name": "Unrestricted Upload of File with Dangerous Type",
+      "Category": "File & Path Security",
+      "Severity": "mandatory",
+      "StoryPoint": 8,
+      "Description": "The product allows the upload or transfer of dangerous file types that are automatically processed within its environment.",
+      "Files": [
+        "src/eShopModernizedMVC/Controllers/PicController.cs:27-46",
+        "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:46-48,89-101"
+      ],
+      "Explanation": "PicController.UploadImage validates only that Image.FromStream can decode the content as JPEG, PNG, or GIF; it does not bind the validated format to the submitted filename or MIME type. ImageAzureStorage.UploadTempImage then uses the client-controlled file.FileName as the blob name and file.ContentType as the stored content type. The same service makes the pics container publicly readable (lines 46-48), so uploaded content may be served publicly under attacker-selected metadata."
+    },
+    {
+      "Id": "CWE-99",
+      "Name": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "Category": "Injection Attacks",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "Files": [
+        "src/eShopModernizedMVC/Controllers/CatalogController.cs:124,129-132",
+        "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:67-86"
+      ],
+      "Explanation": "CatalogController.Edit binds client-supplied TempImageName (line 124) and passes it to ImageAzureStorage.UpdateImage (line 131). UpdateImage only removes the literal '/pics/' prefix before using the remaining input as a blob name with GetBlockBlobReference, then copies from and deletes that blob (lines 72-86). There is no validation that the identifier refers to the expected temporary image, allowing the request to select another blob resource within the container."
+    }
+  ]
+}
