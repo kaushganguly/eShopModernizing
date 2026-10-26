@@ -4526,7 +4526,7 @@
   "rules": {
     "Runtime.0002": {
       "id": "Runtime.0002",
-      "description": "Upgrade to newer target framework to get better cloud experience.\n\nIf you are targeting Managed Instance on Azure App Service, validate on .NET Framework 4.8 or move to .NET 10. Persist any runtime prerequisites via install scripts; test in staging before production.\n\nWhile if targeting other Azure compute services:\n\nApplication targeting .NET framework lower than 4.7.1 might missing features that would be needed for some cloud scenarios like scaling or getting secrets from secure external sources.\n\nAzure App Service runs apps on .NET Framework 4.8 or .NET Framework 3.5. Apps running on on .NET Framework versions older than .NET Framework 4.8 could have potential compatibility issues. It is recommended to test your application running on .NET Framework 4.8. Note that it is not necessary to re-target to .NET Framework 4.8, only to validate that the app correctly runs on that version of .NET Framework.\n\nIn the long term it is also recommended to upgrade your application to latest supported .NET 8\u002B which would significantly increase performance of your application. Use tools like .NET Upgrade Assistant to help with upgrading your application to newer .NET.",
+      "description": "Upgrade to newer target framework to get better cloud experience.\n\nIf you are targeting Managed Instance on Azure App Service, validate on .NET Framework 4.8 or move to .NET 10. Persist any runtime prerequisites via install scripts; test in staging before production.\n\nWhile if targeting other Azure compute services:\n\nApplication targeting .NET framework lower than 4.7.1 might missing features that would be needed for some cloud scenarios like scaling or getting secrets from secure external sources.\n\nAzure App Service runs apps on .NET Framework 4.8 or .NET Framework 3.5. Apps running on on .NET Framework versions older than .NET Framework 4.8 could have potential compatibility issues. It is recommended to test your application running on .NET Framework 4.8. Note that it is not necessary to re-target to .NET Framework 4.8, only to validate that the app correctly runs on that version of .NET Framework.\n\nIn the long term it is also recommended to upgrade your application to latest supported .NET 8+ which would significantly increase performance of your application. Use tools like .NET Upgrade Assistant to help with upgrading your application to newer .NET.",
       "title": "Upgrade to newer target framework to get better cloud experience",
       "severity": "optional",
       "effort": 3,
@@ -4552,7 +4552,7 @@
     },
     "Database.0002": {
       "id": "Database.0002",
-      "description": "SQL database connection detected.\n\nEnsure the database is available/reachable on Azure.\n\nIf it is not, there are multiple ways you can move your data to Azure:\n    1. Migrate to Azure SQL Database.\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don\u2019t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
+      "description": "SQL database connection detected.\n\nEnsure the database is available/reachable on Azure.\n\nIf it is not, there are multiple ways you can move your data to Azure:\n    1. Migrate to Azure SQL Database.\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don’t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
       "title": "SQL database connection detected",
       "severity": "potential",
       "effort": 3,
@@ -4661,7 +4661,7 @@
     },
     "Local.0007": {
       "id": "Local.0007",
-      "description": "Local OS environment access detected.\n\nIf you are targeting Managed Instance on Azure App Service, Read config via App Settings or App Configuration; avoid machine\u2011specific environment APIs. Persist environment setup via install scripts when needed.\n\nWhen running in Azure App Service environment, your application can read environment variables that you define in App Service settings. Using environment API other than reading environment variables might indicate that your application depends on some local machine\u0027s features and might be broken on App Service sandbox or not scale well. Review your scenarios and either refactor them to be more cloud friendly or choose the option in App Service to host your application in the sandbox for Windows Container Web Apps.\n\nIf you choose to use other Azure hosting options such as Azure Container Apps (ACA) or Azure Kubernetes Service (AKS), environment APIs might work, however scaling still might be an issue.",
+      "description": "Local OS environment access detected.\n\nIf you are targeting Managed Instance on Azure App Service, Read config via App Settings or App Configuration; avoid machine‑specific environment APIs. Persist environment setup via install scripts when needed.\n\nWhen running in Azure App Service environment, your application can read environment variables that you define in App Service settings. Using environment API other than reading environment variables might indicate that your application depends on some local machine's features and might be broken on App Service sandbox or not scale well. Review your scenarios and either refactor them to be more cloud friendly or choose the option in App Service to host your application in the sandbox for Windows Container Web Apps.\n\nIf you choose to use other Azure hosting options such as Azure Container Apps (ACA) or Azure Kubernetes Service (AKS), environment APIs might work, however scaling still might be an issue.",
       "title": "Local OS environment access detected",
       "severity": "potential",
       "effort": 1,
@@ -4703,5 +4703,73 @@
       ],
       "labels": []
     }
-  }
+  },
+  "security": [
+    {
+      "id": "CWE-732",
+      "title": "Incorrect Permission Assignment for Critical Resource",
+      "category": "Credentials & Secrets",
+      "severity": "optional",
+      "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
+      "evidence": {
+        "files": [
+          "eShopModernizedNTier/src/eShopWCFService/Web.config:39",
+          "eShopModernizedNTier/src/eShopWCFService/ICatalogService.cs:25",
+          "eShopModernizedNTier/src/eShopWCFService/CatalogService.svc.cs:73",
+          "eShopModernizedNTier/docker-compose.override.yml:9"
+        ],
+        "explanation": "The supplied WCF endpoint uses basicHttpBinding with default security settings and no configured authentication/authorization checks. ICatalogService exposes CreateAvailableStock, CreateCatalogItem, UpdateCatalogItem and RemoveCatalogItem as OperationContracts. CatalogService.UpdateCatalogItem marks the caller-supplied entity Modified at lines 73-76 and saves it without checking caller identity or permissions; other mutation operations likewise persist caller data. Compose publishes the service on host port 5113. A caller able to reach the supplied default endpoint can issue SOAP mutation requests to alter catalog prices/descriptions and stock without application credentials. External IIS authentication or network isolation could constrain reachability but is not configured in the scoped deployment files."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-22",
+      "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "category": "File & Path Security",
+      "severity": "optional",
+      "description": "External input can resolve outside the intended restricted directory.",
+      "evidence": {
+        "files": [
+          "eShopModernizedNTier/src/eShopWinForms/Views/CatalogView.cs:57",
+          "eShopModernizedNTier/src/eShopWinForms/Controllers/CatalogController.cs:78",
+          "eShopModernizedNTier/src/eShopWCFService/CatalogService.svc.cs:73",
+          "eShopModernizedNTier/src/eShopWCFService/Models/CatalogItem.cs:25"
+        ],
+        "explanation": "SetCatalogItems concatenates the catalog directory and remotely persisted Picturefilename at line 57 and opens it using Image.FromFile at line 58. CreateCatalogItem and UpdateCatalogItem accept the serialized field without containment validation. Parent-directory segments permit loading decodable images outside Assets/Images/Catalog under client filesystem permissions. Arbitrary non-image disclosure or remote exfiltration was not demonstrated."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-23",
+      "title": "Relative Path Traversal",
+      "category": "File & Path Security",
+      "severity": "optional",
+      "description": "Parent-directory segments in external filenames can escape the intended directory.",
+      "evidence": {
+        "files": [
+          "eShopModernizedNTier/src/eShopWinForms/Views/CatalogView.cs:57",
+          "eShopModernizedNTier/src/eShopWCFService/CatalogService.svc.cs:73",
+          "eShopModernizedNTier/src/eShopWCFService/Models/CatalogItem.cs:25"
+        ],
+        "explanation": "The CWE-22 data flow permits relative traversal through Picturefilename, for example ..\\outside-catalog.png. This is the relative-path manifestation of the same vulnerability, not an independent issue."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-99",
+      "title": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "category": "Injection Attacks",
+      "severity": "potential",
+      "description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "evidence": {
+        "files": [
+          "eShopModernizedNTier/src/eShopWinForms/Views/CatalogView.cs:57",
+          "eShopModernizedNTier/src/eShopWCFService/CatalogService.svc.cs:73",
+          "eShopModernizedNTier/src/eShopWCFService/Models/CatalogItem.cs:25"
+        ],
+        "explanation": "CatalogView.SetCatalogItems appends the remotely persisted Picturefilename resource identifier to the catalog image directory at line 57 and opens it with Image.FromFile at line 58. The WCF CatalogItem DataMember can be supplied through CreateCatalogItem/UpdateCatalogItem without directory-containment validation. Parent-directory segments select decodable local images outside the catalog directory under client permissions. This is the same underlying traversal issue as CWE-22/CWE-23. Arbitrary non-image disclosure or remote exfiltration was not demonstrated."
+      },
+      "storyPoint": 3
+    }
+  ]
 }
