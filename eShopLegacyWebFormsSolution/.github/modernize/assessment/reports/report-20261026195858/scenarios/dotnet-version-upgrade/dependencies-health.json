@@ -1,0 +1,2282 @@
+{
+  "packageGovernance": {
+    "totalDistinctPackages": 44,
+    "totalVersionDriftInstances": 0,
+    "targetFramework": "net10.0",
+    "packages": [
+      {
+        "name": "Antlr",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "Needs to be replaced with Replace with new package Antlr4=4.6.6",
+        "versions": [
+          {
+            "version": "3.5.0.2",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "AspNet.ScriptManager.bootstrap",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "4.3.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "AspNet.ScriptManager.jQuery",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "3.3.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Autofac",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "",
+        "versions": [
+          {
+            "version": "4.9.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Autofac.Web",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "4.0.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "bootstrap",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "",
+        "versions": [
+          {
+            "version": "4.3.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "EntityFramework",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "6.5.2",
+        "isCompatible": true,
+        "description": "NuGet package upgrade is recommended",
+        "versions": [
+          {
+            "version": "6.2.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": "6.5.2"
+        }
+      },
+      {
+        "name": "jQuery",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is deprecated",
+        "versions": [
+          {
+            "version": "3.5.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "log4net",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "3.5.0",
+        "isCompatible": true,
+        "description": "NuGet package contains security vulnerability",
+        "versions": [
+          {
+            "version": "2.0.10",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": "3.5.0"
+        }
+      },
+      {
+        "name": "Microsoft.ApplicationInsights",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is deprecated",
+        "versions": [
+          {
+            "version": "2.9.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.ApplicationInsights.Agent.Intercept",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "2.4.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.ApplicationInsights.DependencyCollector",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is deprecated",
+        "versions": [
+          {
+            "version": "2.9.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.ApplicationInsights.PerfCounterCollector",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is deprecated",
+        "versions": [
+          {
+            "version": "2.9.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.ApplicationInsights.Web",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "2.9.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.ApplicationInsights.WindowsServer",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is deprecated",
+        "versions": [
+          {
+            "version": "2.9.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is deprecated",
+        "versions": [
+          {
+            "version": "2.9.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.AspNet.FriendlyUrls",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "1.0.2",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.AspNet.FriendlyUrls.Core",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "1.0.2",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.AspNet.ScriptManager.MSAjax",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "5.0.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.AspNet.ScriptManager.WebForms",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "5.0.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.AspNet.SessionState.SessionStateModule",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "NuGet package functionality is included with framework reference",
+        "versions": [
+          {
+            "version": "1.1.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.AspNet.TelemetryCorrelation",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "1.0.3",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "1.0.5",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": "1.0.3"
+        }
+      },
+      {
+        "name": "Microsoft.AspNet.Web.Optimization",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "1.1.3",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.AspNet.Web.Optimization.WebForms",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "1.1.3",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "NuGet package functionality is included with framework reference",
+        "versions": [
+          {
+            "version": "2.0.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.Net.Compilers",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "NuGet package functionality is included with framework reference",
+        "versions": [
+          {
+            "version": "2.10.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Microsoft.Web.Infrastructure",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "NuGet package functionality is included with framework reference",
+        "versions": [
+          {
+            "version": "1.0.0.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Modernizr",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "",
+        "versions": [
+          {
+            "version": "2.8.3",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Newtonsoft.Json",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "13.0.4",
+        "isCompatible": true,
+        "description": "NuGet package upgrade is recommended",
+        "versions": [
+          {
+            "version": "12.0.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": "13.0.4"
+        }
+      },
+      {
+        "name": "Pipelines.Sockets.Unofficial",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "",
+        "versions": [
+          {
+            "version": "1.0.7",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "popper.js",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "",
+        "versions": [
+          {
+            "version": "1.14.3",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "Respond",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "",
+        "versions": [
+          {
+            "version": "1.4.2",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "System.Buffers",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "NuGet package functionality is included with framework reference",
+        "versions": [
+          {
+            "version": "4.4.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "System.Diagnostics.DiagnosticSource",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "10.0.14",
+        "isCompatible": true,
+        "description": "NuGet package upgrade is recommended",
+        "versions": [
+          {
+            "version": "4.5.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": "10.0.14"
+        }
+      },
+      {
+        "name": "System.Diagnostics.PerformanceCounter",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "10.0.14",
+        "isCompatible": true,
+        "description": "NuGet package upgrade is recommended",
+        "versions": [
+          {
+            "version": "4.5.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": "10.0.14"
+        }
+      },
+      {
+        "name": "System.IO.Compression",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "NuGet package functionality is included with framework reference",
+        "versions": [
+          {
+            "version": "4.3.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "System.IO.Compression.ZipFile",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "NuGet package functionality is included with framework reference",
+        "versions": [
+          {
+            "version": "4.3.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "System.IO.Pipelines",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "10.0.14",
+        "isCompatible": true,
+        "description": "NuGet package upgrade is recommended",
+        "versions": [
+          {
+            "version": "4.5.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": "10.0.14"
+        }
+      },
+      {
+        "name": "System.Memory",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "NuGet package functionality is included with framework reference",
+        "versions": [
+          {
+            "version": "4.5.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "System.Numerics.Vectors",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "NuGet package functionality is included with framework reference",
+        "versions": [
+          {
+            "version": "4.4.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "System.Runtime.CompilerServices.Unsafe",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "6.1.2",
+        "isCompatible": true,
+        "description": "NuGet package upgrade is recommended",
+        "versions": [
+          {
+            "version": "4.5.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": "6.1.2"
+        }
+      },
+      {
+        "name": "System.Threading.Channels",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "10.0.14",
+        "isCompatible": true,
+        "description": "NuGet package upgrade is recommended",
+        "versions": [
+          {
+            "version": "4.5.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": "10.0.14"
+        }
+      },
+      {
+        "name": "System.Threading.Tasks.Extensions",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "NuGet package functionality is included with framework reference",
+        "versions": [
+          {
+            "version": "4.5.1",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      },
+      {
+        "name": "WebGrease",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "",
+        "isCompatible": true,
+        "description": "",
+        "versions": [
+          {
+            "version": "1.6.0",
+            "projects": [
+              "eShopLegacyWebForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": ""
+        }
+      }
+    ]
+  },
+  "projects": [
+    {
+      "name": "eShopLegacyWebForms",
+      "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+      "isSdk": false,
+      "currentFrameworks": [
+        "net472"
+      ],
+      "targetFramework": "net10.0",
+      "dependencies": {
+        "packages": [
+          {
+            "name": "Antlr",
+            "version": "3.5.0.2",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "Needs to be replaced with Replace with new package Antlr4=4.6.6",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "AspNet.ScriptManager.bootstrap",
+            "version": "4.3.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "AspNet.ScriptManager.jQuery",
+            "version": "3.3.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Autofac",
+            "version": "4.9.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Autofac.Web",
+            "version": "4.0.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "bootstrap",
+            "version": "4.3.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "EntityFramework",
+            "version": "6.2.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package upgrade is recommended",
+            "compatibility": "valid",
+            "recommendedVersion": "6.5.2",
+            "upgrade": {
+              "newVersion": "6.5.2"
+            }
+          },
+          {
+            "name": "jQuery",
+            "version": "3.5.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is deprecated",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "log4net",
+            "version": "2.0.10",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package contains security vulnerability",
+            "compatibility": "valid",
+            "recommendedVersion": "3.5.0",
+            "upgrade": {
+              "newVersion": "3.5.0"
+            }
+          },
+          {
+            "name": "Microsoft.ApplicationInsights",
+            "version": "2.9.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is deprecated",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.ApplicationInsights.Agent.Intercept",
+            "version": "2.4.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.ApplicationInsights.DependencyCollector",
+            "version": "2.9.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is deprecated",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.ApplicationInsights.PerfCounterCollector",
+            "version": "2.9.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is deprecated",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.ApplicationInsights.Web",
+            "version": "2.9.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.ApplicationInsights.WindowsServer",
+            "version": "2.9.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is deprecated",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel",
+            "version": "2.9.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is deprecated",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.AspNet.FriendlyUrls",
+            "version": "1.0.2",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.AspNet.FriendlyUrls.Core",
+            "version": "1.0.2",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.AspNet.ScriptManager.MSAjax",
+            "version": "5.0.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.AspNet.ScriptManager.WebForms",
+            "version": "5.0.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.AspNet.SessionState.SessionStateModule",
+            "version": "1.1.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package functionality is included with framework reference",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.AspNet.TelemetryCorrelation",
+            "version": "1.0.5",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": "1.0.3",
+            "upgrade": {
+              "newVersion": "1.0.3"
+            }
+          },
+          {
+            "name": "Microsoft.AspNet.Web.Optimization",
+            "version": "1.1.3",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.AspNet.Web.Optimization.WebForms",
+            "version": "1.1.3",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform",
+            "version": "2.0.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package functionality is included with framework reference",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.Net.Compilers",
+            "version": "2.10.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package functionality is included with framework reference",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Microsoft.Web.Infrastructure",
+            "version": "1.0.0.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package functionality is included with framework reference",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Modernizr",
+            "version": "2.8.3",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Newtonsoft.Json",
+            "version": "12.0.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package upgrade is recommended",
+            "compatibility": "valid",
+            "recommendedVersion": "13.0.4",
+            "upgrade": {
+              "newVersion": "13.0.4"
+            }
+          },
+          {
+            "name": "Pipelines.Sockets.Unofficial",
+            "version": "1.0.7",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "popper.js",
+            "version": "1.14.3",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "Respond",
+            "version": "1.4.2",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "System.Buffers",
+            "version": "4.4.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package functionality is included with framework reference",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "System.Diagnostics.DiagnosticSource",
+            "version": "4.5.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package upgrade is recommended",
+            "compatibility": "valid",
+            "recommendedVersion": "10.0.14",
+            "upgrade": {
+              "newVersion": "10.0.14"
+            }
+          },
+          {
+            "name": "System.Diagnostics.PerformanceCounter",
+            "version": "4.5.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package upgrade is recommended",
+            "compatibility": "valid",
+            "recommendedVersion": "10.0.14",
+            "upgrade": {
+              "newVersion": "10.0.14"
+            }
+          },
+          {
+            "name": "System.IO.Compression",
+            "version": "4.3.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package functionality is included with framework reference",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "System.IO.Compression.ZipFile",
+            "version": "4.3.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package functionality is included with framework reference",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "System.IO.Pipelines",
+            "version": "4.5.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package upgrade is recommended",
+            "compatibility": "valid",
+            "recommendedVersion": "10.0.14",
+            "upgrade": {
+              "newVersion": "10.0.14"
+            }
+          },
+          {
+            "name": "System.Memory",
+            "version": "4.5.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package functionality is included with framework reference",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "System.Numerics.Vectors",
+            "version": "4.4.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package functionality is included with framework reference",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "System.Runtime.CompilerServices.Unsafe",
+            "version": "4.5.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package upgrade is recommended",
+            "compatibility": "valid",
+            "recommendedVersion": "6.1.2",
+            "upgrade": {
+              "newVersion": "6.1.2"
+            }
+          },
+          {
+            "name": "System.Threading.Channels",
+            "version": "4.5.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package upgrade is recommended",
+            "compatibility": "valid",
+            "recommendedVersion": "10.0.14",
+            "upgrade": {
+              "newVersion": "10.0.14"
+            }
+          },
+          {
+            "name": "System.Threading.Tasks.Extensions",
+            "version": "4.5.1",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package functionality is included with framework reference",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          },
+          {
+            "name": "WebGrease",
+            "version": "1.6.0",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\packages.config"
+              }
+            ],
+            "description": "",
+            "compatibility": "valid",
+            "recommendedVersion": ""
+          }
+        ],
+        "assemblies": [
+          {
+            "name": "Antlr3.Runtime",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Antlr.3.5.0.2\\lib\\Antlr3.Runtime.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "AspNet.ScriptManager.bootstrap",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\AspNet.ScriptManager.bootstrap.4.3.1\\lib\\net45\\AspNet.ScriptManager.bootstrap.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "AspNet.ScriptManager.jQuery",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\AspNet.ScriptManager.jQuery.3.3.1\\lib\\net45\\AspNet.ScriptManager.jQuery.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Autofac",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Autofac.4.9.1\\lib\\net45\\Autofac.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Autofac.Integration.Web",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Autofac.Web.4.0.0\\lib\\net45\\Autofac.Integration.Web.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "EntityFramework",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\EntityFramework.6.2.0\\lib\\net45\\EntityFramework.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "EntityFramework.SqlServer",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\EntityFramework.6.2.0\\lib\\net45\\EntityFramework.SqlServer.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "log4net",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\log4net.2.0.10\\lib\\net45\\log4net.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.AI.Agent.Intercept",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\\lib\\net45\\Microsoft.AI.Agent.Intercept.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.AI.DependencyCollector",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.ApplicationInsights.DependencyCollector.2.9.1\\lib\\net45\\Microsoft.AI.DependencyCollector.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.AI.PerfCounterCollector",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.ApplicationInsights.PerfCounterCollector.2.9.1\\lib\\net45\\Microsoft.AI.PerfCounterCollector.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.AI.ServerTelemetryChannel",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.1\\lib\\net45\\Microsoft.AI.ServerTelemetryChannel.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.AI.Web",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.ApplicationInsights.Web.2.9.1\\lib\\net45\\Microsoft.AI.Web.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.AI.WindowsServer",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.ApplicationInsights.WindowsServer.2.9.1\\lib\\net45\\Microsoft.AI.WindowsServer.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.ApplicationInsights",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.ApplicationInsights.2.9.1\\lib\\net46\\Microsoft.ApplicationInsights.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.AspNet.FriendlyUrls",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\\lib\\net45\\Microsoft.AspNet.FriendlyUrls.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.AspNet.SessionState.SessionStateModule",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.AspNet.SessionState.SessionStateModule.1.1.0\\lib\\Net462\\Microsoft.AspNet.SessionState.SessionStateModule.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.AspNet.TelemetryCorrelation",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.AspNet.TelemetryCorrelation.1.0.5\\lib\\net45\\Microsoft.AspNet.TelemetryCorrelation.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.AspNet.Web.Optimization.WebForms",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\\lib\\net45\\Microsoft.AspNet.Web.Optimization.WebForms.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\\lib\\net45\\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.CSharp",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.ScriptManager.MSAjax",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\\lib\\net45\\Microsoft.ScriptManager.MSAjax.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.ScriptManager.WebForms",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\\lib\\net45\\Microsoft.ScriptManager.WebForms.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.Web.Infrastructure",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.Web.Infrastructure.1.0.0.0\\lib\\net40\\Microsoft.Web.Infrastructure.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Newtonsoft.Json",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Newtonsoft.Json.12.0.1\\lib\\net45\\Newtonsoft.Json.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Pipelines.Sockets.Unofficial",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Pipelines.Sockets.Unofficial.1.0.7\\lib\\net472\\Pipelines.Sockets.Unofficial.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Buffers",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\System.Buffers.4.4.0\\lib\\netstandard2.0\\System.Buffers.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.ComponentModel.DataAnnotations",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Data",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Data.DataSetExtensions",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Diagnostics.DiagnosticSource",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\System.Diagnostics.DiagnosticSource.4.5.1\\lib\\net46\\System.Diagnostics.DiagnosticSource.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Diagnostics.PerformanceCounter",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\System.Diagnostics.PerformanceCounter.4.5.0\\lib\\net461\\System.Diagnostics.PerformanceCounter.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Drawing",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.IO.Compression",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\System.IO.Compression.4.3.0\\lib\\net46\\System.IO.Compression.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.IO.Compression.FileSystem",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.IO.Compression.ZipFile",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\System.IO.Compression.ZipFile.4.3.0\\lib\\net46\\System.IO.Compression.ZipFile.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.IO.Pipelines",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\System.IO.Pipelines.4.5.1\\lib\\netstandard2.0\\System.IO.Pipelines.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Management",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Memory",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\System.Memory.4.5.1\\lib\\netstandard2.0\\System.Memory.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Net.Http",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Numerics",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Numerics.Vectors",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\System.Numerics.Vectors.4.4.0\\lib\\net46\\System.Numerics.Vectors.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Runtime.Caching",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Runtime.CompilerServices.Unsafe",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\System.Runtime.CompilerServices.Unsafe.4.5.0\\lib\\netstandard2.0\\System.Runtime.CompilerServices.Unsafe.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Threading.Channels",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\System.Threading.Channels.4.5.0\\lib\\netstandard2.0\\System.Threading.Channels.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Threading.Tasks.Extensions",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\System.Threading.Tasks.Extensions.4.5.1\\lib\\netstandard2.0\\System.Threading.Tasks.Extensions.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web.Extensions",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web.Optimization",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\Microsoft.AspNet.Web.Optimization.1.1.3\\lib\\net40\\System.Web.Optimization.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Xml",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Configuration",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web.Services",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.EnterpriseServices",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web.DynamicData",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web.Entity",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web.ApplicationServices",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Xml.Linq",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "WebGrease",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+              }
+            ],
+            "physicalPath": "packages\\WebGrease.1.6.0\\lib\\WebGrease.dll",
+            "compatibility": "valid"
+          }
+        ],
+        "projectReferences": [],
+        "frameworkReferences": []
+      }
+    }
+  ]
+}
