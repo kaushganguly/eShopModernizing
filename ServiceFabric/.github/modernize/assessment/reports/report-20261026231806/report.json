@@ -33,5 +33,26 @@
         ]
       }
     }
+  ],
+  "rules": {},
+  "projects": [
+    {
+      "properties": {
+        "tools": [
+          "MSBuild"
+        ],
+        "languages": [
+          ".NET"
+        ],
+        "appName": "ServiceFabric",
+        "repo": "ServiceFabric",
+        "frameworks": [
+          "Service Fabric",
+          ".NET Framework 4.6.1/4.6.2 metadata"
+        ],
+        "description": "Core AppCAT and .NET upgrade findings are unavailable: the solution contains three legacy .sfproj deployment projects and no .csproj application projects; container image internals are outside this workspace."
+      },
+      "incidents": []
+    }
   ]
 }
