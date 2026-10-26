@@ -446,7 +446,7 @@
     },
     "Connection.0001": {
       "id": "Connection.0001",
-      "description": "Connection string detected. It may not be available when your app is migrated to Azure.\n\nReview and ensure it works from Azure. If you are connecting to a database, you might need to migrate the database to Azure. There are multiple ways to do it:\n    1. Migrate to Azure SQL Database for additional benefits (see the link below).\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don\u2019t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
+      "description": "Connection string detected. It may not be available when your app is migrated to Azure.\n\nReview and ensure it works from Azure. If you are connecting to a database, you might need to migrate the database to Azure. There are multiple ways to do it:\n    1. Migrate to Azure SQL Database for additional benefits (see the link below).\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don’t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
       "title": "Connection string is detected",
       "severity": "potential",
       "effort": 3,
@@ -481,7 +481,7 @@
     },
     "Identity.0002": {
       "id": "Identity.0002",
-      "description": "Your app is using windows authentication which is not supported on Azure App Service, Azure Container Apps and Azure Kubernetes Service.\n\nAzure App Service provides built-in authentication and authorization capabilities, so you can sign in users and access data by writing minimal or no code in your web app.\n\nFollow the link below for more information.\u0022",
+      "description": "Your app is using windows authentication which is not supported on Azure App Service, Azure Container Apps and Azure Kubernetes Service.\n\nAzure App Service provides built-in authentication and authorization capabilities, so you can sign in users and access data by writing minimal or no code in your web app.\n\nFollow the link below for more information.\"",
       "title": "Windows authentication detected",
       "severity": "mandatory",
       "effort": 3,
@@ -540,5 +540,159 @@
       ],
       "labels": []
     }
-  }
+  },
+  "security": [
+    {
+      "id": "CVE-2024-21907",
+      "title": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "category": "CVE",
+      "severity": "mandatory",
+      "description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Newtonsoft.Json versions before 13.0.1 may consume excessive CPU and memory or trigger a stack overflow when handling deeply nested JSON, causing denial of service. Severity: HIGH. Affected dependency: Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyWebForms/packages.config:31). Recommended fix: upgrade to 13.0.1 or later, or configure a safe maximum JSON depth.",
+      "evidence": {
+        "explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Newtonsoft.Json versions before 13.0.1 may consume excessive CPU and memory or trigger a stack overflow when handling deeply nested JSON, causing denial of service. Severity: HIGH. Affected dependency: Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyWebForms/packages.config:31). Recommended fix: upgrade to 13.0.1 or later, or configure a safe maximum JSON depth.",
+        "files": [
+          "src/eShopLegacyWebForms/packages.config:31"
+        ]
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CWE-681",
+      "title": "Incorrect Conversion between Numeric Types",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "evidence": {
+        "explanation": "The HiLo generator and database initializer narrow SQL bigint sequence values to C# int without range validation. The catalog sequence is declared bigint with a maximum of 9223372036854775807; once values exceed Int32.MaxValue, the cast can wrap and produce incorrect or colliding entity IDs.",
+        "files": [
+          "src/eShopLegacyWebForms/Models/CatalogItemHiLoGenerator.cs:23",
+          "src/eShopLegacyWebForms/Models/Infrastructure/CatalogDBInitializer.cs:328",
+          "src/eShopLegacyWebForms/Models/Infrastructure/dbo.catalog_hilo.Sequence.sql:5,9"
+        ]
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-682",
+      "title": "Incorrect Calculation",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+      "evidence": {
+        "explanation": "The page accepts index and size from route values as Int32 and CatalogService computes pageSize * pageIndex using unchecked Int32 arithmetic for Skip. Large supplied values can overflow, changing the offset and potentially causing query errors or incorrect page selection.",
+        "files": [
+          "src/eShopLegacyWebForms/Default.aspx.cs:26-28",
+          "src/eShopLegacyWebForms/Services/CatalogService.cs:30"
+        ]
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-789",
+      "title": "Memory Allocation with Excessive Size Value",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+      "evidence": {
+        "explanation": "The page accepts an externally supplied page size without a configured maximum and passes it to CatalogService, which uses Take(pageSize).ToList(). A very large size can cause the database query to return and materialize a large portion of the catalog in application memory.",
+        "files": [
+          "src/eShopLegacyWebForms/Default.aspx.cs:26-28",
+          "src/eShopLegacyWebForms/Services/CatalogService.cs:31-32"
+        ]
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-543",
+      "title": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "evidence": {
+        "explanation": "ApplicationModule registers CatalogServiceMock as a single-instance service, but the singleton owns a mutable List<CatalogItem>. Its create, update, and remove methods access and mutate the shared list without synchronization in a multi-request Web application.",
+        "files": [
+          "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:20-22",
+          "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,48-67"
+        ]
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-567",
+      "title": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "evidence": {
+        "explanation": "The singleton CatalogServiceMock exposes shared mutable catalogItems state to concurrent requests. Reads, mutations, and ComposeCatalogItems updates to entity properties are not protected by a lock, allowing races between catalog operations.",
+        "files": [
+          "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:20-22",
+          "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,19-27,48-67,73-80"
+        ]
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-662",
+      "title": "Improper Synchronization",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of the resource by multiple threads or processes.",
+      "evidence": {
+        "explanation": "Concurrent requests can call the singleton mock service’s create, update, and remove operations against the same List<CatalogItem> without exclusive synchronization, so simultaneous collection access can corrupt or inconsistently observe catalog state.",
+        "files": [
+          "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:20-22",
+          "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:48-67"
+        ]
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-820",
+      "title": "Missing Synchronization",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "evidence": {
+        "explanation": "CatalogServiceMock is shared as a singleton and performs concurrent reads and writes on catalogItems without attempting to synchronize access. ASP.NET requests can overlap, so the collection and its contents are exposed to data races.",
+        "files": [
+          "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:20-22",
+          "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,19-27,48-67"
+        ]
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-778",
+      "title": "Insufficient Logging",
+      "category": "Credentials & Secrets",
+      "severity": "potential",
+      "description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "evidence": {
+        "explanation": "Catalog item creation, update, and deletion are performed in these event handlers without recording the successful mutations or the affected item in the application log. The handlers log page loads elsewhere, but the audit-relevant state changes themselves are not logged.",
+        "files": [
+          "src/eShopLegacyWebForms/Catalog/Create.aspx.cs:30,46",
+          "src/eShopLegacyWebForms/Catalog/Edit.aspx.cs:47,64",
+          "src/eShopLegacyWebForms/Catalog/Delete.aspx.cs:27,29"
+        ]
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-79",
+      "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "category": "Injection Attacks",
+      "severity": "optional",
+      "description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+      "evidence": {
+        "explanation": "Stored cross-site scripting is possible: Create.aspx disables request validation, Create_Click copies the submitted Name and Description into a CatalogItem, and Details.aspx binds those persisted values directly to asp:Label Text properties without an explicit HTML-encoding output expression. A crafted catalog value can therefore be stored and rendered as markup to users viewing the details page.",
+        "files": [
+          "src/eShopLegacyWebForms/Catalog/Create.aspx:1",
+          "src/eShopLegacyWebForms/Catalog/Create.aspx.cs:36-37",
+          "src/eShopLegacyWebForms/Catalog/Details.aspx:14,21"
+        ]
+      },
+      "storyPoint": 8
+    }
+  ]
 }
