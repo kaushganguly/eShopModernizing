@@ -2400,7 +2400,7 @@
   "rules": {
     "Runtime.0002": {
       "id": "Runtime.0002",
-      "description": "Upgrade to newer target framework to get better cloud experience.\n\nIf you are targeting Managed Instance on Azure App Service, validate on .NET Framework 4.8 or move to .NET 10. Persist any runtime prerequisites via install scripts; test in staging before production.\n\nWhile if targeting other Azure compute services:\n\nApplication targeting .NET framework lower than 4.7.1 might missing features that would be needed for some cloud scenarios like scaling or getting secrets from secure external sources.\n\nAzure App Service runs apps on .NET Framework 4.8 or .NET Framework 3.5. Apps running on on .NET Framework versions older than .NET Framework 4.8 could have potential compatibility issues. It is recommended to test your application running on .NET Framework 4.8. Note that it is not necessary to re-target to .NET Framework 4.8, only to validate that the app correctly runs on that version of .NET Framework.\n\nIn the long term it is also recommended to upgrade your application to latest supported .NET 8\u002B which would significantly increase performance of your application. Use tools like .NET Upgrade Assistant to help with upgrading your application to newer .NET.",
+      "description": "Upgrade to newer target framework to get better cloud experience.\n\nIf you are targeting Managed Instance on Azure App Service, validate on .NET Framework 4.8 or move to .NET 10. Persist any runtime prerequisites via install scripts; test in staging before production.\n\nWhile if targeting other Azure compute services:\n\nApplication targeting .NET framework lower than 4.7.1 might missing features that would be needed for some cloud scenarios like scaling or getting secrets from secure external sources.\n\nAzure App Service runs apps on .NET Framework 4.8 or .NET Framework 3.5. Apps running on on .NET Framework versions older than .NET Framework 4.8 could have potential compatibility issues. It is recommended to test your application running on .NET Framework 4.8. Note that it is not necessary to re-target to .NET Framework 4.8, only to validate that the app correctly runs on that version of .NET Framework.\n\nIn the long term it is also recommended to upgrade your application to latest supported .NET 8+ which would significantly increase performance of your application. Use tools like .NET Upgrade Assistant to help with upgrading your application to newer .NET.",
       "title": "Upgrade to newer target framework to get better cloud experience",
       "severity": "optional",
       "effort": 3,
@@ -2426,7 +2426,7 @@
     },
     "Database.0002": {
       "id": "Database.0002",
-      "description": "SQL database connection detected.\n\nEnsure the database is available/reachable on Azure.\n\nIf it is not, there are multiple ways you can move your data to Azure:\n    1. Migrate to Azure SQL Database.\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don\u2019t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
+      "description": "SQL database connection detected.\n\nEnsure the database is available/reachable on Azure.\n\nIf it is not, there are multiple ways you can move your data to Azure:\n    1. Migrate to Azure SQL Database.\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don’t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
       "title": "SQL database connection detected",
       "severity": "potential",
       "effort": 3,
@@ -2535,7 +2535,7 @@
     },
     "Local.0007": {
       "id": "Local.0007",
-      "description": "Local OS environment access detected.\n\nIf you are targeting Managed Instance on Azure App Service, Read config via App Settings or App Configuration; avoid machine\u2011specific environment APIs. Persist environment setup via install scripts when needed.\n\nWhen running in Azure App Service environment, your application can read environment variables that you define in App Service settings. Using environment API other than reading environment variables might indicate that your application depends on some local machine\u0027s features and might be broken on App Service sandbox or not scale well. Review your scenarios and either refactor them to be more cloud friendly or choose the option in App Service to host your application in the sandbox for Windows Container Web Apps.\n\nIf you choose to use other Azure hosting options such as Azure Container Apps (ACA) or Azure Kubernetes Service (AKS), environment APIs might work, however scaling still might be an issue.",
+      "description": "Local OS environment access detected.\n\nIf you are targeting Managed Instance on Azure App Service, Read config via App Settings or App Configuration; avoid machine‑specific environment APIs. Persist environment setup via install scripts when needed.\n\nWhen running in Azure App Service environment, your application can read environment variables that you define in App Service settings. Using environment API other than reading environment variables might indicate that your application depends on some local machine's features and might be broken on App Service sandbox or not scale well. Review your scenarios and either refactor them to be more cloud friendly or choose the option in App Service to host your application in the sandbox for Windows Container Web Apps.\n\nIf you choose to use other Azure hosting options such as Azure Container Apps (ACA) or Azure Kubernetes Service (AKS), environment APIs might work, however scaling still might be an issue.",
       "title": "Local OS environment access detected",
       "severity": "potential",
       "effort": 1,
@@ -2577,5 +2577,152 @@
       ],
       "labels": []
     }
-  }
+  },
+  "security": [
+    {
+      "id": "CVE-2024-21907",
+      "title": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "category": "CVE",
+      "severity": "mandatory",
+      "description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr), HIGH. Newtonsoft.Json 6.0.4 is declared in packages.config:5 and referenced by the WinForms project at line 64; affected range <13.0.1, first patched 13.0.1. Upgrade to a supported patched release after compatibility testing. Malicious deeply nested JSON can exhaust the parser stack if attacker-controlled JSON reaches deserialization. Dependency presence is confirmed, but remote JSON reachability is not established; the WCF interface uses SOAP. Withdrawn duplicate GHSA-8rfx-6mr3-5jh3 excluded. Coverage: dotnet list package --include-transitive --format json failed (missing Microsoft.WebApplication.targets, exit 1); packages.config and both csproj HintPaths examined instead. Three distinct declared NuGet packages checked against advisory DB: EntityFramework 6.1.3, Microsoft.AspNet.WebApi.Client 5.2.3, Newtonsoft.Json 6.0.4. No advisory returned for the other two. Transitive inventory incomplete; framework/OS and unmanaged binary vulnerabilities are not covered.",
+      "evidence": {
+        "files": [
+          "eShopLegacyNTier/src/eShopWinForms/packages.config:5",
+          "eShopLegacyNTier/src/eShopWinForms/eShopWinForms.csproj:64"
+        ],
+        "explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr), HIGH. Newtonsoft.Json 6.0.4 is declared in packages.config:5 and referenced by the WinForms project at line 64; affected range <13.0.1, first patched 13.0.1. Upgrade to a supported patched release after compatibility testing. Malicious deeply nested JSON can exhaust the parser stack if attacker-controlled JSON reaches deserialization. Dependency presence is confirmed, but remote JSON reachability is not established; the WCF interface uses SOAP. Withdrawn duplicate GHSA-8rfx-6mr3-5jh3 excluded. Coverage: dotnet list package --include-transitive --format json failed (missing Microsoft.WebApplication.targets, exit 1); packages.config and both csproj HintPaths examined instead. Three distinct declared NuGet packages checked against advisory DB: EntityFramework 6.1.3, Microsoft.AspNet.WebApi.Client 5.2.3, Newtonsoft.Json 6.0.4. No advisory returned for the other two. Transitive inventory incomplete; framework/OS and unmanaged binary vulnerabilities are not covered."
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CWE-772",
+      "title": "Missing Release of Resource after Effective Lifetime",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "evidence": {
+        "explanation": "CatalogView.SetCatalogItems opens each source image via Image.FromFile at line 58 and creates a thumbnail at line 59 without disposing the source image after thumbnail creation. ClearGrid removes rows at line 41 without explicitly disposing thumbnail images. Source Image.FromFile retains a file lock until disposal/finalization. Repeated filter-triggered catalog loads create additional GDI+/file resources, potentially degrading desktop availability or blocking image replacement until finalization. Requires desktop refresh activity; no deterministic remote process exhaustion demonstrated, and eventual GC/finalizers limit persistence. CWE-772 and CWE-775 describe overlapping resource/file-handle aspects of the same source-image lifetime defect.",
+        "files": [
+          "eShopLegacyNTier/src/eShopWinForms/Views/CatalogView.cs:39-42",
+          "eShopLegacyNTier/src/eShopWinForms/Views/CatalogView.cs:48-62",
+          "eShopLegacyNTier/src/eShopWinForms/Controllers/CatalogController.cs:75-84"
+        ]
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-775",
+      "title": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "evidence": {
+        "explanation": "CatalogView.SetCatalogItems opens each source image via Image.FromFile at line 58 and creates a thumbnail at line 59 without disposing the source image after thumbnail creation. ClearGrid removes rows at line 41 without explicitly disposing thumbnail images. Source Image.FromFile retains a file lock until disposal/finalization. Repeated filter-triggered catalog loads create additional GDI+/file resources, potentially degrading desktop availability or blocking image replacement until finalization. Requires desktop refresh activity; no deterministic remote process exhaustion demonstrated, and eventual GC/finalizers limit persistence. CWE-772 and CWE-775 describe overlapping resource/file-handle aspects of the same source-image lifetime defect.",
+        "files": [
+          "eShopLegacyNTier/src/eShopWinForms/Views/CatalogView.cs:39-42",
+          "eShopLegacyNTier/src/eShopWinForms/Views/CatalogView.cs:48-62",
+          "eShopLegacyNTier/src/eShopWinForms/Controllers/CatalogController.cs:75-84"
+        ]
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-662",
+      "title": "Improper Synchronization",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "evidence": {
+        "files": [
+          "eShopLegacyNTier/src/eShopWCFService/CatalogService.svc.cs:65-70",
+          "eShopLegacyNTier/src/eShopWCFService/Models/CatalogItem.cs:13-15",
+          "eShopLegacyNTier/src/eShopWCFService/Web.config:37-40"
+        ],
+        "explanation": "CatalogService.CreateCatalogItem reads the shared database maximum Id at line 67, increments it at line 68 and inserts at lines 69-70 without a transaction covering both read and insert or cross-instance synchronization. CatalogItem disables database-generated IDs at lines 13-15. Concurrent SOAP calls handled by separate WCF service instances can read the same maximum and attempt the same primary key; one insert can fail with a duplicate-key exception. WCF default per-instance single concurrency does not serialize access across all instances. A service-reachable actor issuing concurrent creations can induce intermittent legitimate write failures. Database primary-key constraints prevent duplicate committed identifiers; no data overwrite or lasting global outage established. Requires overlapping requests against the same database, not runtime reproduced. CWE-662 and CWE-820 are overlapping classifications of this missing atomicity, not two independent defects."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-820",
+      "title": "Missing Synchronization",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "evidence": {
+        "files": [
+          "eShopLegacyNTier/src/eShopWCFService/CatalogService.svc.cs:65-70",
+          "eShopLegacyNTier/src/eShopWCFService/Models/CatalogItem.cs:13-15",
+          "eShopLegacyNTier/src/eShopWCFService/Web.config:37-40"
+        ],
+        "explanation": "CatalogService.CreateCatalogItem reads the shared database maximum Id at line 67, increments it at line 68 and inserts at lines 69-70 without a transaction covering both read and insert or cross-instance synchronization. CatalogItem disables database-generated IDs at lines 13-15. Concurrent SOAP calls handled by separate WCF service instances can read the same maximum and attempt the same primary key; one insert can fail with a duplicate-key exception. WCF default per-instance single concurrency does not serialize access across all instances. A service-reachable actor issuing concurrent creations can induce intermittent legitimate write failures. Database primary-key constraints prevent duplicate committed identifiers; no data overwrite or lasting global outage established. Requires overlapping requests against the same database, not runtime reproduced. CWE-662 and CWE-820 are overlapping classifications of this missing atomicity, not two independent defects."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-778",
+      "title": "Insufficient Logging",
+      "category": "Credentials & Secrets",
+      "severity": "potential",
+      "description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "evidence": {
+        "explanation": "CatalogService.UpdateCatalogItem marks the submitted entity Modified and calls SaveChanges at lines 75-76 without an application audit record of actor, item identity, old/new values or outcome. The remotely exposed operation can alter catalog prices and image filenames. A service-reachable actor can change an item and later restore its values without an application-level trace of the intermediate change. No audit interceptor or logging sink is wired in the assessed source/configuration. IIS access logs or externally configured SQL/database auditing may exist outside this repository; their absence is not asserted. The finding concerns missing semantic application audit events, not a demonstrated bypass of external monitoring.",
+        "files": [
+          "eShopLegacyNTier/src/eShopWCFService/CatalogService.svc.cs:73-77",
+          "eShopLegacyNTier/src/eShopWCFService/ICatalogService.cs:29-30",
+          "eShopLegacyNTier/src/eShopWCFService/Web.config:22-42"
+        ]
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-22",
+      "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "category": "File & Path Security",
+      "severity": "optional",
+      "description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+      "evidence": {
+        "files": [
+          "eShopLegacyNTier/src/eShopWinForms/Views/CatalogView.cs:55-59",
+          "eShopLegacyNTier/src/eShopWinForms/Controllers/CatalogController.cs:75-84",
+          "eShopLegacyNTier/src/eShopWCFService/CatalogService.svc.cs:65-76",
+          "eShopLegacyNTier/src/eShopWCFService/ICatalogService.cs:27-30"
+        ],
+        "explanation": "CatalogView.SetCatalogItems concatenates service-supplied Picturefilename to the Catalog image directory at line 57 and opens it with Image.FromFile at line 58, without canonicalization or directory containment. An actor able to submit CreateCatalogItem/UpdateCatalogItem SOAP requests can persist a relative traversal filename; when a desktop user loads the catalog, a readable image outside Assets is opened in the client security context. The configured basicHttpBinding endpoint has no application authorization checks. Requires endpoint reachability and a valid catalog item/known image path; this establishes out-of-directory image reads, not arbitrary file exfiltration or code execution. Absolute paths do not replace the base because string concatenation is used."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-23",
+      "title": "Relative Path Traversal",
+      "category": "File & Path Security",
+      "severity": "optional",
+      "description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+      "evidence": {
+        "files": [
+          "eShopLegacyNTier/src/eShopWinForms/Views/CatalogView.cs:55-59",
+          "eShopLegacyNTier/src/eShopWinForms/Controllers/CatalogController.cs:75-84",
+          "eShopLegacyNTier/src/eShopWCFService/CatalogService.svc.cs:65-76",
+          "eShopLegacyNTier/src/eShopWCFService/ICatalogService.cs:27-30"
+        ],
+        "explanation": "CatalogView.SetCatalogItems concatenates service-supplied Picturefilename to the Catalog image directory at line 57 and opens it with Image.FromFile at line 58, without canonicalization or directory containment. An actor able to submit CreateCatalogItem/UpdateCatalogItem SOAP requests can persist a relative traversal filename; when a desktop user loads the catalog, a readable image outside Assets is opened in the client security context. The configured basicHttpBinding endpoint has no application authorization checks. Requires endpoint reachability and a valid catalog item/known image path; this establishes out-of-directory image reads, not arbitrary file exfiltration or code execution. Absolute paths do not replace the base because string concatenation is used."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-99",
+      "title": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "category": "Injection Attacks",
+      "severity": "potential",
+      "description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "evidence": {
+        "explanation": "CatalogView.SetCatalogItems uses externally supplied Picturefilename as part of the image resource path, then Image.FromFile opens it. A caller with access to the WCF catalog mutation operations can persist a relative traversal path and influence a subsequent desktop image load outside Assets. This is the same root cause as CWE-22/CWE-23, not an independent vulnerability. Requires a reachable service, accepted catalog object and an existing readable image; no arbitrary code execution or file contents exfiltration demonstrated.",
+        "files": [
+          "eShopLegacyNTier/src/eShopWinForms/Views/CatalogView.cs:55-59",
+          "eShopLegacyNTier/src/eShopWinForms/Controllers/CatalogController.cs:75-84",
+          "eShopLegacyNTier/src/eShopWCFService/CatalogService.svc.cs:65-76"
+        ]
+      },
+      "storyPoint": 3
+    }
+  ]
 }
