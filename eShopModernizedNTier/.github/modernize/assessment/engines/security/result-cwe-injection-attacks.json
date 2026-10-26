@@ -1,0 +1,164 @@
+{
+  "input_name": "CWE - Injection Attacks",
+  "status": "success",
+  "result": {
+    "values": [
+      {
+        "id": "CWE-77",
+        "name": "Command Injection",
+        "status": "NOT_FOUND",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-78",
+        "name": "OS Command Injection",
+        "status": "NOT_FOUND",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-79",
+        "name": "Cross-site Scripting",
+        "status": "NOT_FOUND",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-88",
+        "name": "Argument Injection",
+        "status": "NOT_FOUND",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-89",
+        "name": "SQL Injection",
+        "status": "NOT_FOUND",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-90",
+        "name": "LDAP Injection",
+        "status": "NOT_FOUND",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-91",
+        "name": "XML Injection",
+        "status": "NOT_FOUND",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-99",
+        "name": "Resource Injection",
+        "status": "NOT_FOUND",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-502",
+        "name": "Deserialization of Untrusted Data",
+        "status": "NOT_FOUND",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-564",
+        "name": "SQL Injection: Hibernate",
+        "status": "NOT_FOUND",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-643",
+        "name": "XPath Injection",
+        "status": "NOT_FOUND",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-652",
+        "name": "XQuery Injection",
+        "status": "NOT_FOUND",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      }
+    ]
+  }
+}

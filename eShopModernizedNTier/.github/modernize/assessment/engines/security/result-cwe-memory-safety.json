@@ -1,0 +1,203 @@
+{
+  "input_name": "CWE - Memory Safety",
+  "status": "success",
+  "result": {
+    "values": [
+      {
+        "id": "CWE-119",
+        "name": "Memory safety 119",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-120",
+        "name": "Memory safety 120",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-123",
+        "name": "Memory safety 123",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-125",
+        "name": "Memory safety 125",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-415",
+        "name": "Memory safety 415",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-416",
+        "name": "Memory safety 416",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-672",
+        "name": "Memory safety 672",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-786",
+        "name": "Memory safety 786",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-787",
+        "name": "Memory safety 787",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-788",
+        "name": "Memory safety 788",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-805",
+        "name": "Memory safety 805",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-822",
+        "name": "Memory safety 822",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-823",
+        "name": "Memory safety 823",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-824",
+        "name": "Memory safety 824",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      },
+      {
+        "id": "CWE-825",
+        "name": "Memory safety 825",
+        "status": "NOT_FOUND",
+        "category": "Memory Safety",
+        "severity": "optional",
+        "storyPoint": 0,
+        "description": "",
+        "evidence": {
+          "files": [],
+          "explanation": "No evidence found in eShopModernizedNTier."
+        }
+      }
+    ]
+  }
+}

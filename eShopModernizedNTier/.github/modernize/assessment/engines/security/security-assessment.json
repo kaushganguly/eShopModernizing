@@ -1,0 +1,114 @@
+{
+  "GeneratedAt": "2026-10-26T20:53:23.0000000Z",
+  "ProjectPath": ".",
+  "Summary": {
+    "TotalFindings": 7,
+    "CveCount": 1,
+    "CweCount": 6,
+    "BySeverity": {
+      "mandatory": 3,
+      "optional": 2,
+      "potential": 2
+    },
+    "ByCategory": {
+      "CVE": 1,
+      "Code Quality": 2,
+      "Concurrency & Synchronization": 1,
+      "Credentials & Secrets": 3
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 53
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2024-21907",
+      "Name": "Newtonsoft.Json: Improper handling of exceptional conditions (DoS via deeply nested JSON)",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 2,
+      "Description": "Microsoft.AspNet.WebApi.Client 5.2.7 transitively resolves Newtonsoft.Json 6.0.4 (affected versions < 13.0.1, patched 13.0.1; GHSA-5crp-9r3c-p9vr). Add a direct PackageReference to Newtonsoft.Json 13.0.1 or later.",
+      "Files": [
+        "src/eShopWinForms/eShopWinForms.csproj:23"
+      ],
+      "Explanation": "Microsoft.AspNet.WebApi.Client 5.2.7 transitively resolves Newtonsoft.Json 6.0.4 (affected versions < 13.0.1, patched 13.0.1; GHSA-5crp-9r3c-p9vr). Add a direct PackageReference to Newtonsoft.Json 13.0.1 or later."
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-477",
+      "Name": "Use of Obsolete Function",
+      "Category": "Code Quality",
+      "Severity": "optional",
+      "StoryPoint": 3,
+      "Description": "The code uses obsolete functions/frameworks.",
+      "Files": [
+        "src/eShopWCFService/eShopWCFService.csproj",
+        "src/eShopWCFService/packages.config:3"
+      ],
+      "Explanation": "Service targets .NET Framework 4.6.1 with legacy EntityFramework 6.1.3 and System.Data.SqlClient; WCF server APIs are not available on modern .NET."
+    },
+    {
+      "Id": "CWE-1057",
+      "Name": "Data Access Operations Outside of Expected Data Manager Component",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "Data access is performed directly from service operations rather than through a dedicated data manager component.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs:11-30"
+      ],
+      "Explanation": "CatalogService (WCF service layer) uses the EF DbContext directly and performs filtering client-side after ToList() (GetCatalogItems, GetDiscount, GetAvailableStock), loading entire tables into memory."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "optional",
+      "StoryPoint": 3,
+      "Description": "Read-then-write ID generation without synchronization.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs:73-78",
+        "src/eShopWCFService/CatalogService.svc.cs:104-110"
+      ],
+      "Explanation": "CreateCatalogItem and CreateAvailableStock compute Max(Id)+1 and then insert without a transaction or lock, so concurrent requests can generate duplicate keys."
+    },
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "mandatory",
+      "StoryPoint": 3,
+      "Description": "A hard-coded password is used for the SQL Server sa account.",
+      "Files": [
+        "docker-compose.override.yml:9",
+        "docker-compose.override.yml:17"
+      ],
+      "Explanation": "docker-compose.override.yml sets SA_PASSWORD and the sqlcmd healthcheck with the literal password 'Pass@word' and the service uses the 'sa' account."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 2,
+      "Description": "Security-relevant events are not logged.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs"
+      ],
+      "Explanation": "The service has no logging or auditing for create/update/remove catalog operations or failures."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "mandatory",
+      "StoryPoint": 3,
+      "Description": "Hard-coded credentials are committed to configuration.",
+      "Files": [
+        "docker-compose.override.yml:5",
+        "docker-compose.override.yml:9"
+      ],
+      "Explanation": "Connection string and SQL sa credentials are stored in source control rather than a secret store."
+    }
+  ]
+}
