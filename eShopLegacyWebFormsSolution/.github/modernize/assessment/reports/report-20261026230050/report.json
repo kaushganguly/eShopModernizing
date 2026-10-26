@@ -446,7 +446,7 @@
     },
     "Connection.0001": {
       "id": "Connection.0001",
-      "description": "Connection string detected. It may not be available when your app is migrated to Azure.\n\nReview and ensure it works from Azure. If you are connecting to a database, you might need to migrate the database to Azure. There are multiple ways to do it:\n    1. Migrate to Azure SQL Database for additional benefits (see the link below).\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don\u2019t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
+      "description": "Connection string detected. It may not be available when your app is migrated to Azure.\n\nReview and ensure it works from Azure. If you are connecting to a database, you might need to migrate the database to Azure. There are multiple ways to do it:\n    1. Migrate to Azure SQL Database for additional benefits (see the link below).\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don’t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
       "title": "Connection string is detected",
       "severity": "potential",
       "effort": 3,
@@ -481,7 +481,7 @@
     },
     "Identity.0002": {
       "id": "Identity.0002",
-      "description": "Your app is using windows authentication which is not supported on Azure App Service, Azure Container Apps and Azure Kubernetes Service.\n\nAzure App Service provides built-in authentication and authorization capabilities, so you can sign in users and access data by writing minimal or no code in your web app.\n\nFollow the link below for more information.\u0022",
+      "description": "Your app is using windows authentication which is not supported on Azure App Service, Azure Container Apps and Azure Kubernetes Service.\n\nAzure App Service provides built-in authentication and authorization capabilities, so you can sign in users and access data by writing minimal or no code in your web app.\n\nFollow the link below for more information.\"",
       "title": "Windows authentication detected",
       "severity": "mandatory",
       "effort": 3,
@@ -540,5 +540,126 @@
       ],
       "labels": []
     }
-  }
+  },
+  "security": [
+    {
+      "category": "CVE",
+      "evidence": {
+        "explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Newtonsoft.Json 12.0.1 is affected by deeply nested JSON inputs that can cause excessive CPU and memory consumption or stack overflow, resulting in denial of service. Severity: HIGH. Affected dependency: Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyWebForms/packages.config:31). Recommended fix: upgrade to 13.0.1 or later.",
+        "files": [
+          "src/eShopLegacyWebForms/packages.config:31"
+        ]
+      },
+      "title": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "id": "CVE-2024-21907",
+      "severity": "mandatory",
+      "description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Newtonsoft.Json 12.0.1 is affected by deeply nested JSON inputs that can cause excessive CPU and memory consumption or stack overflow, resulting in denial of service. Severity: HIGH. Affected dependency: Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyWebForms/packages.config:31). Recommended fix: upgrade to 13.0.1 or later.",
+      "storyPoint": 1
+    },
+    {
+      "category": "Code Quality",
+      "evidence": {
+        "explanation": "Both sequence generators read a database sequence as Int64 and cast it directly to int without a range check. Values above Int32.MaxValue overflow, potentially producing invalid or duplicate catalog identifiers.",
+        "files": [
+          "src/eShopLegacyWebForms/Models/CatalogItemHiLoGenerator.cs:23",
+          "src/eShopLegacyWebForms/Models/Infrastructure/CatalogDBInitializer.cs:328"
+        ]
+      },
+      "title": "Incorrect Conversion between Numeric Types",
+      "id": "CWE-681",
+      "severity": "potential",
+      "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "storyPoint": 3
+    },
+    {
+      "category": "Code Quality",
+      "evidence": {
+        "explanation": "The request-controlled route value size is converted to an integer and passed directly to Take(pageSize), followed by ToList(), with no upper bound. An attacker can request an extremely large page size and cause the application to materialize the full catalog into memory.",
+        "files": [
+          "src/eShopLegacyWebForms/Default.aspx.cs:26-28",
+          "src/eShopLegacyWebForms/Services/CatalogService.cs:26-32"
+        ]
+      },
+      "title": "Memory Allocation with Excessive Size Value",
+      "id": "CWE-789",
+      "severity": "potential",
+      "description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+      "storyPoint": 5
+    },
+    {
+      "category": "Concurrency & Synchronization",
+      "evidence": {
+        "explanation": "When UseMockData is enabled, Autofac registers CatalogServiceMock as a single shared instance. Its mutable catalogItems list is read, added to, replaced, and removed from across requests without synchronization (CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem); concurrent requests can race and corrupt or lose catalog changes.",
+        "files": [
+          "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+          "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,48-67"
+        ]
+      },
+      "title": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "id": "CWE-543",
+      "severity": "potential",
+      "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "storyPoint": 5
+    },
+    {
+      "category": "Concurrency & Synchronization",
+      "evidence": {
+        "explanation": "When UseMockData is enabled, Autofac registers CatalogServiceMock as a single shared instance. Its mutable catalogItems list is read, added to, replaced, and removed from across requests without synchronization (CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem); concurrent requests can race and corrupt or lose catalog changes.",
+        "files": [
+          "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+          "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,48-67"
+        ]
+      },
+      "title": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "id": "CWE-567",
+      "severity": "potential",
+      "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "storyPoint": 5
+    },
+    {
+      "category": "Concurrency & Synchronization",
+      "evidence": {
+        "explanation": "When UseMockData is enabled, Autofac registers CatalogServiceMock as a single shared instance. Its mutable catalogItems list is read, added to, replaced, and removed from across requests without synchronization (CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem); concurrent requests can race and corrupt or lose catalog changes.",
+        "files": [
+          "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+          "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,48-67"
+        ]
+      },
+      "title": "Improper Synchronization",
+      "id": "CWE-662",
+      "severity": "potential",
+      "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "storyPoint": 8
+    },
+    {
+      "category": "Concurrency & Synchronization",
+      "evidence": {
+        "explanation": "When UseMockData is enabled, Autofac registers CatalogServiceMock as a single shared instance. Its mutable catalogItems list is read, added to, replaced, and removed from across requests without synchronization (CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem); concurrent requests can race and corrupt or lose catalog changes.",
+        "files": [
+          "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+          "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,48-67"
+        ]
+      },
+      "title": "Missing Synchronization",
+      "id": "CWE-820",
+      "severity": "potential",
+      "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the shared resource.",
+      "storyPoint": 8
+    },
+    {
+      "category": "Injection Attacks",
+      "evidence": {
+        "explanation": "The Details page binds stored catalog values (including user-supplied product text) directly to ASP.NET Label Text properties without explicit HTML encoding. The resulting label markup can render stored markup as HTML, enabling persistent cross-site scripting. See Details.aspx lines 21 and 28.",
+        "files": [
+          "src/eShopLegacyWebForms/Catalog/Details.aspx:21",
+          "src/eShopLegacyWebForms/Catalog/Details.aspx:28"
+        ]
+      },
+      "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "id": "CWE-79",
+      "severity": "optional",
+      "description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+      "storyPoint": 8
+    }
+  ]
 }
