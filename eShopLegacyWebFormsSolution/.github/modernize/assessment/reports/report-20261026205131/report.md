@@ -147,8 +147,8 @@
 <summary><b>CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</b> — affected files</summary>
 
 - `src/eShopLegacyWebForms/Catalog/Details.aspx:21`
-- `src/eShopLegacyWebForms/Catalog/Create.aspx.cs:23`
-- `src/eShopLegacyWebForms/Catalog/Edit.aspx.cs:43`
+- `src/eShopLegacyWebForms/Catalog/Create.aspx.cs:37`
+- `src/eShopLegacyWebForms/Catalog/Edit.aspx.cs:55`
 
 </details>
 

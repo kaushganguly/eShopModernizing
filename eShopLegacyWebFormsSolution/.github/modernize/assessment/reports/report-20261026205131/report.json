@@ -640,8 +640,8 @@
       "evidence": {
         "files": [
           "src/eShopLegacyWebForms/Catalog/Details.aspx:21",
-          "src/eShopLegacyWebForms/Catalog/Create.aspx.cs:23",
-          "src/eShopLegacyWebForms/Catalog/Edit.aspx.cs:43"
+          "src/eShopLegacyWebForms/Catalog/Create.aspx.cs:37",
+          "src/eShopLegacyWebForms/Catalog/Edit.aspx.cs:55"
         ],
         "explanation": "Catalog descriptions and names are accepted from TextBox inputs in Create_Click and Save_Click, persisted through CatalogService, and then data-bound to asp:Label Text values in Details.aspx (for example, Description at line 21). Label output is rendered as page content without an explicit encoding step, allowing stored markup/script to execute for users viewing the catalog."
       },
@@ -649,4 +649,3 @@
     }
   ]
 }
-
