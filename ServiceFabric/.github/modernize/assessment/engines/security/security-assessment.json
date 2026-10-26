@@ -1,0 +1,46 @@
+{
+  "CweFindings": [
+    {
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Id": "CWE-259",
+      "Files": [
+        "ServiceFabric/eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24"
+      ],
+      "Category": "Credentials & Secrets",
+      "StoryPoint": 5,
+      "Name": "Use of Hard-coded Password",
+      "Explanation": "The SQL container manifest declares the SQL Server SA password as a literal value in an EnvironmentVariable. The literal is intentionally omitted from this report.",
+      "Severity": "optional"
+    },
+    {
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Id": "CWE-798",
+      "Files": [
+        "ServiceFabric/eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24"
+      ],
+      "Category": "Credentials & Secrets",
+      "StoryPoint": 5,
+      "Name": "Use of Hard-coded Credentials",
+      "Explanation": "The SQL container manifest declares the SQL Server SA password as a literal value in an EnvironmentVariable. The literal is intentionally omitted from this report.",
+      "Severity": "optional"
+    }
+  ],
+  "GeneratedAt": "2026-10-26T23:19:12.7918003Z",
+  "CveFindings": [],
+  "ProjectPath": ".",
+  "Summary": {
+    "CweCount": 2,
+    "TotalRulesAssessed": 59,
+    "TotalFindings": 2,
+    "ByCategory": {
+      "Credentials & Secrets": 2
+    },
+    "CveCount": 0,
+    "RulesPassed": 57,
+    "BySeverity": {
+      "optional": 2,
+      "mandatory": 0,
+      "potential": 0
+    }
+  }
+}
