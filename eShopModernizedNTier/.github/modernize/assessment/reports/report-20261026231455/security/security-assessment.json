@@ -1,0 +1,247 @@
+{
+  "GeneratedAt": "2026-10-26T23:25:09.173290+00:00",
+  "ProjectPath": "eShopModernizedNTier",
+  "MinimumCveSeverity": "medium",
+  "Summary": {
+    "TotalFindings": 17,
+    "CveCount": 7,
+    "CweCount": 10,
+    "BySeverity": {
+      "mandatory": 5,
+      "optional": 6,
+      "potential": 6
+    },
+    "ByCategory": {
+      "CVE": 7,
+      "Code Quality": 2,
+      "Concurrency & Synchronization": 2,
+      "Credentials & Secrets": 3,
+      "File & Path Security": 2,
+      "Injection Attacks": 1
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 49
+  },
+  "Limitations": [
+    "Static assessment of the full existing eShopModernizedNTier application; no application source was modified and no runtime exploitation, load testing or deployment verification was performed.",
+    "The dependency CLI failed because Microsoft.WebApplication.targets was unavailable. Fallback inspected scoped package manifests, project references and existing project.assets.json; 114 distinct dependency/version coordinates were queried in four successful GitHub advisory API batches. Assets may be stale and a freshly restored complete service transitive dependency graph was unavailable.",
+    "CVE findings identify affected versions recorded in existing resolved assets, not verified deployed packages or demonstrated exploitability. Minimum CVE severity: medium. Transitive packages have no direct declaration location attributed.",
+    "CWE source review excluded generated code, obj/bin, .vs, temp and vendor artifacts. NOT_FOUND means no confirmed pattern in the reviewed first-party sources, not proof of absence.",
+    "CWE classifications can overlap: path traversal/resource injection, hard-coded password/credential, image resource/handle leaks and stock synchronization findings may describe the same underlying issue. Counts are rule matches, not independent exploits."
+  ],
+  "CveFindings": [
+    {
+      "Id": "CVE-2024-0056",
+      "Name": "Microsoft.Data.SqlClient and System.Data.SqlClient vulnerable to SQL Data Provider Security Feature Bypass",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-0056](https://github.com/advisories/GHSA-98g6-xh36-x2p7): Microsoft.Data.SqlClient and System.Data.SqlClient vulnerable to SQL Data Provider Security Feature Bypass \n\nSeverity: high\n\nAffected dependencies:\n- System.Data.SqlClient@4.8.1 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected < 4.8.6; patched: 4.8.6\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "Files": [],
+      "Explanation": "[CVE-2024-0056](https://github.com/advisories/GHSA-98g6-xh36-x2p7): Microsoft.Data.SqlClient and System.Data.SqlClient vulnerable to SQL Data Provider Security Feature Bypass \n\nSeverity: high\n\nAffected dependencies:\n- System.Data.SqlClient@4.8.1 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected < 4.8.6; patched: 4.8.6\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+    },
+    {
+      "Id": "CVE-2018-8292",
+      "Name": ".NET Core Information Disclosure",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2018-8292](https://github.com/advisories/GHSA-7jgj-8wvc-jh57): .NET Core Information Disclosure\n\nSeverity: high\n\nAffected dependencies:\n- System.Net.Http@4.3.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected < 4.3.4; patched: 4.3.4\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "Files": [],
+      "Explanation": "[CVE-2018-8292](https://github.com/advisories/GHSA-7jgj-8wvc-jh57): .NET Core Information Disclosure\n\nSeverity: high\n\nAffected dependencies:\n- System.Net.Http@4.3.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected < 4.3.4; patched: 4.3.4\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+    },
+    {
+      "Id": "CVE-2024-21907",
+      "Name": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: high\n\nAffected dependencies:\n- Newtonsoft.Json@10.0.1 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected < 13.0.1; patched: 13.0.1\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "Files": [],
+      "Explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: high\n\nAffected dependencies:\n- Newtonsoft.Json@10.0.1 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected < 13.0.1; patched: 13.0.1\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+    },
+    {
+      "Id": "CVE-2022-41064",
+      "Name": ".NET Information Disclosure Vulnerability",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2022-41064](https://github.com/advisories/GHSA-8g2p-5pqh-5jmc): .NET Information Disclosure Vulnerability\n\nSeverity: medium\n\nAffected dependencies:\n- System.Data.SqlClient@4.8.1 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected <= 4.8.4; patched: 4.8.5\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "Files": [],
+      "Explanation": "[CVE-2022-41064](https://github.com/advisories/GHSA-8g2p-5pqh-5jmc): .NET Information Disclosure Vulnerability\n\nSeverity: medium\n\nAffected dependencies:\n- System.Data.SqlClient@4.8.1 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected <= 4.8.4; patched: 4.8.5\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+    },
+    {
+      "Id": "CVE-2022-34716",
+      "Name": ".NET Information Disclosure Vulnerability",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2022-34716](https://github.com/advisories/GHSA-vh55-786g-wjwj): .NET Information Disclosure Vulnerability\n\nSeverity: medium\n\nAffected dependencies:\n- System.Security.Cryptography.Xml@4.7.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected <= 4.7.0; patched: 4.7.1\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "Files": [],
+      "Explanation": "[CVE-2022-34716](https://github.com/advisories/GHSA-vh55-786g-wjwj): .NET Information Disclosure Vulnerability\n\nSeverity: medium\n\nAffected dependencies:\n- System.Security.Cryptography.Xml@4.7.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected <= 4.7.0; patched: 4.7.1\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+    },
+    {
+      "Id": "CVE-2019-0820",
+      "Name": "Regular Expression Denial of Service in System.Text.RegularExpressions",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2019-0820](https://github.com/advisories/GHSA-cmhx-cq75-c4mj): Regular Expression Denial of Service in System.Text.RegularExpressions\n\nSeverity: high\n\nAffected dependencies:\n- System.Text.RegularExpressions@4.3.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected >= 4.3.0, < 4.3.1; patched: 4.3.1\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "Files": [],
+      "Explanation": "[CVE-2019-0820](https://github.com/advisories/GHSA-cmhx-cq75-c4mj): Regular Expression Denial of Service in System.Text.RegularExpressions\n\nSeverity: high\n\nAffected dependencies:\n- System.Text.RegularExpressions@4.3.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected >= 4.3.0, < 4.3.1; patched: 4.3.1\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+    },
+    {
+      "Id": "CVE-2021-24112",
+      "Name": ".NET Core Remote Code Execution Vulnerability",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2021-24112](https://github.com/advisories/GHSA-rxg9-xrhp-64gj): .NET Core Remote Code Execution Vulnerability\n\nSeverity: critical\n\nAffected dependencies:\n- System.Drawing.Common@4.7.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected >= 4.0.0, < 4.7.2; patched: 4.7.2\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed.",
+      "Files": [],
+      "Explanation": "[CVE-2021-24112](https://github.com/advisories/GHSA-rxg9-xrhp-64gj): .NET Core Remote Code Execution Vulnerability\n\nSeverity: critical\n\nAffected dependencies:\n- System.Drawing.Common@4.7.0 [transitive/resolved assets] (src\\eShopWinForms\\obj\\project.assets.json); affected >= 4.0.0, < 4.7.2; patched: 4.7.2\n\nRecommended fix: upgrade affected packages to listed patched versions or newer compatible releases. Confidence: high for declared/resolved version match; exploitation and deployment not verified. Resolved assets can be stale. CLI failed because Microsoft.WebApplication.targets is missing; packages.config, all project references and available project.assets.json were used. No complete newly restored service transitive graph is available. Transitive entries have no direct declaration evidence attributed."
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "src\\eShopWinForms\\Views\\CatalogView.cs:39-42",
+        "src\\eShopWinForms\\Views\\CatalogView.cs:48-62"
+      ],
+      "Explanation": "Confidence: high for missing deterministic release; medium for denial-of-service impact. CatalogView.SetCatalogItems creates an Image with Image.FromFile at line 58 and derives a thumbnail at line 59 but never disposes the original image, whose effective lifetime ends after thumbnail creation. System.Drawing keeps the source file locked until Image.Dispose or eventual finalization. ClearGrid removes rows at line 41 without explicit thumbnail disposal. Repeated filter changes reload images and can accumulate native image/file resources and prolonged file locks; no load test measured exhaustion and GC/finalization may eventually release them. This is a desktop resource-lifetime issue, not demonstrated remote code execution."
+    },
+    {
+      "Id": "CWE-775",
+      "Name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "Files": [
+        "src\\eShopWinForms\\Views\\CatalogView.cs:39-42",
+        "src\\eShopWinForms\\Views\\CatalogView.cs:48-62"
+      ],
+      "Explanation": "Confidence: high for missing deterministic release; medium for denial-of-service impact. CatalogView.SetCatalogItems creates an Image with Image.FromFile at line 58 and derives a thumbnail at line 59 but never disposes the original image, whose effective lifetime ends after thumbnail creation. System.Drawing keeps the source file locked until Image.Dispose or eventual finalization. ClearGrid removes rows at line 41 without explicit thumbnail disposal. Repeated filter changes reload images and can accumulate native image/file resources and prolonged file locks; no load test measured exhaustion and GC/finalization may eventually release them. This is a desktop resource-lifetime issue, not demonstrated remote code execution."
+    },
+    {
+      "Id": "CWE-662",
+      "Name": "Improper Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "Files": [
+        "src\\eShopWCFService\\CatalogService.svc.cs:65-70",
+        "src\\eShopWCFService\\CatalogService.svc.cs:99-117",
+        "src\\eShopWCFService\\Models\\CatalogItem.cs:13-15",
+        "src\\eShopWCFService\\Models\\CatalogItemsStock.cs:22-25"
+      ],
+      "Explanation": "Confidence: high for non-atomic ID allocation; medium for deployed concurrent exploitability. CatalogService.CreateCatalogItem reads the shared database MAX(Id), increments it in process and later inserts. CreateAvailableStock similarly performs an existence check and MAX(StockId)+1 before SaveChanges. IDs explicitly use DatabaseGeneratedOption.None. Concurrent requests handled by separate WCF instances can both read the same maximum before either commits; the second insert then fails on the duplicate key, causing request/inventory-update failure. SaveChanges transactions do not encompass the earlier MAX read; there is no explicit encompassing serializable transaction or cross-request synchronization. WCF default per-session/per-call handling does not globally serialize separate clients. No stress test or deployment concurrency observation was performed. Database uniqueness may prevent corruption but does not prevent the failing request. CWE-662 and CWE-820 describe this same root cause, not independent exploits."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "Files": [
+        "src\\eShopWCFService\\CatalogService.svc.cs:65-70",
+        "src\\eShopWCFService\\CatalogService.svc.cs:99-117",
+        "src\\eShopWCFService\\Models\\CatalogItem.cs:13-15",
+        "src\\eShopWCFService\\Models\\CatalogItemsStock.cs:22-25"
+      ],
+      "Explanation": "Confidence: high for non-atomic ID allocation; medium for deployed concurrent exploitability. CatalogService.CreateCatalogItem reads the shared database MAX(Id), increments it in process and later inserts. CreateAvailableStock similarly performs an existence check and MAX(StockId)+1 before SaveChanges. IDs explicitly use DatabaseGeneratedOption.None. Concurrent requests handled by separate WCF instances can both read the same maximum before either commits; the second insert then fails on the duplicate key, causing request/inventory-update failure. SaveChanges transactions do not encompass the earlier MAX read; there is no explicit encompassing serializable transaction or cross-request synchronization. WCF default per-session/per-call handling does not globally serialize separate clients. No stress test or deployment concurrency observation was performed. Database uniqueness may prevent corruption but does not prevent the failing request. CWE-662 and CWE-820 describe this same root cause, not independent exploits."
+    },
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Files": [
+        "docker-compose.override.yml:7",
+        "docker-compose.override.yml:13",
+        "docker-compose.override.yml:18"
+      ],
+      "Explanation": "Confidence: high that reusable credentials are hard-coded; deployment use not verified. Docker Compose supplies a literal SQL administrator password through SA_PASSWORD, embeds the same authentication secret in the application ConnectionString, and provides a literal password argument to the sqlcmd healthcheck. All password values are [REDACTED]. CatalogConfiguration.ConnectionString (src\\\\eShopWCFService\\\\Models\\\\Infrastructure\\\\CatalogConfiguration.cs:16-17) reads the environment and EntityModel consumes it. Anyone with access to the tracked configuration obtains the configured database credential if deployed unchanged; host port mapping also exposes SQL subject to host firewall/network policy. This is repository configuration evidence, not proof the credential is currently active."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "Files": [
+        "src\\eShopWCFService\\CatalogService.svc.cs:65-83",
+        "src\\eShopWCFService\\CatalogService.svc.cs:99-117",
+        "src\\eShopWCFService\\ICatalogService.cs:25-32"
+      ],
+      "Explanation": "Confidence: high for absence of application-level mutation audit events; medium for deployed audit coverage. CatalogService.CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and CreateAvailableStock mutate catalog/inventory state and call SaveChanges without recording actor, operation, target or outcome. Full first-party source/config search found no audit logger or event source. Remote catalog/inventory changes therefore have no application-supplied security audit trail. IIS request logs, SQL audit or other deployment-level monitoring might exist outside this repository and were not inspected; this finding does not assert their absence."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Files": [
+        "docker-compose.override.yml:7",
+        "docker-compose.override.yml:13",
+        "docker-compose.override.yml:18"
+      ],
+      "Explanation": "Confidence: high that reusable credentials are hard-coded; deployment use not verified. Docker Compose supplies a literal SQL administrator password through SA_PASSWORD, embeds the same authentication secret in the application ConnectionString, and provides a literal password argument to the sqlcmd healthcheck. All password values are [REDACTED]. CatalogConfiguration.ConnectionString (src\\\\eShopWCFService\\\\Models\\\\Infrastructure\\\\CatalogConfiguration.cs:16-17) reads the environment and EntityModel consumes it. Anyone with access to the tracked configuration obtains the configured database credential if deployed unchanged; host port mapping also exposes SQL subject to host firewall/network policy. This is repository configuration evidence, not proof the credential is currently active."
+    },
+    {
+      "Id": "CWE-22",
+      "Name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 8,
+      "Description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+      "Files": [
+        "src\\eShopWinForms\\Views\\CatalogView.cs:48-61",
+        "src\\eShopWCFService\\CatalogService.svc.cs:65-76",
+        "src\\eShopWCFService\\Models\\CatalogItem.cs:24-25",
+        "src\\eShopWCFService\\ICatalogService.cs:27-30"
+      ],
+      "Explanation": "Confidence: high for path escape, medium for practical impact. CatalogView.SetCatalogItems concatenates service-controlled Picturefilename into the catalog image directory at line 57 and calls Image.FromFile at line 58 without canonicalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the DataMember unchanged, and the WCF contract exposes these operations. A caller able to modify catalog data can supply ..\\\\ segments to open a local image outside the intended catalog directory under the desktop user identity, or crash rendering for invalid paths. Only image decoding/display is demonstrated, not arbitrary file exfiltration or remote code execution. Endpoint reachability and deployed authorization were not runtime-tested."
+    },
+    {
+      "Id": "CWE-23",
+      "Name": "Relative Path Traversal",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+      "Files": [
+        "src\\eShopWinForms\\Views\\CatalogView.cs:48-61",
+        "src\\eShopWCFService\\CatalogService.svc.cs:65-76",
+        "src\\eShopWCFService\\Models\\CatalogItem.cs:24-25",
+        "src\\eShopWCFService\\ICatalogService.cs:27-30"
+      ],
+      "Explanation": "Confidence: high for path escape, medium for practical impact. CatalogView.SetCatalogItems concatenates service-controlled Picturefilename into the catalog image directory at line 57 and calls Image.FromFile at line 58 without canonicalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the DataMember unchanged, and the WCF contract exposes these operations. A caller able to modify catalog data can supply ..\\\\ segments to open a local image outside the intended catalog directory under the desktop user identity, or crash rendering for invalid paths. Only image decoding/display is demonstrated, not arbitrary file exfiltration or remote code execution. Endpoint reachability and deployed authorization were not runtime-tested."
+    },
+    {
+      "Id": "CWE-99",
+      "Name": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "Category": "Injection Attacks",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "Files": [
+        "src\\eShopWinForms\\Views\\CatalogView.cs:55-59",
+        "src\\eShopWCFService\\CatalogService.svc.cs:65-76"
+      ],
+      "Explanation": "Confidence: high for uncontrolled image resource identifier; impact conditional on catalog write access and image readability. CatalogView.SetCatalogItems appends the WCF/DB-provided Picturefilename to a trusted asset directory and opens it with Image.FromFile. CreateCatalogItem and UpdateCatalogItem accept that member without restricting it. A modified catalog record with relative traversal selects a local image outside the intended directory or causes a rendering exception. This overlaps the path-traversal finding; it is not an independent arbitrary-code-execution finding. No runtime exploit performed."
+    }
+  ]
+}

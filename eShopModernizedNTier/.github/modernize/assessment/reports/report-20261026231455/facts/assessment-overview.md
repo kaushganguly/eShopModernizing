@@ -20,3 +20,9 @@ This assessment covers only `eShopModernizedNTier`. Application source and confi
 - The upgrade MCP tool wrote to its default scenario directory despite the configured output path; the generated artifacts were copied into this versioned report without changing application code.
 - These are static assessments, not proof of deployed behavior. Database availability, runtime connectivity, TLS, deployment secrets and production settings were not exercised.
 - Source citations describe this repository snapshot. Security results and their coverage limitations are included in the consolidated report.
+
+## Security results
+
+The [security assessment](../security/security-assessment.md) records 7 CVE advisories at medium severity or above and 10 CWE rule matches across 59 checks. The [machine-readable summary](../security/security-assessment.json) and seven individual scan result files are preserved alongside it.
+
+The dependency CLI could not load legacy web application targets. Advisory matching used manifests and existing resolved assets, which may be stale; a complete fresh service dependency graph was unavailable. These findings do not establish which packages are deployed. Several CWE classifications overlap and must not be interpreted as independent exploits.
