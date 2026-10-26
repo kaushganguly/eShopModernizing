@@ -42,7 +42,7 @@ optional
 - **Story Points:** 
 5
 - **Files:** 
-eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml
+eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24
 
 The SQL container manifest provides the SA_PASSWORD environment variable as a literal value at line 24, so the SQL administrative credential is stored in deployment configuration rather than retrieved from a secret store.
 
@@ -57,6 +57,8 @@ optional
 - **Story Points:** 
 5
 - **Files:** 
-eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml
+eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24
 
 The SQL container manifest provides the SA_PASSWORD environment variable as a literal value at line 24, so the SQL administrative credential is stored in deployment configuration rather than retrieved from a secret store.
+
+

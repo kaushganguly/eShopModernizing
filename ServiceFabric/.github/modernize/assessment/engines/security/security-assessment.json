@@ -24,7 +24,7 @@
       "StoryPoint": 5,
       "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
       "Files": [
-        "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml"
+        "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24"
       ],
       "Explanation": "The SQL container manifest provides the SA_PASSWORD environment variable as a literal value at line 24, so the SQL administrative credential is stored in deployment configuration rather than retrieved from a secret store."
     },
@@ -36,9 +36,11 @@
       "StoryPoint": 5,
       "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
       "Files": [
-        "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml"
+        "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24"
       ],
       "Explanation": "The SQL container manifest provides the SA_PASSWORD environment variable as a literal value at line 24, so the SQL administrative credential is stored in deployment configuration rather than retrieved from a secret store."
     }
   ]
 }
+
+
