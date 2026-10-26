@@ -632,6 +632,20 @@
       "storyPoint": 8
     },
     {
+      "id": "CWE-259",
+      "title": "Use of Hard-coded Password",
+      "category": "Credentials & Secrets",
+      "severity": "optional",
+      "description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "evidence": {
+        "files": [
+          "docker-compose.override.yml:20-26"
+        ],
+        "explanation": "The Compose service sets the SQL Server SA password to a literal sample credential, and the health check uses the same literal value for authentication. This credential is stored in a checked-in deployment configuration."
+      },
+      "storyPoint": 5
+    },
+    {
       "id": "CWE-778",
       "title": "Insufficient Logging",
       "category": "Credentials & Secrets",
@@ -645,6 +659,20 @@
         "explanation": "PicUploader.UploadImage logs only a generic processing-start message. The invalid-image rejection path returns HTTP 400 without recording the event, and successful uploads do not log the outcome or affected catalog item, leaving these security-relevant upload events without an auditable record."
       },
       "storyPoint": 3
+    },
+    {
+      "id": "CWE-798",
+      "title": "Use of Hard-coded Credentials",
+      "category": "Credentials & Secrets",
+      "severity": "optional",
+      "description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "evidence": {
+        "files": [
+          "docker-compose.override.yml:20-26"
+        ],
+        "explanation": "The Compose service sets the SQL Server SA password to a literal sample credential, and the health check uses the same literal value for authentication. This credential is stored in a checked-in deployment configuration."
+      },
+      "storyPoint": 5
     },
     {
       "id": "CWE-99",

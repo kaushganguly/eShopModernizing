@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Assessment - eShopModernizedWebForms</title>
+<style>
+:root {
+  --bg-primary: #ffffff;
+  --bg-card: #f8f9fa;
+  --bg-page: #f0f1f3;
+  --text-primary: #24292f;
+  --text-secondary: #57606a;
+  --text-muted: #6b7280;
+  --border-color: #d0d7de;
+  --border-light: #e1e4e8;
+  --link-color: #2563eb;
+  --color-mandatory: #E3008C;
+  --color-potential: #637CEF;
+  --color-optional: #A19F9D;
+  --font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  --font-mono: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-family); font-size: 13px; color: var(--text-primary); background: var(--bg-primary); line-height: 1.5; margin: 0; padding: 0; }
+a { color: var(--link-color); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Page layout ───────────────────────────────────────────── */
+.main { margin: 0; padding: 24px 32px; background: var(--bg-primary); }
+.back-link { color: var(--text-muted); font-size: 13px; margin-bottom: 16px; display: block; }
+h1 { font-weight: 600; font-size: 20px; color: var(--text-primary); margin-bottom: 20px; }
+
+/* ── Report cards (matches VS Code .vscode-report-card) ──── */
+.report-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 4px; padding: 12px; margin-bottom: 20px; }
+.report-card h2 { font-size: 14px; font-weight: 600; margin: 0; color: var(--text-primary); }
+.report-card-body { margin-top: 16px; }
+
+/* ── Component Information (two-column) ────────────────── */
+.app-info-container { display: flex; gap: 8px; flex-wrap: wrap; }
+.app-info-column { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 8px; }
+.app-info-row { display: flex; align-items: baseline; }
+.app-info-label { width: 136px; flex-shrink: 0; font-weight: 600; color: var(--text-primary); }
+.app-info-value { flex: 1; color: var(--text-primary); }
+
+/* ── Issue Summary (pie charts + legend) ─────────────────── */
+.cards-container { display: flex; align-items: stretch; gap: 20px; flex-wrap: wrap; }
+.issue-summary-card { flex: 2; }
+.domain-summary-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-around; }
+.domain-summary-item { flex: 1; min-width: 120px; text-align: center; padding: 0 16px; border-right: 1px solid var(--border-light); }
+.domain-summary-item:last-child { border-right: none; }
+.domain-summary-item h3 { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-top: 8px; }
+.domain-summary-item .count { font-size: 12px; color: var(--text-secondary); }
+.criticality-legend { display: flex; flex-wrap: wrap; gap: 15px; padding-top: 12px; justify-content: center; }
+.criticality-legend .legend-item { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-secondary); }
+.legend-swatch { display: inline-block; width: 1em; height: 1em; border-radius: 2px; }
+
+/* ── Issue list tables ───────────────────────────────────── */
+.issue-section { margin-top: 20px; }
+.issue-section h2 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.issue-table { width: 100%; border-collapse: collapse; table-layout: fixed; min-width: 600px; }
+.issue-table th { text-align: left; text-transform: uppercase; font-weight: 600; font-size: calc(13px * 0.875); padding: 6px 8px; background: var(--bg-card); border-bottom: 1px solid var(--border-color); color: var(--text-secondary); position: sticky; top: 0; z-index: 1; }
+.issue-table td { padding: 12px 8px; border-bottom: 1px solid var(--border-light); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: middle; }
+.col-issue { width: 55%; }
+.col-criticality { width: 25%; }
+.col-storypoint { width: 20%; }
+
+/* ── Target dropdown ─────────────────────────────────────── */
+.target-select-container { margin: 4px 0 16px 0; display: flex; align-items: center; gap: 8px; }
+.target-select-container label { font-weight: 600; color: var(--text-primary); font-size: 14px; }
+.target-select-container select { font-family: var(--font-family); font-size: 13px; padding: 4px 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary); cursor: pointer; }
+
+/* ── Filter bar ──────────────────────────────────────────── */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0 8px 0; align-items: center; }
+.multi-select { position: relative; display: inline-block; min-width: 140px; }
+.multi-select-btn { font-family: var(--font-family); font-size: 13px; padding: 4px 24px 4px 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary); cursor: pointer; width: 100%; text-align: left; position: relative; white-space: nowrap; }
+.multi-select-btn::after { content: '\25BE'; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 11px; color: var(--text-secondary); }
+.multi-select-dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 100%; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 100; margin-top: 2px; }
+.multi-select.open .multi-select-dropdown { display: block; }
+.multi-select-option { display: flex; align-items: center; gap: 6px; padding: 5px 10px; cursor: pointer; font-size: 13px; white-space: nowrap; }
+.multi-select-option:hover { background: var(--bg-secondary); }
+.multi-select-option input[type=checkbox] { margin: 0; cursor: pointer; }
+.clear-filters { font-size: 12px; color: var(--link-color); cursor: pointer; margin-left: 4px; }
+
+/* ── Criticality labels (colored square + text) ──────────── */
+.crit-label { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; white-space: nowrap; }
+.crit-square { display: inline-block; width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.crit-square-mandatory { background: var(--color-mandatory); }
+.crit-square-potential { background: var(--color-potential); }
+.crit-square-optional { background: var(--color-optional); }
+
+/* ── Expandable rows ─────────────────────────────────────── */
+.expand-btn { background: none; border: none; cursor: pointer; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 11px; transition: transform 0.15s; padding: 0; vertical-align: middle; flex-shrink: 0; }
+.expand-btn.open { transform: rotate(90deg); }
+.issue-title-cell { display: flex; align-items: center; gap: 4px; }
+.detail-row td { padding: 0; border-bottom: 1px solid var(--border-light); white-space: normal; overflow: visible; text-overflow: clip; }
+.detail-content { display: flex; gap: 0; padding: 8px 8px 8px 32px; min-width: 0; }
+.file-list { flex: 0 0 50%; min-width: 0; overflow: hidden; }
+.file-list table { width: 100%; border-collapse: collapse; }
+.file-list th { font-size: calc(13px * 0.875); text-transform: uppercase; font-weight: 600; color: var(--text-secondary); padding: 6px 8px; border-bottom: 1px solid var(--border-color); text-align: left; height: 32px; }
+.file-list td { font-size: 13px; padding: 6px 8px; border-bottom: 1px solid var(--border-light); color: var(--text-primary); }
+.file-list .file-path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 300px; display: block; }
+.file-list .position { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
+.explanation-panel { flex: 1; padding-left: 16px; min-width: 0; overflow-wrap: break-word; word-wrap: break-word; }
+.explanation-panel h4 { font-size: calc(13px * 0.875); text-transform: uppercase; font-weight: 600; color: var(--text-secondary); padding: 6px 0; border-bottom: 1px solid var(--border-color); height: 32px; margin: 0; }
+.explanation-panel p { font-size: 13px; padding: 8px 0; color: var(--text-primary); line-height: 1.6; white-space: normal; word-break: break-word; }
+
+/* ── Experimental badge ──────────────────────────────────── */
+.badge-experimental { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: #fef9c3; color: #854d0e; vertical-align: middle; margin-left: 8px; cursor: default; }
+
+/* ── Footer ──────────────────────────────────────────────── */
+.footer { text-align: center; margin-top: 24px; color: var(--text-muted); font-size: 13px; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 800px) {
+  .main { padding: 16px; }
+  .app-info-container { flex-direction: column; }
+  .domain-summary-container { flex-direction: column; }
+  .domain-summary-item { border-right: none; border-bottom: 1px solid var(--border-light); padding-bottom: 12px; }
+  .detail-content { flex-direction: column; }
+  .file-list { flex: none; width: 100%; }
+  .explanation-panel { padding-left: 0; padding-top: 8px; }
+}
+/* ── Tab navigation ──────────────────────────────────────── */
+.tab-nav { display: flex; gap: 0; border-bottom: 1px solid var(--border-color); margin-bottom: 28px; flex-wrap: wrap; }
+.tab-btn { background: none; border: none; border-bottom: 2px solid transparent; padding: 10px 18px; font-size: 13px; font-family: var(--font-family); color: var(--text-secondary); cursor: pointer; margin-bottom: -1px; white-space: nowrap; position: relative; }
+.tab-btn:hover { color: var(--text-primary); }
+.tab-btn.active { color: var(--link-color); border-bottom-color: var(--link-color); font-weight: 600; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── Tooltip on tab ──────────────────────────────────────── */
+.tab-btn[data-tooltip]::after { content: attr(data-tooltip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #24292f; color: #ffffff; font-size: 12px; font-weight: 400; padding: 6px 10px; border-radius: 4px; white-space: normal; width: max-content; max-width: 260px; text-align: center; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 100; }
+.tab-btn[data-tooltip]:hover::after { opacity: 1; }
+
+/* ── Fact content — prose column ─────────────────────────── */
+.fact-content { max-width: 860px; margin: 0 auto; line-height: 1.75; color: var(--text-primary); font-size: 14px; }
+.fact-content h1 { font-size: 22px; font-weight: 700; margin: 0 0 6px 0; color: var(--text-primary); letter-spacing: -0.01em; }
+.fact-content h1 + p { margin-top: 6px; color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; }
+.fact-content h2 { font-size: 17px; font-weight: 700; margin: 36px 0 12px 0; padding-bottom: 6px; border-bottom: 1px solid var(--border-color); color: var(--text-primary); letter-spacing: -0.01em; }
+.fact-content h3 { font-size: 14px; font-weight: 700; margin: 24px 0 8px 0; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; color: var(--text-secondary); }
+.fact-content p { margin: 10px 0; color: var(--text-primary); }
+.fact-content ul, .fact-content ol { margin: 10px 0 10px 22px; }
+.fact-content li { margin: 5px 0; }
+.fact-content a { color: var(--link-color); }
+.fact-content a:hover { text-decoration: underline; }
+
+/* ── Fact tables ─────────────────────────────────────────── */
+.table-wrap { overflow-x: auto; margin: 16px 0; }
+.fact-content table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 13px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border-color); }
+.fact-content thead { background: var(--bg-card); }
+.fact-content th { text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 14px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
+.fact-content td { padding: 9px 14px; border-bottom: 1px solid var(--border-light); vertical-align: top; color: var(--text-primary); }
+.fact-content tr:last-child td { border-bottom: none; }
+.fact-content tbody tr:hover { background: #f6f8fa; }
+
+/* ── Fact code ───────────────────────────────────────────── */
+.fact-content code { font-family: var(--font-mono); font-size: 12px; background: #f0f1f3; padding: 2px 6px; border-radius: 4px; color: #c7254e; }
+.fact-content pre { background: #f6f8fa; border: 1px solid var(--border-light); border-radius: 6px; padding: 14px 16px; overflow-x: auto; margin: 14px 0; }
+.fact-content pre code { background: none; color: var(--text-primary); padding: 0; border-radius: 0; }
+.fact-content hr { border: none; border-top: 1px solid var(--border-light); margin: 28px 0; }
+.fact-content strong { font-weight: 600; }
+.fact-content em { font-style: italic; }
+.fact-content blockquote { border-left: 3px solid var(--border-color); margin: 12px 0; padding: 4px 16px; color: var(--text-secondary); }
+.fact-unavailable { padding: 32px 0; }
+.fact-unavailable h3 { font-size: 16px; font-weight: 600; color: var(--text-primary); text-transform: none; letter-spacing: 0; margin: 0 0 12px 0; }
+.fact-unavailable p { margin: 0 0 8px 0; color: var(--text-secondary); }
+.fact-unavailable ol, .fact-unavailable ul { margin: 0 0 0 22px; color: var(--text-primary); }
+.fact-unavailable li { margin: 6px 0; }
+
+/* ── Mermaid diagram card ─────────────────────────────────── */
+.mermaid { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 8px; padding: 24px 16px; margin: 20px 0; overflow-x: auto; text-align: center; cursor: pointer; position: relative; }
+.mermaid:hover { border-color: var(--border-color); }
+.mermaid svg { max-width: 100%; height: auto !important; display: inline-block; }
+.mermaid-zoom-hint { position: absolute; top: 8px; right: 10px; font-size: 11px; color: var(--text-muted); opacity: 0; transition: opacity 0.15s; pointer-events: none; }
+.mermaid:hover .mermaid-zoom-hint { opacity: 1; }
+
+/* ── Diagram lightbox ────────────────────────────────────── */
+.diagram-lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.7); backdrop-filter: blur(2px); align-items: center; justify-content: center; cursor: zoom-out; padding: 48px 32px; }
+.diagram-lightbox.open { display: flex; }
+.diagram-lightbox-inner { background: #ffffff; border-radius: 10px; padding: 32px; width: 88vw; max-height: 88vh; overflow: hidden; cursor: default; box-shadow: 0 24px 64px rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: center; }
+.diagram-lightbox-inner svg { width: 100% !important; height: auto !important; max-height: 76vh; display: block; }
+.diagram-lightbox-close { position: fixed; top: 20px; right: 24px; background: #ffffff; border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text-primary); box-shadow: 0 2px 8px rgba(0,0,0,0.2); z-index: 1001; }
+.diagram-lightbox-close:hover { background: var(--bg-card); }
+.diagram-lightbox-hint { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.55); color: #ffffff; font-size: 12px; padding: 6px 14px; border-radius: 20px; pointer-events: none; white-space: nowrap; z-index: 1001; }
+</style>
+<script>
+window.__mermaidPending = [];
+window.__mermaidReady = false;
+window.__renderMermaidIn = function(container) {
+  if (container) { window.__mermaidPending.push(container); }
+};
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: false, theme: 'default', flowchart: { useMaxWidth: true }, sequence: { useMaxWidth: true } });
+
+window.__renderMermaidIn = function(container) {
+  var nodes = container ? container.querySelectorAll('.mermaid:not([data-processed])') : [];
+  if (nodes.length > 0) {
+    mermaid.run({ nodes: Array.from(nodes) }).then(function() {
+      nodes.forEach(function(node) {
+        if (!node.querySelector('.mermaid-zoom-hint')) {
+          var hint = document.createElement('span');
+          hint.className = 'mermaid-zoom-hint';
+          hint.textContent = 'Click to expand';
+          node.appendChild(hint);
+        }
+      });
+    });
+  }
+};
+
+var drained = new Set();
+(window.__mermaidPending || []).forEach(function(c) {
+  if (!drained.has(c)) { drained.add(c); window.__renderMermaidIn(c); }
+});
+window.__mermaidPending = [];
+window.__mermaidReady = true;
+
+function renderActivePanels() {
+  document.querySelectorAll('.tab-panel.active').forEach(function(p) {
+    if (!drained.has(p)) { drained.add(p); window.__renderMermaidIn(p); }
+  });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderActivePanels);
+} else {
+  renderActivePanels();
+}
+</script>
+</head><body>
+<div id="diagram-lightbox" class="diagram-lightbox" role="dialog" aria-modal="true">
+  <button class="diagram-lightbox-close" id="diagram-lightbox-close" aria-label="Close">&#x2715;</button>
+  <div class="diagram-lightbox-hint">Scroll to zoom &nbsp;&middot;&nbsp; Drag to pan &nbsp;&middot;&nbsp; Double-click to reset</div>
+  <div class="diagram-lightbox-inner" id="diagram-lightbox-inner"></div>
+</div>
+<div class="main">
+<h1>eShopModernizedWebForms</h1>
+<div class="report-card">
+  <h2>Component Information</h2>
+  <div class="report-card-body">
+    <div class="app-info-container">
+      <div class="app-info-column">
+        <div class="app-info-row"><span class="app-info-label">Component Name</span><span class="app-info-value">eShopModernizedWebForms</span></div>
+        <div class="app-info-row"><span class="app-info-label">Effort</span><span class="app-info-value" id="effort-display">L (total story points: 91)</span></div>
+      </div>
+      <div class="app-info-column">
+        <div class="app-info-row"><span class="app-info-label">Build Tools</span><span class="app-info-value">MSBuild</span></div>
+        <div class="app-info-row"><span class="app-info-label">Frameworks</span><span class="app-info-value">.NETFramework,Version=v4.7.2</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="tab-issues" data-tooltip="Issues detected in the source code">Issues</button>
+  <button class="tab-btn" data-tab="tab-arch" data-tooltip="How the app&#x27;s layers connect — from UI to data.">Architecture</button>
+  <button class="tab-btn" data-tab="tab-api" data-tooltip="Endpoints exposed by this app and how services communicate.">API Contracts</button>
+  <button class="tab-btn" data-tab="tab-config" data-tooltip="Environment settings, runtime profiles, and deployment manifests.">Configuration</button>
+  <button class="tab-btn" data-tab="tab-workflows" data-tooltip="Domain entities and the core flows users move through.">Business Workflows</button>
+  <button class="tab-btn" data-tab="tab-deps" data-tooltip="Libraries and frameworks this app depends on, grouped by category.">Dependencies</button>
+  <button class="tab-btn" data-tab="tab-data" data-tooltip="Database schema, entity relationships, and persistence behavior.">Data Model</button>
+</nav>
+<div id="tab-issues" class="tab-panel active">
+<div class="target-select-container">
+  <label for="target-select">Target Compute Service:</label>
+  <select id="target-select" onchange="onTargetChange(this.value)">
+    <option value="AppService.Windows">Azure App Service</option>
+    <option value="AppService.Linux">Azure Kubernetes Service</option>
+    <option value="AKS.Linux">Azure Container Apps</option>
+    <option value="AKS.Windows">Azure App Service Container</option>
+    <option value="ACA">Azure App Service Managed Instance</option>
+  </select>
+</div>
+<div class="report-card">
+  <h2>Issue Summary</h2>
+  <div class="report-card-body">
+    <div class="domain-summary-container" id="donut-container">
+      <div class="domain-summary-item">
+<svg viewBox="0 0 100 100" width="100" height="100" style="display:block;margin:0 auto;transform:rotate(-90deg);">
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-potential)" stroke-width="15" stroke-dasharray="108.46 219.91" stroke-dashoffset="-0.00"/>
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-optional)" stroke-width="15" stroke-dasharray="108.46 219.91" stroke-dashoffset="-109.96"/>
+</svg>
+
+        <h3>Cloud Readiness</h3>
+        <div class="count">6 issues</div>
+      </div>
+      <div class="domain-summary-item">
+<svg viewBox="0 0 100 100" width="100" height="100" style="display:block;margin:0 auto;transform:rotate(-90deg);">
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-mandatory)" stroke-width="15" stroke-dasharray="130.45 219.91" stroke-dashoffset="-0.00"/>
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-potential)" stroke-width="15" stroke-dasharray="42.48 219.91" stroke-dashoffset="-131.95"/>
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-optional)" stroke-width="15" stroke-dasharray="42.48 219.91" stroke-dashoffset="-175.93"/>
+</svg>
+
+        <h3>DotNET Upgrade</h3>
+        <div class="count">10 issues</div>
+      </div>
+      <div class="domain-summary-item">
+<svg viewBox="0 0 100 100" width="100" height="100" style="display:block;margin:0 auto;transform:rotate(-90deg);">
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-potential)" stroke-width="15" stroke-dasharray="159.77 219.91" stroke-dashoffset="-0.00"/>
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-optional)" stroke-width="15" stroke-dasharray="57.14 219.91" stroke-dashoffset="-161.27"/>
+</svg>
+
+        <h3>Security</h3>
+        <div class="count">15 issues</div>
+      </div>
+    </div>
+    <div class="criticality-legend">
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--color-mandatory)"></span>Mandatory</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--color-potential)"></span>Potential</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--color-optional)"></span>Optional</div>
+    </div>
+  </div>
+</div>
+<div class="filter-bar" id="filter-bar">
+  <div class="multi-select" id="domain-ms">
+    <button class="multi-select-btn" onclick="toggleMultiSelect('domain-ms')">Domain</button>
+    <div class="multi-select-dropdown">
+      <label class="multi-select-option"><input type="checkbox" value="cloud-readiness" onchange="onMultiSelectChange('domain-ms','Domain')"/> Cloud Readiness</label>
+      <label class="multi-select-option"><input type="checkbox" value="dotnet-upgrade" onchange="onMultiSelectChange('domain-ms','Domain')"/> DotNET Upgrade</label>
+      <label class="multi-select-option"><input type="checkbox" value="security" onchange="onMultiSelectChange('domain-ms','Domain')"/> Security</label>
+    </div>
+  </div>
+  <div class="multi-select" id="criticality-ms">
+    <button class="multi-select-btn" onclick="toggleMultiSelect('criticality-ms')">Criticality</button>
+    <div class="multi-select-dropdown">
+      <label class="multi-select-option"><input type="checkbox" value="mandatory" onchange="onMultiSelectChange('criticality-ms','Criticality')"/> Mandatory</label>
+      <label class="multi-select-option"><input type="checkbox" value="potential" onchange="onMultiSelectChange('criticality-ms','Criticality')"/> Potential</label>
+      <label class="multi-select-option"><input type="checkbox" value="optional" onchange="onMultiSelectChange('criticality-ms','Criticality')"/> Optional</label>
+    </div>
+  </div>
+  <a class="clear-filters" href="javascript:void(0)" onclick="clearAllFilters()">Clear all</a>
+</div>
+<div class="issue-section" data-domain="cloud-readiness">
+  <h2>Cloud Readiness</h2>
+  <table class="issue-table">
+    <colgroup><col class="col-issue"/><col class="col-criticality"/><col class="col-storypoint"/></colgroup>
+    <thead><tr><th>Issue Category</th><th>Criticality</th><th>Story Point</th></tr></thead>
+    <tbody>
+    <tr class="issue-row" data-criticality="potential" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:5,&quot;severity&quot;:&quot;potential&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:5,&quot;severity&quot;:&quot;potential&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:5,&quot;severity&quot;:&quot;potential&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:5,&quot;severity&quot;:&quot;potential&quot;},&quot;ACA&quot;:{&quot;effort&quot;:5,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:5,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:5,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:5,&quot;severity&quot;:&quot;potential&quot;}}' data-default-effort="5" data-default-severity="potential" data-rule="Security.0103" onclick="toggleRow('row-cloudreadiness-0', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-0">&#x276F;</button> Certificate management dependency detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">5</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-0" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\eShopModernizedWebForms.csproj">src\eShopModernizedWebForms\eShopModernizedWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\eShopModernizedWebForms.csproj">src\eShopModernizedWebForms\eShopModernizedWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Certificate management packages or configurations detected. This may indicate the application is using local or custom certificate handling, which could require adjustments when migrating to Azure. Consider using Azure Key Vault Certificates for secure storage, lifecycle management, and integration with Azure services.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;ACA&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;}}' data-default-effort="3" data-default-severity="potential" data-rule="Database.0002" onclick="toggleRow('row-cloudreadiness-1', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-1">&#x276F;</button> SQL database connection detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-1" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\Web.config">src\eShopModernizedWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>SQL database connection detected.</p><p>Ensure the database is available/reachable on Azure.</p><p>If it is not, there are multiple ways you can move your data to Azure:<br/>    1. Migrate to Azure SQL Database.<br/>    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don’t want to use a VM.<br/>    3. Migrate your database servers directly to SQL Server on Azure VMs.</p><p>To assess database migration effort, you can use Azure Migrate tool, see the link below.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:1,&quot;severity&quot;:&quot;potential&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:1,&quot;severity&quot;:&quot;potential&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:1,&quot;severity&quot;:&quot;potential&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:1,&quot;severity&quot;:&quot;potential&quot;},&quot;ACA&quot;:{&quot;effort&quot;:1,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:1,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:1,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:1,&quot;severity&quot;:&quot;potential&quot;}}' data-default-effort="1" data-default-severity="potential" data-rule="Local.0006" onclick="toggleRow('row-cloudreadiness-2', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-2">&#x276F;</button> Hardcoded URLs detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-2" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\App_Start\SqlAccessTokenProvider.cs">src\eShopModernizedWebForms\App_Start\SqlAccessTokenProvider.cs</span></td><td><span class="position">Line 30</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Your application has hardcoded URLs that might correspond to services that are not accessible on Azure.</p><p>Review and ensure that the application is attempting to access URLs that would be available from Azure. You might need to migrate those services to Azure too, this way you will get the benefit of lower latency in the cloud.</p><p>If your application needs to depend on services that run on-premises, you can connect your Azure and local networks with ExpressRoute, Hybrid Connections, or VPN solutions.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;ACA&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;}}' data-default-effort="3" data-default-severity="optional" data-rule="Scale.0001" onclick="toggleRow('row-cloudreadiness-3', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-3">&#x276F;</button> Static content detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-3" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\eShopModernizedWebForms.csproj">src\eShopModernizedWebForms\eShopModernizedWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Static content detected.</p><p>Your current approach of serving static content directly might lead to increased costs, performance issues, maintenance challenges (requiring application redeployment for content changes), and security risks.</p><p>Consider moving static content to Azure Blob Storage and adding Azure CDN.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;ACA&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;}}' data-default-effort="3" data-default-severity="optional" data-rule="Database.0003" onclick="toggleRow('row-cloudreadiness-4', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-4">&#x276F;</button> System.Data.SqlClient dependency detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-4" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\Web.config">src\eShopModernizedWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>System.Data.SqlClient dependency is detected.</p><p>While System.Data.SqlClient will work in Azure, the newer Microsoft.Data.SqlClient package is the primary .NET SQL client moving forward and receiving the latest features. For example, Microsoft.Data.SqlClient easily allows use of Azure Managed Identity from a connection string.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;ACA&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;}}' data-default-effort="3" data-default-severity="optional" data-rule="Security.0003" onclick="toggleRow('row-cloudreadiness-5', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-5">&#x276F;</button> Hardcoded sensitive data detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-5" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\Web.config">src\eShopModernizedWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Hardcoded sensitive data detected.</p><p>If you are targeting Managed Instance on Azure App Service, externalize secrets to Key Vault/App Configuration; use managed identity instead of passwords or embedded connection strings.</p><p>While if targeting other Azure compute services:</p><p>Avoid placing sensitive data such as passwords, ids, tokens etc., directly in config files and code since it compromises the security of your application.</p><p>Use Azure App Configuration or Azure KeyVault to store secrets.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="issue-section" data-domain="dotnet-upgrade">
+  <h2>DotNET Upgrade <a href="scenarios/dotnet-version-upgrade/assessment.html" style="font-size:12px;font-weight:400;margin-left:12px;">View Details</a></h2>
+  <table class="issue-table">
+    <colgroup><col class="col-issue"/><col class="col-criticality"/><col class="col-storypoint"/></colgroup>
+    <thead><tr><th>Issue Category</th><th>Criticality</th><th>Story Point</th></tr></thead>
+    <tbody>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{}' data-default-effort="1" data-default-severity="mandatory" data-rule="NuGet.0003" onclick="toggleRow('row-dotnetupgrade-0', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-0">&#x276F;</button> NuGet package functionality is included with framework reference</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-0" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\eShopModernizedWebForms.csproj">src\eShopModernizedWebForms\eShopModernizedWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>NuGet package functionality is included with framework reference.</p><p>Package needs to be removed.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{}' data-default-effort="1" data-default-severity="mandatory" data-rule="NuGet.0001" onclick="toggleRow('row-dotnetupgrade-1', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-1">&#x276F;</button> NuGet package is incompatible</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-1" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\eShopModernizedWebForms.csproj">src\eShopModernizedWebForms\eShopModernizedWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>NuGet package is incompatible with selected target framework.</p><p>Package needs to be upgraded to a version supporting selected project target framework. If there no new package versions supporting new target framework, different package needs to be used and all code needs to be upgraded to new API.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{}' data-default-effort="1" data-default-severity="mandatory" data-rule="Binding.0006" onclick="toggleRow('row-dotnetupgrade-2', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-2">&#x276F;</button> Manual redirect conflicts with auto-generated version</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-2" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\Web.config">src\eShopModernizedWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>An explicit binding redirect targets a different version than what auto-generation would produce. MSBuild will throw MSB3836 conflict error because it cannot determine which redirect wins.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{}' data-default-effort="1" data-default-severity="mandatory" data-rule="Project.0001" onclick="toggleRow('row-dotnetupgrade-3', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-3">&#x276F;</button> Project file needs to be converted to SDK-style</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-3" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\eShopModernizedWebForms.csproj">src\eShopModernizedWebForms\eShopModernizedWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Project file needs to be converted to SDK-style. Modern .NET framework projects require a change in the project file format and use SDK corresponding to project flavor and functionality.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{}' data-default-effort="1" data-default-severity="mandatory" data-rule="Project.0002" onclick="toggleRow('row-dotnetupgrade-4', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-4">&#x276F;</button> Project&#x27;s target framework(s) needs to be changed</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-4" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\eShopModernizedWebForms.csproj">src\eShopModernizedWebForms\eShopModernizedWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Project&#x27;s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.</p><p>During upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{}' data-default-effort="1" data-default-severity="mandatory" data-rule="Feature.1000" onclick="toggleRow('row-dotnetupgrade-5', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-5">&#x276F;</button> Convert application initialization code from Global.asax.cs to .NET Core and clean up Global.asax.cs</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-5" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\Global.asax.cs">src\eShopModernizedWebForms\Global.asax.cs</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Convert application initialization code from Global.asax.cs to .NET Core and clean up Global.asax.cs.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" data-targets='{}' data-default-effort="1" data-default-severity="potential" data-rule="NuGet.0002" onclick="toggleRow('row-dotnetupgrade-6', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-6">&#x276F;</button> NuGet package upgrade is recommended</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-6" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\eShopModernizedWebForms.csproj">src\eShopModernizedWebForms\eShopModernizedWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>NuGet package upgrade is recommended for selected target framework.</p><p>Standard .NET packages are recommended to have versions matching version of .NET that project targets.</p><p>Some other packages also are known to work better for selected target frameworks.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" data-targets='{}' data-default-effort="1" data-default-severity="potential" data-rule="Binding.0007" onclick="toggleRow('row-dotnetupgrade-7', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-7">&#x276F;</button> Binding redirect forces version downgrade</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-7" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\Web.config">src\eShopModernizedWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>A binding redirect&#x27;s newVersion is lower than the version provided by the NuGet package. This forced downgrade usually causes a load failure at runtime because the expected assembly version is not available.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" data-targets='{}' data-default-effort="1" data-default-severity="optional" data-rule="NuGet.0005" onclick="toggleRow('row-dotnetupgrade-8', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-8">&#x276F;</button> NuGet package is deprecated</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-8" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\eShopModernizedWebForms.csproj">src\eShopModernizedWebForms\eShopModernizedWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>NuGet package is deprecated.</p><p>Go to its documentation and if there is a guidance for replacement of functionality provided by this package.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" data-targets='{}' data-default-effort="1" data-default-severity="optional" data-rule="NuGet.0004" onclick="toggleRow('row-dotnetupgrade-9', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-9">&#x276F;</button> NuGet package contains security vulnerability</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-9" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopModernizedWebForms\eShopModernizedWebForms.csproj">src\eShopModernizedWebForms\eShopModernizedWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>NuGet package contains security vulnerabilities.</p><p>Package needs to be upgraded to a newer version that addresses known security vulnerabilities.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="issue-section" data-domain="security">
+  <h2>Security <span class="badge-experimental" title="These issues were generated by AI and may contain inaccuracies or incomplete information. Please review carefully.">Experimental</span></h2>
+  <table class="issue-table">
+    <colgroup><col class="col-issue"/><col class="col-criticality"/><col class="col-storypoint"/></colgroup>
+    <thead><tr><th>Issue Category</th><th>Criticality</th><th>Story Point</th></tr></thead>
+    <tbody>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-0', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-0">&#x276F;</button> CWE-662: Improper Synchronization</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">8</td>
+    </tr>
+    <tr class="detail-row" id="row-security-0" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27">src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15">src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:47-66">src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:47-66</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-1', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-1">&#x276F;</button> CWE-820: Missing Synchronization</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">8</td>
+    </tr>
+    <tr class="detail-row" id="row-security-1" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27">src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15">src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:47-66">src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:47-66</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-2', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-2">&#x276F;</button> CWE-682: Incorrect Calculation</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">5</td>
+    </tr>
+    <tr class="detail-row" id="row-security-2" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Default.aspx.cs:31-35">src/eShopModernizedWebForms/Default.aspx.cs:31-35</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/CatalogService.cs:20-33">src/eShopModernizedWebForms/Services/CatalogService.cs:20-33</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/ViewModel/PaginatedItemsViewModel.cs:18-24">src/eShopModernizedWebForms/ViewModel/PaginatedItemsViewModel.cs:18-24</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-3', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-3">&#x276F;</button> CWE-789: Memory Allocation with Excessive Size Value</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">5</td>
+    </tr>
+    <tr class="detail-row" id="row-security-3" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Default.aspx.cs:31-35">src/eShopModernizedWebForms/Default.aspx.cs:31-35</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/CatalogService.cs:20-30">src/eShopModernizedWebForms/Services/CatalogService.cs:20-30</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-4', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-4">&#x276F;</button> CWE-543: Use of Singleton Pattern Without Synchronization in a Multithreaded Context</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">5</td>
+    </tr>
+    <tr class="detail-row" id="row-security-4" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27">src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15">src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:47-66">src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:47-66</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product uses the singleton pattern when creating a resource within a multithreaded environment.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-5', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-5">&#x276F;</button> CWE-567: Unsynchronized Access to Shared Data in a Multithreaded Context</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">5</td>
+    </tr>
+    <tr class="detail-row" id="row-security-5" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27">src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15">src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:47-66">src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:47-66</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-6', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-6">&#x276F;</button> CWE-681: Incorrect Conversion between Numeric Types</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-security-6" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Models/CatalogItemHiLoGenerator.cs:19-20">src/eShopModernizedWebForms/Models/CatalogItemHiLoGenerator.cs:19-20</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Models/Infrastructure/CatalogDBInitializer.cs:323-327">src/eShopModernizedWebForms/Models/Infrastructure/CatalogDBInitializer.cs:323-327</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-7', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-7">&#x276F;</button> CWE-772: Missing Release of Resource after Effective Lifetime</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-security-7" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:107-115">src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:107-115</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-8', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-8">&#x276F;</button> CWE-775: Missing Release of File Descriptor or Handle after Effective Lifetime</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-security-8" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:107-115">src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:107-115</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-9', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-9">&#x276F;</button> CWE-778: Insufficient Logging</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-security-9" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Catalog/PicUploader.asmx.cs:30-49">src/eShopModernizedWebForms/Catalog/PicUploader.asmx.cs:30-49</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Catalog/PicUploader.asmx.cs:58-61">src/eShopModernizedWebForms/Catalog/PicUploader.asmx.cs:58-61</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-10', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-10">&#x276F;</button> CWE-99: Improper Control of Resource Identifiers (&#x27;Resource Injection&#x27;)</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-security-10" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Catalog/PicUploader.asmx.cs:41-52">src/eShopModernizedWebForms/Catalog/PicUploader.asmx.cs:41-52</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:87-97">src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:87-97</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" onclick="toggleRow('row-security-11', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-11">&#x276F;</button> CWE-259: Use of Hard-coded Password</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">5</td>
+    </tr>
+    <tr class="detail-row" id="row-security-11" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="docker-compose.override.yml:20-26">docker-compose.override.yml:20-26</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" onclick="toggleRow('row-security-12', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-12">&#x276F;</button> CWE-798: Use of Hard-coded Credentials</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">5</td>
+    </tr>
+    <tr class="detail-row" id="row-security-12" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="docker-compose.override.yml:20-26">docker-compose.override.yml:20-26</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product contains hard-coded credentials, such as a password or cryptographic key.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" onclick="toggleRow('row-security-13', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-13">&#x276F;</button> CVE-2026-40021: Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-security-13" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/packages.config:11">src/eShopModernizedWebForms/packages.config:11</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p><a href="https://github.com/advisories/GHSA-4f7c-pmjv-c25w" target="_blank" rel="noopener noreferrer">CVE-2026-40021</a>: Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters</p><p>Severity: MEDIUM</p><p>Affected dependencies:<br/>  - log4net 2.0.10 (packages.config:11); vulnerable range &lt; 3.3.0</p><p>Recommended fix: upgrade affected packages to a patched version listed by the advisory.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" onclick="toggleRow('row-security-14', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-14">&#x276F;</button> CVE-2024-21319: Microsoft ASP.NET Core project templates vulnerable to denial of service</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-security-14" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/packages.config:53">src/eShopModernizedWebForms/packages.config:53</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopModernizedWebForms/packages.config:98">src/eShopModernizedWebForms/packages.config:98</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p><a href="https://github.com/advisories/GHSA-59j7-ghrg-fj52" target="_blank" rel="noopener noreferrer">CVE-2024-21319</a>: Microsoft ASP.NET Core project templates vulnerable to denial of service</p><p>Severity: MEDIUM</p><p>Affected dependencies:<br/>  - System.IdentityModel.Tokens.Jwt 5.6.0 (packages.config:98); vulnerable range &lt; 5.7.0<br/>  - System.IdentityModel.Tokens.Jwt 5.6.0 (packages.config:98); vulnerable range &gt;= 6.5.0, &lt; 6.34.0<br/>  - System.IdentityModel.Tokens.Jwt 5.6.0 (packages.config:98); vulnerable range &gt;= 7.0.0-preview, &lt; 7.1.2<br/>  - Microsoft.IdentityModel.JsonWebTokens 5.6.0 (packages.config:53); vulnerable range &lt; 5.7.0<br/>  - Microsoft.IdentityModel.JsonWebTokens 5.6.0 (packages.config:53); vulnerable range &gt;= 6.5.0, &lt; 6.34.0<br/>  - Microsoft.IdentityModel.JsonWebTokens 5.6.0 (packages.config:53); vulnerable range &gt;= 7.0.0-preview, &lt; 7.1.2</p><p>Recommended fix: upgrade affected packages to a patched version listed by the advisory.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</div><!-- #tab-issues -->
+<div id="tab-arch" class="tab-panel">
+  <div class="fact-content"><h1 id="architecture-diagram">Architecture Diagram</h1>
+<p>The application is a server-rendered catalog management website with an optional image-upload endpoint. It runs as a single .NET Framework application and uses configuration-selected implementations for data, identity, and image storage.</p>
+<h2 id="application-architecture">Application Architecture</h2>
+<div class="mermaid">
+flowchart TD
+    Browser["Browser"]
+    subgraph App["ASP.NET Web Forms application"]
+        Pages["Web Forms pages and routing"]
+        Upload["ASMX image upload"]
+        Auth["OWIN authentication"]
+        Services["Catalog and image services"]
+        EF["Entity Framework 6"]
+        Config["Configuration builders"]
+        Telemetry["Logging and telemetry"]
+    end
+    SQL[("SQL Server")]
+    Blob[("Azure Blob Storage")]
+    Redis[("Redis session store optional")]
+    AAD["Azure Active Directory optional"]
+    Vault["Azure Key Vault optional"]
+    Insights["Application Insights"]
+
+    Browser -->|"HTTP and form postbacks"| Pages
+    Browser -->|"image upload"| Upload
+    Pages --> Auth
+    Upload --> Services
+    Pages --> Services
+    Services -->|"catalog queries"| EF
+    EF -->|"SQL"| SQL
+    Services -->|"image operations when enabled"| Blob
+    Config -->|"configuration values"| Vault
+    Config -->|"identity settings"| AAD
+    Auth -->|"OpenID Connect when enabled"| AAD
+    Auth -.->|"session state if configured"| Redis
+    Telemetry --> Insights
+</div>
+<h3 id="technology-stack-summary">Technology Stack Summary</h3>
+<div class="table-wrap"><table><thead><tr>
+<th>Layer</th><th>Technology</th><th>Version</th><th>Purpose</th>
+</tr></thead><tbody>
+<tr><td>Presentation</td><td>ASP.NET Web Forms</td><td>.NET Framework 4.7.2</td><td>Server-rendered catalog and administration pages</td></tr>
+<tr><td>Business logic</td><td>C# and Autofac</td><td>Autofac 4.9.4</td><td>Catalog and image services with dependency injection</td></tr>
+<tr><td>Data access</td><td>Entity Framework</td><td>6.3.0</td><td>SQL Server persistence</td></tr>
+<tr><td>Identity</td><td>OWIN and OpenID Connect</td><td>OWIN.Security.OpenIdConnect 4.0.1</td><td>Optional Azure Active Directory sign-in</td></tr>
+<tr><td>Image storage</td><td>Azure Storage client</td><td>9.3.3</td><td>Optional Azure Blob image storage</td></tr>
+<tr><td>Observability</td><td>log4net and Application Insights</td><td>2.0.10 / 2.11.0</td><td>Application logging and telemetry</td></tr>
+</tbody></table></div>
+<h3 id="data-storage-external-services">Data Storage & External Services</h3>
+<p>Catalog records are stored in SQL Server through Entity Framework 6. Azure Blob Storage is an optional image backend; local images are used by the mock implementation. Azure Active Directory, Key Vault, Application Insights, and Redis-backed session state are configuration-dependent integrations. No message broker communication was found in the application source.</p>
+<h3 id="key-architectural-decisions">Key Architectural Decisions</h3>
+<ul>
+<li>Autofac selects mock or database-backed catalog services and local or Azure image storage from configuration.</li>
+<li>Entity Framework owns relational persistence; catalog images are stored separately from catalog metadata.</li>
+<li>The application uses server-rendered Web Forms and an ASMX method rather than a separate REST API or gateway.</li>
+</ul>
+<h2 id="component-relationships">Component Relationships</h2>
+<div class="mermaid">
+flowchart LR
+    subgraph Presentation["Presentation"]
+        CatalogPages["Catalog pages"]
+        HomePage["Default page"]
+        Uploader["PicUploader ASMX"]
+    end
+    subgraph Business["Business logic"]
+        CatalogService["ICatalogService implementation"]
+        ImageService["IImageService implementation"]
+    end
+    subgraph DataAccess["Data access"]
+        Context["CatalogDBContext"]
+        Entities["Catalog entities"]
+    end
+    subgraph Infrastructure["Infrastructure"]
+        Autofac["Autofac module"]
+        OWIN["OWIN pipeline"]
+        Telemetry["Logging and telemetry"]
+        SQL[("SQL Server")]
+        Blob[("Azure Blob Storage")]
+    end
+
+    HomePage -->|"browse pages"| CatalogService
+    CatalogPages -->|"create update delete"| CatalogService
+    Uploader -->|"validate and upload image"| ImageService
+    CatalogService -->|"query and persist"| Context
+    Context --> Entities
+    Context -->|"SQL"| SQL
+    ImageService -->|"optional remote storage"| Blob
+    Autofac -.->|"registers implementations"| CatalogService
+    Autofac -.->|"registers implementations"| ImageService
+    OWIN -.->|"authentication pipeline"| CatalogPages
+    Telemetry -.->|"cross-cutting diagnostics"| Presentation
+</div>
+<h3 id="component-inventory">Component Inventory</h3>
+<div class="table-wrap"><table><thead><tr>
+<th>Component</th><th>Layer</th><th>Type</th><th>Responsibility</th>
+</tr></thead><tbody>
+<tr><td>Default page</td><td>Presentation</td><td>Web Forms page</td><td>Lists catalog items and paginates results</td></tr>
+<tr><td>Create, Edit, Details, Delete</td><td>Presentation</td><td>Web Forms pages</td><td>Catalog item administration and display</td></tr>
+<tr><td>PicUploader</td><td>Presentation</td><td>ASMX WebMethod</td><td>Validates and uploads image content</td></tr>
+<tr><td>CatalogService / CatalogServiceMock</td><td>Business logic</td><td>Service implementations</td><td>Reads and mutates catalog records</td></tr>
+<tr><td>ImageAzureStorage / ImageMockStorage</td><td>Business logic</td><td>Image service implementations</td><td>Stores or resolves catalog images</td></tr>
+<tr><td>CatalogDBContext</td><td>Data access</td><td>Entity Framework DbContext</td><td>Maps catalog entities to SQL Server</td></tr>
+<tr><td>ApplicationModule</td><td>Infrastructure</td><td>Autofac module</td><td>Registers lifetime and configuration-selected services</td></tr>
+<tr><td>Startup and OWIN middleware</td><td>Infrastructure</td><td>Authentication pipeline</td><td>Enables OpenID Connect or the configured fallback</td></tr>
+<tr><td>Global</td><td>Infrastructure</td><td>ASP.NET application lifecycle</td><td>Initializes routes, dependency injection, database, images, and telemetry</td></tr>
+</tbody></table></div></div>
+</div>
+<div id="tab-api" class="tab-panel">
+  <div class="fact-content"><h1 id="api-service-communication-contracts">API & Service Communication Contracts</h1>
+<p>The application exposes server-rendered catalog pages and one ASMX image-upload method. It does not expose a versioned REST API or a service-to-service API layer.</p>
+<h2 id="service-catalog">Service Catalog</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Port</th><th>Category</th><th>Purpose</th>
+</tr></thead><tbody>
+<tr><td>eShopModernizedWebForms</td><td>Container port 80; Compose host port 5114; IIS Express 44322</td><td>API Layer / Web application</td><td>Displays and administers catalog data</td></tr>
+<tr><td>SQL Server container</td><td>1433; Compose host port 5433</td><td>Infrastructure</td><td>Relational catalog persistence in the Compose configuration</td></tr>
+</tbody></table></div>
+<h2 id="api-endpoints-inventory">API Endpoints Inventory</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Method</th><th>Path</th><th>Request Type</th><th>Response Type</th>
+</tr></thead><tbody>
+<tr><td>WebForms application</td><td>GET</td><td><code>/Default</code></td><td>Optional route pagination values</td><td>Rendered catalog HTML</td></tr>
+<tr><td>WebForms application</td><td>GET</td><td><code>/Default/index/{index}/size/{size}</code></td><td>Route values</td><td>Rendered catalog page</td></tr>
+<tr><td>WebForms application</td><td>GET, POST</td><td><code>/Catalog/Create</code></td><td>Web Forms fields and postback</td><td>Rendered form or redirect</td></tr>
+<tr><td>WebForms application</td><td>GET, POST</td><td><code>/Catalog/Edit/{id}</code></td><td>Route ID and Web Forms fields</td><td>Rendered form or redirect</td></tr>
+<tr><td>WebForms application</td><td>GET</td><td><code>/Catalog/Details/{id}</code></td><td>Route ID</td><td>Rendered item details</td></tr>
+<tr><td>WebForms application</td><td>GET, POST</td><td><code>/Catalog/Delete/{id}</code></td><td>Route ID and postback</td><td>Confirmation page or redirect</td></tr>
+<tr><td>WebForms application</td><td>POST</td><td><code>/Catalog/PicUploader.asmx/UploadImage</code></td><td>Multipart file field <code>HelpSectionImages</code> and form field <code>itemId</code></td><td>JSON object containing image name and URL</td></tr>
+</tbody></table></div>
+<p>No API versioning scheme or OpenAPI specification was found. Standard Web Forms controls and page postbacks provide the catalog administration requests; the ASMX method is the only explicit service endpoint.</p>
+<h2 id="management-observability-endpoints">Management & Observability Endpoints</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Endpoint</th><th>Custom Metrics</th>
+</tr></thead><tbody>
+<tr><td>eShopModernizedWebForms</td><td>No application health or metrics endpoint found</td><td>No custom metric registrations found; Application Insights telemetry is configured</td></tr>
+</tbody></table></div>
+<h2 id="dtos-contracts">DTOs & Contracts</h2>
+<p>There are no dedicated request/response DTO classes. <code>CatalogItem</code> is the catalog entity used by the service and Web Forms pages; <code>PaginatedItemsViewModel<CatalogItem></code> carries listing results. <code>PicUploader.UploadImage</code> returns an anonymous JSON object with <code>name</code> and <code>url</code> properties. The response is serialized with <code>JavaScriptSerializer</code>. No immutable record DTOs, protobuf schemas, GraphQL schemas, or OpenAPI documents were found.</p>
+<h2 id="communication-patterns">Communication Patterns</h2>
+<p>Browser requests and Web Forms postbacks are synchronous. <code>CatalogService</code> uses EF6 against SQL Server, and <code>ImageAzureStorage</code> calls Azure Blob Storage when enabled; the alternative mock service serves local seeded data. The application does not implement a gateway, service discovery, asynchronous messaging workflow, retry policy, circuit breaker, or bulkhead. A Service Bus package is declared, but no runtime message-broker use was identified.</p>
+<p>OpenID Connect with cookies is configured conditionally through OWIN and Azure Active Directory. The Create, Edit, and Delete pages issue a sign-in challenge when the request is unauthenticated. When Azure Active Directory is disabled, the configured fallback middleware constructs a claims identity locally rather than performing an external sign-in. No role-based authorization checks or application-level HTTPS enforcement were found. Image upload authorization is not checked in <code>PicUploader.UploadImage</code>.</p>
+<h2 id="service-technology-matrix">Service Technology Matrix</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Web</th><th>Data Access</th><th>Discovery</th><th>Gateway</th><th>Health</th><th>Cache</th><th>Metrics</th>
+</tr></thead><tbody>
+<tr><td>eShopModernizedWebForms</td><td>ASP.NET Web Forms and ASMX</td><td>EF6 / SQL Server</td><td>None</td><td>None</td><td>None detected</td><td>Optional Redis session provider; sample config inactive</td><td>Application Insights</td></tr>
+<tr><td>SQL Server container</td><td>SQL Server</td><td>Relational database</td><td>None</td><td>None</td><td>Compose health check</td><td>None</td><td>None</td></tr>
+</tbody></table></div>
+<h2 id="service-communication-sequence">Service Communication Sequence</h2>
+<div class="mermaid">
+sequenceDiagram
+    participant Client as "Browser"
+    participant Web as "Web Forms application"
+    participant Upload as "PicUploader ASMX"
+    participant Image as "IImageService"
+    participant Blob as "Azure Blob Storage"
+
+    Client->>Upload: POST image file and itemId
+    Upload->>Upload: Decode image and allow JPEG PNG or GIF
+    alt Image accepted and Azure storage enabled
+        Upload->>Image: UploadTempImage(file, itemId)
+        Image->>Blob: Upload blob stream
+        Blob-->>Image: Blob URL
+        Image-->>Upload: Temporary image URL
+        Upload-->>Client: JSON name and url
+    else Invalid image or mock storage selected
+        Upload-->>Client: HTTP 400 for invalid image or mock result
+    end
+</div></div>
+</div>
+<div id="tab-config" class="tab-panel">
+  <div class="fact-content"><h1 id="configuration-externalized-settings-inventory">Configuration & Externalized Settings Inventory</h1>
+<p>Configuration is split between Web.config, environment-specific Web.config transforms, container settings, and optional external configuration builders. No application password or key values are reproduced here.</p>
+<h2 id="configuration-sources">Configuration Sources</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Source</th><th>Type</th><th>Path/Location</th><th>Notes</th>
+</tr></thead><tbody>
+<tr><td>Web.config</td><td>Application and runtime configuration</td><td><code>src/eShopModernizedWebForms/Web.config</code></td><td>Base settings, connection string, configuration builders, runtime and session configuration</td></tr>
+<tr><td>Web.Debug.config</td><td>Build/deployment transform</td><td><code>src/eShopModernizedWebForms/Web.Debug.config</code></td><td>Debug transform; custom error behavior is replaced for remote deployments</td></tr>
+<tr><td>Web.Release.config</td><td>Build/deployment transform</td><td><code>src/eShopModernizedWebForms/Web.Release.config</code></td><td>Release transform; removes the debug compilation attribute and applies remote-only errors</td></tr>
+<tr><td>Application Insights</td><td>Telemetry configuration</td><td><code>src/eShopModernizedWebForms/ApplicationInsights.config</code></td><td>Application Insights module and telemetry settings</td></tr>
+<tr><td>log4net</td><td>Logging configuration</td><td><code>src/eShopModernizedWebForms/log4Net.xml</code></td><td>Logging appenders and diagnostics</td></tr>
+<tr><td>Docker Compose</td><td>Container configuration</td><td>Workspace-root <code>docker-compose.yml</code>, <code>docker-compose.override.yml</code>, <code>docker-compose.nobuild.yml</code></td><td>Web Forms and SQL Server services; environment overrides and health check</td></tr>
+<tr><td>Compose environment file</td><td>Environment defaults</td><td>Workspace-root <code>.env</code></td><td>External DNS value; cloud credential examples are comments/placeholders</td></tr>
+<tr><td>Configuration builders</td><td>Externalized settings</td><td>Web.config</td><td>Environment, user-secrets, and optional Azure Key Vault builders</td></tr>
+</tbody></table></div>
+<h2 id="build-profiles">Build Profiles</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Profile</th><th>Activation</th><th>Purpose</th><th>Key Dependencies/Plugins</th>
+</tr></thead><tbody>
+<tr><td>Debug</td><td>MSBuild <code>Debug</code> configuration</td><td>Development build; <code>Web.Debug.config</code> transform</td><td>.NET Framework Web Application targets</td></tr>
+<tr><td>Release</td><td>MSBuild <code>Release</code> configuration</td><td>Release build; <code>Web.Release.config</code> transform</td><td>.NET Framework Web Application targets</td></tr>
+<tr><td>Docker Compose</td><td>Compose invocation</td><td>Runs the web application and SQL Server container</td><td>Microsoft Docker SDK project</td></tr>
+</tbody></table></div>
+<p>No Maven/Gradle-style build profiles or centralized package management file were found.</p>
+<h2 id="runtime-profiles">Runtime Profiles</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Profile</th><th>Activation Method</th><th>Config Files</th><th>Key Overrides</th>
+</tr></thead><tbody>
+<tr><td>Base application</td><td>Default Web.config</td><td><code>Web.config</code></td><td>Mock catalog data enabled; Azure storage, managed identity, customization data, and Azure AD disabled in the sample defaults</td></tr>
+<tr><td>Debug</td><td>Web deployment transform</td><td><code>Web.Debug.config</code></td><td>Debug-oriented custom error transform</td></tr>
+<tr><td>Release</td><td>Web deployment transform</td><td><code>Web.Release.config</code></td><td>Removes the <code>debug</code> compilation attribute and configures remote-only custom errors</td></tr>
+<tr><td>Container</td><td>Docker Compose environment</td><td><code>docker-compose.override.yml</code> and <code>.env</code></td><td>Overrides connection and storage settings, feature switches, and redirect URL</td></tr>
+</tbody></table></div>
+<h2 id="properties-inventory">Properties Inventory</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Property Key</th><th>Default or Source</th><th>Profiles</th><th>Source</th>
+</tr></thead><tbody>
+<tr><td>Web Forms</td><td><code>UseMockData</code></td><td><code>true</code></td><td>Base; Compose override</td><td>Web.config / environment</td></tr>
+<tr><td>Web Forms</td><td><code>UseCustomizationData</code></td><td><code>false</code></td><td>Base; Compose override</td><td>Web.config / environment</td></tr>
+<tr><td>Web Forms</td><td><code>UseAzureManagedIdentity</code></td><td><code>false</code></td><td>Base</td><td>Web.config / environment</td></tr>
+<tr><td>Web Forms</td><td><code>UseAzureStorage</code></td><td><code>false</code></td><td>Base; Compose override</td><td>Web.config / environment</td></tr>
+<tr><td>Web Forms</td><td><code>UseAzureActiveDirectory</code></td><td><code>false</code></td><td>Base; Compose override</td><td>Web.config / environment</td></tr>
+<tr><td>Web Forms</td><td><code>StorageConnectionString</code></td><td>Secret/external setting; value omitted</td><td>All</td><td>Environment, user secrets, or optional Key Vault</td></tr>
+<tr><td>Web Forms</td><td><code>CatalogDBContext</code> connection string</td><td>External setting; value omitted</td><td>Base; Compose override</td><td>Web.config connection string and configuration builders</td></tr>
+<tr><td>Web Forms</td><td>Azure AD client ID and tenant</td><td>External settings; values omitted</td><td>When Azure AD is enabled</td><td>Web.config, environment, user secrets, or Key Vault</td></tr>
+<tr><td>Web Forms</td><td><code>AzureActiveDirectoryInstance</code></td><td>Microsoft identity authority URL template</td><td>Base</td><td>Web.config</td></tr>
+<tr><td>Web Forms</td><td><code>PostLogoutRedirectUri</code></td><td>Local development redirect URI</td><td>Base; Compose override</td><td>Web.config / environment</td></tr>
+<tr><td>Web Forms</td><td>Application Insights instrumentation key</td><td>External setting; value omitted</td><td>Optional</td><td>Web.config / environment</td></tr>
+<tr><td>Compose</td><td><code>ESHOP_EXTERNAL_DNS_NAME_OR_IP</code></td><td>Local network address</td><td>Container</td><td><code>.env</code></td></tr>
+<tr><td>SQL Server container</td><td><code>SA_PASSWORD</code></td><td>Supplied as a Compose environment value; not repeated here</td><td>Container</td><td><code>docker-compose.override.yml</code></td></tr>
+</tbody></table></div>
+<h2 id="startup-parameters-resource-requirements">Startup Parameters & Resource Requirements</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>JVM/Runtime Options</th><th>Memory</th><th>Instance Count</th>
+</tr></thead><tbody>
+<tr><td>Web Forms</td><td>.NET Framework 4.7.2 under IIS; no explicit heap/runtime tuning found</td><td>Not specified</td><td>Not specified</td></tr>
+<tr><td>SQL Server</td><td>SQL Server Developer container</td><td>Not specified</td><td>One service in Compose</td></tr>
+</tbody></table></div>
+<p>Compose exposes the web service on host port 5114 and SQL Server on host port 5433. No CPU or memory limits were found.</p>
+<h2 id="startup-dependency-chain">Startup Dependency Chain</h2>
+<ol>
+<li>IIS or the web container starts the application and reads Web.config.</li>
+<li>Configuration builders resolve environment, user-secrets, and optional Key Vault values.</li>
+<li>OWIN configures OpenID Connect when Azure AD is enabled; otherwise the configured fallback middleware is used.</li>
+<li><code>Global.Application_Start</code> registers routes and bundles, builds the Autofac container, configures the database initializer, initializes images, and installs telemetry.</li>
+<li>In database-backed mode, the application requires the configured SQL Server connection when database initialization or a catalog request occurs; Azure Blob Storage is required only when enabled.</li>
+</ol>
+<p>Docker Compose defines a SQL Server health check but no explicit <code>depends_on</code> or application wait-for-ready mechanism.</p>
+<h2 id="secrets-sensitive-configuration">Secrets & Sensitive Configuration</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Secret Reference</th><th>Type</th><th>Storage (masked)</th>
+</tr></thead><tbody>
+<tr><td><code>CatalogDBContext</code> connection string</td><td>Database credential</td><td>Configuration builders / environment; value omitted</td></tr>
+<tr><td><code>StorageConnectionString</code></td><td>Azure Storage credential</td><td>Configuration builders / environment; value omitted</td></tr>
+<tr><td>Azure AD client and tenant settings</td><td>Identity configuration</td><td>Configuration builders / environment; values omitted</td></tr>
+<tr><td><code>SA_PASSWORD</code></td><td>SQL Server container credential</td><td>Docker Compose override; literal sample value intentionally omitted</td></tr>
+</tbody></table></div>
+<h3 id="secrets-provisioning-workflow">Secrets Provisioning Workflow</h3>
+<p>The application can resolve values through environment variables, user secrets, and an optional Azure Key Vault configuration builder. Managed identity is available for Azure SQL access when selected. The Compose sample supplies a literal SQL Server password for its local service and uses the same value in the SQL health check. No identity permissions or deployment-time secret provisioning workflow is defined in this workspace.</p>
+<h2 id="feature-flags">Feature Flags</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Flag Name</th><th>Default</th><th>Controlled By</th>
+</tr></thead><tbody>
+<tr><td><code>UseMockData</code></td><td><code>true</code></td><td>Web.config / environment</td></tr>
+<tr><td><code>UseCustomizationData</code></td><td><code>false</code></td><td>Web.config / environment</td></tr>
+<tr><td><code>UseAzureManagedIdentity</code></td><td><code>false</code></td><td>Web.config / environment</td></tr>
+<tr><td><code>UseAzureStorage</code></td><td><code>false</code></td><td>Web.config / environment</td></tr>
+<tr><td><code>UseAzureActiveDirectory</code></td><td><code>false</code></td><td>Web.config / environment</td></tr>
+</tbody></table></div>
+<h2 id="framework-runtime-versions">Framework & Runtime Versions</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Component</th><th>Version</th><th>Source</th>
+</tr></thead><tbody>
+<tr><td>.NET Framework target</td><td>4.7.2</td><td>Project file and Dockerfile</td></tr>
+<tr><td>ASP.NET Web Forms</td><td>Full .NET Framework</td><td>Project file</td></tr>
+<tr><td>Entity Framework</td><td>6.3.0</td><td><code>packages.config</code></td></tr>
+<tr><td>Autofac</td><td>4.9.4</td><td><code>packages.config</code></td></tr>
+<tr><td>OWIN OpenID Connect</td><td>4.0.1</td><td><code>packages.config</code></td></tr>
+<tr><td>Application Insights</td><td>2.11.0</td><td><code>packages.config</code></td></tr>
+<tr><td>Azure Storage</td><td>9.3.3</td><td><code>packages.config</code></td></tr>
+<tr><td>Docker base image</td><td><code>mcr.microsoft.com/dotnet/framework/aspnet:4.7.2</code></td><td><code>src/eShopModernizedWebForms/Dockerfile</code></td></tr>
+<tr><td>Build format</td><td>Legacy MSBuild Web Application project</td><td><code>.csproj</code> and solution</td></tr>
+</tbody></table></div></div>
+</div>
+<div id="tab-workflows" class="tab-panel">
+  <div class="fact-content"><h1 id="core-business-workflows">Core Business Workflows</h1>
+<p>The application supports browsing a product catalog and maintaining catalog items, brands, types, stock levels, and product images. Its workflows are handled within one Web Forms application rather than across independently deployed business services.</p>
+<h2 id="domain-entities">Domain Entities</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Entity</th><th>Service / Bounded Context</th><th>Description</th><th>Key Relationships</th>
+</tr></thead><tbody>
+<tr><td>CatalogItem</td><td>Catalog management</td><td>Product offered in the catalog, with price, stock, and image reference</td><td>Belongs to one CatalogBrand and one CatalogType</td></tr>
+<tr><td>CatalogBrand</td><td>Catalog management</td><td>Brand associated with catalog items</td><td>Can be referenced by many CatalogItems</td></tr>
+<tr><td>CatalogType</td><td>Catalog management</td><td>Category/type associated with catalog items</td><td>Can be referenced by many CatalogItems</td></tr>
+</tbody></table></div>
+<h2 id="service-to-domain-mapping">Service-to-Domain Mapping</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Domain Context</th><th>Owned Entities</th><th>External Dependencies</th>
+</tr></thead><tbody>
+<tr><td>eShopModernizedWebForms</td><td>Catalog management</td><td>CatalogItem, CatalogBrand, CatalogType</td><td>SQL Server through EF6; optional Azure Blob Storage for images</td></tr>
+</tbody></table></div>
+<p>The application is a single bounded context. No inter-service events or remote domain APIs were identified.</p>
+<h2 id="primary-workflows">Primary Workflows</h2>
+<h3 id="workflow-1-browse-the-catalog">Workflow 1: Browse the catalog</h3>
+<ol>
+<li>A visitor opens the default page or a route containing pagination values.</li>
+<li>The page requests a catalog page from <code>ICatalogService</code>.</li>
+<li>The service loads items and their brand/type relationships from the selected database or mock provider.</li>
+<li>The page resolves image URLs and renders the page. When mock mode is active, the service uses its in-memory seeded list.</li>
+</ol>
+<h3 id="workflow-2-create-or-update-a-catalog-item">Workflow 2: Create or update a catalog item</h3>
+<ol>
+<li>An administrator opens the create or edit page; the page triggers an OpenID Connect challenge when the request is not authenticated.</li>
+<li>The browser submits the item fields and selected brand/type.</li>
+<li>The page checks <code>ModelState</code>, parses numeric fields, and constructs a <code>CatalogItem</code>.</li>
+<li>The catalog service assigns or uses the item ID and persists the item.</li>
+<li>If a temporary image is present, the image service promotes it to the item's image location and the page redirects to the catalog.</li>
+</ol>
+<h3 id="workflow-3-upload-a-catalog-image">Workflow 3: Upload a catalog image</h3>
+<ol>
+<li>The browser posts the image and item ID to <code>PicUploader.UploadImage</code>.</li>
+<li>The endpoint decodes the upload and accepts JPEG, PNG, or GIF image formats.</li>
+<li>The configured image service stores the file in Azure Blob Storage when enabled, or returns the mock implementation's configured image behavior.</li>
+<li>The endpoint returns the image name and URL as JSON for use by the catalog form.</li>
+</ol>
+<h3 id="workflow-4-delete-a-catalog-item">Workflow 4: Delete a catalog item</h3>
+<ol>
+<li>An administrator opens the delete page, which challenges unauthenticated users when configured.</li>
+<li>The page resolves the catalog item by route ID.</li>
+<li>On postback confirmation, the catalog service removes the entity and the page redirects.</li>
+</ol>
+<h2 id="cross-service-data-flows">Cross-Service Data Flows</h2>
+<p>No cross-service aggregation or domain data exchange was found. Catalog metadata is sourced from the local SQL Server database or mock list. Images are stored separately through the optional Azure Blob backend; the application combines the image URL with catalog item data when rendering pages.</p>
+<h2 id="business-workflow-sequence">Business Workflow Sequence</h2>
+<div class="mermaid">
+sequenceDiagram
+    participant Admin as "Catalog administrator"
+    participant Page as "Create page"
+    participant Service as "Catalog service"
+    participant DB as "SQL Server"
+    participant Image as "Image service"
+    participant Blob as "Azure Blob Storage"
+
+    Admin->>Page: Submit item fields and temporary image reference
+    Page->>Page: Check page model state and parse fields
+    alt Input accepted
+        Page->>Service: CreateCatalogItem(item)
+        Service->>DB: Save catalog item
+        DB-->>Service: Save completed
+        opt Temporary image was uploaded
+            Page->>Image: Promote temporary image
+            Image->>Blob: Copy image to item location
+            Blob-->>Image: Copy accepted
+        end
+        Page-->>Admin: Redirect to catalog
+    else Input invalid
+        Page-->>Admin: Return form with validation state
+    end
+</div>
+<h2 id="business-rules-decision-logic">Business Rules & Decision Logic</h2>
+<ul>
+<li>Catalog items require an associated brand and type; EF mappings define these required relationships.</li>
+<li>Price is constrained to non-negative values with at most two decimal places. Stock, restock threshold, and maximum stock values are range-constrained in the model.</li>
+<li>The application selects database-backed or mock catalog storage, and local or Azure image storage, from feature settings.</li>
+<li>A new catalog item ID is allocated through the HiLo sequence in database mode or from the current maximum ID in mock mode.</li>
+<li>EF <code>SaveChanges</code> persists catalog mutations; no distributed transaction, saga, or message-driven workflow was found.</li>
+<li>Page code logs request entry and uses OWIN authentication configuration for selected administrative pages; no role-specific business authorization was identified.</li>
+</ul></div>
+</div>
+<div id="tab-deps" class="tab-panel">
+  <div class="fact-content"><h1 id="dependency-map">Dependency Map</h1>
+<p>The eShopModernizedWebForms application declares 147 NuGet package entries in <code>src/eShopModernizedWebForms/packages.config</code>; this includes framework-support and transitive package entries as well as application-facing libraries.</p>
+<h2 id="dependencies">Dependencies</h2>
+<div class="mermaid">
+flowchart LR
+    App["eShopModernizedWebForms"]
+    subgraph Web["Web Frameworks"]
+        WebForms["ASP.NET Web Forms on .NET Framework 4.7.2"]
+        OWIN["Microsoft.Owin 4.2.2"]
+        AutofacWeb["Autofac.Web 4.0.0"]
+    end
+    subgraph Data["Database and ORM"]
+        EF["EntityFramework 6.3.0"]
+        SQLClient["System.Data.SqlClient framework provider"]
+        DataSupport["5 database and spatial packages"]
+    end
+    subgraph Messaging["Messaging"]
+        ServiceBus["WindowsAzure.ServiceBus 6.0.0"]
+    end
+    subgraph Cache["Caching"]
+        RedisSession["Microsoft.Web.RedisSessionStateProvider 4.0.1"]
+        RedisClient["StackExchange.Redis 2.0.601"]
+    end
+    subgraph Logging["Logging"]
+        Log4Net["log4net 2.0.10"]
+        AzureAppender["log4net.Appender.Azure 1.4.3.0"]
+    end
+    subgraph Security["Security"]
+        OIDC["Microsoft.Owin.Security.OpenIdConnect 4.0.1"]
+        ADAL["Microsoft.IdentityModel.Clients.ActiveDirectory 5.2.4"]
+        KeyVault["Microsoft.Azure.KeyVault 3.0.4"]
+        Identity["19 identity and configuration packages"]
+    end
+    subgraph Observability["Observability"]
+        AppInsights["Microsoft.ApplicationInsights 2.11.0"]
+        AIWeb["Microsoft.ApplicationInsights.Web 2.11.2"]
+        AIAgents["9 Application Insights packages"]
+    end
+    subgraph Utilities["Utilities"]
+        JSON["Newtonsoft.Json 13.0.2"]
+        AzureStorage["WindowsAzure.Storage 9.3.3"]
+        UtilitySet["95 utility and framework-support packages"]
+    end
+
+    App -->|"presentation"| WebForms
+    App -->|"identity and DI"| OWIN
+    App -->|"identity"| OIDC
+    App -->|"persistence"| EF
+    App -->|"optional sessions"| RedisSession
+    App -->|"logging"| Log4Net
+    App -->|"telemetry"| AppInsights
+    App -->|"optional blob storage"| AzureStorage
+    App -->|"configuration"| KeyVault
+    App -->|"optional integration"| ServiceBus
+    EF -.->|"supporting dependencies"| DataSupport
+    RedisSession -.->|"client library"| RedisClient
+    Log4Net -.->|"Azure appender"| AzureAppender
+    AppInsights -.->|"web telemetry"| AIWeb
+    AppInsights -.->|"collectors and extensions"| AIAgents
+    App -.->|"other web integration"| AutofacWeb
+    App -.->|"identity library"| ADAL
+    App -.->|"serialization"| JSON
+    App -.->|"remaining packages"| UtilitySet
+</div>
+<h3 id="dependency-summary">Dependency Summary</h3>
+<div class="table-wrap"><table><thead><tr>
+<th>Category</th><th>Count</th><th>Key Libraries</th><th>Notes</th>
+</tr></thead><tbody>
+<tr><td>Web Frameworks</td><td>14</td><td>ASP.NET Web Forms, Microsoft.Owin, Autofac.Web</td><td>Full .NET Framework web stack</td></tr>
+<tr><td>Database / ORM</td><td>5</td><td>EntityFramework 6.3.0, Microsoft.Data and System.Spatial packages</td><td>SQL Server is the configured relational store</td></tr>
+<tr><td>Messaging</td><td>1</td><td>WindowsAzure.ServiceBus 6.0.0</td><td>Declared package; no runtime usage was identified in application source</td></tr>
+<tr><td>Caching</td><td>2</td><td>Redis session provider, StackExchange.Redis 2.0.601</td><td>Session-related packages; the sample Redis provider configuration is commented out</td></tr>
+<tr><td>Logging</td><td>2</td><td>log4net 2.0.10, Azure appender 1.4.3.0</td><td>Application logging and optional Azure target</td></tr>
+<tr><td>Security</td><td>19</td><td>OWIN OpenID Connect, Azure Key Vault, IdentityModel</td><td>Supports optional identity and external configuration</td></tr>
+<tr><td>Observability</td><td>9</td><td>Application Insights 2.11.0 and collectors</td><td>Several telemetry integrations are declared</td></tr>
+<tr><td>Utilities</td><td>95</td><td>Newtonsoft.Json 13.0.2, WindowsAzure.Storage 9.3.3</td><td>Includes framework support and transitive packages</td></tr>
+</tbody></table></div>
+<h3 id="version-compatibility-risks">Version & Compatibility Risks</h3>
+<p>The application targets .NET Framework 4.7.2 and uses legacy Web Forms, EF 6.3, OWIN, and older Azure SDK packages. Moving to a modern .NET target requires substantial framework and application changes; the .NET 10 upgrade assessment records package incompatibilities and project-format work.</p>
+<h3 id="notable-observations">Notable Observations</h3>
+<ul>
+<li>The package inventory includes 147 entries because <code>packages.config</code> lists framework-support dependencies alongside primary libraries.</li>
+<li>Application Insights, Azure Storage, Key Vault, and Redis packages are present, but their use is configuration-dependent.</li>
+<li>WindowsAzure.ServiceBus is declared, though no corresponding runtime call was found in source.</li>
+<li>No test-scoped package entries or separate test project were detected in this workspace.</li>
+</ul>
+<h2 id="test-dependencies">Test Dependencies</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Framework</th><th>Version</th><th>Notes</th>
+</tr></thead><tbody>
+<tr><td>None detected</td><td>—</td><td>No test-scoped packages or test project found in the target solution</td></tr>
+</tbody></table></div>
+<p>Total test-scope dependencies: 0</p>
+<p>No test dependencies were detected in the solution package manifest.</p></div>
+</div>
+<div id="tab-data" class="tab-panel">
+  <div class="fact-content"><h1 id="data-architecture-persistence-layer">Data Architecture & Persistence Layer</h1>
+<p>The application persists a small catalog domain in SQL Server through Entity Framework 6. The model contains three relational entities, with optional mock data and image storage used for local or configured deployments.</p>
+<h2 id="database-configuration">Database Configuration</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service/Module</th><th>DB Type</th><th>Profile</th><th>Driver</th><th>Connection</th><th>Migration Tool</th>
+</tr></thead><tbody>
+<tr><td>Catalog application</td><td>SQL Server</td><td>Database-backed mode</td><td>EF6 SQL Server provider</td><td><code>CatalogDBContext</code> connection string supplied through configuration builders; managed identity is an optional connection path</td><td>No migration tool detected; <code>CreateDatabaseIfNotExists</code> initializer and SQL sequence scripts are used</td></tr>
+<tr><td>Catalog application</td><td>In-memory mock data</td><td><code>UseMockData</code> enabled</td><td>None</td><td><code>CatalogServiceMock</code> seeded from preconfigured data</td><td>Not applicable</td></tr>
+</tbody></table></div>
+<p>Customization data can be loaded from CSV files and images from a ZIP archive under <code>Setup</code>. Database seed scripts create the HiLo sequences. No Flyway, Liquibase, EF migration set, or separate schema migration runner was found.</p>
+<h2 id="data-ownership-per-service">Data Ownership per Service</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Tables Owned</th><th>ORM Framework</th><th>Caching</th><th>Notes</th>
+</tr></thead><tbody>
+<tr><td>eShopModernizedWebForms catalog</td><td><code>Catalog</code>, <code>CatalogBrand</code>, <code>CatalogType</code></td><td>Entity Framework 6</td><td>No entity cache detected</td><td>One application owns all catalog entities; optional Redis session-state package is not active in the sample configuration</td></tr>
+</tbody></table></div>
+<h2 id="entity-model">Entity Model</h2>
+<div class="mermaid">
+erDiagram
+    CatalogBrand ||--o{ Catalog : "labels"
+    CatalogType ||--o{ Catalog : "classifies"
+    CatalogBrand {
+        int Id PK
+        string Brand
+    }
+    CatalogType {
+        int Id PK
+        string Type
+    }
+    Catalog {
+        int Id PK
+        string Name
+        string Description
+        decimal Price
+        string PictureFileName
+        int CatalogTypeId FK
+        int CatalogBrandId FK
+        int AvailableStock
+        int RestockThreshold
+        int MaxStockThreshold
+        bool OnReorder
+    }
+</div>
+<p><code>CatalogItem</code> is mapped to the <code>Catalog</code> table, with required foreign keys to <code>CatalogBrand</code> and <code>CatalogType</code>. The entity classes are <code>Models/CatalogItem.cs</code>, <code>Models/CatalogBrand.cs</code>, and <code>Models/CatalogType.cs</code>; the mappings are in <code>Models/CatalogDBContext.cs</code>. No explicit transaction annotations were found; EF6 <code>SaveChanges</code> is used for individual mutations.</p>
+<h2 id="key-repository-methods">Key Repository Methods</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Repository</th><th>Notable Methods</th><th>Purpose</th>
+</tr></thead><tbody>
+<tr><td>Catalog</td><td><code>CatalogService</code> (<code>Services/CatalogService.cs</code>)</td><td><code>GetCatalogItemsPaginated(pageSize, pageIndex)</code></td><td>Queries ordered items with brand and type data</td></tr>
+<tr><td>Catalog</td><td><code>CatalogService</code></td><td><code>FindCatalogItem(id)</code></td><td>Finds a catalog item and its brand/type</td></tr>
+<tr><td>Catalog</td><td><code>CatalogService</code></td><td><code>CreateCatalogItem</code>, <code>UpdateCatalogItem</code>, <code>RemoveCatalogItem</code></td><td>Adds, updates, or removes catalog records</td></tr>
+<tr><td>Catalog initialization</td><td><code>CatalogDBInitializer</code> (<code>Models/Infrastructure/CatalogDBInitializer.cs</code>)</td><td><code>Seed</code>, <code>GetSequenceIdFromSelectedDBSequence</code></td><td>Loads seed data and obtains sequence values</td></tr>
+</tbody></table></div>
+<p>No repository interfaces separate the EF context from <code>CatalogService</code>; there are no cross-service bulk query methods.</p>
+<h2 id="caching-strategy">Caching Strategy</h2>
+<p>No catalog entity cache, query cache, or distributed data cache is configured in the application code. A Redis session-state provider dependency and commented sample configuration are present, but the sample does not actively enable that provider. When mock mode is selected, <code>CatalogServiceMock</code> is a singleton with a shared mutable in-memory catalog list.</p>
+<h2 id="data-ownership-boundaries">Data Ownership Boundaries</h2>
+<p>The catalog application is a single bounded context backed by one SQL Server database; it has no database-per-service or cross-service data exchange. Catalog brands and types are related to catalog records through foreign keys. Mock mode replaces persistence with an in-memory list. The optional Redis package concerns session state rather than catalog ownership.</p>
+<h3 id="data-classification-sensitivity">Data Classification & Sensitivity</h3>
+<div class="table-wrap"><table><thead><tr>
+<th>Entity</th><th>Sensitive Fields</th><th>Classification (PII/PHI/PCI/None)</th><th>Controls in Place</th>
+</tr></thead><tbody>
+<tr><td>CatalogItem</td><td>Product names, descriptions, prices, stock values, image name</td><td>None</td><td>No personal, health, or payment-card fields identified</td></tr>
+<tr><td>CatalogBrand</td><td>Brand name</td><td>None</td><td>No sensitive fields identified</td></tr>
+<tr><td>CatalogType</td><td>Type name</td><td>None</td><td>No sensitive fields identified</td></tr>
+</tbody></table></div>
+<p>No PII, PHI, or PCI data was detected in the catalog entity model.</p></div>
+</div>
+<p class="footer">Your feedback is invaluable &mdash; <a href="https://aka.ms/ghcp-appmod/feedback">Share feedback</a></p>
+<script>
+function toggleRow(rowId, triggerRow) {
+  var detail = document.getElementById(rowId);
+  var btn = document.getElementById('btn-' + rowId);
+  if (!detail) return;
+  var visible = detail.style.display !== 'none';
+  detail.style.display = visible ? 'none' : 'table-row';
+  if (btn) btn.classList.toggle('open', !visible);
+}
+(function() {
+  var nav = document.querySelector('.tab-nav');
+  if (!nav) return;
+  nav.addEventListener('click', function(e) {
+    var btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    var targetId = btn.getAttribute('data-tab');
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    var panel = document.getElementById(targetId);
+    if (panel) {
+      panel.classList.add('active');
+      if (window.__mermaidReady) { window.__renderMermaidIn(panel); }
+    }
+  });
+})();
+
+// ── Diagram lightbox ────────────────────────────────────────
+(function() {
+  var lightbox = document.getElementById('diagram-lightbox');
+  var inner = document.getElementById('diagram-lightbox-inner');
+  var closeBtn = document.getElementById('diagram-lightbox-close');
+  if (!lightbox || !inner || !closeBtn) return;
+
+  var scale = 1;
+  var translateX = 0;
+  var translateY = 0;
+  var isDragging = false;
+  var dragStartX = 0;
+  var dragStartY = 0;
+
+  function applyTransform() {
+    var svg = inner.querySelector('svg');
+    if (svg) {
+      svg.style.transform = 'translate(' + translateX + 'px, ' + translateY + 'px) scale(' + scale + ')';
+      svg.style.transformOrigin = 'center center';
+      svg.style.transition = 'none';
+    }
+  }
+
+  function resetTransform() {
+    scale = 1; translateX = 0; translateY = 0;
+    applyTransform();
+  }
+
+  function openLightbox(svgEl) {
+    inner.innerHTML = svgEl.outerHTML;
+    var injected = inner.querySelector('svg');
+    if (injected) {
+      injected.removeAttribute('width');
+      injected.removeAttribute('height');
+      injected.style.cursor = 'grab';
+    }
+    resetTransform();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    inner.innerHTML = '';
+    document.body.style.overflow = '';
+    resetTransform();
+  }
+
+  inner.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    var delta = e.deltaY > 0 ? 0.9 : 1.1;
+    scale = Math.min(Math.max(scale * delta, 0.3), 8);
+    applyTransform();
+  }, { passive: false });
+
+  inner.addEventListener('mousedown', function(e) {
+    if (e.button !== 0) return;
+    isDragging = true;
+    dragStartX = e.clientX - translateX;
+    dragStartY = e.clientY - translateY;
+    var svg = inner.querySelector('svg');
+    if (svg) { svg.style.cursor = 'grabbing'; }
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (!isDragging) return;
+    translateX = e.clientX - dragStartX;
+    translateY = e.clientY - dragStartY;
+    applyTransform();
+  });
+
+  document.addEventListener('mouseup', function() {
+    if (!isDragging) return;
+    isDragging = false;
+    var svg = inner.querySelector('svg');
+    if (svg) { svg.style.cursor = 'grab'; }
+  });
+
+  inner.addEventListener('dblclick', function() { resetTransform(); });
+
+  document.addEventListener('click', function(e) {
+    var card = e.target.closest('.mermaid');
+    if (!card) return;
+    if (e.target.closest('.diagram-lightbox-close')) return;
+    var svg = card.querySelector('svg');
+    if (svg) { openLightbox(svg); }
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) { closeLightbox(); }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { closeLightbox(); }
+  });
+})();
+
+var _currentTarget = '';
+
+function toggleMultiSelect(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  document.querySelectorAll('.multi-select.open').forEach(function(ms) { if (ms.id !== id) ms.classList.remove('open'); });
+  el.classList.toggle('open');
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.multi-select')) {
+    document.querySelectorAll('.multi-select.open').forEach(function(ms) { ms.classList.remove('open'); });
+  }
+});
+
+function getMultiSelectValues(msId) {
+  var el = document.getElementById(msId);
+  if (!el) return [];
+  var checked = el.querySelectorAll('input[type=checkbox]:checked');
+  var vals = [];
+  for (var i = 0; i < checked.length; i++) vals.push(checked[i].value);
+  return vals;
+}
+
+function onMultiSelectChange(msId, label) {
+  var el = document.getElementById(msId);
+  if (!el) return;
+  var vals = getMultiSelectValues(msId);
+  var total = el.querySelectorAll('input[type=checkbox]').length;
+  var btn = el.querySelector('.multi-select-btn');
+  if (btn) {
+    btn.textContent = vals.length > 0 && vals.length < total ? label + ' (' + vals.length + ')' : label;
+  }
+  applyFilters();
+}
+
+function applyFilters() {
+  var selectedDomains = getMultiSelectValues('domain-ms');
+  var selectedCrits = getMultiSelectValues('criticality-ms');
+
+  var sections = document.querySelectorAll('.issue-section');
+  for (var i = 0; i < sections.length; i++) {
+    var domain = sections[i].getAttribute('data-domain');
+    sections[i].style.display = (selectedDomains.length === 0 || selectedDomains.indexOf(domain) >= 0) ? '' : 'none';
+  }
+
+  var rows = document.querySelectorAll('.issue-row');
+  for (var i = 0; i < rows.length; i++) {
+    var row = rows[i];
+    var section = row.closest('.issue-section');
+    if (section && section.style.display === 'none') {
+      row.style.display = 'none';
+      var next = row.nextElementSibling;
+      if (next && next.classList.contains('detail-row')) next.style.display = 'none';
+      continue;
+    }
+
+    var show = true;
+    if (_currentTarget && row.hasAttribute('data-targets')) {
+      var targetsStr = row.getAttribute('data-targets');
+      if (targetsStr && targetsStr !== '{}') {
+        try {
+          var targets = JSON.parse(targetsStr);
+          if (Object.keys(targets).length > 0 && !targets[_currentTarget]) {
+            show = false;
+          }
+        } catch(e) {}
+      }
+    }
+
+    if (show && selectedCrits.length > 0) {
+      var crit = row.getAttribute('data-criticality');
+      if (selectedCrits.indexOf(crit) < 0) show = false;
+    }
+
+    row.style.display = show ? '' : 'none';
+    var nextRow = row.nextElementSibling;
+    if (nextRow && nextRow.classList.contains('detail-row')) {
+      if (!show) nextRow.style.display = 'none';
+    }
+  }
+}
+
+function clearAllFilters() {
+  document.querySelectorAll('.multi-select input[type=checkbox]').forEach(function(cb) { cb.checked = false; });
+  var domainBtn = document.querySelector('#domain-ms .multi-select-btn');
+  if (domainBtn) domainBtn.textContent = 'Domain';
+  var critBtn = document.querySelector('#criticality-ms .multi-select-btn');
+  if (critBtn) critBtn.textContent = 'Criticality';
+  applyFilters();
+}
+
+function onTargetChange(targetId) {
+  _currentTarget = targetId;
+  var rows = document.querySelectorAll('.issue-row[data-targets]');
+  var totalEffort = 0;
+  var domainCrits = {};
+
+  for (var i = 0; i < rows.length; i++) {
+    var row = rows[i];
+    var targets = JSON.parse(row.getAttribute('data-targets'));
+    var section = row.closest('.issue-section');
+    var domain = section ? section.getAttribute('data-domain') : '';
+
+    if (!targets || Object.keys(targets).length === 0) {
+      var sp = parseFloat(row.querySelector('.sp-cell').textContent) || 0;
+      totalEffort += sp;
+      if (!domainCrits[domain]) domainCrits[domain] = {mandatory:0,potential:0,optional:0};
+      var crit = row.getAttribute('data-criticality') || 'optional';
+      domainCrits[domain][crit] = (domainCrits[domain][crit] || 0) + 1;
+      continue;
+    }
+
+    var override = targets[targetId];
+    if (!override) {
+      continue;
+    }
+
+    var newSeverity = (override.severity || row.getAttribute('data-default-severity') || '').toLowerCase();
+    row.setAttribute('data-criticality', newSeverity);
+    var critCell = row.querySelector('.crit-cell');
+    if (critCell) {
+      var critText = newSeverity === 'mandatory' ? 'Mandatory' : newSeverity === 'potential' ? 'Potential' : 'Optional';
+      var cssClass = newSeverity === 'mandatory' ? 'crit-square-mandatory' : newSeverity === 'potential' ? 'crit-square-potential' : 'crit-square-optional';
+      critCell.innerHTML = '<span class="crit-label"><span class="crit-square ' + cssClass + '"></span>' + critText + '</span>';
+    }
+
+    var newEffort = override.effort !== undefined ? override.effort : parseFloat(row.getAttribute('data-default-effort')) || 0;
+    var spCell = row.querySelector('.sp-cell');
+    if (spCell) spCell.textContent = newEffort;
+    totalEffort += newEffort;
+
+    if (!domainCrits[domain]) domainCrits[domain] = {mandatory:0,potential:0,optional:0};
+    domainCrits[domain][newSeverity] = (domainCrits[domain][newSeverity] || 0) + 1;
+  }
+
+  var secSection = document.querySelector('.issue-section[data-domain="security"]');
+  if (secSection) {
+    var secRows = secSection.querySelectorAll('.issue-row');
+    for (var j = 0; j < secRows.length; j++) {
+      if (!secRows[j].hasAttribute('data-targets') || secRows[j].getAttribute('data-targets') === '') {
+        var sp = parseFloat(secRows[j].querySelector('.sp-cell').textContent) || 0;
+        totalEffort += sp;
+        if (!domainCrits['security']) domainCrits['security'] = {mandatory:0,potential:0,optional:0};
+        var sc = secRows[j].getAttribute('data-criticality') || 'optional';
+        domainCrits['security'][sc] = (domainCrits['security'][sc] || 0) + 1;
+      }
+    }
+  }
+
+  var label = totalEffort < 20 ? 'S' : totalEffort < 50 ? 'M' : totalEffort < 100 ? 'L' : 'XL';
+  var effortEl = document.getElementById('effort-display');
+  if (effortEl) effortEl.textContent = label + ' (total story points: ' + totalEffort + ')';
+
+  updateDonuts(domainCrits);
+  applyFilters();
+}
+
+function updateDonuts(domainCrits) {
+  var container = document.getElementById('donut-container');
+  if (!container) return;
+  container.innerHTML = '';
+  var domainNames = {'cloud-readiness':'Cloud Readiness','java-upgrade':'Java Upgrade','dotnet-upgrade':'DotNET Upgrade','security':'Security'};
+  var domainOrder = ['cloud-readiness','java-upgrade','dotnet-upgrade','security'];
+  for (var d = 0; d < domainOrder.length; d++) {
+    var key = domainOrder[d];
+    var c = domainCrits[key];
+    if (!c || (c.mandatory + c.potential + c.optional) === 0) continue;
+    var total = c.mandatory + c.potential + c.optional;
+    var div = document.createElement('div');
+    div.className = 'domain-summary-item';
+    div.innerHTML = buildDonutSvg(c.mandatory, c.potential, c.optional) +
+      '<h3>' + domainNames[key] + '</h3>' +
+      '<div class="count">' + total + ' issue' + (total !== 1 ? 's' : '') + '</div>';
+    container.appendChild(div);
+  }
+}
+
+function buildDonutSvg(m, p, o) {
+  var total = m + p + o;
+  if (total === 0) return '<svg viewBox="0 0 100 100" width="100" height="100" style="display:block;margin:0 auto;"><circle cx="50" cy="50" r="35" fill="none" stroke="#d0d7de" stroke-width="15" opacity="0.5"/></svg>';
+  var r = 35, circ = 2 * Math.PI * r, offset = 0;
+  var svg = '<svg viewBox="0 0 100 100" width="100" height="100" style="display:block;margin:0 auto;transform:rotate(-90deg);">';
+  var segs = [{c:m,color:'var(--color-mandatory)'},{c:p,color:'var(--color-potential)'},{c:o,color:'var(--color-optional)'}];
+  for (var i = 0; i < segs.length; i++) {
+    if (segs[i].c === 0) continue;
+    var segLen = (segs[i].c / total) * circ;
+    var gap = total > segs[i].c ? 1.5 : 0;
+    var drawLen = Math.max(segLen - gap, 0.5);
+    svg += '<circle cx="50" cy="50" r="' + r + '" fill="none" stroke="' + segs[i].color + '" stroke-width="15" stroke-dasharray="' + drawLen.toFixed(2) + ' ' + circ.toFixed(2) + '" stroke-dashoffset="' + (-offset).toFixed(2) + '"/>';
+    offset += segLen;
+  }
+  svg += '</svg>';
+  return svg;
+}
+</script>
+<script>document.addEventListener('DOMContentLoaded', function() { onTargetChange('AppService.Windows'); });</script>
+</div></body></html>
