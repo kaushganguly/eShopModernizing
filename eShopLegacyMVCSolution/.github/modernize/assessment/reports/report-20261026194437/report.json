@@ -1676,7 +1676,7 @@
   "rules": {
     "Runtime.0002": {
       "id": "Runtime.0002",
-      "description": "Upgrade to newer target framework to get better cloud experience.\n\nIf you are targeting Managed Instance on Azure App Service, validate on .NET Framework 4.8 or move to .NET 10. Persist any runtime prerequisites via install scripts; test in staging before production.\n\nWhile if targeting other Azure compute services:\n\nApplication targeting .NET framework lower than 4.7.1 might missing features that would be needed for some cloud scenarios like scaling or getting secrets from secure external sources.\n\nAzure App Service runs apps on .NET Framework 4.8 or .NET Framework 3.5. Apps running on on .NET Framework versions older than .NET Framework 4.8 could have potential compatibility issues. It is recommended to test your application running on .NET Framework 4.8. Note that it is not necessary to re-target to .NET Framework 4.8, only to validate that the app correctly runs on that version of .NET Framework.\n\nIn the long term it is also recommended to upgrade your application to latest supported .NET 8\u002B which would significantly increase performance of your application. Use tools like .NET Upgrade Assistant to help with upgrading your application to newer .NET.",
+      "description": "Upgrade to newer target framework to get better cloud experience.\n\nIf you are targeting Managed Instance on Azure App Service, validate on .NET Framework 4.8 or move to .NET 10. Persist any runtime prerequisites via install scripts; test in staging before production.\n\nWhile if targeting other Azure compute services:\n\nApplication targeting .NET framework lower than 4.7.1 might missing features that would be needed for some cloud scenarios like scaling or getting secrets from secure external sources.\n\nAzure App Service runs apps on .NET Framework 4.8 or .NET Framework 3.5. Apps running on on .NET Framework versions older than .NET Framework 4.8 could have potential compatibility issues. It is recommended to test your application running on .NET Framework 4.8. Note that it is not necessary to re-target to .NET Framework 4.8, only to validate that the app correctly runs on that version of .NET Framework.\n\nIn the long term it is also recommended to upgrade your application to latest supported .NET 8+ which would significantly increase performance of your application. Use tools like .NET Upgrade Assistant to help with upgrading your application to newer .NET.",
       "title": "Upgrade to newer target framework to get better cloud experience",
       "severity": "optional",
       "effort": 3,
@@ -1720,7 +1720,7 @@
     },
     "Local.0007": {
       "id": "Local.0007",
-      "description": "Local OS environment access detected.\n\nIf you are targeting Managed Instance on Azure App Service, Read config via App Settings or App Configuration; avoid machine\u2011specific environment APIs. Persist environment setup via install scripts when needed.\n\nWhen running in Azure App Service environment, your application can read environment variables that you define in App Service settings. Using environment API other than reading environment variables might indicate that your application depends on some local machine\u0027s features and might be broken on App Service sandbox or not scale well. Review your scenarios and either refactor them to be more cloud friendly or choose the option in App Service to host your application in the sandbox for Windows Container Web Apps.\n\nIf you choose to use other Azure hosting options such as Azure Container Apps (ACA) or Azure Kubernetes Service (AKS), environment APIs might work, however scaling still might be an issue.",
+      "description": "Local OS environment access detected.\n\nIf you are targeting Managed Instance on Azure App Service, Read config via App Settings or App Configuration; avoid machine‑specific environment APIs. Persist environment setup via install scripts when needed.\n\nWhen running in Azure App Service environment, your application can read environment variables that you define in App Service settings. Using environment API other than reading environment variables might indicate that your application depends on some local machine's features and might be broken on App Service sandbox or not scale well. Review your scenarios and either refactor them to be more cloud friendly or choose the option in App Service to host your application in the sandbox for Windows Container Web Apps.\n\nIf you choose to use other Azure hosting options such as Azure Container Apps (ACA) or Azure Kubernetes Service (AKS), environment APIs might work, however scaling still might be an issue.",
       "title": "Local OS environment access detected",
       "severity": "potential",
       "effort": 1,
@@ -1790,7 +1790,7 @@
     },
     "Connection.0001": {
       "id": "Connection.0001",
-      "description": "Connection string detected. It may not be available when your app is migrated to Azure.\n\nReview and ensure it works from Azure. If you are connecting to a database, you might need to migrate the database to Azure. There are multiple ways to do it:\n    1. Migrate to Azure SQL Database for additional benefits (see the link below).\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don\u2019t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
+      "description": "Connection string detected. It may not be available when your app is migrated to Azure.\n\nReview and ensure it works from Azure. If you are connecting to a database, you might need to migrate the database to Azure. There are multiple ways to do it:\n    1. Migrate to Azure SQL Database for additional benefits (see the link below).\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don’t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
       "title": "Connection string is detected",
       "severity": "potential",
       "effort": 3,
@@ -1825,7 +1825,7 @@
     },
     "Identity.0002": {
       "id": "Identity.0002",
-      "description": "Your app is using windows authentication which is not supported on Azure App Service, Azure Container Apps and Azure Kubernetes Service.\n\nAzure App Service provides built-in authentication and authorization capabilities, so you can sign in users and access data by writing minimal or no code in your web app.\n\nFollow the link below for more information.\u0022",
+      "description": "Your app is using windows authentication which is not supported on Azure App Service, Azure Container Apps and Azure Kubernetes Service.\n\nAzure App Service provides built-in authentication and authorization capabilities, so you can sign in users and access data by writing minimal or no code in your web app.\n\nFollow the link below for more information.\"",
       "title": "Windows authentication detected",
       "severity": "mandatory",
       "effort": 3,
@@ -1936,5 +1936,229 @@
       ],
       "labels": []
     }
-  }
+  },
+  "security": [
+    {
+      "id": "CVE-2024-21907",
+      "title": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "category": "CVE",
+      "severity": "mandatory",
+      "description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\r\n\r\nSeverity: high\r\n\r\nAffected dependencies:\r\n  - Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyMVC/eShopLegacyMVC.csproj:102)\r\n\r\nRecommended fix:\r\n  - Upgrade Newtonsoft.Json to 13.0.1 or later.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/eShopLegacyMVC.csproj:102"
+        ],
+        "explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\r\n\r\nSeverity: high\r\n\r\nAffected dependencies:\r\n  - Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyMVC/eShopLegacyMVC.csproj:102)\r\n\r\nRecommended fix:\r\n  - Upgrade Newtonsoft.Json to 13.0.1 or later."
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CVE-2026-40021",
+      "title": "Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters",
+      "category": "CVE",
+      "severity": "optional",
+      "description": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\r\n\r\nSeverity: medium\r\n\r\nAffected dependencies:\r\n  - log4net 2.0.10 (declared at src/eShopLegacyMVC/eShopLegacyMVC.csproj:242)\r\n\r\nRecommended fix:\r\n  - Upgrade log4net to 3.3.0 or later.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/eShopLegacyMVC.csproj:242"
+        ],
+        "explanation": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\r\n\r\nSeverity: medium\r\n\r\nAffected dependencies:\r\n  - log4net 2.0.10 (declared at src/eShopLegacyMVC/eShopLegacyMVC.csproj:242)\r\n\r\nRecommended fix:\r\n  - Upgrade log4net to 3.3.0 or later."
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CWE-477",
+      "title": "Use of Obsolete Function",
+      "category": "Code Quality",
+      "severity": "optional",
+      "description": "The code uses deprecated or obsolete functions, which suggests that the code has not been actively reviewed or maintained.",
+      "evidence": {
+        "files": [
+          "eShopLegacy.Utilities/Serializing.cs",
+          "src/eShopLegacyMVC/Controllers/WebApi/FilesController.cs"
+        ],
+        "explanation": "Serializing.SerializeBinary and DeserializeBinary instantiate System.Runtime.Serialization.Formatters.Binary.BinaryFormatter (lines 11-12 and 19-21). BinaryFormatter is obsolete in modern .NET; the legacy FilesController uses SerializeBinary to produce an API response."
+      },
+      "storyPoint": 1
+    },
+    {
+      "id": "CWE-665",
+      "title": "Improper Initialization",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "The product does not initialize or incorrectly initializes a resource, which might leave the resource in an unexpected state when it is accessed or used.",
+      "evidence": {
+        "files": [
+          "eShopPorted/Controllers/PicController.cs"
+        ],
+        "explanation": "The ported PicController.Index initializes webRoot to an empty string (line 38) before combining it with the image name and reading the file (lines 40-45), so the resource path is not initialized to the intended application image directory."
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-681",
+      "title": "Incorrect Conversion between Numeric Types",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/Models/CatalogItemHiLoGenerator.cs",
+          "src/eShopLegacyMVC/Models/Infrastructure/CatalogDBInitializer.cs"
+        ],
+        "explanation": "The legacy CatalogItemHiLoGenerator converts a database Int64 sequence result to int without a range check (lines 22-23); CatalogDBInitializer makes a similar conversion at lines 328-329. Sequence values outside the Int32 range can yield incorrect item identifiers."
+      },
+      "storyPoint": 3
+    },
+    {
+      "id": "CWE-682",
+      "title": "Incorrect Calculation",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/Controllers/CatalogController.cs",
+          "src/eShopLegacyMVC/Services/CatalogService.cs"
+        ],
+        "explanation": "CatalogController.Index accepts pageSize and pageIndex as request parameters, and CatalogService computes the skip offset using pageSize * pageIndex (lines 29-30) without overflow handling. Large values can overflow and produce an incorrect pagination offset."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-789",
+      "title": "Memory Allocation with Excessive Size Value",
+      "category": "Code Quality",
+      "severity": "potential",
+      "description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/Controllers/CatalogController.cs",
+          "src/eShopLegacyMVC/Services/CatalogService.cs"
+        ],
+        "explanation": "CatalogController.Index accepts an unrestricted pageSize query parameter (line 22); CatalogService passes it directly to Take(pageSize) and materializes the result with ToList (lines 25-31), allowing a request to ask for an excessive number of rows and memory."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-543",
+      "title": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/Modules/ApplicationModule.cs",
+          "src/eShopLegacyMVC/Services/CatalogServiceMock.cs"
+        ],
+        "explanation": "ApplicationModule registers CatalogServiceMock as SingleInstance (lines 18-22). The mock service stores CatalogItem objects in a mutable List (line 12), and CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem, FindCatalogItem, and ComposeCatalogItems access or mutate it without a lock (lines 33-80). Concurrent requests can race on list operations and ID assignment."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-567",
+      "title": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/Modules/ApplicationModule.cs",
+          "src/eShopLegacyMVC/Services/CatalogServiceMock.cs"
+        ],
+        "explanation": "ApplicationModule registers CatalogServiceMock as SingleInstance (lines 18-22). The mock service stores CatalogItem objects in a mutable List (line 12), and CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem, FindCatalogItem, and ComposeCatalogItems access or mutate it without a lock (lines 33-80). Concurrent requests can race on list operations and ID assignment."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-662",
+      "title": "Improper Synchronization",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/Modules/ApplicationModule.cs",
+          "src/eShopLegacyMVC/Services/CatalogServiceMock.cs"
+        ],
+        "explanation": "ApplicationModule registers CatalogServiceMock as SingleInstance (lines 18-22). The mock service stores CatalogItem objects in a mutable List (line 12), and CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem, FindCatalogItem, and ComposeCatalogItems access or mutate it without a lock (lines 33-80). Concurrent requests can race on list operations and ID assignment."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-820",
+      "title": "Missing Synchronization",
+      "category": "Concurrency & Synchronization",
+      "severity": "potential",
+      "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/Modules/ApplicationModule.cs",
+          "src/eShopLegacyMVC/Services/CatalogServiceMock.cs"
+        ],
+        "explanation": "ApplicationModule registers CatalogServiceMock as SingleInstance (lines 18-22). The mock service stores CatalogItem objects in a mutable List (line 12), and CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem, FindCatalogItem, and ComposeCatalogItems access or mutate it without a lock (lines 33-80). Concurrent requests can race on list operations and ID assignment."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-22",
+      "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "category": "File & Path Security",
+      "severity": "optional",
+      "description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/Controllers/CatalogController.cs",
+          "src/eShopLegacyMVC/Controllers/PicController.cs"
+        ],
+        "explanation": "CatalogController.Create and Edit bind PictureFileName from the submitted CatalogItem (Create line 62; Edit line 100). PicController.Index combines that persisted value with the Pics directory and reads the resulting path (lines 38-44), without restricting the resolved path to the image directory."
+      },
+      "storyPoint": 8
+    },
+    {
+      "id": "CWE-23",
+      "title": "Relative Path Traversal",
+      "category": "File & Path Security",
+      "severity": "optional",
+      "description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/Controllers/CatalogController.cs",
+          "src/eShopLegacyMVC/Controllers/PicController.cs"
+        ],
+        "explanation": "The submitted PictureFileName is persisted through CatalogController.Create/Edit and later passed to Path.Combine in PicController.Index (lines 38-44) before File.ReadAllBytes. Relative traversal segments are not rejected or normalized against the Pics directory."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-36",
+      "title": "Absolute Path Traversal",
+      "category": "File & Path Security",
+      "severity": "optional",
+      "description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize absolute path sequences such as /abs/path that can resolve to a location that is outside of that directory.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/Controllers/CatalogController.cs",
+          "src/eShopLegacyMVC/Controllers/PicController.cs"
+        ],
+        "explanation": "CatalogController accepts PictureFileName from the submitted model, and PicController.Index combines it with the intended Pics directory before reading the file (lines 38-44). A fully qualified second path can cause Path.Combine to discard the base directory, and no containment check is present."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-99",
+      "title": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "category": "Injection Attacks",
+      "severity": "potential",
+      "description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "evidence": {
+        "files": [
+          "src/eShopLegacyMVC/Controllers/CatalogController.cs",
+          "src/eShopLegacyMVC/Controllers/PicController.cs"
+        ],
+        "explanation": "CatalogController.Create/Edit accept PictureFileName from submitted model data, and PicController.Index uses that stored value to identify the file to read (Path.Combine and File.ReadAllBytes, lines 38-44). The value is not constrained to the intended image resource."
+      },
+      "storyPoint": 3
+    }
+  ]
 }
