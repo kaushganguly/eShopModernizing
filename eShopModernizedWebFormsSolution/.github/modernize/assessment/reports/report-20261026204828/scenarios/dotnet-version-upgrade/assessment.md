@@ -320,4 +320,3 @@ flowchart TB
 | Binding redirect forces version downgrade | 🟡Potential | Binding redirect for System.Threading.Channels targets 4.0.1.0 but package provides 4.6.0 | Update the binding redirect newVersion to match the version provided by the NuGet package. |
 | Binding redirect forces version downgrade | 🟡Potential | Binding redirect for System.Threading.Tasks.Extensions targets 4.2.0.1 but package provides 4.5.3 | Update the binding redirect newVersion to match the version provided by the NuGet package. |
 | Binding redirect forces version downgrade | 🟡Potential | Binding redirect for System.ValueTuple targets 4.0.3.0 but package provides 4.5.0 | Update the binding redirect newVersion to match the version provided by the NuGet package. |
-
