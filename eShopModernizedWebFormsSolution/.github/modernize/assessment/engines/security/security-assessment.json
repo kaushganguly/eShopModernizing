@@ -1,0 +1,191 @@
+{
+  "GeneratedAt": "2026-10-27T01:41:38.0502990Z",
+  "ProjectPath": "eShopModernizedWebFormsSolution",
+  "Summary": {
+    "TotalFindings": 13,
+    "CveCount": 0,
+    "CweCount": 13,
+    "BySeverity": {
+      "mandatory": 0,
+      "optional": 3,
+      "potential": 10
+    },
+    "ByCategory": {
+      "Code Quality": 3,
+      "Concurrency & Synchronization": 5,
+      "Credentials & Secrets": 3,
+      "Injection Attacks": 2
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 46
+  },
+  "CveFindings": [],
+  "CweFindings": [
+    {
+      "Id": "CWE-681",
+      "Name": "Incorrect Conversion between Numeric Types",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "Files": [
+        "src/eShopModernizedWebForms/Models/CatalogItemHiLoGenerator.cs:19-20",
+        "src/eShopModernizedWebForms/Models/Infrastructure/CatalogDBInitializer.cs:323-327",
+        "src/eShopModernizedWebForms/Models/Infrastructure/dbo.catalog_hilo.Sequence.sql:4-9"
+      ],
+      "Explanation": "The SQL sequence is declared as bigint, but GetNextSequenceValue and GetSequenceIdFromSelectedDBSequence cast its Int64 value to int without a range check. When a sequence value exceeds Int32.MaxValue, the conversion truncates and can yield invalid or duplicate catalog IDs."
+    },
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:107-115"
+      ],
+      "Explanation": "UpLoadImageFromFile opens a FileStream with File.OpenRead and never disposes it, including when the Azure upload operation throws. InitializeCatalogImages invokes this helper repeatedly during startup, so the file handles remain open beyond their use."
+    },
+    {
+      "Id": "CWE-775",
+      "Name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "Files": [
+        "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:107-115"
+      ],
+      "Explanation": "UpLoadImageFromFile opens a file handle using File.OpenRead but has no using/finally disposal after UploadFromStream. Repeated startup image uploads can retain file handles until finalization."
+    },
+    {
+      "Id": "CWE-543",
+      "Name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "Files": [
+        "src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27",
+        "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-16"
+      ],
+      "Explanation": "When mock data is enabled, Autofac registers CatalogServiceMock as a SingleInstance. It owns mutable catalogItems state and performs unsynchronized operations on that list."
+    },
+    {
+      "Id": "CWE-567",
+      "Name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "Files": [
+        "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:47-65"
+      ],
+      "Explanation": "CreateCatalogItem, UpdateCatalogItem, and RemoveCatalogItem mutate the same catalogItems list used by request handlers, without synchronization. Concurrent requests can race on the list and its generated IDs."
+    },
+    {
+      "Id": "CWE-662",
+      "Name": "Improper Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "Files": [
+        "src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27",
+        "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:47-65"
+      ],
+      "Explanation": "The singleton mock catalog is shared across concurrent web requests, but its create, update, and remove operations have no exclusive synchronization around list access."
+    },
+    {
+      "Id": "CWE-667",
+      "Name": "Improper Locking",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product does not properly acquire or release a lock on a resource, leading to unexpected resource state changes and behaviors.",
+      "Files": [
+        "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:47-65"
+      ],
+      "Explanation": "Shared catalog list mutations and the Max(Id)-then-increment allocation sequence are performed without a lock, allowing simultaneous requests to race and potentially assign duplicate IDs or corrupt list operations."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the shared resource.",
+      "Files": [
+        "src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27",
+        "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-16,47-65"
+      ],
+      "Explanation": "The shared mutable catalogItems list is accessed by multithreaded requests through a singleton service, but the list reads and writes are not synchronized."
+    },
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Files": [
+        "src/eShopModernizedWebForms/Web.config:19-20"
+      ],
+      "Explanation": "The CatalogDBContext connection string in Web.config contains a literal SQL password alongside the local SQL username. Although configuration builders can override settings, the committed literal remains a fallback credential."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "Files": [
+        "src/eShopModernizedWebForms/Catalog/PicUploader.asmx.cs:64-77"
+      ],
+      "Explanation": "Image upload validation catches all exceptions and silently marks the image invalid without recording the event. Rejected upload attempts therefore leave no security-relevant audit trail."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Files": [
+        "src/eShopModernizedWebForms/Web.config:19-20"
+      ],
+      "Explanation": "The application configuration contains a hard-coded SQL authentication credential in the CatalogDBContext connection string; configuration builders may override it but do not remove the committed fallback credential."
+    },
+    {
+      "Id": "CWE-79",
+      "Name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "Category": "Injection Attacks",
+      "Severity": "optional",
+      "StoryPoint": 8,
+      "Description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+      "Files": [
+        "src/eShopModernizedWebForms/Catalog/Details.aspx:16",
+        "src/eShopModernizedWebForms/Catalog/Details.aspx:23",
+        "src/eShopModernizedWebForms/Catalog/Create.aspx.cs:56-57",
+        "src/eShopModernizedWebForms/Catalog/Edit.aspx.cs:69-70"
+      ],
+      "Explanation": "Catalog Name and Description values are accepted from form fields and persisted, then rendered into ASP.NET Label Text properties in Details.aspx without explicit HTML encoding (lines 16 and 23). This allows stored markup to be emitted as active page content to users viewing the catalog."
+    },
+    {
+      "Id": "CWE-99",
+      "Name": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "Category": "Injection Attacks",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "Files": [
+        "src/eShopModernizedWebForms/Catalog/Edit.aspx:18",
+        "src/eShopModernizedWebForms/Catalog/Edit.aspx.cs:78",
+        "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:70-84"
+      ],
+      "Explanation": "The TempImageName hidden field is client-controlled and is copied into the catalog item on edit. ImageAzureStorage.UpdateImage derives a blob key from that value, resolves it with GetBlockBlobReference, copies that blob to the item path, and deletes the source without verifying that the key belongs to a temporary upload for this item. A forged resource identifier can therefore select an unintended blob in the storage container."
+    }
+  ]
+}
