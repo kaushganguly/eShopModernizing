@@ -1,0 +1,436 @@
+{
+  "GeneratedAt": "2026-10-27T01:43:11.696115Z",
+  "ProjectPath": "D:\\a\\eShopModernizing\\eShopModernizing\\eShopModernizedNTier",
+  "Summary": {
+    "TotalFindings": 11,
+    "CveCount": 0,
+    "CweCount": 11,
+    "BySeverity": {
+      "mandatory": 0,
+      "optional": 4,
+      "potential": 7
+    },
+    "ByCategory": {
+      "Code Quality": 2,
+      "Concurrency & Synchronization": 3,
+      "Credentials & Secrets": 3,
+      "File & Path Security": 2,
+      "Injection Attacks": 1
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 48
+  },
+  "CveMinimumSeverity": "medium",
+  "DependencyCoverage": {
+    "schemaVersion": 1,
+    "assessedAtUtc": "2026-10-27T01:38:11.9877084Z",
+    "scope": "D:\\a\\eShopModernizing\\eShopModernizing\\eShopModernizedNTier",
+    "status": "PARTIAL_DEPENDENCY_COVERAGE",
+    "findingCount": 0,
+    "dependencyDiscovery": {
+      "command": "dotnet list package --include-transitive --format json",
+      "workingDirectory": "D:\\a\\eShopModernizing\\eShopModernizing\\eShopModernizedNTier",
+      "exitCode": 1,
+      "error": "Microsoft.WebApplication.targets was not found for legacy eShopWCFService.csproj (Visual Studio v18.0 WebApplications targets).",
+      "fallback": "Parsed PackageReference attributes and child Version elements in all three projects, plus legacy packages.config.",
+      "projectCount": 3,
+      "declarationOccurrenceCount": 9,
+      "uniquePackageVersionCount": 8,
+      "resolvedTransitivePackageCount": 0
+    },
+    "advisoryQueries": {
+      "ecosystem": "nuget",
+      "uniquePackageVersionsQueried": 8,
+      "batchSizeLimit": 30,
+      "successfulRuntimeToolCalls": 2,
+      "runtimeToolResult": "No vulnerabilities found in the provided dependencies.",
+      "restEndpoint": "https://api.github.com/advisories",
+      "restAffects": [
+        "EntityFramework@6.1.3",
+        "EntityFramework@6.4.4",
+        "Microsoft.AspNet.WebApi.Client@5.2.3",
+        "Microsoft.AspNet.WebApi.Client@5.2.7",
+        "System.ServiceModel.Duplex@4.8.0",
+        "System.ServiceModel.Http@4.8.0",
+        "System.ServiceModel.NetTcp@4.8.0",
+        "System.ServiceModel.Security@4.8.0"
+      ],
+      "restHttpStatus": 200,
+      "restAdvisoryCount": 0,
+      "pagination": "No Link header; single page complete.",
+      "apiFailures": [
+        {
+          "method": "gh api",
+          "exitCode": 4,
+          "reason": "GitHub CLI authentication unavailable; GH_TOKEN not configured."
+        }
+      ],
+      "fallback": "Runtime GitHub advisory database checked all 8 unique coordinates; unauthenticated GitHub REST query independently returned HTTP 200 and []."
+    },
+    "dependencies": [
+      {
+        "ecosystem": "nuget",
+        "name": "EntityFramework",
+        "version": "6.4.4",
+        "source": "src\\eShopWinForms\\eShopWinForms.csproj",
+        "line": 22,
+        "discovery": "PackageReference declaration",
+        "kind": "direct",
+        "resolution": "declared; not restored"
+      },
+      {
+        "ecosystem": "nuget",
+        "name": "Microsoft.AspNet.WebApi.Client",
+        "version": "5.2.7",
+        "source": "src\\eShopWinForms\\eShopWinForms.csproj",
+        "line": 23,
+        "discovery": "PackageReference declaration",
+        "kind": "direct",
+        "resolution": "declared; not restored"
+      },
+      {
+        "ecosystem": "nuget",
+        "name": "System.ServiceModel.Duplex",
+        "version": "4.8.0",
+        "source": "src\\eShopWinForms\\eShopWinForms.csproj",
+        "line": 24,
+        "discovery": "PackageReference declaration",
+        "kind": "direct",
+        "resolution": "declared; not restored"
+      },
+      {
+        "ecosystem": "nuget",
+        "name": "System.ServiceModel.Http",
+        "version": "4.8.0",
+        "source": "src\\eShopWinForms\\eShopWinForms.csproj",
+        "line": 25,
+        "discovery": "PackageReference declaration",
+        "kind": "direct",
+        "resolution": "declared; not restored"
+      },
+      {
+        "ecosystem": "nuget",
+        "name": "System.ServiceModel.NetTcp",
+        "version": "4.8.0",
+        "source": "src\\eShopWinForms\\eShopWinForms.csproj",
+        "line": 26,
+        "discovery": "PackageReference declaration",
+        "kind": "direct",
+        "resolution": "declared; not restored"
+      },
+      {
+        "ecosystem": "nuget",
+        "name": "System.ServiceModel.Security",
+        "version": "4.8.0",
+        "source": "src\\eShopWinForms\\eShopWinForms.csproj",
+        "line": 27,
+        "discovery": "PackageReference declaration",
+        "kind": "direct",
+        "resolution": "declared; not restored"
+      },
+      {
+        "ecosystem": "nuget",
+        "name": "EntityFramework",
+        "version": "6.1.3",
+        "source": "src\\eShopWinForms\\eShopWinForms.fx.csproj",
+        "line": 265,
+        "discovery": "PackageReference declaration",
+        "kind": "direct",
+        "resolution": "declared; not restored"
+      },
+      {
+        "ecosystem": "nuget",
+        "name": "Microsoft.AspNet.WebApi.Client",
+        "version": "5.2.3",
+        "source": "src\\eShopWinForms\\eShopWinForms.fx.csproj",
+        "line": 268,
+        "discovery": "PackageReference declaration",
+        "kind": "direct",
+        "resolution": "declared; not restored"
+      },
+      {
+        "ecosystem": "nuget",
+        "name": "EntityFramework",
+        "version": "6.1.3",
+        "source": "src\\eShopWCFService\\packages.config",
+        "line": 3,
+        "discovery": "legacy packages.config declaration",
+        "kind": "legacy installed/declaration entry; dependency hierarchy unavailable",
+        "resolution": "declared; not restored"
+      }
+    ],
+    "limitations": [
+      "The solution-wide CLI failed; no restored dependency graph was obtained. Direct package declarations and legacy packages.config entries only were assessed.",
+      "No project.assets.json or packages.lock.json was found in the scoped workspace. Transitive dependency coverage is unknown and incomplete, not zero dependencies.",
+      "Declared versions were checked, not verified installed or deployed versions. Legacy packages.config entries do not reliably distinguish direct from transitive dependencies.",
+      "Framework/runtime assemblies and operating-system components are not NuGet package findings and were not assessed.",
+      "An empty findings array means no GitHub advisories matched the eight enumerated package/version pairs; it does not establish a clean complete dependency scan."
+    ],
+    "sourceOrBuildFilesModified": false,
+    "dependenciesInstalled": false,
+    "evidencePathBase": "D:\\a\\eShopModernizing\\eShopModernizing\\eShopModernizedNTier"
+  },
+  "CveFindings": [],
+  "CweFindings": [
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "e",
+        "S",
+        "h",
+        "o",
+        "p",
+        "M",
+        "o",
+        "d",
+        "e",
+        "r",
+        "n",
+        "i",
+        "z",
+        "e",
+        "d",
+        "N",
+        "T",
+        "i",
+        "e",
+        "r",
+        "/",
+        "s",
+        "r",
+        "c",
+        "/",
+        "e",
+        "S",
+        "h",
+        "o",
+        "p",
+        "W",
+        "i",
+        "n",
+        "F",
+        "o",
+        "r",
+        "m",
+        "s",
+        "/",
+        "V",
+        "i",
+        "e",
+        "w",
+        "s",
+        "/",
+        "C",
+        "a",
+        "t",
+        "a",
+        "l",
+        "o",
+        "g",
+        "V",
+        "i",
+        "e",
+        "w",
+        ".",
+        "c",
+        "s"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems (eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:50-61) creates an Image with Image.FromFile and a separate thumbnail on every catalog load. The original Image is never disposed after the thumbnail is created and its reference is lost at the end of each iteration. Filter changes repeatedly reload the catalog (eShopModernizedNTier\\src\\eShopWinForms\\Controllers\\CatalogController.cs:27-30,75-84), accumulating unmanaged image resources until nondeterministic finalization."
+    },
+    {
+      "Id": "CWE-775",
+      "Name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "Files": [
+        "e",
+        "S",
+        "h",
+        "o",
+        "p",
+        "M",
+        "o",
+        "d",
+        "e",
+        "r",
+        "n",
+        "i",
+        "z",
+        "e",
+        "d",
+        "N",
+        "T",
+        "i",
+        "e",
+        "r",
+        "/",
+        "s",
+        "r",
+        "c",
+        "/",
+        "e",
+        "S",
+        "h",
+        "o",
+        "p",
+        "W",
+        "i",
+        "n",
+        "F",
+        "o",
+        "r",
+        "m",
+        "s",
+        "/",
+        "V",
+        "i",
+        "e",
+        "w",
+        "s",
+        "/",
+        "C",
+        "a",
+        "t",
+        "a",
+        "l",
+        "o",
+        "g",
+        "V",
+        "i",
+        "e",
+        "w",
+        ".",
+        "c",
+        "s"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems (eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:57-61) opens each image file using Image.FromFile. That API retains the file lock/handle until the Image is disposed; the original image is never disposed after its thumbnail is generated and its local reference is discarded. Repeated catalog refreshes therefore leave file handles/locks pending garbage collection."
+    },
+    {
+      "Id": "CWE-567",
+      "Name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs",
+        "src/eShopWCFService/Models/CatalogItem.cs",
+        "src/eShopWCFService/Web.config"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem (eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65-70) reads the shared database MAX(Id), increments it locally, then saves an inserted row without synchronization covering that read/write sequence. CatalogItem explicitly disables database-generated identifiers (eShopModernizedNTier\\src\\eShopWCFService\\Models\\CatalogItem.cs:13-15). The basicHttpBinding service endpoint (eShopModernizedNTier\\src\\eShopWCFService\\Web.config:37-40) can serve concurrent independent request instances; per-instance WCF serialization does not serialize their shared database. Two requests can read the same maximum and insert the same new primary key, causing a failed request. SaveChanges atomicity does not include the earlier MAX query. This single race is mapped to the applicable shared-data/synchronization rules, not separate independent incidents."
+    },
+    {
+      "Id": "CWE-662",
+      "Name": "Improper Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs",
+        "src/eShopWCFService/Models/CatalogItem.cs",
+        "src/eShopWCFService/Web.config"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem (eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65-70) reads the shared database MAX(Id), increments it locally, then saves an inserted row without synchronization covering that read/write sequence. CatalogItem explicitly disables database-generated identifiers (eShopModernizedNTier\\src\\eShopWCFService\\Models\\CatalogItem.cs:13-15). The basicHttpBinding service endpoint (eShopModernizedNTier\\src\\eShopWCFService\\Web.config:37-40) can serve concurrent independent request instances; per-instance WCF serialization does not serialize their shared database. Two requests can read the same maximum and insert the same new primary key, causing a failed request. SaveChanges atomicity does not include the earlier MAX query. This single race is mapped to the applicable shared-data/synchronization rules, not separate independent incidents."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs",
+        "src/eShopWCFService/Models/CatalogItem.cs",
+        "src/eShopWCFService/Web.config"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem (eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65-70) reads the shared database MAX(Id), increments it locally, then saves an inserted row without synchronization covering that read/write sequence. CatalogItem explicitly disables database-generated identifiers (eShopModernizedNTier\\src\\eShopWCFService\\Models\\CatalogItem.cs:13-15). The basicHttpBinding service endpoint (eShopModernizedNTier\\src\\eShopWCFService\\Web.config:37-40) can serve concurrent independent request instances; per-instance WCF serialization does not serialize their shared database. Two requests can read the same maximum and insert the same new primary key, causing a failed request. SaveChanges atomicity does not include the earlier MAX query. This single race is mapped to the applicable shared-data/synchronization rules, not separate independent incidents."
+    },
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Files": [
+        "docker-compose.override.yml"
+      ],
+      "Explanation": "The SQL Server deployment contains a literal administrator password [MASKED] in sql.data.environment.SA_PASSWORD (eShopModernizedNTier\\docker-compose.override.yml:13). The healthcheck also embeds that password [MASKED] for sqlcmd authentication (line 18). These are active deployment values rather than placeholders or comments; no secret values are reproduced."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem (eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65-71) accepts a remote catalog creation request and persists it with SaveChanges without recording an audit event, caller identity or affected record. The exposed operation is declared at eShopModernizedNTier\\src\\eShopWCFService\\ICatalogService.cs:27-28. Full handwritten source and service configuration contain no application audit logger or interceptor for this security-relevant catalog mutation. Host access logs, if any, are not evidence of record-level auditing."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Files": [
+        "docker-compose.override.yml"
+      ],
+      "Explanation": "The SQL Server deployment contains a literal administrator password [MASKED] in sql.data.environment.SA_PASSWORD (eShopModernizedNTier\\docker-compose.override.yml:13). The healthcheck also embeds that password [MASKED] for sqlcmd authentication (line 18). These are active deployment values rather than placeholders or comments; no secret values are reproduced."
+    },
+    {
+      "Id": "CWE-22",
+      "Name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 8,
+      "Description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+      "Files": [
+        "src/eShopWinForms/Views/CatalogView.cs",
+        "src/eShopWCFService/CatalogService.svc.cs",
+        "src/eShopWCFService/ICatalogService.cs"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems (eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:55-58) concatenates catalogItem.Picturefilename to the restricted Catalog image directory and passes it to Image.FromFile without validating traversal segments. Remote CreateCatalogItem/UpdateCatalogItem operations accept and persist that filename (eShopModernizedNTier\\src\\eShopWCFService\\ICatalogService.cs:27-30; eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65-76). A filename containing ..\\ segments can read an image outside that directory when a client displays the catalog."
+    },
+    {
+      "Id": "CWE-23",
+      "Name": "Relative Path Traversal",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+      "Files": [
+        "src/eShopWinForms/Views/CatalogView.cs",
+        "src/eShopWCFService/CatalogService.svc.cs",
+        "src/eShopWCFService/ICatalogService.cs"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems (eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:55-58) concatenates catalogItem.Picturefilename to the restricted Catalog image directory and passes it to Image.FromFile without validating traversal segments. Remote CreateCatalogItem/UpdateCatalogItem operations accept and persist that filename (eShopModernizedNTier\\src\\eShopWCFService\\ICatalogService.cs:27-30; eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65-76). A filename containing ..\\ segments can read an image outside that directory when a client displays the catalog."
+    },
+    {
+      "Id": "CWE-99",
+      "Name": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "Category": "Injection Attacks",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "Files": [
+        "src/eShopWinForms/Views/CatalogView.cs",
+        "src/eShopWCFService/CatalogService.svc.cs"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems (eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:55-58) uses the remote catalog Picturefilename as part of the image resource identifier without confinement. CatalogService.CreateCatalogItem/UpdateCatalogItem (eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65-76) persist the caller-controlled value. Traversal segments select an image outside the intended assets directory for loading in the desktop client."
+    }
+  ],
+  "EvidencePathBase": "D:\\a\\eShopModernizing\\eShopModernizing\\eShopModernizedNTier"
+}
