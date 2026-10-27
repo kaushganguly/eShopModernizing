@@ -1,0 +1,703 @@
+{
+  "version": "1.0.0",
+  "producer": ".NET AppCAT CLI",
+  "metadata": {
+    "analysisStartTime": "2026-10-27T02:21:57.2077279Z",
+    "analysisEndTime": "2026-10-27T02:21:59.2297022Z",
+    "privacyMode": "Restricted",
+    "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2271074",
+    "targetIds": [
+      "AppService.Windows",
+      "AppService.Linux",
+      "AKS.Linux",
+      "AKS.Windows",
+      "ACA",
+      "AppServiceContainer.Linux",
+      "AppServiceContainer.Windows",
+      "AppServiceManagedInstance.Windows"
+    ],
+    "targetDisplayNames": [
+      "Azure App Service",
+      "Azure Kubernetes Service",
+      "Azure Container Apps",
+      "Azure App Service Container",
+      "Azure App Service Managed Instance"
+    ],
+    "os": [
+      "windows",
+      "linux"
+    ]
+  },
+  "summary": {
+    "totalProjects": 1,
+    "totalIssues": 6,
+    "totalIncidents": 7,
+    "totalEffort": 23,
+    "charts": {
+      "severity": {
+        "mandatory": 0,
+        "optional": 3,
+        "potential": 4,
+        "information": 0
+      },
+      "category": {
+        "Security": 3,
+        "Scale": 1,
+        "Database": 2,
+        "Local": 1
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "src\\eShopModernizedWebForms\\eShopModernizedWebForms.csproj",
+      "issues": 6,
+      "storyPoints": 23,
+      "properties": {
+        "appName": "eShopModernizedWebForms",
+        "frameworks": [
+          ".NETFramework,Version=v4.7.2"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ]
+      },
+      "incidents": [
+        {
+          "ruleId": "Security.0103",
+          "incidentId": "af0f9e01-a1da-4ea5-9122-bacde3c5605d",
+          "location": "src\\eShopModernizedWebForms\\eShopModernizedWebForms.csproj",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 5
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Security.0103",
+          "incidentId": "5e3385bd-a29f-462f-8b3b-5821552afafa",
+          "location": "src\\eShopModernizedWebForms\\eShopModernizedWebForms.csproj",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 5
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Scale.0001",
+          "incidentId": "f1202bca-695a-4cf8-85b8-536af1feec6d",
+          "location": "src\\eShopModernizedWebForms\\eShopModernizedWebForms.csproj",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "optional",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Database.0002",
+          "incidentId": "ea899590-17c1-46c2-a6ee-addfce98fd28",
+          "location": "src\\eShopModernizedWebForms\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Database.0003",
+          "incidentId": "d8c99c0e-e42c-4dd5-89ba-6913ea08b0e9",
+          "location": "src\\eShopModernizedWebForms\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "optional",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Security.0003",
+          "incidentId": "6bc5c984-2232-448d-ab60-967fe2e8f741",
+          "location": "src\\eShopModernizedWebForms\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "mandatory",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "900df565-1ad5-4cff-a15d-3e601e361bc4",
+          "location": "src\\eShopModernizedWebForms\\App_Start\\SqlAccessTokenProvider.cs",
+          "locationKind": "File",
+          "line": 30,
+          "column": 45,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "Security.0103": {
+      "id": "Security.0103",
+      "description": "Certificate management packages or configurations detected. This may indicate the application is using local or custom certificate handling, which could require adjustments when migrating to Azure. Consider using Azure Key Vault Certificates for secure storage, lifecycle management, and integration with Azure services.",
+      "title": "Certificate management dependency detected",
+      "severity": "potential",
+      "effort": 5,
+      "links": [
+        {
+          "title": "About Azure Key Vault certificates",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2335741"
+        }
+      ],
+      "labels": []
+    },
+    "Scale.0001": {
+      "id": "Scale.0001",
+      "description": "Static content detected.\n\nYour current approach of serving static content directly might lead to increased costs, performance issues, maintenance challenges (requiring application redeployment for content changes), and security risks.\n\nConsider moving static content to Azure Blob Storage and adding Azure CDN.",
+      "title": "Static content detected",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "title": "Azure Blob Storage",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2250574"
+        },
+        {
+          "title": "Azure CDN",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2250392"
+        }
+      ],
+      "labels": []
+    },
+    "Database.0002": {
+      "id": "Database.0002",
+      "description": "SQL database connection detected.\n\nEnsure the database is available/reachable on Azure.\n\nIf it is not, there are multiple ways you can move your data to Azure:\n    1. Migrate to Azure SQL Database.\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don’t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
+      "title": "SQL database connection detected",
+      "severity": "potential",
+      "effort": 3,
+      "links": [
+        {
+          "title": "Migrate SQL Server database to Azure",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2251731"
+        },
+        {
+          "title": "Azure SQL Managed Instance",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2251613"
+        },
+        {
+          "title": "Azure Migrate",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2252410"
+        }
+      ],
+      "labels": []
+    },
+    "Database.0003": {
+      "id": "Database.0003",
+      "description": "System.Data.SqlClient dependency is detected.\n\nWhile System.Data.SqlClient will work in Azure, the newer Microsoft.Data.SqlClient package is the primary .NET SQL client moving forward and receiving the latest features. For example, Microsoft.Data.SqlClient easily allows use of Azure Managed Identity from a connection string.",
+      "title": "System.Data.SqlClient dependency detected",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242668"
+        }
+      ],
+      "labels": []
+    },
+    "Security.0003": {
+      "id": "Security.0003",
+      "description": "Hardcoded sensitive data detected.\n\nIf you are targeting Managed Instance on Azure App Service, externalize secrets to Key Vault/App Configuration; use managed identity instead of passwords or embedded connection strings.\n\nWhile if targeting other Azure compute services:\n\nAvoid placing sensitive data such as passwords, ids, tokens etc., directly in config files and code since it compromises the security of your application.\n\nUse Azure App Configuration or Azure KeyVault to store secrets.",
+      "title": "Hardcoded sensitive data detected",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "title": "Centralized app configuration and security",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2250733"
+        }
+      ],
+      "labels": []
+    },
+    "Local.0006": {
+      "id": "Local.0006",
+      "description": "Your application has hardcoded URLs that might correspond to services that are not accessible on Azure.\n\nReview and ensure that the application is attempting to access URLs that would be available from Azure. You might need to migrate those services to Azure too, this way you will get the benefit of lower latency in the cloud.\n\nIf your application needs to depend on services that run on-premises, you can connect your Azure and local networks with ExpressRoute, Hybrid Connections, or VPN solutions.",
+      "title": "Hardcoded URLs detected",
+      "severity": "potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "ExpressRoute",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2250577"
+        },
+        {
+          "title": "Hybrid Connections",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242588"
+        },
+        {
+          "title": "Connect an on-prem network",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242591"
+        }
+      ],
+      "labels": []
+    }
+  },
+  "security": [
+    {
+      "evidence": {
+        "explanation": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net can silently lose log events in XML layouts when input contains forbidden XML 1.0 characters.\n\nSeverity: MEDIUM\n\nAffected dependency: log4net 2.0.10 (declared at src/eShopModernizedWebForms/packages.config:11); the advisory affects versions before 3.3.0.\n\nRecommended fix: Upgrade log4net to 3.3.0 or later after compatibility review.",
+        "files": [
+          "src/eShopModernizedWebForms/packages.config:11"
+        ]
+      },
+      "category": "CVE",
+      "id": "CVE-2026-40021",
+      "storyPoint": 1,
+      "description": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net can silently lose log events in XML layouts when input contains forbidden XML 1.0 characters.\n\nSeverity: MEDIUM\n\nAffected dependency: log4net 2.0.10 (declared at src/eShopModernizedWebForms/packages.config:11); the advisory affects versions before 3.3.0.\n\nRecommended fix: Upgrade log4net to 3.3.0 or later after compatibility review.",
+      "severity": "optional",
+      "title": "Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters"
+    },
+    {
+      "evidence": {
+        "explanation": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Affected Microsoft IdentityModel packages can expose an ASP.NET Core project to denial of service.\n\nSeverity: MEDIUM\n\nAffected dependencies: Microsoft.IdentityModel.JsonWebTokens 5.6.0 (declared at src/eShopModernizedWebForms/packages.config:53) and System.IdentityModel.Tokens.Jwt 5.6.0 (declared at src/eShopModernizedWebForms/packages.config:98); the advisory affects versions below 5.7.0 in this version range.\n\nRecommended fix: Upgrade both packages to 5.7.0 or later, selecting compatible versions after reviewing the package dependency graph.",
+        "files": [
+          "src/eShopModernizedWebForms/packages.config:53",
+          "src/eShopModernizedWebForms/packages.config:98"
+        ]
+      },
+      "category": "CVE",
+      "id": "CVE-2024-21319",
+      "storyPoint": 1,
+      "description": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Affected Microsoft IdentityModel packages can expose an ASP.NET Core project to denial of service.\n\nSeverity: MEDIUM\n\nAffected dependencies: Microsoft.IdentityModel.JsonWebTokens 5.6.0 (declared at src/eShopModernizedWebForms/packages.config:53) and System.IdentityModel.Tokens.Jwt 5.6.0 (declared at src/eShopModernizedWebForms/packages.config:98); the advisory affects versions below 5.7.0 in this version range.\n\nRecommended fix: Upgrade both packages to 5.7.0 or later, selecting compatible versions after reviewing the package dependency graph.",
+      "severity": "optional",
+      "title": "Microsoft ASP.NET Core project templates vulnerable to denial of service"
+    },
+    {
+      "evidence": {
+        "explanation": "CatalogItemHiLoGenerator.GetNextSequenceValue and CatalogDBInitializer.GetSequenceIdFromSelectedDBSequence cast Int64 database sequence values to int without range checks (CatalogItemHiLoGenerator.cs:19-20; CatalogDBInitializer.cs:323-327). Values outside Int32 range can wrap or otherwise produce incorrect identifiers.",
+        "files": [
+          "src/eShopModernizedWebForms/Models/CatalogItemHiLoGenerator.cs",
+          "src/eShopModernizedWebForms/Models/Infrastructure/CatalogDBInitializer.cs"
+        ]
+      },
+      "category": "Code Quality",
+      "id": "CWE-681",
+      "storyPoint": 3,
+      "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "severity": "potential",
+      "title": "Incorrect Conversion between Numeric Types"
+    },
+    {
+      "evidence": {
+        "explanation": "Default.Page_Load accepts route-provided size and index as Int32 values (Default.aspx.cs:31-35); CatalogService.GetCatalogItemsPaginated multiplies them in Skip(pageSize * pageIndex) without bounds checking (CatalogService.cs:24-30). Large valid inputs can overflow the multiplication and produce incorrect pagination offsets.",
+        "files": [
+          "src/eShopModernizedWebForms/Default.aspx.cs",
+          "src/eShopModernizedWebForms/Services/CatalogService.cs"
+        ]
+      },
+      "category": "Code Quality",
+      "id": "CWE-682",
+      "storyPoint": 5,
+      "description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+      "severity": "potential",
+      "title": "Incorrect Calculation"
+    },
+    {
+      "evidence": {
+        "explanation": "ImageAzureStorage.UpLoadImageFromFile opens a FileStream with File.OpenRead and uploads it, but never disposes or closes the stream (lines 107-115), retaining a file resource past the method lifetime.",
+        "files": [
+          "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs"
+        ]
+      },
+      "category": "Code Quality",
+      "id": "CWE-772",
+      "storyPoint": 3,
+      "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "severity": "potential",
+      "title": "Missing Release of Resource after Effective Lifetime"
+    },
+    {
+      "evidence": {
+        "explanation": "ImageAzureStorage.UpLoadImageFromFile opens a file handle using File.OpenRead and uploads its contents without disposing or closing the stream (lines 107-115).",
+        "files": [
+          "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs"
+        ]
+      },
+      "category": "Code Quality",
+      "id": "CWE-775",
+      "storyPoint": 3,
+      "description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "severity": "potential",
+      "title": "Missing Release of File Descriptor or Handle after Effective Lifetime"
+    },
+    {
+      "evidence": {
+        "explanation": "PicUploader.UploadImage passes the request-supplied image stream to Image.FromStream during IsValidImage (lines 40-45, 64-71) without enforcing an upload size or image-dimension limit before image decoding, allowing an oversized image to drive excessive memory consumption.",
+        "files": [
+          "src/eShopModernizedWebForms/Catalog/PicUploader.asmx.cs"
+        ]
+      },
+      "category": "Code Quality",
+      "id": "CWE-789",
+      "storyPoint": 5,
+      "description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+      "severity": "potential",
+      "title": "Memory Allocation with Excessive Size Value"
+    },
+    {
+      "evidence": {
+        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance (ApplicationModule.cs:23-27). Its shared catalogItems list is read and modified by request methods such as CreateCatalogItem, UpdateCatalogItem, and RemoveCatalogItem without synchronization (CatalogServiceMock.cs:11-16, 47-65).",
+        "files": [
+          "src/eShopModernizedWebForms/Modules/ApplicationModule.cs",
+          "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs"
+        ]
+      },
+      "category": "Concurrency & Synchronization",
+      "id": "CWE-543",
+      "storyPoint": 5,
+      "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "severity": "potential",
+      "title": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context"
+    },
+    {
+      "evidence": {
+        "explanation": "The singleton CatalogServiceMock instance shares its mutable catalogItems list across web requests, while read/write operations are not guarded by synchronization (ApplicationModule.cs:23-27; CatalogServiceMock.cs:11-16, 47-65).",
+        "files": [
+          "src/eShopModernizedWebForms/Modules/ApplicationModule.cs",
+          "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs"
+        ]
+      },
+      "category": "Concurrency & Synchronization",
+      "id": "CWE-567",
+      "storyPoint": 5,
+      "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "severity": "potential",
+      "title": "Unsynchronized Access to Shared Data in a Multithreaded Context"
+    },
+    {
+      "evidence": {
+        "explanation": "Concurrent requests can access the shared catalogItems list while CRUD methods enumerate, replace, add, or remove entries without a lock, allowing simultaneous access to the collection (lines 11-16, 19-25, 47-65).",
+        "files": [
+          "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs"
+        ]
+      },
+      "category": "Concurrency & Synchronization",
+      "id": "CWE-662",
+      "storyPoint": 8,
+      "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "severity": "potential",
+      "title": "Improper Synchronization"
+    },
+    {
+      "evidence": {
+        "explanation": "The list shared by the singleton CatalogServiceMock is accessed by per-request operations without synchronization (ApplicationModule.cs:23-27; CatalogServiceMock.cs:11-16, 19-25, 47-65).",
+        "files": [
+          "src/eShopModernizedWebForms/Modules/ApplicationModule.cs",
+          "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs"
+        ]
+      },
+      "category": "Concurrency & Synchronization",
+      "id": "CWE-820",
+      "storyPoint": 8,
+      "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "severity": "potential",
+      "title": "Missing Synchronization"
+    },
+    {
+      "evidence": {
+        "explanation": "The Compose override commits a literal SQL Server SA password in the sql.data service environment and repeats it in the health-check command. This is a hard-coded credential available to anyone with repository access; the value is intentionally redacted here.",
+        "files": [
+          "docker-compose.override.yml:21",
+          "docker-compose.override.yml:26"
+        ]
+      },
+      "category": "Credentials & Secrets",
+      "id": "CWE-259",
+      "storyPoint": 5,
+      "description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "severity": "optional",
+      "title": "Use of Hard-coded Password"
+    },
+    {
+      "evidence": {
+        "explanation": "Startup.Auth.ConfigureAuth handles AuthenticationFailed by suppressing the response and redirecting, but does not log the authentication failure (Startup.Auth.cs:40-44). Global.Application_BeginRequest logs only URL and request metadata and does not record authenticated identity or security decision context (Global.asax.cs:57-68), leaving authentication failures without an audit record.",
+        "files": [
+          "src/eShopModernizedWebForms/App_Start/Startup.Auth.cs",
+          "src/eShopModernizedWebForms/Global.asax.cs"
+        ]
+      },
+      "category": "Credentials & Secrets",
+      "id": "CWE-778",
+      "storyPoint": 3,
+      "description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "severity": "potential",
+      "title": "Insufficient Logging"
+    },
+    {
+      "evidence": {
+        "explanation": "The Compose override commits a literal SQL Server SA password in the sql.data service environment and repeats it in the health-check command. This is a hard-coded credential available to anyone with repository access; the value is intentionally redacted here.",
+        "files": [
+          "docker-compose.override.yml:21",
+          "docker-compose.override.yml:26"
+        ]
+      },
+      "category": "Credentials & Secrets",
+      "id": "CWE-798",
+      "storyPoint": 5,
+      "description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "severity": "optional",
+      "title": "Use of Hard-coded Credentials"
+    },
+    {
+      "evidence": {
+        "explanation": "Create_Click copies the submitted Name and Description into a CatalogItem and persists it through CatalogService.CreateCatalogItem (Create.aspx.cs:54-73). Details.aspx binds those stored values to asp:Label Text properties (lines 16 and 23), which render text as markup rather than applying explicit HTML encoding, allowing stored script markup to execute for users viewing the detail page.",
+        "files": [
+          "src/eShopModernizedWebForms/Catalog/Create.aspx.cs",
+          "src/eShopModernizedWebForms/Catalog/Details.aspx"
+        ]
+      },
+      "category": "Injection Attacks",
+      "id": "CWE-79",
+      "storyPoint": 8,
+      "description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+      "severity": "optional",
+      "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    },
+    {
+      "evidence": {
+        "explanation": "PicUploader.UploadImage accepts itemId from the request form (PicUploader.asmx.cs:41), then passes the uploaded file and parsed identifier to ImageAzureStorage.UploadTempImage. That method constructs the Azure blob name from catalogItemId and the client-provided file.FileName and passes it to GetBlockBlobReference without restricting the identifier (ImageAzureStorage.cs:87-94), allowing a caller to select blob resource names outside the intended item image name.",
+        "files": [
+          "src/eShopModernizedWebForms/Catalog/PicUploader.asmx.cs",
+          "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs"
+        ]
+      },
+      "category": "Injection Attacks",
+      "id": "CWE-99",
+      "storyPoint": 3,
+      "description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "severity": "potential",
+      "title": "Improper Control of Resource Identifiers ('Resource Injection')"
+    }
+  ]
+}
