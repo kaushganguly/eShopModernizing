@@ -1,0 +1,172 @@
+{
+  "result": {
+    "finding": "Assessed 12 CWE rules in Injection Attacks: 0 FOUND, 12 NOT_FOUND",
+    "evidence": [
+      "Scanned MVC C# and Razor sources for command execution, unsafe HTML output, dynamic SQL, LDAP/XML/XPath/XQuery processing, deserialization, and externally controlled resource identifiers. SQL sequence identifiers are constants and Razor views use encoded output helpers."
+    ],
+    "values": [
+      {
+        "id": "CWE-77",
+        "category": "Injection Attacks",
+        "severity": "mandatory",
+        "status": "NOT_FOUND",
+        "storyPoint": 13,
+        "evidence": {
+          "explanation": "",
+          "files": []
+        },
+        "name": "Improper Neutralization of Special Elements used in a Command ('Command Injection')",
+        "description": "The product constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component."
+      },
+      {
+        "id": "CWE-78",
+        "category": "Injection Attacks",
+        "severity": "mandatory",
+        "status": "NOT_FOUND",
+        "storyPoint": 13,
+        "evidence": {
+          "explanation": "",
+          "files": []
+        },
+        "name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
+        "description": "The product constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component."
+      },
+      {
+        "id": "CWE-79",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "status": "NOT_FOUND",
+        "storyPoint": 8,
+        "evidence": {
+          "explanation": "",
+          "files": []
+        },
+        "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+        "description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users."
+      },
+      {
+        "id": "CWE-88",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "status": "NOT_FOUND",
+        "storyPoint": 5,
+        "evidence": {
+          "explanation": "",
+          "files": []
+        },
+        "name": "Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')",
+        "description": "The product constructs a string for a command to be executed by a separate component in another control sphere, but it does not properly delimit the intended arguments, options, or switches within that command string."
+      },
+      {
+        "id": "CWE-89",
+        "category": "Injection Attacks",
+        "severity": "mandatory",
+        "status": "NOT_FOUND",
+        "storyPoint": 13,
+        "evidence": {
+          "explanation": "",
+          "files": []
+        },
+        "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
+        "description": "The product constructs all or part of an SQL command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended SQL command when it is sent to a downstream component. Without sufficient removal or quoting of SQL syntax in user-controllable inputs, the generated SQL query can cause those inputs to be interpreted as SQL instead of ordinary user data."
+      },
+      {
+        "id": "CWE-90",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "status": "NOT_FOUND",
+        "storyPoint": 5,
+        "evidence": {
+          "explanation": "",
+          "files": []
+        },
+        "name": "Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')",
+        "description": "The product constructs all or part of an LDAP query using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended LDAP query when it is sent to a downstream component."
+      },
+      {
+        "id": "CWE-91",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "status": "NOT_FOUND",
+        "storyPoint": 5,
+        "evidence": {
+          "explanation": "",
+          "files": []
+        },
+        "name": "XML Injection (aka Blind XPath Injection)",
+        "description": "The product does not properly neutralize special elements that are used in XML, allowing attackers to modify the syntax, content, or commands of the XML before it is processed by an end system."
+      },
+      {
+        "id": "CWE-99",
+        "category": "Injection Attacks",
+        "severity": "potential",
+        "status": "NOT_FOUND",
+        "storyPoint": 3,
+        "evidence": {
+          "explanation": "",
+          "files": []
+        },
+        "name": "Improper Control of Resource Identifiers ('Resource Injection')",
+        "description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control."
+      },
+      {
+        "id": "CWE-502",
+        "category": "Injection Attacks",
+        "severity": "mandatory",
+        "status": "NOT_FOUND",
+        "storyPoint": 13,
+        "evidence": {
+          "explanation": "",
+          "files": []
+        },
+        "name": "Deserialization of Untrusted Data",
+        "description": "The product deserializes untrusted data without sufficiently ensuring that the resulting data will be valid."
+      },
+      {
+        "id": "CWE-564",
+        "category": "Injection Attacks",
+        "severity": "mandatory",
+        "status": "NOT_FOUND",
+        "storyPoint": 8,
+        "evidence": {
+          "explanation": "",
+          "files": []
+        },
+        "name": "SQL Injection: Hibernate",
+        "description": "Using Hibernate to execute a dynamic SQL statement built with user-controlled input can allow an attacker to modify the statement's meaning or to execute arbitrary SQL commands."
+      },
+      {
+        "id": "CWE-643",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "status": "NOT_FOUND",
+        "storyPoint": 5,
+        "evidence": {
+          "explanation": "",
+          "files": []
+        },
+        "name": "Improper Neutralization of Data within XPath Expressions (XPath Injection)",
+        "description": "The product uses external input to dynamically construct an XPath expression used to retrieve data from an XML database, but it does not neutralize or incorrectly neutralizes that input. This allows an attacker to control the structure of the query."
+      },
+      {
+        "id": "CWE-652",
+        "category": "Injection Attacks",
+        "severity": "optional",
+        "status": "NOT_FOUND",
+        "storyPoint": 5,
+        "evidence": {
+          "explanation": "",
+          "files": []
+        },
+        "name": "Improper Neutralization of Data within XQuery Expressions (XQuery Injection)",
+        "description": "The product uses external input to dynamically construct an XQuery expression used to retrieve data from an XML database, but it does not neutralize or incorrectly neutralizes that input. This allows an attacker to control the structure of the query."
+      }
+    ],
+    "confidence": "high"
+  },
+  "timestamp": "2026-10-27T02:14:20.7777041Z",
+  "status": "success",
+  "input_name": "CWE - Injection Attacks",
+  "analysis_method": "LLM",
+  "execution_time_seconds": 0
+}

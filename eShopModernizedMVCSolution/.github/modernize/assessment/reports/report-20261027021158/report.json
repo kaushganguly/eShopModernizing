@@ -1,0 +1,746 @@
+{
+  "version": "1.0.0",
+  "producer": ".NET AppCAT CLI",
+  "metadata": {
+    "analysisStartTime": "2026-10-27T02:11:58.984212Z",
+    "analysisEndTime": "2026-10-27T02:12:00.4022853Z",
+    "privacyMode": "Restricted",
+    "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2271074",
+    "targetIds": [
+      "AppService.Windows",
+      "AppService.Linux",
+      "AKS.Linux",
+      "AKS.Windows",
+      "ACA",
+      "AppServiceContainer.Linux",
+      "AppServiceContainer.Windows",
+      "AppServiceManagedInstance.Windows"
+    ],
+    "targetDisplayNames": [
+      "Azure App Service",
+      "Azure Kubernetes Service",
+      "Azure Container Apps",
+      "Azure App Service Container",
+      "Azure App Service Managed Instance"
+    ],
+    "os": [
+      "windows",
+      "linux"
+    ]
+  },
+  "summary": {
+    "totalProjects": 1,
+    "totalIssues": 7,
+    "totalIncidents": 8,
+    "totalEffort": 26,
+    "charts": {
+      "severity": {
+        "mandatory": 1,
+        "optional": 3,
+        "potential": 4,
+        "information": 0
+      },
+      "category": {
+        "Security": 3,
+        "Scale": 1,
+        "Database": 2,
+        "Identity": 1,
+        "Local": 1
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "src\\eShopModernizedMVC\\eShopModernizedMVC.csproj",
+      "issues": 7,
+      "storyPoints": 26,
+      "properties": {
+        "appName": "eShopModernizedMVC",
+        "frameworks": [
+          ".NETFramework,Version=v4.7.2"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ]
+      },
+      "incidents": [
+        {
+          "ruleId": "Security.0103",
+          "incidentId": "a568d95f-2221-449c-ba5b-16bcbcb2ca26",
+          "location": "src\\eShopModernizedMVC\\eShopModernizedMVC.csproj",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 5
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Security.0103",
+          "incidentId": "ec932a6d-f505-44b8-abdd-705f7676a022",
+          "location": "src\\eShopModernizedMVC\\eShopModernizedMVC.csproj",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 5
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 5
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Scale.0001",
+          "incidentId": "26acc01c-8123-406a-9d68-bc7c4f02d7de",
+          "location": "src\\eShopModernizedMVC\\eShopModernizedMVC.csproj",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "optional",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Database.0002",
+          "incidentId": "c15e1677-c596-492d-a29b-eb87b5714df7",
+          "location": "src\\eShopModernizedMVC\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Database.0003",
+          "incidentId": "ce177e54-0aed-4977-b0c3-1a635307785e",
+          "location": "src\\eShopModernizedMVC\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "optional",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Identity.0002",
+          "incidentId": "d4be9c8c-5b11-40c0-b19a-c6c6731e4643",
+          "location": "src\\eShopModernizedMVC\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "mandatory",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "mandatory",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Security.0003",
+          "incidentId": "a2c60842-f9f6-4c86-9d94-39a92046db94",
+          "location": "src\\eShopModernizedMVC\\Web.config",
+          "locationKind": "File",
+          "targets": {
+            "AppService.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppService.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AKS.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "ACA": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "optional",
+              "effort": 3
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "mandatory",
+              "effort": 3
+            }
+          },
+          "labels": []
+        },
+        {
+          "ruleId": "Local.0006",
+          "incidentId": "708e85ec-6a00-4000-ac29-7ced784665c4",
+          "location": "src\\eShopModernizedMVC\\App_Start\\SqlAccessTokenProvider.cs",
+          "locationKind": "File",
+          "line": 30,
+          "column": 45,
+          "targets": {
+            "AppService.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppService.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AKS.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "ACA": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Linux": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceContainer.Windows": {
+              "severity": "potential",
+              "effort": 1
+            },
+            "AppServiceManagedInstance.Windows": {
+              "severity": "potential",
+              "effort": 1
+            }
+          },
+          "labels": []
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "Security.0103": {
+      "id": "Security.0103",
+      "description": "Certificate management packages or configurations detected. This may indicate the application is using local or custom certificate handling, which could require adjustments when migrating to Azure. Consider using Azure Key Vault Certificates for secure storage, lifecycle management, and integration with Azure services.",
+      "title": "Certificate management dependency detected",
+      "severity": "potential",
+      "effort": 5,
+      "links": [
+        {
+          "title": "About Azure Key Vault certificates",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2335741"
+        }
+      ],
+      "labels": []
+    },
+    "Scale.0001": {
+      "id": "Scale.0001",
+      "description": "Static content detected.\n\nYour current approach of serving static content directly might lead to increased costs, performance issues, maintenance challenges (requiring application redeployment for content changes), and security risks.\n\nConsider moving static content to Azure Blob Storage and adding Azure CDN.",
+      "title": "Static content detected",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "title": "Azure Blob Storage",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2250574"
+        },
+        {
+          "title": "Azure CDN",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2250392"
+        }
+      ],
+      "labels": []
+    },
+    "Database.0002": {
+      "id": "Database.0002",
+      "description": "SQL database connection detected.\n\nEnsure the database is available/reachable on Azure.\n\nIf it is not, there are multiple ways you can move your data to Azure:\n    1. Migrate to Azure SQL Database.\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don’t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
+      "title": "SQL database connection detected",
+      "severity": "potential",
+      "effort": 3,
+      "links": [
+        {
+          "title": "Migrate SQL Server database to Azure",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2251731"
+        },
+        {
+          "title": "Azure SQL Managed Instance",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2251613"
+        },
+        {
+          "title": "Azure Migrate",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2252410"
+        }
+      ],
+      "labels": []
+    },
+    "Database.0003": {
+      "id": "Database.0003",
+      "description": "System.Data.SqlClient dependency is detected.\n\nWhile System.Data.SqlClient will work in Azure, the newer Microsoft.Data.SqlClient package is the primary .NET SQL client moving forward and receiving the latest features. For example, Microsoft.Data.SqlClient easily allows use of Azure Managed Identity from a connection string.",
+      "title": "System.Data.SqlClient dependency detected",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242668"
+        }
+      ],
+      "labels": []
+    },
+    "Identity.0002": {
+      "id": "Identity.0002",
+      "description": "Your app is using windows authentication which is not supported on Azure App Service, Azure Container Apps and Azure Kubernetes Service.\n\nAzure App Service provides built-in authentication and authorization capabilities, so you can sign in users and access data by writing minimal or no code in your web app.\n\nFollow the link below for more information.\"",
+      "title": "Windows authentication detected",
+      "severity": "mandatory",
+      "effort": 3,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242883"
+        }
+      ],
+      "labels": []
+    },
+    "Security.0003": {
+      "id": "Security.0003",
+      "description": "Hardcoded sensitive data detected.\n\nIf you are targeting Managed Instance on Azure App Service, externalize secrets to Key Vault/App Configuration; use managed identity instead of passwords or embedded connection strings.\n\nWhile if targeting other Azure compute services:\n\nAvoid placing sensitive data such as passwords, ids, tokens etc., directly in config files and code since it compromises the security of your application.\n\nUse Azure App Configuration or Azure KeyVault to store secrets.",
+      "title": "Hardcoded sensitive data detected",
+      "severity": "optional",
+      "effort": 3,
+      "links": [
+        {
+          "title": "Centralized app configuration and security",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2250733"
+        }
+      ],
+      "labels": []
+    },
+    "Local.0006": {
+      "id": "Local.0006",
+      "description": "Your application has hardcoded URLs that might correspond to services that are not accessible on Azure.\n\nReview and ensure that the application is attempting to access URLs that would be available from Azure. You might need to migrate those services to Azure too, this way you will get the benefit of lower latency in the cloud.\n\nIf your application needs to depend on services that run on-premises, you can connect your Azure and local networks with ExpressRoute, Hybrid Connections, or VPN solutions.",
+      "title": "Hardcoded URLs detected",
+      "severity": "potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "ExpressRoute",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2250577"
+        },
+        {
+          "title": "Hybrid Connections",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242588"
+        },
+        {
+          "title": "Connect an on-prem network",
+          "url": "https://go.microsoft.com/fwlink/?LinkID=2242591"
+        }
+      ],
+      "labels": []
+    }
+  },
+  "security": [
+    {
+      "id": "CVE-2026-40021",
+      "severity": "optional",
+      "evidence": {
+        "explanation": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nApache Log4net's  XmlLayout https://logging.apache.org/log4net/manual/configuration/layouts.html#layout-list  and  XmlLayoutSchemaLog4J https://logging.apache.org/log4net/manual/configuration/layouts.html#layout-list , in versions before 3.3.0, fail to sanitize characters forbidden by the  XML 1.0 specification https://www.w3.org/TR/xml/#charsets  in MDC property keys and values, as well as the identity field that may carry attacker-influenced data. This causes an exception during serialization and the silent loss of the affected log event.\n\nAn attacker who can influence any of these fields can exploit this to suppress individual log records, impairing audit trails and detection of malicious activity.\n\nUsers are advised to upgrade to Apache Log4net 3.3.0, which fixes this issue.\n\nAffected dependencies:\n  - log4net:2.0.12 (packages.config:10); range < 3.3.0; patched \n\nRecommended fix: upgrade log4net to 3.3.0 or later.",
+        "files": [
+          "src/eShopModernizedMVC/packages.config:10"
+        ]
+      },
+      "title": "Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters",
+      "storyPoint": 1,
+      "description": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nApache Log4net's  XmlLayout https://logging.apache.org/log4net/manual/configuration/layouts.html#layout-list  and  XmlLayoutSchemaLog4J https://logging.apache.org/log4net/manual/configuration/layouts.html#layout-list , in versions before 3.3.0, fail to sanitize characters forbidden by the  XML 1.0 specification https://www.w3.org/TR/xml/#charsets  in MDC property keys and values, as well as the identity field that may carry attacker-influenced data. This causes an exception during serialization and the silent loss of the affected log event.\n\nAn attacker who can influence any of these fields can exploit this to suppress individual log records, impairing audit trails and detection of malicious activity.\n\nUsers are advised to upgrade to Apache Log4net 3.3.0, which fixes this issue.\n\nAffected dependencies:\n  - log4net:2.0.12 (packages.config:10); range < 3.3.0; patched \n\nRecommended fix: upgrade log4net to 3.3.0 or later.",
+      "category": "CVE"
+    },
+    {
+      "id": "CVE-2024-21319",
+      "severity": "optional",
+      "evidence": {
+        "explanation": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Microsoft ASP.NET Core project templates vulnerable to denial of service\n\nSeverity: MEDIUM\n\nA Denial of Service vulnerability exists in ASP.NET Core project templates which utilize JWT-based authentication tokens. This vulnerability allows an unauthenticated client to consume arbitrarily large amounts of server memory, potentially triggering an out-of-memory condition on the server and making the server no longer able to respond to legitimate requests. \n\n## Announcement\n\nAnnouncement for this issue can be found at  https://github.com/dotnet/announcements/issues/290\n\n### Mitigation factors\n\nThis impacts only .NET Core-based projects that were created using any version of project templates listed in affected software. \nOther project templates e.g., console applications, MAUI applications, Windows Forms or WPF applications, are not affected.\n\n## Affected software\n\nThis impacts only .NET Core-based projects that were created using any version of the below project templates.\n\n-\tASP.NET Core Web App (Model-View-Controller)\n-\tASP.NET Core Web API\n-\tASP.NET Core Web App (Razor Pages)\n-\tBlazor Server App\n-\tBlazor WebAssembly App\n\n## Advisory FAQ\n\n### How do I know if I am affected?\n\nIf you are you using project templates listed in affected software, you may be exposed to the vulnerability.\n\n### How do I fix the issue?\n\n#### For existing projects:\nIf you ever created any of these projects via the dotnet new command or via Visual Studio's File -> New Project gesture, and if you enabled federated authentication at project creation time, your project may be vulnerable. To remediate the vulnerability, use your package manager to update any references you may have to the Microsoft.AspNetCore.Authentication.JwtBearer, Microsoft.AspNetCore.Authentication.OpenIdConnect, and Microsoft.IdentityModel.JsonWebTokens packages to their respective latest versions. \n- [Microsoft.AspNetCore.Authentication.JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer/) \n- [Microsoft.AspNetCore.Authentication.OpenIdConnect](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.OpenIdConnect/) \n\nIf your project does not reference any of those three packages, you are not exposed to this vulnerability.\n\n#### For new projects:\nTo remediate this issue please update to the latest SDK listed below. Simply installing the SDK update is not sufficient to remediate projects already-created / already-deployed projects which existed prior to this update being released.\n\n* To fix the issue please install the latest version of .NET 6.0 or .NET 7.0. If you have installed one or more .NET SDKs through Visual Studio, Visual Studio will prompt you to update Visual Studio, which will also update your .NET  SDKs.\n* If you are using one of the affected packages, please update to the patched version listed above.\n* If you have .NET 6.0 or greater installed, you can list the versions you have installed by running the `dotnet --info` command. You will see output like the following;\n\n```\n.NET Core SDK (reflecting any global.json):\n\n Version:   7.0.200\n Commit:    8473146e7d\n\nRuntime Environment:\n\n OS Name:     Windows\n OS Version:  10.0.18363\n OS Platform: Windows\n RID:         win10-x64\n Base Path:   C:\\Program Files\\dotnet\\sdk\\7.0.300\\\n\nHost (useful for support):\n\n  Version: 76.0.5\n  Commit:  8473146e7d\n\n.NET Core SDKs installed:\n\n  7.0.200 [C:\\Program Files\\dotnet\\sdk]\n\n.NET Core runtimes installed:\n\n  Microsoft.AspNetCore.App 7.0.5 [C:\\Program Files\\dotnet\\shared\\Microsoft.AspNetCore.App]\n  Microsoft.NETCore.App 7.0.5 [C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App]\n  Microsoft.WindowsDesktop.App 7.0.5 [C:\\Program Files\\dotnet\\shared\\Microsoft.WindowsDesktop.App]\n\nTo install additional .NET Core runtimes or SDKs:\n  https://aka.ms/dotnet-download\n```\n\n* If you're using .NET 8.0, you should download and install .NET 8.0.101 SDK (for Visual Studio 2022 v17.8) from https://dotnet.microsoft.com/download/dotnet-core/8.0.\n* If you're using .NET 7.0, you should download and install .NET SDK 7.0.115 (for Visual Studio 2022 v17.4) from https://dotnet.microsoft.com/download/dotnet-core/7.0.\n* If you're using .NET 6.0, you should download and install .NET SDK 6.0.321 (for Visual Studio 2022 v17.2) from https://dotnet.microsoft.com/download/dotnet-core/6.0.\n\n.NET 6.0, .NET 7.0, .NET 8.0 updates are also available from Microsoft Update. To access this either type \"Check for updates\" in your Windows search, or open Settings, choose Update & Security and then click Check for Updates.\n\nOnce you have installed the updated runtime or SDK, restart your apps for the update to take effect.\n\nAdditionally, if you've deployed [self-contained applications](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) targeting any of the impacted versions, these applications are also vulnerable and must be recompiled and redeployed.\n\n## Other Information\n\n### Reporting Security Issues\n\nIf you have found a potential security issue in .NET 8.0 or .NET 7.0 or .NET 6.0, please email details to secure@microsoft.com. Reports may qualify for the Microsoft .NET Core & .NET 5 Bounty. Details of the Microsoft .NET Bounty Program including terms and conditions are at <https://aka.ms/corebounty>.\n\n### Support\n\nYou can ask questions about this issue on GitHub in the .NET GitHub organization. The main repos are located at https://github.com/dotnet/runtime and https://github.com/dotnet/aspnet/. The Announcements repo (https://github.com/dotnet/Announcements) will contain this bulletin as an issue and will include a link to a discussion issue. You can ask questions in the linked discussion issue.\n\n### Disclaimer\n\nThe information provided in this advisory is provided \"as is\" without warranty of any kind. Microsoft disclaims all warranties, either express or implied, including the warranties of merchantability and fitness for a particular purpose. In no event shall Microsoft Corporation or its suppliers be liable for any damages whatsoever including direct, indirect, incidental, consequential, loss of business profits or special damages, even if Microsoft Corporation or its suppliers have been advised of the possibility of such damages. Some states do not allow the exclusion or limitation of liability for consequential or incidental damages so the foregoing limitation may not apply.\n\n### Acknowledgement\n\nMorgan Brown, Microsoft Corp.\n\nAffected dependencies:\n  - System.IdentityModel.Tokens.Jwt:5.6.0 (packages.config:97); range < 5.7.0; patched \n  - System.IdentityModel.Tokens.Jwt:5.6.0 (packages.config:97); range >= 6.5.0, < 6.34.0; patched \n  - System.IdentityModel.Tokens.Jwt:5.6.0 (packages.config:97); range >= 7.0.0-preview, < 7.1.2; patched \n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (packages.config:51); range < 5.7.0; patched \n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (packages.config:51); range >= 6.5.0, < 6.34.0; patched \n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (packages.config:51); range >= 7.0.0-preview, < 7.1.2; patched \n\nRecommended fix: upgrade affected Microsoft.IdentityModel.JsonWebTokens and System.IdentityModel.Tokens.Jwt packages from 5.6.0 to 5.7.0 or later, and verify the advisory applicability for this .NET Framework MVC deployment.",
+        "files": [
+          "src/eShopModernizedMVC/packages.config:51",
+          "src/eShopModernizedMVC/packages.config:97"
+        ]
+      },
+      "title": "Microsoft ASP.NET Core project templates vulnerable to denial of service",
+      "storyPoint": 1,
+      "description": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Microsoft ASP.NET Core project templates vulnerable to denial of service\n\nSeverity: MEDIUM\n\nA Denial of Service vulnerability exists in ASP.NET Core project templates which utilize JWT-based authentication tokens. This vulnerability allows an unauthenticated client to consume arbitrarily large amounts of server memory, potentially triggering an out-of-memory condition on the server and making the server no longer able to respond to legitimate requests. \n\n## Announcement\n\nAnnouncement for this issue can be found at  https://github.com/dotnet/announcements/issues/290\n\n### Mitigation factors\n\nThis impacts only .NET Core-based projects that were created using any version of project templates listed in affected software. \nOther project templates e.g., console applications, MAUI applications, Windows Forms or WPF applications, are not affected.\n\n## Affected software\n\nThis impacts only .NET Core-based projects that were created using any version of the below project templates.\n\n-\tASP.NET Core Web App (Model-View-Controller)\n-\tASP.NET Core Web API\n-\tASP.NET Core Web App (Razor Pages)\n-\tBlazor Server App\n-\tBlazor WebAssembly App\n\n## Advisory FAQ\n\n### How do I know if I am affected?\n\nIf you are you using project templates listed in affected software, you may be exposed to the vulnerability.\n\n### How do I fix the issue?\n\n#### For existing projects:\nIf you ever created any of these projects via the dotnet new command or via Visual Studio's File -> New Project gesture, and if you enabled federated authentication at project creation time, your project may be vulnerable. To remediate the vulnerability, use your package manager to update any references you may have to the Microsoft.AspNetCore.Authentication.JwtBearer, Microsoft.AspNetCore.Authentication.OpenIdConnect, and Microsoft.IdentityModel.JsonWebTokens packages to their respective latest versions. \n- [Microsoft.AspNetCore.Authentication.JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer/) \n- [Microsoft.AspNetCore.Authentication.OpenIdConnect](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.OpenIdConnect/) \n\nIf your project does not reference any of those three packages, you are not exposed to this vulnerability.\n\n#### For new projects:\nTo remediate this issue please update to the latest SDK listed below. Simply installing the SDK update is not sufficient to remediate projects already-created / already-deployed projects which existed prior to this update being released.\n\n* To fix the issue please install the latest version of .NET 6.0 or .NET 7.0. If you have installed one or more .NET SDKs through Visual Studio, Visual Studio will prompt you to update Visual Studio, which will also update your .NET  SDKs.\n* If you are using one of the affected packages, please update to the patched version listed above.\n* If you have .NET 6.0 or greater installed, you can list the versions you have installed by running the `dotnet --info` command. You will see output like the following;\n\n```\n.NET Core SDK (reflecting any global.json):\n\n Version:   7.0.200\n Commit:    8473146e7d\n\nRuntime Environment:\n\n OS Name:     Windows\n OS Version:  10.0.18363\n OS Platform: Windows\n RID:         win10-x64\n Base Path:   C:\\Program Files\\dotnet\\sdk\\7.0.300\\\n\nHost (useful for support):\n\n  Version: 76.0.5\n  Commit:  8473146e7d\n\n.NET Core SDKs installed:\n\n  7.0.200 [C:\\Program Files\\dotnet\\sdk]\n\n.NET Core runtimes installed:\n\n  Microsoft.AspNetCore.App 7.0.5 [C:\\Program Files\\dotnet\\shared\\Microsoft.AspNetCore.App]\n  Microsoft.NETCore.App 7.0.5 [C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App]\n  Microsoft.WindowsDesktop.App 7.0.5 [C:\\Program Files\\dotnet\\shared\\Microsoft.WindowsDesktop.App]\n\nTo install additional .NET Core runtimes or SDKs:\n  https://aka.ms/dotnet-download\n```\n\n* If you're using .NET 8.0, you should download and install .NET 8.0.101 SDK (for Visual Studio 2022 v17.8) from https://dotnet.microsoft.com/download/dotnet-core/8.0.\n* If you're using .NET 7.0, you should download and install .NET SDK 7.0.115 (for Visual Studio 2022 v17.4) from https://dotnet.microsoft.com/download/dotnet-core/7.0.\n* If you're using .NET 6.0, you should download and install .NET SDK 6.0.321 (for Visual Studio 2022 v17.2) from https://dotnet.microsoft.com/download/dotnet-core/6.0.\n\n.NET 6.0, .NET 7.0, .NET 8.0 updates are also available from Microsoft Update. To access this either type \"Check for updates\" in your Windows search, or open Settings, choose Update & Security and then click Check for Updates.\n\nOnce you have installed the updated runtime or SDK, restart your apps for the update to take effect.\n\nAdditionally, if you've deployed [self-contained applications](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) targeting any of the impacted versions, these applications are also vulnerable and must be recompiled and redeployed.\n\n## Other Information\n\n### Reporting Security Issues\n\nIf you have found a potential security issue in .NET 8.0 or .NET 7.0 or .NET 6.0, please email details to secure@microsoft.com. Reports may qualify for the Microsoft .NET Core & .NET 5 Bounty. Details of the Microsoft .NET Bounty Program including terms and conditions are at <https://aka.ms/corebounty>.\n\n### Support\n\nYou can ask questions about this issue on GitHub in the .NET GitHub organization. The main repos are located at https://github.com/dotnet/runtime and https://github.com/dotnet/aspnet/. The Announcements repo (https://github.com/dotnet/Announcements) will contain this bulletin as an issue and will include a link to a discussion issue. You can ask questions in the linked discussion issue.\n\n### Disclaimer\n\nThe information provided in this advisory is provided \"as is\" without warranty of any kind. Microsoft disclaims all warranties, either express or implied, including the warranties of merchantability and fitness for a particular purpose. In no event shall Microsoft Corporation or its suppliers be liable for any damages whatsoever including direct, indirect, incidental, consequential, loss of business profits or special damages, even if Microsoft Corporation or its suppliers have been advised of the possibility of such damages. Some states do not allow the exclusion or limitation of liability for consequential or incidental damages so the foregoing limitation may not apply.\n\n### Acknowledgement\n\nMorgan Brown, Microsoft Corp.\n\nAffected dependencies:\n  - System.IdentityModel.Tokens.Jwt:5.6.0 (packages.config:97); range < 5.7.0; patched \n  - System.IdentityModel.Tokens.Jwt:5.6.0 (packages.config:97); range >= 6.5.0, < 6.34.0; patched \n  - System.IdentityModel.Tokens.Jwt:5.6.0 (packages.config:97); range >= 7.0.0-preview, < 7.1.2; patched \n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (packages.config:51); range < 5.7.0; patched \n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (packages.config:51); range >= 6.5.0, < 6.34.0; patched \n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (packages.config:51); range >= 7.0.0-preview, < 7.1.2; patched \n\nRecommended fix: upgrade affected Microsoft.IdentityModel.JsonWebTokens and System.IdentityModel.Tokens.Jwt packages from 5.6.0 to 5.7.0 or later, and verify the advisory applicability for this .NET Framework MVC deployment.",
+      "category": "CVE"
+    },
+    {
+      "id": "CWE-681",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "GetSequenceIdFromSelectedDBSequence casts the SQL sequence result from Int64 to int without a range check at CatalogDBInitializer.cs:327. The sequence is declared AS bigint at dbo.catalog_hilo.Sequence.sql:5, so values above Int32.MaxValue can be truncated when assigned as catalog IDs.",
+        "files": [
+          "src/eShopModernizedMVC/Models/Infrastructure/CatalogDBInitializer.cs:327",
+          "src/eShopModernizedMVC/Models/Infrastructure/dbo.catalog_hilo.Sequence.sql:5"
+        ]
+      },
+      "title": "Incorrect Conversion between Numeric Types",
+      "storyPoint": 3,
+      "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "category": "Code Quality"
+    },
+    {
+      "id": "CWE-682",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "The Index action accepts pageSize and pageIndex from query parameters without bounds and passes them through. CatalogService multiplies them for Skip and uses pageSize for Take; the view model divides by pageSize and casts the ceiling to int. Zero, negative, or extreme values can produce a divide-by-zero/overflow or incorrect pagination results.",
+        "files": [
+          "src/eShopModernizedMVC/Controllers/CatalogController.cs:25-28",
+          "src/eShopModernizedMVC/Services/CatalogService.cs:28-29",
+          "src/eShopModernizedMVC/ViewModel/PaginatedItemsViewModel.cs:23"
+        ]
+      },
+      "title": "Incorrect Calculation",
+      "storyPoint": 5,
+      "description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+      "category": "Code Quality"
+    },
+    {
+      "id": "CWE-772",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "UpLoadImageFromFile opens a FileStream with File.OpenRead at line 111, uploads it at line 116, and exits without disposing the stream. Repeated catalog initialization can retain file handles and resources.",
+        "files": [
+          "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:109-116"
+        ]
+      },
+      "title": "Missing Release of Resource after Effective Lifetime",
+      "storyPoint": 3,
+      "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "category": "Code Quality"
+    },
+    {
+      "id": "CWE-775",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "UpLoadImageFromFile opens a file handle with File.OpenRead at line 111 and never closes or disposes it after UploadFromStream at line 116, so repeated calls can exhaust file handles.",
+        "files": [
+          "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:109-116"
+        ]
+      },
+      "title": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "storyPoint": 3,
+      "description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "category": "Code Quality"
+    },
+    {
+      "id": "CWE-789",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "The public Index action accepts an unbounded pageSize query parameter and passes it to CatalogService, which calls Take(pageSize).ToList() without a maximum. A very large pageSize can cause a large database result to be materialized in memory.",
+        "files": [
+          "src/eShopModernizedMVC/Controllers/CatalogController.cs:25-28",
+          "src/eShopModernizedMVC/Services/CatalogService.cs:24-30"
+        ]
+      },
+      "title": "Memory Allocation with Excessive Size Value",
+      "storyPoint": 5,
+      "description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+      "category": "Code Quality"
+    },
+    {
+      "id": "CWE-543",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a SingleInstance. The singleton owns a mutable List<CatalogItem> shared across concurrent web requests.",
+        "files": [
+          "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+          "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-15"
+        ]
+      },
+      "title": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "storyPoint": 5,
+      "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "category": "Concurrency & Synchronization"
+    },
+    {
+      "id": "CWE-567",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "CatalogServiceMock mutates and reads its shared catalogItems list in create, update, and remove operations without synchronization. Concurrent requests can race while reading or modifying the list.",
+        "files": [
+          "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11,47-65"
+        ]
+      },
+      "title": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "storyPoint": 5,
+      "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "category": "Concurrency & Synchronization"
+    },
+    {
+      "id": "CWE-662",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "The singleton mock catalog is shared across request threads, but its list operations are not protected by a lock or concurrent collection, allowing simultaneous access during writes and reads.",
+        "files": [
+          "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+          "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:47-65"
+        ]
+      },
+      "title": "Improper Synchronization",
+      "storyPoint": 8,
+      "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "category": "Concurrency & Synchronization"
+    },
+    {
+      "id": "CWE-820",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "The shared mutable catalogItems list is accessed by request methods without synchronization. A lock exists in CatalogItemHiLoGenerator for a different resource, but it does not guard this list.",
+        "files": [
+          "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11,18-29,47-65"
+        ]
+      },
+      "title": "Missing Synchronization",
+      "storyPoint": 8,
+      "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "category": "Concurrency & Synchronization"
+    },
+    {
+      "id": "CWE-259",
+      "severity": "optional",
+      "evidence": {
+        "explanation": "The checked-in local Docker Compose override sets a literal SQL Server SA password for the database container and repeats it in the health-check command; the application connection string also uses the built-in SA credential. These are development credentials stored in plaintext configuration, not secret references.",
+        "files": [
+          "docker-compose.override.yml:6",
+          "docker-compose.override.yml:21",
+          "docker-compose.override.yml:26"
+        ]
+      },
+      "title": "Use of Hard-coded Password",
+      "storyPoint": 5,
+      "description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "category": "Credentials & Secrets"
+    },
+    {
+      "id": "CWE-732",
+      "severity": "optional",
+      "evidence": {
+        "explanation": "InitializeCatalogImages sets the entire pics blob container to BlobContainerPublicAccessType.Blob (public blob reads). The same container receives temporary user uploads via UploadTempImage, and the PicController upload action has no local authorization attribute, so uploaded temporary blobs are also publicly readable by URL.",
+        "files": [
+          "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:46-48",
+          "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:89-99",
+          "src/eShopModernizedMVC/Controllers/PicController.cs:25-39"
+        ]
+      },
+      "title": "Incorrect Permission Assignment for Critical Resource",
+      "storyPoint": 5,
+      "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
+      "category": "Credentials & Secrets"
+    },
+    {
+      "id": "CWE-778",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "The sign-in action logs only a generic entry message before challenging OpenID Connect. It does not record the authentication result or principal, so successful and failed authentication outcomes are not auditable from the application log.",
+        "files": [
+          "src/eShopModernizedMVC/Controllers/AccountController.cs:14-20"
+        ]
+      },
+      "title": "Insufficient Logging",
+      "storyPoint": 3,
+      "description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "category": "Credentials & Secrets"
+    },
+    {
+      "id": "CWE-798",
+      "severity": "optional",
+      "evidence": {
+        "explanation": "The checked-in local Docker Compose override sets a literal SQL Server SA password for the database container and repeats it in the health-check command; the application connection string also uses the built-in SA credential. These are development credentials stored in plaintext configuration, not secret references.",
+        "files": [
+          "docker-compose.override.yml:6",
+          "docker-compose.override.yml:21",
+          "docker-compose.override.yml:26"
+        ]
+      },
+      "title": "Use of Hard-coded Credentials",
+      "storyPoint": 5,
+      "description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "category": "Credentials & Secrets"
+    }
+  ]
+}

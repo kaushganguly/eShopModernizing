@@ -1,0 +1,238 @@
+{
+  "execution_time_seconds": 0,
+  "result": {
+    "finding": "Assessed 16 CWE rules in Code Quality: 5 FOUND, 11 NOT_FOUND",
+    "confidence": "high",
+    "values": [
+      {
+        "severity": "potential",
+        "status": "NOT_FOUND",
+        "description": "The product parses a formatted message or structure, but it does not handle or incorrectly handles a length field that is inconsistent with the actual length of the associated data.",
+        "name": "Improper Handling of Length Parameter Inconsistency",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "id": "CWE-130",
+        "category": "Code Quality",
+        "storyPoint": 3
+      },
+      {
+        "severity": "potential",
+        "status": "NOT_FOUND",
+        "description": "The product does not initialize critical variables, which causes the execution environment to use unexpected values.",
+        "name": "Missing Initialization of a Variable",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "id": "CWE-456",
+        "category": "Code Quality",
+        "storyPoint": 2
+      },
+      {
+        "severity": "potential",
+        "status": "NOT_FOUND",
+        "description": "The code uses a variable that has not been initialized, leading to unpredictable or unintended results.",
+        "name": "Use of Uninitialized Variable",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "id": "CWE-457",
+        "category": "Code Quality",
+        "storyPoint": 2
+      },
+      {
+        "severity": "optional",
+        "status": "NOT_FOUND",
+        "description": "The code uses deprecated or obsolete functions, which suggests that the code has not been actively reviewed or maintained.",
+        "name": "Use of Obsolete Function",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "id": "CWE-477",
+        "category": "Code Quality",
+        "storyPoint": 1
+      },
+      {
+        "severity": "optional",
+        "status": "NOT_FOUND",
+        "description": "The product contains an expression that will always evaluate to false.",
+        "name": "Expression is Always False",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "id": "CWE-570",
+        "category": "Code Quality",
+        "storyPoint": 1
+      },
+      {
+        "severity": "optional",
+        "status": "NOT_FOUND",
+        "description": "The product contains an expression that will always evaluate to true.",
+        "name": "Expression is Always True",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "id": "CWE-571",
+        "category": "Code Quality",
+        "storyPoint": 1
+      },
+      {
+        "severity": "potential",
+        "status": "NOT_FOUND",
+        "description": "The product does not properly check inputs that are used for loop conditions, potentially leading to a denial of service or other consequences because of excessive looping.",
+        "name": "Unchecked Input for Loop Condition",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "id": "CWE-606",
+        "category": "Code Quality",
+        "storyPoint": 3
+      },
+      {
+        "severity": "potential",
+        "status": "NOT_FOUND",
+        "description": "The product does not initialize or incorrectly initializes a resource, which might leave the resource in an unexpected state when it is accessed or used.",
+        "name": "Improper Initialization",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "id": "CWE-665",
+        "category": "Code Quality",
+        "storyPoint": 3
+      },
+      {
+        "severity": "potential",
+        "status": "FOUND",
+        "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+        "name": "Incorrect Conversion between Numeric Types",
+        "evidence": {
+          "files": [
+            "src/eShopModernizedMVC/Models/Infrastructure/CatalogDBInitializer.cs:327",
+            "src/eShopModernizedMVC/Models/Infrastructure/dbo.catalog_hilo.Sequence.sql:5"
+          ],
+          "explanation": "GetSequenceIdFromSelectedDBSequence casts the SQL sequence result from Int64 to int without a range check at CatalogDBInitializer.cs:327. The sequence is declared AS bigint at dbo.catalog_hilo.Sequence.sql:5, so values above Int32.MaxValue can be truncated when assigned as catalog IDs."
+        },
+        "id": "CWE-681",
+        "category": "Code Quality",
+        "storyPoint": 3
+      },
+      {
+        "severity": "potential",
+        "status": "FOUND",
+        "description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+        "name": "Incorrect Calculation",
+        "evidence": {
+          "files": [
+            "src/eShopModernizedMVC/Controllers/CatalogController.cs:25-28",
+            "src/eShopModernizedMVC/Services/CatalogService.cs:28-29",
+            "src/eShopModernizedMVC/ViewModel/PaginatedItemsViewModel.cs:23"
+          ],
+          "explanation": "The Index action accepts pageSize and pageIndex from query parameters without bounds and passes them through. CatalogService multiplies them for Skip and uses pageSize for Take; the view model divides by pageSize and casts the ceiling to int. Zero, negative, or extreme values can produce a divide-by-zero/overflow or incorrect pagination results."
+        },
+        "id": "CWE-682",
+        "category": "Code Quality",
+        "storyPoint": 5
+      },
+      {
+        "severity": "potential",
+        "status": "FOUND",
+        "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+        "name": "Missing Release of Resource after Effective Lifetime",
+        "evidence": {
+          "files": [
+            "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:109-116"
+          ],
+          "explanation": "UpLoadImageFromFile opens a FileStream with File.OpenRead at line 111, uploads it at line 116, and exits without disposing the stream. Repeated catalog initialization can retain file handles and resources."
+        },
+        "id": "CWE-772",
+        "category": "Code Quality",
+        "storyPoint": 3
+      },
+      {
+        "severity": "potential",
+        "status": "FOUND",
+        "description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+        "name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+        "evidence": {
+          "files": [
+            "src/eShopModernizedMVC/Services/ImageAzureStorage.cs:109-116"
+          ],
+          "explanation": "UpLoadImageFromFile opens a file handle with File.OpenRead at line 111 and never closes or disposes it after UploadFromStream at line 116, so repeated calls can exhaust file handles."
+        },
+        "id": "CWE-775",
+        "category": "Code Quality",
+        "storyPoint": 3
+      },
+      {
+        "severity": "optional",
+        "status": "NOT_FOUND",
+        "description": "The product uses an expression in which operator precedence causes incorrect logic to be used.",
+        "name": "Operator Precedence Logic Error",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "id": "CWE-783",
+        "category": "Code Quality",
+        "storyPoint": 1
+      },
+      {
+        "severity": "potential",
+        "status": "FOUND",
+        "description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+        "name": "Memory Allocation with Excessive Size Value",
+        "evidence": {
+          "files": [
+            "src/eShopModernizedMVC/Controllers/CatalogController.cs:25-28",
+            "src/eShopModernizedMVC/Services/CatalogService.cs:24-30"
+          ],
+          "explanation": "The public Index action accepts an unbounded pageSize query parameter and passes it to CatalogService, which calls Take(pageSize).ToList() without a maximum. A very large pageSize can cause a large database result to be materialized in memory."
+        },
+        "id": "CWE-789",
+        "category": "Code Quality",
+        "storyPoint": 5
+      },
+      {
+        "severity": "potential",
+        "status": "NOT_FOUND",
+        "description": "The product contains an iteration or loop with an exit condition that cannot be reached, i.e., an infinite loop.",
+        "name": "Loop with Unreachable Exit Condition ('Infinite Loop')",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "id": "CWE-835",
+        "category": "Code Quality",
+        "storyPoint": 3
+      },
+      {
+        "severity": "potential",
+        "status": "NOT_FOUND",
+        "description": "The product uses a dedicated, central data manager component as required by design, but it contains code that performs data-access operations that do not use this data manager.",
+        "name": "Data Access Operations Outside of Expected Data Manager Component",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "id": "CWE-1057",
+        "category": "Code Quality",
+        "storyPoint": 5
+      }
+    ],
+    "evidence": [
+      "Scanned MVC C# sources for length handling, initialization, deprecated APIs, loop bounds, resource lifetimes, numeric conversions, arithmetic, and data access. Confirmed findings are limited to unbounded pagination, unchecked numeric narrowing, and undisposed file streams."
+    ]
+  },
+  "input_name": "CWE - Code Quality",
+  "analysis_method": "LLM",
+  "timestamp": "2026-10-27T02:15:31.3974902Z",
+  "status": "success"
+}
