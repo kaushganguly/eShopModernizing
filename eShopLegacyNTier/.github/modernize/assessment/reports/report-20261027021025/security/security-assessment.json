@@ -20,7 +20,10 @@
       "Injection Attacks": 1
     },
     "TotalRulesAssessed": 59,
-    "RulesPassed": 51
+    "RulesPassed": 51,
+    "ProvenExploitableVulnerabilities": 0,
+    "ConfirmedDependencyAdvisories": 1,
+    "SourcePatternFindings": 8
   },
   "CveFindings": [
     {
@@ -48,7 +51,10 @@
       "Files": [
         "src\\eShopWinForms\\Views\\CatalogView.cs:48-62"
       ],
-      "Explanation": "CatalogView.SetCatalogItems opens a GDI+ Image via Image.FromFile at line 58 and derives a thumbnail at line 59, but never disposes the original image, including on exceptions. Image.FromFile retains its backing file lock until disposal. Repeated catalog/filter reloads can retain file handles and native image resources until finalization and degrade client availability. Thumbnail retention is not used as the basis of this finding. No remote exploitation or measured exhaustion was demonstrated."
+      "Explanation": "CatalogView.SetCatalogItems opens a GDI+ Image via Image.FromFile at line 58 and derives a thumbnail at line 59, but never disposes the original image, including on exceptions. Image.FromFile retains its backing file lock until disposal. Repeated catalog/filter reloads can retain file handles and native image resources until finalization and degrade client availability. Thumbnail retention is not used as the basis of this finding. No remote exploitation or measured exhaustion was demonstrated.",
+      "Confidence": "high (source pattern only)",
+      "Exploitability": "Not demonstrated",
+      "FindingType": "code-quality/correctness concern"
     },
     {
       "Id": "CWE-775",
@@ -60,7 +66,10 @@
       "Files": [
         "src\\eShopWinForms\\Views\\CatalogView.cs:57-59"
       ],
-      "Explanation": "CatalogView.SetCatalogItems opens a GDI+ Image via Image.FromFile at line 58 and derives a thumbnail at line 59, but never disposes the original image, including on exceptions. Image.FromFile retains its backing file lock until disposal. Repeated catalog/filter reloads can retain file handles and native image resources until finalization and degrade client availability. Thumbnail retention is not used as the basis of this finding. No remote exploitation or measured exhaustion was demonstrated. This is the retained-file-handle specialization of CWE-772, not a separate leak."
+      "Explanation": "CatalogView.SetCatalogItems opens a GDI+ Image via Image.FromFile at line 58 and derives a thumbnail at line 59, but never disposes the original image, including on exceptions. Image.FromFile retains its backing file lock until disposal. Repeated catalog/filter reloads can retain file handles and native image resources until finalization and degrade client availability. Thumbnail retention is not used as the basis of this finding. No remote exploitation or measured exhaustion was demonstrated. This is the retained-file-handle specialization of CWE-772, not a separate leak.",
+      "Confidence": "high (source pattern only)",
+      "Exploitability": "Not demonstrated",
+      "FindingType": "code-quality/correctness concern"
     },
     {
       "Id": "CWE-662",
@@ -74,7 +83,10 @@
         "src\\eShopWCFService\\CatalogService.svc.cs:99-116",
         "src\\eShopWCFService\\Models\\CatalogItemsStock.cs:22-25"
       ],
-      "Explanation": "CatalogService.CreateCatalogItem reads the maximum ID then assigns max+1 and saves at lines 65-70; CreateAvailableStock repeats max+1 at lines 113-116 after a separate existence check at lines 101-102. StockId explicitly disables database-generated IDs at Models/CatalogItemsStock.cs:22-25. Concurrent WCF sessions/processes can read the same maximum before either commits, producing duplicate-key failures; concurrent stock check/insert operations can also race. SaveChanges' individual transaction does not make the preceding reads and writes atomic together. Requires overlapping writes; sequential use does not trigger it. Actual deployment concurrency and resulting DB errors were not tested."
+      "Explanation": "CatalogService.CreateCatalogItem reads the maximum ID then assigns max+1 and saves at lines 65-70; CreateAvailableStock repeats max+1 at lines 113-116 after a separate existence check at lines 101-102. StockId explicitly disables database-generated IDs at Models/CatalogItemsStock.cs:22-25. Concurrent WCF sessions/processes can read the same maximum before either commits, producing duplicate-key failures; concurrent stock check/insert operations can also race. SaveChanges' individual transaction does not make the preceding reads and writes atomic together. Requires overlapping writes; sequential use does not trigger it. Actual deployment concurrency and resulting DB errors were not tested.",
+      "Confidence": "high (source pattern only)",
+      "Exploitability": "Not demonstrated",
+      "FindingType": "code-quality/correctness concern"
     },
     {
       "Id": "CWE-820",
@@ -88,7 +100,10 @@
         "src\\eShopWCFService\\CatalogService.svc.cs:99-116",
         "src\\eShopWCFService\\Models\\CatalogItemsStock.cs:22-25"
       ],
-      "Explanation": "CatalogService.CreateCatalogItem reads the maximum ID then assigns max+1 and saves at lines 65-70; CreateAvailableStock repeats max+1 at lines 113-116 after a separate existence check at lines 101-102. StockId explicitly disables database-generated IDs at Models/CatalogItemsStock.cs:22-25. Concurrent WCF sessions/processes can read the same maximum before either commits, producing duplicate-key failures; concurrent stock check/insert operations can also race. SaveChanges' individual transaction does not make the preceding reads and writes atomic together. Requires overlapping writes; sequential use does not trigger it. Actual deployment concurrency and resulting DB errors were not tested. This is the missing-synchronization classification of the same read-modify-write race as CWE-662."
+      "Explanation": "CatalogService.CreateCatalogItem reads the maximum ID then assigns max+1 and saves at lines 65-70; CreateAvailableStock repeats max+1 at lines 113-116 after a separate existence check at lines 101-102. StockId explicitly disables database-generated IDs at Models/CatalogItemsStock.cs:22-25. Concurrent WCF sessions/processes can read the same maximum before either commits, producing duplicate-key failures; concurrent stock check/insert operations can also race. SaveChanges' individual transaction does not make the preceding reads and writes atomic together. Requires overlapping writes; sequential use does not trigger it. Actual deployment concurrency and resulting DB errors were not tested. This is the missing-synchronization classification of the same read-modify-write race as CWE-662.",
+      "Confidence": "high (source pattern only)",
+      "Exploitability": "Not demonstrated",
+      "FindingType": "code-quality/correctness concern"
     },
     {
       "Id": "CWE-778",
@@ -102,7 +117,10 @@
         "src\\eShopWCFService\\CatalogService.svc.cs:99-116",
         "src\\eShopWCFService\\ICatalogService.cs:25-32"
       ],
-      "Explanation": "CatalogService.CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and CreateAvailableStock directly persist catalog/inventory changes without recording an audit event, caller identity, target or outcome. These are service-exposed business-data mutations, so unauthorized or erroneous changes cannot be attributed using application-level audit records from the supplied source. This confirms missing application audit instrumentation, not proof that hosting/database/infrastructure logging is absent; external logs may partially compensate."
+      "Explanation": "CatalogService.CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and CreateAvailableStock directly persist catalog/inventory changes without recording an audit event, caller identity, target or outcome. These are service-exposed business-data mutations, so unauthorized or erroneous changes cannot be attributed using application-level audit records from the supplied source. This confirms missing application audit instrumentation, not proof that hosting/database/infrastructure logging is absent; external logs may partially compensate.",
+      "Confidence": "high (source pattern only)",
+      "Exploitability": "Not demonstrated",
+      "FindingType": "defense-in-depth audit gap"
     },
     {
       "Id": "CWE-22",
@@ -116,7 +134,10 @@
         "src\\eShopWCFService\\CatalogService.svc.cs:65-76",
         "src\\eShopWCFService\\ICatalogService.cs:27-30"
       ],
-      "Explanation": "CatalogView.SetCatalogItems concatenates service-supplied CatalogItem.Picturefilename to the catalog assets directory at lines 55-58 and passes it to Image.FromFile without normalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the supplied entity at lines 65-76; ICatalogService exposes those operations at lines 27-30. A caller able to mutate catalog records (or an actor controlling service responses) can supply relative parent-directory segments and make a client open an image outside the intended assets directory under that client's identity. Requires write access to the service/data or control of a response; arbitrary binary disclosure, server file reads and code execution are not established. Invalid/non-image targets may instead raise an exception."
+      "Explanation": "CatalogView.SetCatalogItems concatenates service-supplied CatalogItem.Picturefilename to the catalog assets directory at lines 55-58 and passes it to Image.FromFile without normalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the supplied entity at lines 65-76; ICatalogService exposes those operations at lines 27-30. A caller able to mutate catalog records (or an actor controlling service responses) can supply relative parent-directory segments and make a client open an image outside the intended assets directory under that client's identity. Requires write access to the service/data or control of a response; arbitrary binary disclosure, server file reads and code execution are not established. Invalid/non-image targets may instead raise an exception.",
+      "Confidence": "high (source pattern only)",
+      "Exploitability": "Not demonstrated",
+      "FindingType": "conditional path/resource containment weakness"
     },
     {
       "Id": "CWE-23",
@@ -129,7 +150,10 @@
         "src\\eShopWinForms\\Views\\CatalogView.cs:55-58",
         "src\\eShopWCFService\\CatalogService.svc.cs:65-76"
       ],
-      "Explanation": "CatalogView.SetCatalogItems concatenates service-supplied CatalogItem.Picturefilename to the catalog assets directory at lines 55-58 and passes it to Image.FromFile without normalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the supplied entity at lines 65-76; ICatalogService exposes those operations at lines 27-30. A caller able to mutate catalog records (or an actor controlling service responses) can supply relative parent-directory segments and make a client open an image outside the intended assets directory under that client's identity. Requires write access to the service/data or control of a response; arbitrary binary disclosure, server file reads and code execution are not established. Invalid/non-image targets may instead raise an exception. This is the relative-path specialization of the CWE-22 finding, not an additional independent exploit."
+      "Explanation": "CatalogView.SetCatalogItems concatenates service-supplied CatalogItem.Picturefilename to the catalog assets directory at lines 55-58 and passes it to Image.FromFile without normalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the supplied entity at lines 65-76; ICatalogService exposes those operations at lines 27-30. A caller able to mutate catalog records (or an actor controlling service responses) can supply relative parent-directory segments and make a client open an image outside the intended assets directory under that client's identity. Requires write access to the service/data or control of a response; arbitrary binary disclosure, server file reads and code execution are not established. Invalid/non-image targets may instead raise an exception. This is the relative-path specialization of the CWE-22 finding, not an additional independent exploit.",
+      "Confidence": "high (source pattern only)",
+      "Exploitability": "Not demonstrated",
+      "FindingType": "conditional path/resource containment weakness"
     },
     {
       "Id": "CWE-99",
@@ -142,7 +166,10 @@
         "src\\eShopWinForms\\Views\\CatalogView.cs:55-58",
         "src\\eShopWCFService\\CatalogService.svc.cs:65-76"
       ],
-      "Explanation": "CatalogView.SetCatalogItems concatenates service-supplied CatalogItem.Picturefilename to the catalog assets directory at lines 55-58 and passes it to Image.FromFile without normalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the supplied entity at lines 65-76; ICatalogService exposes those operations at lines 27-30. A caller able to mutate catalog records (or an actor controlling service responses) can supply relative parent-directory segments and make a client open an image outside the intended assets directory under that client's identity. Requires write access to the service/data or control of a response; arbitrary binary disclosure, server file reads and code execution are not established. Invalid/non-image targets may instead raise an exception. This is the resource-identifier aspect of the same image-path root cause."
+      "Explanation": "CatalogView.SetCatalogItems concatenates service-supplied CatalogItem.Picturefilename to the catalog assets directory at lines 55-58 and passes it to Image.FromFile without normalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the supplied entity at lines 65-76; ICatalogService exposes those operations at lines 27-30. A caller able to mutate catalog records (or an actor controlling service responses) can supply relative parent-directory segments and make a client open an image outside the intended assets directory under that client's identity. Requires write access to the service/data or control of a response; arbitrary binary disclosure, server file reads and code execution are not established. Invalid/non-image targets may instead raise an exception. This is the resource-identifier aspect of the same image-path root cause.",
+      "Confidence": "high (source pattern only)",
+      "Exploitability": "Not demonstrated",
+      "FindingType": "conditional path/resource containment weakness"
     }
   ],
   "Limitations": [
@@ -150,6 +177,30 @@
     "dotnet list package --include-transitive --format json failed because Microsoft.WebApplication.targets was unavailable. Legacy packages.config inventories and csproj HintPath versions were used. No restored complete transitive dependency graph was obtained.",
     "GitHub REST advisories query succeeded for EntityFramework 6.1.3, Microsoft.AspNet.WebApi.Client 5.2.3 and Newtonsoft.Json 6.0.4 (NuGet); one current advisory and one withdrawn duplicate returned; no next page. Coverage excludes unknown transitive dependencies, .NET Framework/Windows components, and bundled JavaScript not represented by these NuGet coordinates.",
     "Unused UWP helpers are present in source but absent from the WinForms Compile items; their presence alone is not evidence of exploitable runtime deserialization, upload, or singleton vulnerabilities. NOT_FOUND means no confirmed match in the scoped static review, not proof of absence.",
-    "CWE severity values are prescribed assessment priorities, not CVSS exposure ratings. Related CWE entries may describe the same root cause; finding totals are not independent exploit counts."
+    "CWE severity values are prescribed assessment priorities, not CVSS exposure ratings. Related CWE entries may describe the same root cause; finding totals are not independent exploit counts.",
+    "Read-only specialist independently corroborated dependency/source locations but did not certify existing-source CWE findings under its changes-only/exploitability remit. Path containment and resource-lifetime entries describe static weaknesses: attacker-observable file disclosure, deployed unauthorized access, and exploitable resource exhaustion were not demonstrated. They must not be interpreted as verified remote exploits."
+  ],
+  "AssessmentScope": "Source-pattern and code-quality/correctness assessment; findings are not a count of proven exploitable vulnerabilities.",
+  "CoverageGaps": [
+    {
+      "area": "Resolved transitive dependency graph",
+      "outcome": "skip",
+      "reason": "Dependency CLI failed; only legacy manifest/HintPath package versions checked."
+    },
+    {
+      "area": "Deployment/IIS authentication and network exposure",
+      "outcome": "skip",
+      "reason": "Deployment not available or verified; no anonymous access assertion."
+    },
+    {
+      "area": "Dynamic exploitability and production reachability",
+      "outcome": "skip",
+      "reason": "No running application, attack simulation, exhaustion measurement or concurrent DB test performed."
+    },
+    {
+      "area": "Framework/OS and untracked bundled dependency advisories",
+      "outcome": "skip",
+      "reason": "Outside the three queried NuGet coordinates; not counted as passed."
+    }
   ]
 }

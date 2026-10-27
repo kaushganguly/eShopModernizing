@@ -4,6 +4,20 @@
 
 **Scope:** Existing eShopLegacyNTier source and declared dependencies; static assessment, not diff-only review. Minimum CVE severity: medium.
 
+## Assessment interpretation
+
+- **Proven exploitable vulnerabilities: 0.** One version-matched dependency advisory; eight source-pattern classifications, some overlapping.
+- Resource leaks and database races are code-quality/correctness concerns; missing audit instrumentation is a defense-in-depth gap. Static pattern confidence is not exploitability confidence.
+- Traversal can cause a victim client to load/display a local image outside the catalog folder if an actor controls its filename. No exfiltration or execution was demonstrated.
+- Per-CWE `outcome` records pass/fail of the scoped source-pattern check. Coverage gaps below are explicitly **skip**, never pass.
+
+### Skipped coverage
+
+- **SKIP Resolved transitive dependency graph**: Dependency CLI failed; only legacy manifest/HintPath package versions checked.
+- **SKIP Deployment/IIS authentication and network exposure**: Deployment not available or verified; no anonymous access assertion.
+- **SKIP Dynamic exploitability and production reachability**: No running application, attack simulation, exhaustion measurement or concurrent DB test performed.
+- **SKIP Framework/OS and untracked bundled dependency advisories**: Outside the three queried NuGet coordinates; not counted as passed.
+
 ## Summary
 
 | Metric | Count |
@@ -29,6 +43,8 @@
 - GitHub REST advisories query succeeded for EntityFramework 6.1.3, Microsoft.AspNet.WebApi.Client 5.2.3 and Newtonsoft.Json 6.0.4 (NuGet); one current advisory and one withdrawn duplicate returned; no next page. Coverage excludes unknown transitive dependencies, .NET Framework/Windows components, and bundled JavaScript not represented by these NuGet coordinates.
 - Unused UWP helpers are present in source but absent from the WinForms Compile items; their presence alone is not evidence of exploitable runtime deserialization, upload, or singleton vulnerabilities. NOT_FOUND means no confirmed match in the scoped static review, not proof of absence.
 - CWE severity values are prescribed assessment priorities, not CVSS exposure ratings. Related CWE entries may describe the same root cause; finding totals are not independent exploit counts.
+
+- Read-only specialist independently corroborated dependency/source locations but did not certify existing-source CWE findings under its changes-only/exploitability remit. Path containment and resource-lifetime entries describe static weaknesses: attacker-observable file disclosure, deployed unauthorized access, and exploitable resource exhaustion were not demonstrated. They must not be interpreted as verified remote exploits.
 
 ## CVE Findings (Dependency Vulnerabilities)
 

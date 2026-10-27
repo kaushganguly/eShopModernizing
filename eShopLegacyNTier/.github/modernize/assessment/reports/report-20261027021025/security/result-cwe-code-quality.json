@@ -1,0 +1,305 @@
+{
+  "input_name": "CWE - Code Quality",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Assessed 16 CWE rules in Code Quality: 2 FOUND, 14 NOT_FOUND",
+    "confidence": "medium",
+    "evidence": [
+      "Reviewed existing application source, service contracts, model/configuration and project compile items; generated proxies excluded as primary findings.",
+      "Existing source assessed, not a change-set review. Static analysis only; no exploit or deployment verification.",
+      "dotnet list package --include-transitive --format json failed because Microsoft.WebApplication.targets was unavailable. Legacy packages.config inventories and csproj HintPath versions were used. No restored complete transitive dependency graph was obtained.",
+      "GitHub REST advisories query succeeded for EntityFramework 6.1.3, Microsoft.AspNet.WebApi.Client 5.2.3 and Newtonsoft.Json 6.0.4 (NuGet); one current advisory and one withdrawn duplicate returned; no next page. Coverage excludes unknown transitive dependencies, .NET Framework/Windows components, and bundled JavaScript not represented by these NuGet coordinates.",
+      "Unused UWP helpers are present in source but absent from the WinForms Compile items; their presence alone is not evidence of exploitable runtime deserialization, upload, or singleton vulnerabilities. NOT_FOUND means no confirmed match in the scoped static review, not proof of absence.",
+      "CWE severity values are prescribed assessment priorities, not CVSS exposure ratings. Related CWE entries may describe the same root cause; finding totals are not independent exploit counts.",
+      "Read-only specialist independently corroborated dependency/source locations but did not certify existing-source CWE findings under its changes-only/exploitability remit. Path containment and resource-lifetime entries describe static weaknesses: attacker-observable file disclosure, deployed unauthorized access, and exploitable resource exhaustion were not demonstrated. They must not be interpreted as verified remote exploits."
+    ],
+    "values": [
+      {
+        "id": "CWE-130",
+        "name": "Improper Handling of Length Parameter Inconsistency",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "potential",
+        "storyPoint": 3,
+        "description": "The product parses a formatted message or structure, but it does not handle or incorrectly handles a length field that is inconsistent with the actual length of the associated data.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-456",
+        "name": "Missing Initialization of a Variable",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "potential",
+        "storyPoint": 2,
+        "description": "The product does not initialize critical variables, which causes the execution environment to use unexpected values.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-457",
+        "name": "Use of Uninitialized Variable",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "potential",
+        "storyPoint": 2,
+        "description": "The code uses a variable that has not been initialized, leading to unpredictable or unintended results.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-477",
+        "name": "Use of Obsolete Function",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "optional",
+        "storyPoint": 1,
+        "description": "The code uses deprecated or obsolete functions, which suggests that the code has not been actively reviewed or maintained.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-570",
+        "name": "Expression is Always False",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "optional",
+        "storyPoint": 1,
+        "description": "The product contains an expression that will always evaluate to false.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-571",
+        "name": "Expression is Always True",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "optional",
+        "storyPoint": 1,
+        "description": "The product contains an expression that will always evaluate to true.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-606",
+        "name": "Unchecked Input for Loop Condition",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "potential",
+        "storyPoint": 3,
+        "description": "The product does not properly check inputs that are used for loop conditions, potentially leading to a denial of service or other consequences because of excessive looping.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-665",
+        "name": "Improper Initialization",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "potential",
+        "storyPoint": 3,
+        "description": "The product does not initialize or incorrectly initializes a resource, which might leave the resource in an unexpected state when it is accessed or used.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-681",
+        "name": "Incorrect Conversion between Numeric Types",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "potential",
+        "storyPoint": 3,
+        "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-682",
+        "name": "Incorrect Calculation",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-772",
+        "name": "Missing Release of Resource after Effective Lifetime",
+        "status": "FOUND",
+        "category": "Code Quality",
+        "severity": "potential",
+        "storyPoint": 3,
+        "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+        "evidence": {
+          "files": [
+            "src\\eShopWinForms\\Views\\CatalogView.cs:48-62"
+          ],
+          "explanation": "CatalogView.SetCatalogItems opens a GDI+ Image via Image.FromFile at line 58 and derives a thumbnail at line 59, but never disposes the original image, including on exceptions. Image.FromFile retains its backing file lock until disposal. Repeated catalog/filter reloads can retain file handles and native image resources until finalization and degrade client availability. Thumbnail retention is not used as the basis of this finding. No remote exploitation or measured exhaustion was demonstrated."
+        },
+        "outcome": "fail",
+        "confidence": "high",
+        "confidence_scope": "Observed source pattern only; impact and deployment conditions remain unverified."
+      },
+      {
+        "id": "CWE-775",
+        "name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+        "status": "FOUND",
+        "category": "Code Quality",
+        "severity": "potential",
+        "storyPoint": 3,
+        "description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+        "evidence": {
+          "files": [
+            "src\\eShopWinForms\\Views\\CatalogView.cs:57-59"
+          ],
+          "explanation": "CatalogView.SetCatalogItems opens a GDI+ Image via Image.FromFile at line 58 and derives a thumbnail at line 59, but never disposes the original image, including on exceptions. Image.FromFile retains its backing file lock until disposal. Repeated catalog/filter reloads can retain file handles and native image resources until finalization and degrade client availability. Thumbnail retention is not used as the basis of this finding. No remote exploitation or measured exhaustion was demonstrated. This is the retained-file-handle specialization of CWE-772, not a separate leak."
+        },
+        "outcome": "fail",
+        "confidence": "high",
+        "confidence_scope": "Observed source pattern only; impact and deployment conditions remain unverified."
+      },
+      {
+        "id": "CWE-783",
+        "name": "Operator Precedence Logic Error",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "optional",
+        "storyPoint": 1,
+        "description": "The product uses an expression in which operator precedence causes incorrect logic to be used.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-789",
+        "name": "Memory Allocation with Excessive Size Value",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-835",
+        "name": "Loop with Unreachable Exit Condition ('Infinite Loop')",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "potential",
+        "storyPoint": 3,
+        "description": "The product contains an iteration or loop with an exit condition that cannot be reached, i.e., an infinite loop.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-1057",
+        "name": "Data Access Operations Outside of Expected Data Manager Component",
+        "status": "NOT_FOUND",
+        "category": "Code Quality",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product uses a dedicated, central data manager component as required by design, but it contains code that performs data-access operations that do not use this data manager.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      }
+    ]
+  },
+  "execution_time_seconds": 0,
+  "timestamp": "2026-10-27T02:14:13.057605+00:00",
+  "assessment_scope": "existing-source CWE pattern/correctness checklist, not exploit certification",
+  "coverage_gaps": [
+    {
+      "area": "Resolved transitive dependency graph",
+      "outcome": "skip",
+      "reason": "Dependency CLI failed; only legacy manifest/HintPath package versions checked."
+    },
+    {
+      "area": "Deployment/IIS authentication and network exposure",
+      "outcome": "skip",
+      "reason": "Deployment not available or verified; no anonymous access assertion."
+    },
+    {
+      "area": "Dynamic exploitability and production reachability",
+      "outcome": "skip",
+      "reason": "No running application, attack simulation, exhaustion measurement or concurrent DB test performed."
+    },
+    {
+      "area": "Framework/OS and untracked bundled dependency advisories",
+      "outcome": "skip",
+      "reason": "Outside the three queried NuGet coordinates; not counted as passed."
+    }
+  ]
+}
