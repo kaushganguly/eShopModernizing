@@ -17,7 +17,14 @@ This assessment covers only `eShopLegacyNTier`: the Windows Forms desktop client
 
 - [Assessment report](../report.md) and [interactive HTML report](../report.html).
 - [.NET 10 upgrade assessment](../scenarios/dotnet-version-upgrade/assessment.md), generated for both projects without modifying application code. The upgrade service initially wrote its artifacts to a repository-level scenario directory; those generated artifacts were copied into this versioned report.
+- [Security assessment](../security/security-assessment.md), with the merged findings and all seven raw CVE/CWE result files preserved in the adjacent `security/` directory.
 
 ## Interpretation
 
 The core cloud-readiness assessment and the .NET version-upgrade assessment address different concerns; their issue totals are not interchangeable. Static findings and migration recommendations are not evidence of runtime testing or of deployed security controls.
+
+The supplied renderers use the first project's name and framework for the main report heading and component information. Although that heading names `eShopWCFService`, the report data and combined issue lists cover both the service and `eShopWinForms`.
+
+The security assessment covers the six requested CWE checklists, not every possible weakness category. CWE finding counts include overlapping checks for the same underlying issue and must not be interpreted as counts of independent vulnerabilities. Uncompiled helper patterns without an established production call path are not counted as production findings.
+
+The dependency inventory command could not load the legacy web project because `Microsoft.WebApplication.targets` was unavailable. The CVE scan therefore used the checked-in package manifests; transitive dependency resolution remains unverified. CVE filtering uses a minimum severity of **medium**. A dependency advisory identifies an affected package version, not proof that its vulnerable behavior is reachable in this application.
