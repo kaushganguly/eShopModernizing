@@ -1,0 +1,90 @@
+{
+  "input_name": "CWE - File & Path Security",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "values": [
+      {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+        "status": "FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 8,
+        "description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+        "evidence": {
+          "explanation": "CatalogView.SetCatalogItems concatenates service-supplied Picturefilename to the Catalog image directory and passes it to Image.FromFile without validating or canonicalizing the result (lines 55-58). CatalogService.CreateCatalogItem and UpdateCatalogItem persist caller-supplied catalog fields through WCF operations. A relative filename containing parent-directory segments can escape the intended image directory; successful decoding requires a readable image. This is a relative path pattern; rooted paths are not passed independently to this sink.",
+          "files": [
+            "src/eShopWinForms/Views/CatalogView.cs:55-58",
+            "src/eShopWCFService/CatalogService.svc.cs:65-76",
+            "src/eShopWCFService/ICatalogService.cs:27-30"
+          ]
+        }
+      },
+      {
+        "id": "CWE-23",
+        "name": "Relative Path Traversal",
+        "status": "FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 5,
+        "description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+        "evidence": {
+          "explanation": "CatalogView.SetCatalogItems concatenates service-supplied Picturefilename to the Catalog image directory and passes it to Image.FromFile without validating or canonicalizing the result (lines 55-58). CatalogService.CreateCatalogItem and UpdateCatalogItem persist caller-supplied catalog fields through WCF operations. A relative filename containing parent-directory segments can escape the intended image directory; successful decoding requires a readable image. This is a relative path pattern; rooted paths are not passed independently to this sink.",
+          "files": [
+            "src/eShopWinForms/Views/CatalogView.cs:55-58",
+            "src/eShopWCFService/CatalogService.svc.cs:65-76",
+            "src/eShopWCFService/ICatalogService.cs:27-30"
+          ]
+        }
+      },
+      {
+        "id": "CWE-36",
+        "name": "Absolute Path Traversal",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 5,
+        "description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize absolute path sequences such as /abs/path that can resolve to a location that is outside of that directory.",
+        "evidence": {
+          "explanation": "",
+          "files": []
+        }
+      },
+      {
+        "id": "CWE-434",
+        "name": "Unrestricted Upload of File with Dangerous Type",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "mandatory",
+        "storyPoint": 8,
+        "description": "The product allows the upload or transfer of dangerous file types that are automatically processed within its environment.",
+        "evidence": {
+          "explanation": "",
+          "files": []
+        }
+      },
+      {
+        "id": "CWE-611",
+        "name": "Improper Restriction of XML External Entity Reference",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 5,
+        "description": "The product processes an XML document that can contain XML entities with URIs that resolve to documents outside of the intended sphere of control, causing the product to embed incorrect documents into its output.",
+        "evidence": {
+          "explanation": "",
+          "files": []
+        }
+      }
+    ],
+    "confidence": "high",
+    "evidence": [
+      "Reviewed application file/image handling, WCF catalog mutation contracts, WinForms and service configurations, and helper source. Image upload picker restricts extensions; helpers are not Compile items in WinForms project. No custom XML parser/DTD resolver found; WCF uses framework SOAP serialization. Absolute path traversal not established for concatenated image sink. Static audit only; no runtime validation.",
+      "Assessment execution duration was not measured; execution_time_seconds is null rather than a fabricated duration."
+    ],
+    "finding": "Assessed 5 CWE rules in File & Path Security: 2 FOUND, 3 NOT_FOUND"
+  },
+  "timestamp": "2026-10-27T01:30:12.5439897Z",
+  "execution_time_seconds": null
+}
