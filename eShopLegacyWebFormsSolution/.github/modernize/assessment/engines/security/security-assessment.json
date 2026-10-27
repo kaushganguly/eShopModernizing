@@ -1,0 +1,130 @@
+{
+  "Summary": {
+    "CweCount": 6,
+    "ByCategory": {
+      "Injection Attacks": 1,
+      "Credentials & Secrets": 1,
+      "CVE": 2,
+      "Concurrency & Synchronization": 4
+    },
+    "TotalRulesAssessed": 59,
+    "CveCount": 2,
+    "BySeverity": {
+      "potential": 5,
+      "mandatory": 1,
+      "optional": 2
+    },
+    "RulesPassed": 53,
+    "TotalFindings": 8
+  },
+  "CweFindings": [
+    {
+      "Id": "CWE-543",
+      "Category": "Concurrency & Synchronization",
+      "StoryPoint": 5,
+      "Name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "Files": [
+        "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12-16,48-64"
+      ],
+      "Severity": "potential",
+      "Explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a single instance. Its shared mutable List<CatalogItem> is read and modified by request handlers without a lock, allowing concurrent requests to observe or mutate the collection simultaneously.",
+      "Description": "The product uses the singleton pattern when creating a resource within a multithreaded environment."
+    },
+    {
+      "Id": "CWE-567",
+      "Category": "Concurrency & Synchronization",
+      "StoryPoint": 5,
+      "Name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "Files": [
+        "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12-16,48-64"
+      ],
+      "Severity": "potential",
+      "Explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a single instance. Its shared mutable List<CatalogItem> is read and modified by request handlers without a lock, allowing concurrent requests to observe or mutate the collection simultaneously.",
+      "Description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes."
+    },
+    {
+      "Id": "CWE-662",
+      "Category": "Concurrency & Synchronization",
+      "StoryPoint": 8,
+      "Name": "Improper Synchronization",
+      "Files": [
+        "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12-16,48-64"
+      ],
+      "Severity": "potential",
+      "Explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a single instance. Its shared mutable List<CatalogItem> is read and modified by request handlers without a lock, allowing concurrent requests to observe or mutate the collection simultaneously.",
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes."
+    },
+    {
+      "Id": "CWE-820",
+      "Category": "Concurrency & Synchronization",
+      "StoryPoint": 8,
+      "Name": "Missing Synchronization",
+      "Files": [
+        "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+        "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12-16,48-64"
+      ],
+      "Severity": "potential",
+      "Explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a single instance. Its shared mutable List<CatalogItem> is read and modified by request handlers without a lock, allowing concurrent requests to observe or mutate the collection simultaneously.",
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource."
+    },
+    {
+      "Id": "CWE-778",
+      "Category": "Credentials & Secrets",
+      "StoryPoint": 3,
+      "Name": "Insufficient Logging",
+      "Files": [
+        "src/eShopLegacyWebForms/Catalog/Create.aspx.cs:17,30-46",
+        "src/eShopLegacyWebForms/Catalog/Edit.aspx.cs:24,47-67",
+        "src/eShopLegacyWebForms/Catalog/Delete.aspx.cs:21,27-33"
+      ],
+      "Severity": "potential",
+      "Explanation": "The catalog create, update, and delete handlers perform data-changing operations without recording the event, actor, or outcome. The only nearby log entries record page loads (Create.aspx.cs:17, Edit.aspx.cs:24, Delete.aspx.cs:21), not the security-relevant mutations.",
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it."
+    },
+    {
+      "Id": "CWE-79",
+      "Category": "Injection Attacks",
+      "StoryPoint": 8,
+      "Name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "Files": [
+        "src/eShopLegacyWebForms/Catalog/Create.aspx:1",
+        "src/eShopLegacyWebForms/Catalog/Create.aspx.cs:36-46",
+        "src/eShopLegacyWebForms/Catalog/Details.aspx:14,21"
+      ],
+      "Severity": "optional",
+      "Explanation": "Create.aspx disables request validation. Create_Click persists user-controlled Name and Description values, and Details.aspx binds those values into ASP.NET Label Text properties. The .NET Framework Label implementation renders Text with writer.Write(Text), without HTML encoding, so stored markup can execute when another user views the product.",
+      "Description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users."
+    }
+  ],
+  "CveFindings": [
+    {
+      "Id": "CVE-2024-21907",
+      "Category": "CVE",
+      "StoryPoint": 1,
+      "Name": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "Files": [
+        "src/eShopLegacyWebForms/packages.config:31"
+      ],
+      "Severity": "high",
+      "Explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: HIGH\n\nAffected dependencies:\n  - Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyWebForms/packages.config:31); affected range: < 13.0.1; no patched version listed\n\nRecommended fix: upgrade affected dependencies to their first patched versions listed above, or a later supported release.",
+      "Description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: HIGH\n\nAffected dependencies:\n  - Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyWebForms/packages.config:31); affected range: < 13.0.1; no patched version listed\n\nRecommended fix: upgrade affected dependencies to their first patched versions listed above, or a later supported release."
+    },
+    {
+      "Id": "CVE-2026-40021",
+      "Category": "CVE",
+      "StoryPoint": 1,
+      "Name": "Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters",
+      "Files": [
+        "src/eShopLegacyWebForms/packages.config:11"
+      ],
+      "Severity": "medium",
+      "Explanation": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - log4net 2.0.10 (declared at src/eShopLegacyWebForms/packages.config:11); affected range: < 3.3.0; no patched version listed\n\nRecommended fix: upgrade affected dependencies to their first patched versions listed above, or a later supported release.",
+      "Description": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - log4net 2.0.10 (declared at src/eShopLegacyWebForms/packages.config:11); affected range: < 3.3.0; no patched version listed\n\nRecommended fix: upgrade affected dependencies to their first patched versions listed above, or a later supported release."
+    }
+  ],
+  "ProjectPath": ".",
+  "GeneratedAt": "2026-10-27T01:38:55.6593894Z"
+}
