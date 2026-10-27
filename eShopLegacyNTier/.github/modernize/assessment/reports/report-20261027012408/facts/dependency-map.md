@@ -46,9 +46,9 @@ flowchart LR
 
 **Complete framework assembly reference inventory**, grouped here rather than presenting each BCL assembly as an independent third-party library:
 
-- Shared: Microsoft.CSharp, System, System.ComponentModel.DataAnnotations, System.Configuration, System.Core where explicitly declared by desktop, System.Data, System.Data.DataSetExtensions, System.Drawing, System.Runtime.Serialization, System.ServiceModel, System.Xml, System.Xml.Linq.
+- Shared: Microsoft.CSharp, System, System.ComponentModel.DataAnnotations, System.Configuration, System.Data, System.Data.DataSetExtensions, System.Drawing, System.Runtime.Serialization, System.ServiceModel, System.Xml, System.Xml.Linq.
 - Server-specific: System.Data.Entity.Design, System.Web.DynamicData, System.Web.Entity, System.Web.ApplicationServices, System.EnterpriseServices, System.ServiceModel.Web, System.Web, System.Web.Extensions, System.Web.Services.
-- Desktop-specific: System.IO.Compression, System.IO.Compression.FileSystem, System.Deployment, System.Net.Http, System.Windows.Forms.
+- Desktop-specific explicit references: System.Core, System.IO.Compression, System.IO.Compression.FileSystem, System.Deployment, System.Net.Http, System.Windows.Forms.
 
 Evidence: `src\eShopWCFService\eShopWCFService.csproj:44-70`; `src\eShopWinForms\eShopWinForms.csproj:56-86`. Framework assembly versions are inherited from each target framework; no individual versions are pinned for these System references.
 
