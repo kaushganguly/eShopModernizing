@@ -1,0 +1,110 @@
+{
+  "analysis_method": "LLM",
+  "input_name": "CWE - Concurrency & Synchronization",
+  "result": {
+    "finding": "Assessed 6 CWE rules in Concurrency & Synchronization: 4 FOUND, 2 NOT_FOUND",
+    "confidence": "high",
+    "evidence": [
+      "Scanned singleton registrations, mutable shared state, concurrent operations, and locking."
+    ],
+    "values": [
+      {
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+        "id": "CWE-543",
+        "storyPoint": 5,
+        "severity": "potential",
+        "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+        "evidence": {
+          "explanation": "When UseMockData is enabled (the override defaults it to true), Autofac registers CatalogServiceMock as a singleton. The singleton owns a mutable List<CatalogItem> that concurrent MVC requests read and modify in GetCatalogItemsPaginated, CreateCatalogItem, UpdateCatalogItem, and RemoveCatalogItem without synchronization. This creates a race on shared catalog state.",
+          "files": [
+            "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+            "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-16,47-66",
+            "docker-compose.override.yml:7"
+          ]
+        }
+      },
+      {
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+        "id": "CWE-567",
+        "storyPoint": 5,
+        "severity": "potential",
+        "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+        "evidence": {
+          "explanation": "When UseMockData is enabled (the override defaults it to true), Autofac registers CatalogServiceMock as a singleton. The singleton owns a mutable List<CatalogItem> that concurrent MVC requests read and modify in GetCatalogItemsPaginated, CreateCatalogItem, UpdateCatalogItem, and RemoveCatalogItem without synchronization. This creates a race on shared catalog state.",
+          "files": [
+            "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+            "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-16,47-66",
+            "docker-compose.override.yml:7"
+          ]
+        }
+      },
+      {
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "name": "Improper Synchronization",
+        "id": "CWE-662",
+        "storyPoint": 8,
+        "severity": "potential",
+        "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+        "evidence": {
+          "explanation": "When UseMockData is enabled (the override defaults it to true), Autofac registers CatalogServiceMock as a singleton. The singleton owns a mutable List<CatalogItem> that concurrent MVC requests read and modify in GetCatalogItemsPaginated, CreateCatalogItem, UpdateCatalogItem, and RemoveCatalogItem without synchronization. This creates a race on shared catalog state.",
+          "files": [
+            "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+            "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-16,47-66",
+            "docker-compose.override.yml:7"
+          ]
+        }
+      },
+      {
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "name": "Improper Locking",
+        "id": "CWE-667",
+        "storyPoint": 8,
+        "severity": "potential",
+        "description": "The product does not properly acquire or release a lock on a resource, leading to unexpected resource state changes and behaviors.",
+        "evidence": {
+          "explanation": "",
+          "files": []
+        }
+      },
+      {
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "name": "Missing Synchronization",
+        "id": "CWE-820",
+        "storyPoint": 8,
+        "severity": "potential",
+        "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+        "evidence": {
+          "explanation": "When UseMockData is enabled (the override defaults it to true), Autofac registers CatalogServiceMock as a singleton. The singleton owns a mutable List<CatalogItem> that concurrent MVC requests read and modify in GetCatalogItemsPaginated, CreateCatalogItem, UpdateCatalogItem, and RemoveCatalogItem without synchronization. This creates a race on shared catalog state.",
+          "files": [
+            "src/eShopModernizedMVC/Modules/ApplicationModule.cs:22-26",
+            "src/eShopModernizedMVC/Services/CatalogServiceMock.cs:11-16,47-66",
+            "docker-compose.override.yml:7"
+          ]
+        }
+      },
+      {
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "name": "Incorrect Synchronization",
+        "id": "CWE-821",
+        "storyPoint": 8,
+        "severity": "potential",
+        "description": "The product utilizes a shared resource in a concurrent manner, but it does not correctly synchronize access to the resource.",
+        "evidence": {
+          "explanation": "",
+          "files": []
+        }
+      }
+    ]
+  },
+  "timestamp": "2026-10-27T01:39:30Z",
+  "execution_time_seconds": 36,
+  "status": "success"
+}
