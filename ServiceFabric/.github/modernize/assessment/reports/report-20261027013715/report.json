@@ -1,0 +1,37 @@
+{
+  "security": [
+    {
+      "severity": "optional",
+      "id": "CWE-259",
+      "evidence": {
+        "files": [
+          "ServiceFabric/eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24"
+        ],
+        "explanation": "The SQL container manifest sets the database administrator password directly in an environment variable, rather than sourcing it from a secret reference. The configured value is intentionally omitted from this report."
+      },
+      "category": "Credentials & Secrets",
+      "storyPoint": 5,
+      "title": "Use of Hard-coded Password",
+      "description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components."
+    },
+    {
+      "severity": "optional",
+      "id": "CWE-798",
+      "evidence": {
+        "files": [
+          "ServiceFabric/eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24"
+        ],
+        "explanation": "The SQL container manifest sets the database administrator password directly in an environment variable, rather than sourcing it from a secret reference. The configured value is intentionally omitted from this report."
+      },
+      "category": "Credentials & Secrets",
+      "storyPoint": 5,
+      "title": "Use of Hard-coded Credentials",
+      "description": "The product contains hard-coded credentials, such as a password or cryptographic key."
+    }
+  ],
+  "metadata": {
+    "id": "20261027013715",
+    "note": "Security-only report: AppCAT rejected the Service Fabric solution because it contains deployment projects rather than analyzable .NET application projects.",
+    "generated_at": "2026-10-27T01:37:15.1939307Z"
+  }
+}
