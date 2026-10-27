@@ -1,0 +1,11 @@
+{
+  "scenarioId": "webforms-to-blazor-upgrade",
+  "operationId": "d030ee0d-8649-4e72-b9e8-9e00138f1f6c",
+  "description": "Upgrade ASP.NET Web Forms projects to modern .NET. Use when the user wants to upgrade, migrate, modernize, port, convert, or move Web Forms / WebForms / .aspx pages to any modern .NET. framework.\n",
+  "startTime": "2026-10-27T01:26:39.7859037Z",
+  "lastUpdateTime": "2026-10-27T01:26:43.1653388Z",
+  "properties": {
+    "UpgradeTargetFramework": "net10.0"
+  },
+  "folderPath": ""
+}
