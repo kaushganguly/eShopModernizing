@@ -1,0 +1,132 @@
+{
+  "input_name": "CWE - File & Path Security",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Assessed 5 CWE rules in File & Path Security: 2 FOUND, 3 NOT_FOUND",
+    "confidence": "medium",
+    "evidence": [
+      "Reviewed existing application source, service contracts, model/configuration and project compile items; generated proxies excluded as primary findings.",
+      "Existing source assessed, not a change-set review. Static analysis only; no exploit or deployment verification.",
+      "dotnet list package --include-transitive --format json failed because Microsoft.WebApplication.targets was unavailable. Legacy packages.config inventories and csproj HintPath versions were used. No restored complete transitive dependency graph was obtained.",
+      "GitHub REST advisories query succeeded for EntityFramework 6.1.3, Microsoft.AspNet.WebApi.Client 5.2.3 and Newtonsoft.Json 6.0.4 (NuGet); one current advisory and one withdrawn duplicate returned; no next page. Coverage excludes unknown transitive dependencies, .NET Framework/Windows components, and bundled JavaScript not represented by these NuGet coordinates.",
+      "Unused UWP helpers are present in source but absent from the WinForms Compile items; their presence alone is not evidence of exploitable runtime deserialization, upload, or singleton vulnerabilities. NOT_FOUND means no confirmed match in the scoped static review, not proof of absence.",
+      "CWE severity values are prescribed assessment priorities, not CVSS exposure ratings. Related CWE entries may describe the same root cause; finding totals are not independent exploit counts.",
+      "Read-only specialist independently corroborated dependency/source locations but did not certify existing-source CWE findings under its changes-only/exploitability remit. Path containment and resource-lifetime entries describe static weaknesses: attacker-observable file disclosure, deployed unauthorized access, and exploitable resource exhaustion were not demonstrated. They must not be interpreted as verified remote exploits."
+    ],
+    "values": [
+      {
+        "id": "CWE-22",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+        "status": "FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 8,
+        "description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+        "evidence": {
+          "files": [
+            "src\\eShopWinForms\\Views\\CatalogView.cs:55-58",
+            "src\\eShopWCFService\\CatalogService.svc.cs:65-76",
+            "src\\eShopWCFService\\ICatalogService.cs:27-30"
+          ],
+          "explanation": "CatalogView.SetCatalogItems concatenates service-supplied CatalogItem.Picturefilename to the catalog assets directory at lines 55-58 and passes it to Image.FromFile without normalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the supplied entity at lines 65-76; ICatalogService exposes those operations at lines 27-30. A caller able to mutate catalog records (or an actor controlling service responses) can supply relative parent-directory segments and make a client open an image outside the intended assets directory under that client's identity. Requires write access to the service/data or control of a response; arbitrary binary disclosure, server file reads and code execution are not established. Invalid/non-image targets may instead raise an exception."
+        },
+        "outcome": "fail",
+        "confidence": "high",
+        "confidence_scope": "Observed source pattern only; impact and deployment conditions remain unverified."
+      },
+      {
+        "id": "CWE-23",
+        "name": "Relative Path Traversal",
+        "status": "FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 5,
+        "description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+        "evidence": {
+          "files": [
+            "src\\eShopWinForms\\Views\\CatalogView.cs:55-58",
+            "src\\eShopWCFService\\CatalogService.svc.cs:65-76"
+          ],
+          "explanation": "CatalogView.SetCatalogItems concatenates service-supplied CatalogItem.Picturefilename to the catalog assets directory at lines 55-58 and passes it to Image.FromFile without normalization or containment validation. CatalogService.CreateCatalogItem/UpdateCatalogItem persist the supplied entity at lines 65-76; ICatalogService exposes those operations at lines 27-30. A caller able to mutate catalog records (or an actor controlling service responses) can supply relative parent-directory segments and make a client open an image outside the intended assets directory under that client's identity. Requires write access to the service/data or control of a response; arbitrary binary disclosure, server file reads and code execution are not established. Invalid/non-image targets may instead raise an exception. This is the relative-path specialization of the CWE-22 finding, not an additional independent exploit."
+        },
+        "outcome": "fail",
+        "confidence": "high",
+        "confidence_scope": "Observed source pattern only; impact and deployment conditions remain unverified."
+      },
+      {
+        "id": "CWE-36",
+        "name": "Absolute Path Traversal",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 5,
+        "description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize absolute path sequences such as /abs/path that can resolve to a location that is outside of that directory.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-434",
+        "name": "Unrestricted Upload of File with Dangerous Type",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "mandatory",
+        "storyPoint": 8,
+        "description": "The product allows the upload or transfer of dangerous file types that are automatically processed within its environment.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      },
+      {
+        "id": "CWE-611",
+        "name": "Improper Restriction of XML External Entity Reference",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security",
+        "severity": "optional",
+        "storyPoint": 5,
+        "description": "The product processes an XML document that can contain XML entities with URIs that resolve to documents outside of the intended sphere of control, causing the product to embed incorrect documents into its output.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "outcome": "pass",
+        "confidence": "medium",
+        "confidence_scope": "No confirmed matching pattern in scoped static source inspection; does not pass skipped runtime/dependency/deployment coverage."
+      }
+    ]
+  },
+  "execution_time_seconds": 0,
+  "timestamp": "2026-10-27T02:14:13.057605+00:00",
+  "assessment_scope": "existing-source CWE pattern/correctness checklist, not exploit certification",
+  "coverage_gaps": [
+    {
+      "area": "Resolved transitive dependency graph",
+      "outcome": "skip",
+      "reason": "Dependency CLI failed; only legacy manifest/HintPath package versions checked."
+    },
+    {
+      "area": "Deployment/IIS authentication and network exposure",
+      "outcome": "skip",
+      "reason": "Deployment not available or verified; no anonymous access assertion."
+    },
+    {
+      "area": "Dynamic exploitability and production reachability",
+      "outcome": "skip",
+      "reason": "No running application, attack simulation, exhaustion measurement or concurrent DB test performed."
+    },
+    {
+      "area": "Framework/OS and untracked bundled dependency advisories",
+      "outcome": "skip",
+      "reason": "Outside the three queried NuGet coordinates; not counted as passed."
+    }
+  ]
+}
