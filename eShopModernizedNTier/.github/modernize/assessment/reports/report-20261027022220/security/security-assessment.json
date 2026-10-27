@@ -1,0 +1,292 @@
+{
+  "GeneratedAt": "2026-10-27T02:32:21.745477+00:00",
+  "ProjectPath": "D:\\a\\eShopModernizing\\eShopModernizing\\eShopModernizedNTier",
+  "Summary": {
+    "TotalFindings": 20,
+    "CveCount": 7,
+    "CweCount": 13,
+    "BySeverity": {
+      "mandatory": 5,
+      "optional": 6,
+      "potential": 9
+    },
+    "ByCategory": {
+      "CVE": 7,
+      "Code Quality": 4,
+      "Concurrency & Synchronization": 3,
+      "Credentials & Secrets": 3,
+      "File & Path Security": 2,
+      "Injection Attacks": 1
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 46
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2024-21907",
+      "Name": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr)\nSeverity: high. Affected resolved transitive dependency: Newtonsoft.Json 10.0.1, attributable to direct package Microsoft.AspNet.WebApi.Client at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 13.0.1 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\eShopWinForms.csproj:23"
+      ],
+      "Explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr)\nSeverity: high. Affected resolved transitive dependency: Newtonsoft.Json 10.0.1, attributable to direct package Microsoft.AspNet.WebApi.Client at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 13.0.1 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded."
+    },
+    {
+      "Id": "CVE-2018-8292",
+      "Name": ".NET Core Information Disclosure",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2018-8292](https://github.com/advisories/GHSA-7jgj-8wvc-jh57)\nSeverity: high. Affected resolved transitive dependency: System.Net.Http 4.3.0, attributable to direct package Microsoft.AspNet.WebApi.Client at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 4.3.4 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\eShopWinForms.csproj:23"
+      ],
+      "Explanation": "[CVE-2018-8292](https://github.com/advisories/GHSA-7jgj-8wvc-jh57)\nSeverity: high. Affected resolved transitive dependency: System.Net.Http 4.3.0, attributable to direct package Microsoft.AspNet.WebApi.Client at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 4.3.4 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded."
+    },
+    {
+      "Id": "CVE-2022-41064",
+      "Name": ".NET Information Disclosure Vulnerability",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2022-41064](https://github.com/advisories/GHSA-8g2p-5pqh-5jmc)\nSeverity: medium. Affected resolved transitive dependency: System.Data.SqlClient 4.8.1, attributable to direct package EntityFramework at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 4.8.5 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\eShopWinForms.csproj:22"
+      ],
+      "Explanation": "[CVE-2022-41064](https://github.com/advisories/GHSA-8g2p-5pqh-5jmc)\nSeverity: medium. Affected resolved transitive dependency: System.Data.SqlClient 4.8.1, attributable to direct package EntityFramework at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 4.8.5 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded."
+    },
+    {
+      "Id": "CVE-2024-0056",
+      "Name": "Microsoft.Data.SqlClient and System.Data.SqlClient vulnerable to SQL Data Provider Security Feature Bypass ",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-0056](https://github.com/advisories/GHSA-98g6-xh36-x2p7)\nSeverity: high. Affected resolved transitive dependency: System.Data.SqlClient 4.8.1, attributable to direct package EntityFramework at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 4.8.6 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\eShopWinForms.csproj:22"
+      ],
+      "Explanation": "[CVE-2024-0056](https://github.com/advisories/GHSA-98g6-xh36-x2p7)\nSeverity: high. Affected resolved transitive dependency: System.Data.SqlClient 4.8.1, attributable to direct package EntityFramework at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 4.8.6 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded."
+    },
+    {
+      "Id": "CVE-2019-0820",
+      "Name": "Regular Expression Denial of Service in System.Text.RegularExpressions",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2019-0820](https://github.com/advisories/GHSA-cmhx-cq75-c4mj)\nSeverity: high. Affected resolved transitive dependency: System.Text.RegularExpressions 4.3.0, attributable to direct package Microsoft.AspNet.WebApi.Client at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 4.3.1 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\eShopWinForms.csproj:23"
+      ],
+      "Explanation": "[CVE-2019-0820](https://github.com/advisories/GHSA-cmhx-cq75-c4mj)\nSeverity: high. Affected resolved transitive dependency: System.Text.RegularExpressions 4.3.0, attributable to direct package Microsoft.AspNet.WebApi.Client at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 4.3.1 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded."
+    },
+    {
+      "Id": "CVE-2021-24112",
+      "Name": ".NET Core Remote Code Execution Vulnerability",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2021-24112](https://github.com/advisories/GHSA-rxg9-xrhp-64gj)\nSeverity: critical. Affected resolved transitive dependency: System.Drawing.Common 4.7.0, attributable to direct package System.ServiceModel.Security at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 4.7.2 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\eShopWinForms.csproj:27"
+      ],
+      "Explanation": "[CVE-2021-24112](https://github.com/advisories/GHSA-rxg9-xrhp-64gj)\nSeverity: critical. Affected resolved transitive dependency: System.Drawing.Common 4.7.0, attributable to direct package System.ServiceModel.Security at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 4.7.2 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded."
+    },
+    {
+      "Id": "CVE-2022-34716",
+      "Name": ".NET Information Disclosure Vulnerability",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2022-34716](https://github.com/advisories/GHSA-vh55-786g-wjwj)\nSeverity: medium. Affected resolved transitive dependency: System.Security.Cryptography.Xml 4.7.0, attributable to direct package System.ServiceModel.Security at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 4.7.1 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\eShopWinForms.csproj:27"
+      ],
+      "Explanation": "[CVE-2022-34716](https://github.com/advisories/GHSA-vh55-786g-wjwj)\nSeverity: medium. Affected resolved transitive dependency: System.Security.Cryptography.Xml 4.7.0, attributable to direct package System.ServiceModel.Security at the listed declaration; the vulnerable dependency is not explicitly declared there. Resolution evidence: eShopModernizedNTier\\src\\eShopWinForms\\obj\\project.assets.json. Upgrade to 4.7.1 or a supported patched release, updating the direct parent as necessary.\nReachability: package present in the existing restored WinForms dependency graph; actual vulnerable API execution is not proven. Runtime/RID applicability must be verified, particularly GDI+ on Windows.\nCoverage limitation: dotnet list package --include-transitive --format json exited 1 (missing legacy WebApplication.targets). All project PackageReferences and packages.config were inspected. The existing WinForms assets graph supplied transitive versions but may be stale; complete WCF-service and inactive .fx-project transitive graphs could not be regenerated. Direct dependencies returned no matching advisories. GitHub CLI lacked authentication; unauthenticated API queries of all coordinates in batches of 30 succeeded with pagination handling. Withdrawn advisories were excluded."
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-606",
+      "Name": "Unchecked Input for Loop Condition",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not properly check inputs that are used for loop conditions, potentially leading to a denial of service or other consequences because of excessive looping.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:48",
+        "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:56"
+      ],
+      "Explanation": "Production-reachable input-sized synchronous rendering: CatalogView.SetCatalogItems (48-62) iterates every service-supplied catalog record, loads and thumbnails a file for each, and creates a grid row on the UI thread, without a count limit. CatalogService.GetCatalogItems (56-62) materializes all database items and returns all matching records without pagination; CreateCatalogItem exposes unbounded record creation. A large remotely supplied or populated catalog therefore drives excessive iteration, image allocation and UI denial of service. Startup and every filter change reach this path."
+    },
+    {
+      "Id": "CWE-681",
+      "Name": "Incorrect Conversion between Numeric Types",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWCFService\\Models\\CatalogItemHiLoGenerator.cs:21"
+      ],
+      "Explanation": "Inactive helper path: CatalogItemHiLoGenerator.GetNextSequenceValue reads a SQL sequence as Int64 and casts it unchecked to Int32 at line 22, then uses it as a generated catalog identifier. Sequence values outside the Int32 range truncate/wrap and may produce negative or colliding keys. No range guard or checked conversion exists. No current production caller was found; the only dependency registration in ApplicationModule.Load (33-34) is commented out, so this is not asserted exploitable in the current startup configuration."
+    },
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:58"
+      ],
+      "Explanation": "Production-reachable image resource leak: CatalogView.SetCatalogItems creates an Image with Image.FromFile (58) and a thumbnail with GetThumbnailImage (59) on each load. The source Image is never disposed after thumbnail creation. ClearGrid (39-42) drops rows without explicitly disposing their thumbnail Image values. Repeated startup/filter loads accumulate native GDI+/image resources until nondeterministic finalization, with no bound or deterministic release."
+    },
+    {
+      "Id": "CWE-775",
+      "Name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:58"
+      ],
+      "Explanation": "Production-reachable handle lifetime leak: CatalogView.SetCatalogItems opens catalog image files using Image.FromFile (58), which retains the source-file handle/lock until the Image is disposed. Only the derived thumbnail is placed in the grid and the source Image is abandoned without Dispose after its effective lifetime. Repeated loads retain image-file handles until finalization and can exhaust handles or prevent file updates. Same root cause as CWE-772, not a separate independent defect."
+    },
+    {
+      "Id": "CWE-567",
+      "Name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65",
+        "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:99",
+        "eShopModernizedNTier\\src\\eShopWCFService\\Models\\CatalogItemsStock.cs:22"
+      ],
+      "Explanation": "Production-reachable cross-request database race: CatalogService.CreateCatalogItem (65-70) reads MAX(Id), increments it in process, then inserts. Separate concurrent WCF requests using independent service instances/DbContexts can read the same maximum before either commits, then both choose the same primary key; at least one request fails. CreateAvailableStock (99-116) similarly performs an unsynchronized read/check, MAX(StockId)+1 allocation and insert/update. Two calls can both observe no stock row, allocate the same key and fault, or allocate different keys and create duplicate item/date rows because CatalogItemsStock has no unique item/date constraint. No serializable read/write transaction, cross-instance lock, atomic allocation, row version or retry synchronizes the logical operation. EF SaveChanges wraps the later write, not the earlier read/check/MAX query. Default WCF single-instance dispatch synchronization would not serialize different service instances or hosts. These CWE mappings describe one shared database synchronization root cause; no claim that per-instance DbContext objects themselves are shared across threads."
+    },
+    {
+      "Id": "CWE-662",
+      "Name": "Improper Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65",
+        "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:99",
+        "eShopModernizedNTier\\src\\eShopWCFService\\Models\\CatalogItemsStock.cs:22"
+      ],
+      "Explanation": "Production-reachable cross-request database race: CatalogService.CreateCatalogItem (65-70) reads MAX(Id), increments it in process, then inserts. Separate concurrent WCF requests using independent service instances/DbContexts can read the same maximum before either commits, then both choose the same primary key; at least one request fails. CreateAvailableStock (99-116) similarly performs an unsynchronized read/check, MAX(StockId)+1 allocation and insert/update. Two calls can both observe no stock row, allocate the same key and fault, or allocate different keys and create duplicate item/date rows because CatalogItemsStock has no unique item/date constraint. No serializable read/write transaction, cross-instance lock, atomic allocation, row version or retry synchronizes the logical operation. EF SaveChanges wraps the later write, not the earlier read/check/MAX query. Default WCF single-instance dispatch synchronization would not serialize different service instances or hosts. These CWE mappings describe one shared database synchronization root cause; no claim that per-instance DbContext objects themselves are shared across threads."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65",
+        "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:99",
+        "eShopModernizedNTier\\src\\eShopWCFService\\Models\\CatalogItemsStock.cs:22"
+      ],
+      "Explanation": "Production-reachable cross-request database race: CatalogService.CreateCatalogItem (65-70) reads MAX(Id), increments it in process, then inserts. Separate concurrent WCF requests using independent service instances/DbContexts can read the same maximum before either commits, then both choose the same primary key; at least one request fails. CreateAvailableStock (99-116) similarly performs an unsynchronized read/check, MAX(StockId)+1 allocation and insert/update. Two calls can both observe no stock row, allocate the same key and fault, or allocate different keys and create duplicate item/date rows because CatalogItemsStock has no unique item/date constraint. No serializable read/write transaction, cross-instance lock, atomic allocation, row version or retry synchronizes the logical operation. EF SaveChanges wraps the later write, not the earlier read/check/MAX query. Default WCF single-instance dispatch synchronization would not serialize different service instances or hosts. These CWE mappings describe one shared database synchronization root cause; no claim that per-instance DbContext objects themselves are shared across threads."
+    },
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Files": [
+        "eShopModernizedNTier\\docker-compose.override.yml:7",
+        "eShopModernizedNTier\\docker-compose.override.yml:13",
+        "eShopModernizedNTier\\docker-compose.override.yml:18"
+      ],
+      "Explanation": "Active default Docker Compose override embeds a literal database login and password in the service ConnectionString (7), the database administrator password environment variable (13), and a sqlcmd healthcheck password argument (18). All credential values are [REDACTED], including samples. CatalogConfiguration.ConnectionString (16-17) reads the environment value used by EntityModel (13), proving the outbound database authentication path. Compose supplies the same fixed database credential to SQL Server and the service; values are neither external references nor placeholders. Reachable when using the checked-in default Compose deployment; validity in any live environment was not tested. Legacy/inactive deployment copies in the scoped temp directory also contain the pattern, but are not claimed active in normal startup. CWE-259 and CWE-798 describe the same credential root cause."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65",
+        "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:99",
+        "eShopModernizedNTier\\src\\eShopWCFService\\Web.config:23"
+      ],
+      "Explanation": "Production-reachable security-significant catalog and stock mutations are not audited: CatalogService.CreateCatalogItem (65-70), UpdateCatalogItem (73-76), RemoveCatalogItem (79-82), and CreateAvailableStock (99-116) persist remote caller changes with no record of caller identity, item identifier, action, previous/new value or outcome. Whole application/configuration inspection found no application audit logger or WCF serviceSecurityAudit behavior. IIS access logging, if externally enabled, would not by itself record mutation details; external database/deployment audit facilities are unknown. This finding concerns application audit coverage, not an assertion that all infrastructure logs are disabled."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Files": [
+        "eShopModernizedNTier\\docker-compose.override.yml:7",
+        "eShopModernizedNTier\\docker-compose.override.yml:13",
+        "eShopModernizedNTier\\docker-compose.override.yml:18"
+      ],
+      "Explanation": "Active default Docker Compose override embeds a literal database login and password in the service ConnectionString (7), the database administrator password environment variable (13), and a sqlcmd healthcheck password argument (18). All credential values are [REDACTED], including samples. CatalogConfiguration.ConnectionString (16-17) reads the environment value used by EntityModel (13), proving the outbound database authentication path. Compose supplies the same fixed database credential to SQL Server and the service; values are neither external references nor placeholders. Reachable when using the checked-in default Compose deployment; validity in any live environment was not tested. Legacy/inactive deployment copies in the scoped temp directory also contain the pattern, but are not claimed active in normal startup. CWE-259 and CWE-798 describe the same credential root cause."
+    },
+    {
+      "Id": "CWE-22",
+      "Name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 8,
+      "Description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:55",
+        "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65",
+        "eShopModernizedNTier\\src\\eShopWCFService\\ICatalogService.cs:27"
+      ],
+      "Explanation": "Production-reachable stored relative traversal: CatalogService.CreateCatalogItem (65-70) and UpdateCatalogItem (73-76), exposed as WCF operations, persist caller-supplied Picturefilename without pathname checks. CatalogController.LoadCatalogItems passes returned records into CatalogView.SetCatalogItems, which concatenates Picturefilename under Assets\\\\Images\\\\Catalog and calls Image.FromFile (57-58). Parent-directory segments can escape that directory and open images elsewhere under the desktop user identity. No canonicalization or containment validation exists. Absolute-path override is not claimed because this sink uses string concatenation, not Path.Combine. No upload endpoint or explicit unsafe XML entity resolver was found."
+    },
+    {
+      "Id": "CWE-23",
+      "Name": "Relative Path Traversal",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:55",
+        "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65",
+        "eShopModernizedNTier\\src\\eShopWCFService\\ICatalogService.cs:27"
+      ],
+      "Explanation": "Production-reachable stored relative traversal: CatalogService.CreateCatalogItem (65-70) and UpdateCatalogItem (73-76), exposed as WCF operations, persist caller-supplied Picturefilename without pathname checks. CatalogController.LoadCatalogItems passes returned records into CatalogView.SetCatalogItems, which concatenates Picturefilename under Assets\\\\Images\\\\Catalog and calls Image.FromFile (57-58). Parent-directory segments can escape that directory and open images elsewhere under the desktop user identity. No canonicalization or containment validation exists. Absolute-path override is not claimed because this sink uses string concatenation, not Path.Combine. No upload endpoint or explicit unsafe XML entity resolver was found."
+    },
+    {
+      "Id": "CWE-99",
+      "Name": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "Category": "Injection Attacks",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "Files": [
+        "eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:57",
+        "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:65"
+      ],
+      "Explanation": "Production-reachable resource identifier injection: CatalogService.CreateCatalogItem and UpdateCatalogItem persist arbitrary Picturefilename received through the WCF contract. CatalogController.LoadCatalogItems passes those objects to CatalogView.SetCatalogItems. Lines 57-58 construct an image resource identifier from Picturefilename without restricting traversal segments and load it with Image.FromFile under the desktop user identity. The resource can escape the intended Catalog image directory. This is the same root cause as CWE-22/CWE-23, not an additional independent bug."
+    }
+  ],
+  "Limitations": [
+    "Static whole-application review; findings include overlapping CWE mappings and explicitly identified inactive paths. NOT_FOUND is not proof of absence.",
+    "Dependency CLI failed because legacy WebApplication.targets is unavailable. Fallback inspected project manifests and packages.config, plus the existing WinForms assets graph. Assets may be stale; complete service and alternate-project transitive dependency graphs were not regenerated.",
+    "GitHub advisory queries succeeded. CVE minimum severity: medium. Package presence does not establish vulnerable API execution or platform applicability.",
+    "No application source was changed; remediation remains future work."
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "execution_time_seconds": 0,
+  "status": "success",
+  "input_name": "CWE - Code Quality",
+  "timestamp": "2026-10-27T02:29:50.1459684Z",
+  "analysis_method": "LLM",
+  "result": {
+    "confidence": "high",
+    "finding": "Assessed 16 CWE rules in Code Quality: 4 FOUND, 12 NOT_FOUND",
+    "evidence": [
+      "Whole scoped application evaluated, including WinForms lifecycle and loops, EF service queries/writes, seed/model calculations, inactive HiLo and mock implementations. No custom message-length parser, native uninitialized local variable, infinite loop or confirmed precedence error. Ordinary null dereferences and missing input validation are not mislabeled as uninitialized-memory findings. Static findings distinguish active and inactive reachability; no runtime exhaustion test performed."
+    ],
+    "values": [
+      {
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 3,
+        "status": "NOT_FOUND",
+        "name": "Improper Handling of Length Parameter Inconsistency",
+        "severity": "potential",
+        "id": "CWE-130",
+        "category": "Code Quality",
+        "description": "The product parses a formatted message or structure, but it does not handle or incorrectly handles a length field that is inconsistent with the actual length of the associated data."
+      },
+      {
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 2,
+        "status": "NOT_FOUND",
+        "name": "Missing Initialization of a Variable",
+        "severity": "potential",
+        "id": "CWE-456",
+        "category": "Code Quality",
+        "description": "The product does not initialize critical variables, which causes the execution environment to use unexpected values."
+      },
+      {
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 2,
+        "status": "NOT_FOUND",
+        "name": "Use of Uninitialized Variable",
+        "severity": "potential",
+        "id": "CWE-457",
+        "category": "Code Quality",
+        "description": "The code uses a variable that has not been initialized, leading to unpredictable or unintended results."
+      },
+      {
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 1,
+        "status": "NOT_FOUND",
+        "name": "Use of Obsolete Function",
+        "severity": "optional",
+        "id": "CWE-477",
+        "category": "Code Quality",
+        "description": "The code uses deprecated or obsolete functions, which suggests that the code has not been actively reviewed or maintained."
+      },
+      {
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 1,
+        "status": "NOT_FOUND",
+        "name": "Expression is Always False",
+        "severity": "optional",
+        "id": "CWE-570",
+        "category": "Code Quality",
+        "description": "The product contains an expression that will always evaluate to false."
+      },
+      {
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 1,
+        "status": "NOT_FOUND",
+        "name": "Expression is Always True",
+        "severity": "optional",
+        "id": "CWE-571",
+        "category": "Code Quality",
+        "description": "The product contains an expression that will always evaluate to true."
+      },
+      {
+        "evidence": {
+          "files": [
+            "eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:48",
+            "eShopModernizedNTier\\src\\eShopWCFService\\CatalogService.svc.cs:56"
+          ],
+          "explanation": "Production-reachable input-sized synchronous rendering: CatalogView.SetCatalogItems (48-62) iterates every service-supplied catalog record, loads and thumbnails a file for each, and creates a grid row on the UI thread, without a count limit. CatalogService.GetCatalogItems (56-62) materializes all database items and returns all matching records without pagination; CreateCatalogItem exposes unbounded record creation. A large remotely supplied or populated catalog therefore drives excessive iteration, image allocation and UI denial of service. Startup and every filter change reach this path."
+        },
+        "storyPoint": 3,
+        "status": "FOUND",
+        "name": "Unchecked Input for Loop Condition",
+        "severity": "potential",
+        "id": "CWE-606",
+        "category": "Code Quality",
+        "description": "The product does not properly check inputs that are used for loop conditions, potentially leading to a denial of service or other consequences because of excessive looping."
+      },
+      {
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 3,
+        "status": "NOT_FOUND",
+        "name": "Improper Initialization",
+        "severity": "potential",
+        "id": "CWE-665",
+        "category": "Code Quality",
+        "description": "The product does not initialize or incorrectly initializes a resource, which might leave the resource in an unexpected state when it is accessed or used."
+      },
+      {
+        "evidence": {
+          "files": [
+            "eShopModernizedNTier\\src\\eShopWCFService\\Models\\CatalogItemHiLoGenerator.cs:21"
+          ],
+          "explanation": "Inactive helper path: CatalogItemHiLoGenerator.GetNextSequenceValue reads a SQL sequence as Int64 and casts it unchecked to Int32 at line 22, then uses it as a generated catalog identifier. Sequence values outside the Int32 range truncate/wrap and may produce negative or colliding keys. No range guard or checked conversion exists. No current production caller was found; the only dependency registration in ApplicationModule.Load (33-34) is commented out, so this is not asserted exploitable in the current startup configuration."
+        },
+        "storyPoint": 3,
+        "status": "FOUND",
+        "name": "Incorrect Conversion between Numeric Types",
+        "severity": "potential",
+        "id": "CWE-681",
+        "category": "Code Quality",
+        "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur."
+      },
+      {
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 5,
+        "status": "NOT_FOUND",
+        "name": "Incorrect Calculation",
+        "severity": "potential",
+        "id": "CWE-682",
+        "category": "Code Quality",
+        "description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management."
+      },
+      {
+        "evidence": {
+          "files": [
+            "eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:58"
+          ],
+          "explanation": "Production-reachable image resource leak: CatalogView.SetCatalogItems creates an Image with Image.FromFile (58) and a thumbnail with GetThumbnailImage (59) on each load. The source Image is never disposed after thumbnail creation. ClearGrid (39-42) drops rows without explicitly disposing their thumbnail Image values. Repeated startup/filter loads accumulate native GDI+/image resources until nondeterministic finalization, with no bound or deterministic release."
+        },
+        "storyPoint": 3,
+        "status": "FOUND",
+        "name": "Missing Release of Resource after Effective Lifetime",
+        "severity": "potential",
+        "id": "CWE-772",
+        "category": "Code Quality",
+        "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed."
+      },
+      {
+        "evidence": {
+          "files": [
+            "eShopModernizedNTier\\src\\eShopWinForms\\Views\\CatalogView.cs:58"
+          ],
+          "explanation": "Production-reachable handle lifetime leak: CatalogView.SetCatalogItems opens catalog image files using Image.FromFile (58), which retains the source-file handle/lock until the Image is disposed. Only the derived thumbnail is placed in the grid and the source Image is abandoned without Dispose after its effective lifetime. Repeated loads retain image-file handles until finalization and can exhaust handles or prevent file updates. Same root cause as CWE-772, not a separate independent defect."
+        },
+        "storyPoint": 3,
+        "status": "FOUND",
+        "name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+        "severity": "potential",
+        "id": "CWE-775",
+        "category": "Code Quality",
+        "description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed."
+      },
+      {
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 1,
+        "status": "NOT_FOUND",
+        "name": "Operator Precedence Logic Error",
+        "severity": "optional",
+        "id": "CWE-783",
+        "category": "Code Quality",
+        "description": "The product uses an expression in which operator precedence causes incorrect logic to be used."
+      },
+      {
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 5,
+        "status": "NOT_FOUND",
+        "name": "Memory Allocation with Excessive Size Value",
+        "severity": "potential",
+        "id": "CWE-789",
+        "category": "Code Quality",
+        "description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated."
+      },
+      {
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 3,
+        "status": "NOT_FOUND",
+        "name": "Loop with Unreachable Exit Condition ('Infinite Loop')",
+        "severity": "potential",
+        "id": "CWE-835",
+        "category": "Code Quality",
+        "description": "The product contains an iteration or loop with an exit condition that cannot be reached, i.e., an infinite loop."
+      },
+      {
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 5,
+        "status": "NOT_FOUND",
+        "name": "Data Access Operations Outside of Expected Data Manager Component",
+        "severity": "potential",
+        "id": "CWE-1057",
+        "category": "Code Quality",
+        "description": "The product uses a dedicated, central data manager component as required by design, but it contains code that performs data-access operations that do not use this data manager."
+      }
+    ]
+  }
+}
