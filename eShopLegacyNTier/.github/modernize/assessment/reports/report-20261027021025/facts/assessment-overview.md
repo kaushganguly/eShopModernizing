@@ -2,6 +2,15 @@
 
 This assessment covers only `eShopLegacyNTier`: the Windows Forms catalog client and its WCF service.
 
+## Supplementary documents
+
+- [Architecture diagram](architecture-diagram.md): application components, deployment boundaries, and communication paths.
+- [Dependency map](dependency-map.md): project, framework, and package dependencies.
+- [API and service contracts](api-service-contracts.md): WCF operations, message contracts, and interaction sequences.
+- [Data architecture](data-architecture.md): entities, persistence, relationships, and database behavior.
+- [Configuration inventory](configuration-inventory.md): settings, environment overrides, build profiles, and deployment assumptions.
+- [Business workflows](business-workflows.md): catalog and stock workflows with sequence diagrams.
+
 ## Assessment outputs
 
 - [Application assessment](../report.md): cloud-readiness, security, and upgrade findings.
