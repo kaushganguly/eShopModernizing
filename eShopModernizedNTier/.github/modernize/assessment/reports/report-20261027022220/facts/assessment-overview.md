@@ -18,3 +18,9 @@ The [core report](../report.json) assesses all three project files in this direc
 The upgrade assessment tool wrote its five artifacts to its default scenario directory despite the requested output settings. Those generated artifacts were copied unchanged into this versioned report's `scenarios/dotnet-version-upgrade/` directory.
 
 Architecture documentation describes both active execution paths and explicitly identified alternatives; the presence of a mock implementation does not establish that it is selected at runtime. Security findings are static assessment results, not proof of exploitability or a production security certification.
+
+## Security assessment
+
+The [security report](../security/security-assessment.md) records 7 CVE findings at or above the medium threshold and 13 CWE findings across 59 checks. Some CWE mappings overlap or concern inactive code; consult each finding's reachability evidence before prioritizing remediation. The [machine-readable summary](../security/security-assessment.json) and seven raw result files are preserved alongside it.
+
+The dependency-list command failed because legacy `WebApplication.targets` was unavailable. The scan used project manifests, `packages.config`, and an existing WinForms restore graph that may be stale. Full service and alternate-project transitive dependency coverage was not established. Advisory queries succeeded; package presence alone does not establish vulnerable API execution or platform applicability.
