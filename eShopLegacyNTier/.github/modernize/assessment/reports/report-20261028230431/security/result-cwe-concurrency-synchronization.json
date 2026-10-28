@@ -1,0 +1,109 @@
+{
+  "input_name": "CWE - Concurrency & Synchronization",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Assessed 6 CWE rules in Concurrency & Synchronization: 3 FOUND, 3 NOT_FOUND",
+    "confidence": "high",
+    "evidence": [
+      "Reviewed service construction, shared database state, manual key allocation, model attributes, service behavior and lock/transaction/concurrency-token usage. Found non-atomic shared database key allocation across requests. No explicit incorrect lock or synchronization implementation found; absence is reported under missing/improper synchronization rather than inventing a lock misuse. Singleton helper uses ConcurrentDictionary and is not included in WinForms Compile items. No runtime race reproduction or deployed isolation/schema inspection performed."
+    ],
+    "values": [
+      {
+        "id": "CWE-543",
+        "name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "id": "CWE-567",
+        "name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+        "evidence": {
+          "files": [
+            "src/eShopWCFService/CatalogService.svc.cs:65-70",
+            "src/eShopWCFService/Models/CatalogItem.cs:13-15",
+            "src/eShopWCFService/CatalogService.svc.cs:99-116",
+            "src/eShopWCFService/Models/CatalogItemsStock.cs:22-25"
+          ],
+          "explanation": "CatalogService.CreateCatalogItem reads the shared database MAX(Id), increments it, and inserts in a separate SaveChanges operation without synchronization spanning the read/allocate/write sequence. Id explicitly uses DatabaseGeneratedOption.None. Concurrent requests handled by different service instances can read the same maximum, choose the same primary key and cause one insert to fail. CreateAvailableStock repeats this pattern for StockId and has a non-atomic existence check. A per-instance WCF single-concurrency default does not serialize all service instances. Database constraints may reject a conflicting write but do not make allocation atomic. CWE-567/662/820 describe the same missing-synchronization root cause, not three independent vulnerabilities. No concurrent execution test performed."
+        }
+      },
+      {
+        "id": "CWE-662",
+        "name": "Improper Synchronization",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+        "evidence": {
+          "files": [
+            "src/eShopWCFService/CatalogService.svc.cs:65-70",
+            "src/eShopWCFService/Models/CatalogItem.cs:13-15",
+            "src/eShopWCFService/CatalogService.svc.cs:99-116",
+            "src/eShopWCFService/Models/CatalogItemsStock.cs:22-25"
+          ],
+          "explanation": "CatalogService.CreateCatalogItem reads the shared database MAX(Id), increments it, and inserts in a separate SaveChanges operation without synchronization spanning the read/allocate/write sequence. Id explicitly uses DatabaseGeneratedOption.None. Concurrent requests handled by different service instances can read the same maximum, choose the same primary key and cause one insert to fail. CreateAvailableStock repeats this pattern for StockId and has a non-atomic existence check. A per-instance WCF single-concurrency default does not serialize all service instances. Database constraints may reject a conflicting write but do not make allocation atomic. CWE-567/662/820 describe the same missing-synchronization root cause, not three independent vulnerabilities. No concurrent execution test performed."
+        }
+      },
+      {
+        "id": "CWE-667",
+        "name": "Improper Locking",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product does not properly acquire or release a lock on a resource, leading to unexpected resource state changes and behaviors.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "id": "CWE-820",
+        "name": "Missing Synchronization",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+        "evidence": {
+          "files": [
+            "src/eShopWCFService/CatalogService.svc.cs:65-70",
+            "src/eShopWCFService/Models/CatalogItem.cs:13-15",
+            "src/eShopWCFService/CatalogService.svc.cs:99-116",
+            "src/eShopWCFService/Models/CatalogItemsStock.cs:22-25"
+          ],
+          "explanation": "CatalogService.CreateCatalogItem reads the shared database MAX(Id), increments it, and inserts in a separate SaveChanges operation without synchronization spanning the read/allocate/write sequence. Id explicitly uses DatabaseGeneratedOption.None. Concurrent requests handled by different service instances can read the same maximum, choose the same primary key and cause one insert to fail. CreateAvailableStock repeats this pattern for StockId and has a non-atomic existence check. A per-instance WCF single-concurrency default does not serialize all service instances. Database constraints may reject a conflicting write but do not make allocation atomic. CWE-567/662/820 describe the same missing-synchronization root cause, not three independent vulnerabilities. No concurrent execution test performed."
+        }
+      },
+      {
+        "id": "CWE-821",
+        "name": "Incorrect Synchronization",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes a shared resource in a concurrent manner, but it does not correctly synchronize access to the resource.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      }
+    ]
+  },
+  "execution_time_seconds": 0,
+  "timestamp": "2026-10-28T23:08:26.709639+00:00"
+}
