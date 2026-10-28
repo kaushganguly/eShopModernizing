@@ -1,0 +1,1305 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-10-28T23:21:48.4472871Z",
+  "analysisEndTime": "2026-10-28T23:21:52.9858652Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 1,
+      "issues": 10,
+      "incidents": 49,
+      "effort": 49
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 28,
+        "Optional": 11,
+        "Potential": 10,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 41,
+        "Project": 2,
+        "Feature": 1,
+        "Binding": 5
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+      "startingProject": true,
+      "issues": 10,
+      "storyPoints": 49,
+      "properties": {
+        "appName": "eShopLegacyWebForms",
+        "projectKind": "Wap",
+        "frameworks": [
+          "net472"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": false,
+        "numberOfFiles": 166,
+        "numberOfCodeFiles": 36,
+        "linesTotal": 102522,
+        "linesOfCode": 1834,
+        "totalApiScanned": 0,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "063fdab7-838e-4e62-8f26-f8708cfd1bfa",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Antlr, 3.5.0.2\n\nRecommendation:\n\nRemove Antlr, and replace with new package Antlr4 4.6.6",
+              "protected": "Antlr, 3.5.0.2\n\nRecommendation:\n\nRemove Antlr, and replace with new package Antlr4 4.6.6"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Antlr, 3.5.0.2\n\nRecommendation:\n\nRemove Antlr, and replace with new package Antlr4 4.6.6",
+            "protectedSnippet": "Antlr, 3.5.0.2\n\nRecommendation:\n\nRemove Antlr, and replace with new package Antlr4 4.6.6",
+            "label": "Antlr 3.5.0.2",
+            "properties": {
+              "PackageId": "Antlr",
+              "PackageVersion": "3.5.0.2",
+              "PackageNewVersion": null,
+              "PackageReplacements": "Replace with new package Antlr4=4.6.6"
+            }
+          }
+        },
+        {
+          "incidentId": "b5e4ddb2-79b5-45cb-8a0f-73e70b0bee97",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "AspNet.ScriptManager.bootstrap, 4.3.1\n\nRecommendation:\n\nNo supported version found",
+              "protected": "AspNet.ScriptManager.bootstrap, 4.3.1\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "AspNet.ScriptManager.bootstrap, 4.3.1\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "AspNet.ScriptManager.bootstrap, 4.3.1\n\nRecommendation:\n\nNo supported version found",
+            "label": "AspNet.ScriptManager.bootstrap 4.3.1",
+            "properties": {
+              "PackageId": "AspNet.ScriptManager.bootstrap",
+              "PackageVersion": "4.3.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "334d10f4-e830-43f2-90f4-10dd72319882",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "AspNet.ScriptManager.jQuery, 3.3.1\n\nRecommendation:\n\nNo supported version found",
+              "protected": "AspNet.ScriptManager.jQuery, 3.3.1\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "AspNet.ScriptManager.jQuery, 3.3.1\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "AspNet.ScriptManager.jQuery, 3.3.1\n\nRecommendation:\n\nNo supported version found",
+            "label": "AspNet.ScriptManager.jQuery 3.3.1",
+            "properties": {
+              "PackageId": "AspNet.ScriptManager.jQuery",
+              "PackageVersion": "3.3.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "82912b29-cf59-4c32-8b2d-05e3d3586c42",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Autofac.Web, 4.0.0\n\nRecommendation:\n\nNo supported version found",
+              "protected": "Autofac.Web, 4.0.0\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Autofac.Web, 4.0.0\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "Autofac.Web, 4.0.0\n\nRecommendation:\n\nNo supported version found",
+            "label": "Autofac.Web 4.0.0",
+            "properties": {
+              "PackageId": "Autofac.Web",
+              "PackageVersion": "4.0.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "4d125464-5ae4-419b-a302-026f6f29bbaa",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "EntityFramework, 6.2.0\n\nRecommendation:\n\nRemove EntityFramework, and replace with new package EntityFramework 6.5.2",
+              "protected": "EntityFramework, 6.2.0\n\nRecommendation:\n\nRemove EntityFramework, and replace with new package EntityFramework 6.5.2"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "EntityFramework, 6.2.0\n\nRecommendation:\n\nRemove EntityFramework, and replace with new package EntityFramework 6.5.2",
+            "protectedSnippet": "EntityFramework, 6.2.0\n\nRecommendation:\n\nRemove EntityFramework, and replace with new package EntityFramework 6.5.2",
+            "label": "EntityFramework 6.2.0",
+            "properties": {
+              "PackageId": "EntityFramework",
+              "PackageVersion": "6.2.0",
+              "PackageNewVersion": "6.5.2",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "5f6935a0-218e-4539-bd9f-602c793104a7",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.ApplicationInsights.Agent.Intercept, 2.4.0\n\nRecommendation:\n\nNo supported version found",
+              "protected": "Microsoft.ApplicationInsights.Agent.Intercept, 2.4.0\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.ApplicationInsights.Agent.Intercept, 2.4.0\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "Microsoft.ApplicationInsights.Agent.Intercept, 2.4.0\n\nRecommendation:\n\nNo supported version found",
+            "label": "Microsoft.ApplicationInsights.Agent.Intercept 2.4.0",
+            "properties": {
+              "PackageId": "Microsoft.ApplicationInsights.Agent.Intercept",
+              "PackageVersion": "2.4.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "899a4e89-d8f3-49e7-bad2-f4f2b6b9a25e",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.ApplicationInsights.Web, 2.9.1\n\nRecommendation:\n\nNo supported version found",
+              "protected": "Microsoft.ApplicationInsights.Web, 2.9.1\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.ApplicationInsights.Web, 2.9.1\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "Microsoft.ApplicationInsights.Web, 2.9.1\n\nRecommendation:\n\nNo supported version found",
+            "label": "Microsoft.ApplicationInsights.Web 2.9.1",
+            "properties": {
+              "PackageId": "Microsoft.ApplicationInsights.Web",
+              "PackageVersion": "2.9.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "75a2153e-7e61-4ea1-a7b9-12a762dcc528",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.FriendlyUrls, 1.0.2\n\nRecommendation:\n\nNo supported version found",
+              "protected": "Microsoft.AspNet.FriendlyUrls, 1.0.2\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.AspNet.FriendlyUrls, 1.0.2\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "Microsoft.AspNet.FriendlyUrls, 1.0.2\n\nRecommendation:\n\nNo supported version found",
+            "label": "Microsoft.AspNet.FriendlyUrls 1.0.2",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.FriendlyUrls",
+              "PackageVersion": "1.0.2",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "51e13d45-ac2b-4495-98ec-503d4ad55988",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.FriendlyUrls.Core, 1.0.2\n\nRecommendation:\n\nNo supported version found",
+              "protected": "Microsoft.AspNet.FriendlyUrls.Core, 1.0.2\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.AspNet.FriendlyUrls.Core, 1.0.2\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "Microsoft.AspNet.FriendlyUrls.Core, 1.0.2\n\nRecommendation:\n\nNo supported version found",
+            "label": "Microsoft.AspNet.FriendlyUrls.Core 1.0.2",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.FriendlyUrls.Core",
+              "PackageVersion": "1.0.2",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "f70c21a0-7f4a-4b4f-b51c-4f956f60dda4",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.ScriptManager.MSAjax, 5.0.0\n\nRecommendation:\n\nNo supported version found",
+              "protected": "Microsoft.AspNet.ScriptManager.MSAjax, 5.0.0\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.AspNet.ScriptManager.MSAjax, 5.0.0\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "Microsoft.AspNet.ScriptManager.MSAjax, 5.0.0\n\nRecommendation:\n\nNo supported version found",
+            "label": "Microsoft.AspNet.ScriptManager.MSAjax 5.0.0",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.ScriptManager.MSAjax",
+              "PackageVersion": "5.0.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "40c299da-eeb0-4ea8-879d-887cfb71bf90",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.ScriptManager.WebForms, 5.0.0\n\nRecommendation:\n\nNo supported version found",
+              "protected": "Microsoft.AspNet.ScriptManager.WebForms, 5.0.0\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.AspNet.ScriptManager.WebForms, 5.0.0\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "Microsoft.AspNet.ScriptManager.WebForms, 5.0.0\n\nRecommendation:\n\nNo supported version found",
+            "label": "Microsoft.AspNet.ScriptManager.WebForms 5.0.0",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.ScriptManager.WebForms",
+              "PackageVersion": "5.0.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "085a32c8-f843-4ec6-8133-bfa412c40ca3",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.SessionState.SessionStateModule, 1.1.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.AspNet.SessionState.SessionStateModule, 1.1.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.AspNet.SessionState.SessionStateModule, 1.1.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.AspNet.SessionState.SessionStateModule, 1.1.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.AspNet.SessionState.SessionStateModule 1.1.0",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.SessionState.SessionStateModule",
+              "PackageVersion": "1.1.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "22dd7984-df1c-4a68-a23a-8af5a4d6dedc",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.TelemetryCorrelation, 1.0.5\n\nRecommendation:\n\nMicrosoft.AspNet.TelemetryCorrelation, 1.0.3",
+              "protected": "Microsoft.AspNet.TelemetryCorrelation, 1.0.5\n\nRecommendation:\n\nMicrosoft.AspNet.TelemetryCorrelation, 1.0.3"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.AspNet.TelemetryCorrelation, 1.0.5\n\nRecommendation:\n\nMicrosoft.AspNet.TelemetryCorrelation, 1.0.3",
+            "protectedSnippet": "Microsoft.AspNet.TelemetryCorrelation, 1.0.5\n\nRecommendation:\n\nMicrosoft.AspNet.TelemetryCorrelation, 1.0.3",
+            "label": "Microsoft.AspNet.TelemetryCorrelation 1.0.5",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.TelemetryCorrelation",
+              "PackageVersion": "1.0.5",
+              "PackageNewVersion": "1.0.3",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "891c2922-d535-4968-9411-a46245669c4f",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nNo supported version found",
+              "protected": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nNo supported version found",
+            "label": "Microsoft.AspNet.Web.Optimization 1.1.3",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.Web.Optimization",
+              "PackageVersion": "1.1.3",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "e21fe053-adf6-437e-ac30-d625674ec9f9",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.Web.Optimization.WebForms, 1.1.3\n\nRecommendation:\n\nNo supported version found",
+              "protected": "Microsoft.AspNet.Web.Optimization.WebForms, 1.1.3\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.AspNet.Web.Optimization.WebForms, 1.1.3\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "Microsoft.AspNet.Web.Optimization.WebForms, 1.1.3\n\nRecommendation:\n\nNo supported version found",
+            "label": "Microsoft.AspNet.Web.Optimization.WebForms 1.1.3",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.Web.Optimization.WebForms",
+              "PackageVersion": "1.1.3",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "2d252ae4-b6f4-47a7-b775-a35452cf3711",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform, 2.0.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform, 2.0.1\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform, 2.0.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform, 2.0.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform 2.0.1",
+            "properties": {
+              "PackageId": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform",
+              "PackageVersion": "2.0.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "a94fa724-fab7-42b0-941e-645a6d66c663",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Net.Compilers, 2.10.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.Net.Compilers, 2.10.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.Net.Compilers, 2.10.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.Net.Compilers, 2.10.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.Net.Compilers 2.10.0",
+            "properties": {
+              "PackageId": "Microsoft.Net.Compilers",
+              "PackageVersion": "2.10.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "e26a62c6-cb57-4970-b7f9-9d8576d2f66f",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Web.Infrastructure, 1.0.0.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.Web.Infrastructure, 1.0.0.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.Web.Infrastructure, 1.0.0.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.Web.Infrastructure, 1.0.0.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.Web.Infrastructure 1.0.0.0",
+            "properties": {
+              "PackageId": "Microsoft.Web.Infrastructure",
+              "PackageVersion": "1.0.0.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "3a1f773b-620b-412a-b50d-8ffbcebe28af",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Newtonsoft.Json, 12.0.1\n\nRecommendation:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+              "protected": "Newtonsoft.Json, 12.0.1\n\nRecommendation:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Newtonsoft.Json, 12.0.1\n\nRecommendation:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+            "protectedSnippet": "Newtonsoft.Json, 12.0.1\n\nRecommendation:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+            "label": "Newtonsoft.Json 12.0.1",
+            "properties": {
+              "PackageId": "Newtonsoft.Json",
+              "PackageVersion": "12.0.1",
+              "PackageNewVersion": "13.0.4",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "329153ad-3411-423b-b770-b21bd94524f2",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Buffers, 4.4.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.Buffers, 4.4.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "System.Buffers, 4.4.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.Buffers, 4.4.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.Buffers 4.4.0",
+            "properties": {
+              "PackageId": "System.Buffers",
+              "PackageVersion": "4.4.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "e4a97884-b204-4a41-b61c-716a5fad1897",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Diagnostics.DiagnosticSource, 4.5.1\n\nRecommendation:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 10.0.14",
+              "protected": "System.Diagnostics.DiagnosticSource, 4.5.1\n\nRecommendation:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 10.0.14"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "System.Diagnostics.DiagnosticSource, 4.5.1\n\nRecommendation:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 10.0.14",
+            "protectedSnippet": "System.Diagnostics.DiagnosticSource, 4.5.1\n\nRecommendation:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 10.0.14",
+            "label": "System.Diagnostics.DiagnosticSource 4.5.1",
+            "properties": {
+              "PackageId": "System.Diagnostics.DiagnosticSource",
+              "PackageVersion": "4.5.1",
+              "PackageNewVersion": "10.0.14",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "6802f03d-1afb-4fd9-9bfc-fba5de36dc8c",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Diagnostics.PerformanceCounter, 4.5.0\n\nRecommendation:\n\nRemove System.Diagnostics.PerformanceCounter, and replace with new package System.Diagnostics.PerformanceCounter 10.0.14",
+              "protected": "System.Diagnostics.PerformanceCounter, 4.5.0\n\nRecommendation:\n\nRemove System.Diagnostics.PerformanceCounter, and replace with new package System.Diagnostics.PerformanceCounter 10.0.14"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "System.Diagnostics.PerformanceCounter, 4.5.0\n\nRecommendation:\n\nRemove System.Diagnostics.PerformanceCounter, and replace with new package System.Diagnostics.PerformanceCounter 10.0.14",
+            "protectedSnippet": "System.Diagnostics.PerformanceCounter, 4.5.0\n\nRecommendation:\n\nRemove System.Diagnostics.PerformanceCounter, and replace with new package System.Diagnostics.PerformanceCounter 10.0.14",
+            "label": "System.Diagnostics.PerformanceCounter 4.5.0",
+            "properties": {
+              "PackageId": "System.Diagnostics.PerformanceCounter",
+              "PackageVersion": "4.5.0",
+              "PackageNewVersion": "10.0.14",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "b6e7676a-f639-4f08-bfc8-0f2ea3b7e958",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.IO.Compression, 4.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.IO.Compression, 4.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "System.IO.Compression, 4.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.IO.Compression, 4.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.IO.Compression 4.3.0",
+            "properties": {
+              "PackageId": "System.IO.Compression",
+              "PackageVersion": "4.3.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "497aafd2-cb1a-4456-b16d-71f128e77ee6",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.IO.Compression.ZipFile, 4.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.IO.Compression.ZipFile, 4.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "System.IO.Compression.ZipFile, 4.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.IO.Compression.ZipFile, 4.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.IO.Compression.ZipFile 4.3.0",
+            "properties": {
+              "PackageId": "System.IO.Compression.ZipFile",
+              "PackageVersion": "4.3.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "b46babb0-38f7-4e0b-a65a-14820dc827b3",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.IO.Pipelines, 4.5.1\n\nRecommendation:\n\nRemove System.IO.Pipelines, and replace with new package System.IO.Pipelines 10.0.14",
+              "protected": "System.IO.Pipelines, 4.5.1\n\nRecommendation:\n\nRemove System.IO.Pipelines, and replace with new package System.IO.Pipelines 10.0.14"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "System.IO.Pipelines, 4.5.1\n\nRecommendation:\n\nRemove System.IO.Pipelines, and replace with new package System.IO.Pipelines 10.0.14",
+            "protectedSnippet": "System.IO.Pipelines, 4.5.1\n\nRecommendation:\n\nRemove System.IO.Pipelines, and replace with new package System.IO.Pipelines 10.0.14",
+            "label": "System.IO.Pipelines 4.5.1",
+            "properties": {
+              "PackageId": "System.IO.Pipelines",
+              "PackageVersion": "4.5.1",
+              "PackageNewVersion": "10.0.14",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "d626ec84-77f0-4a64-b6ec-fd7fb2177ab5",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Memory, 4.5.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.Memory, 4.5.1\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "System.Memory, 4.5.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.Memory, 4.5.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.Memory 4.5.1",
+            "properties": {
+              "PackageId": "System.Memory",
+              "PackageVersion": "4.5.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "1bd0c7f4-4830-474c-8911-4c7d412d4de3",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Numerics.Vectors, 4.4.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.Numerics.Vectors, 4.4.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "System.Numerics.Vectors, 4.4.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.Numerics.Vectors, 4.4.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.Numerics.Vectors 4.4.0",
+            "properties": {
+              "PackageId": "System.Numerics.Vectors",
+              "PackageVersion": "4.4.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "5e272297-5472-4ff4-b1e5-b506ccd84027",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Runtime.CompilerServices.Unsafe, 4.5.0\n\nRecommendation:\n\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe 6.1.2",
+              "protected": "System.Runtime.CompilerServices.Unsafe, 4.5.0\n\nRecommendation:\n\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe 6.1.2"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "System.Runtime.CompilerServices.Unsafe, 4.5.0\n\nRecommendation:\n\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe 6.1.2",
+            "protectedSnippet": "System.Runtime.CompilerServices.Unsafe, 4.5.0\n\nRecommendation:\n\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe 6.1.2",
+            "label": "System.Runtime.CompilerServices.Unsafe 4.5.0",
+            "properties": {
+              "PackageId": "System.Runtime.CompilerServices.Unsafe",
+              "PackageVersion": "4.5.0",
+              "PackageNewVersion": "6.1.2",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "0d29984f-127c-4623-8997-e09b8298b5b9",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Threading.Channels, 4.5.0\n\nRecommendation:\n\nRemove System.Threading.Channels, and replace with new package System.Threading.Channels 10.0.14",
+              "protected": "System.Threading.Channels, 4.5.0\n\nRecommendation:\n\nRemove System.Threading.Channels, and replace with new package System.Threading.Channels 10.0.14"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "System.Threading.Channels, 4.5.0\n\nRecommendation:\n\nRemove System.Threading.Channels, and replace with new package System.Threading.Channels 10.0.14",
+            "protectedSnippet": "System.Threading.Channels, 4.5.0\n\nRecommendation:\n\nRemove System.Threading.Channels, and replace with new package System.Threading.Channels 10.0.14",
+            "label": "System.Threading.Channels 4.5.0",
+            "properties": {
+              "PackageId": "System.Threading.Channels",
+              "PackageVersion": "4.5.0",
+              "PackageNewVersion": "10.0.14",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "c144a118-9021-4218-b4d9-ed03d854882b",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Threading.Tasks.Extensions, 4.5.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.Threading.Tasks.Extensions, 4.5.1\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "System.Threading.Tasks.Extensions, 4.5.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.Threading.Tasks.Extensions, 4.5.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.Threading.Tasks.Extensions 4.5.1",
+            "properties": {
+              "PackageId": "System.Threading.Tasks.Extensions",
+              "PackageVersion": "4.5.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "f51943b5-452a-434e-acc6-781657f4612f",
+          "ruleId": "NuGet.0005",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "EntityFramework, 6.2.0\n\nRecommendation:\n\nShould be replaced.\nRemove EntityFramework, and replace with new package EntityFramework, 6.5.2",
+              "protected": "EntityFramework, 6.2.0\n\nRecommendation:\n\nShould be replaced.\nRemove EntityFramework, and replace with new package EntityFramework, 6.5.2"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "EntityFramework, 6.2.0\n\nRecommendation:\n\nShould be replaced.\nRemove EntityFramework, and replace with new package EntityFramework, 6.5.2",
+            "protectedSnippet": "EntityFramework, 6.2.0\n\nRecommendation:\n\nShould be replaced.\nRemove EntityFramework, and replace with new package EntityFramework, 6.5.2",
+            "label": "EntityFramework 6.2.0",
+            "properties": {
+              "PackageId": "EntityFramework",
+              "PackageVersion": "6.2.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "267d01d2-06c9-483f-885a-8c9ab638ef56",
+          "ruleId": "NuGet.0005",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "jQuery, 3.5.0\n\nRecommendation:\n\nIncorrect intellisense file in 3.5.0 - please use 3.5.0.1\nRemove jQuery, and replace with new package jQuery, 3.7.1",
+              "protected": "jQuery, 3.5.0\n\nRecommendation:\n\nIncorrect intellisense file in 3.5.0 - please use 3.5.0.1\nRemove jQuery, and replace with new package jQuery, 3.7.1"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "jQuery, 3.5.0\n\nRecommendation:\n\nIncorrect intellisense file in 3.5.0 - please use 3.5.0.1\nRemove jQuery, and replace with new package jQuery, 3.7.1",
+            "protectedSnippet": "jQuery, 3.5.0\n\nRecommendation:\n\nIncorrect intellisense file in 3.5.0 - please use 3.5.0.1\nRemove jQuery, and replace with new package jQuery, 3.7.1",
+            "label": "jQuery 3.5.0",
+            "properties": {
+              "PackageId": "jQuery",
+              "PackageVersion": "3.5.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "3b481130-c696-4974-8397-6849657cd610",
+          "ruleId": "NuGet.0004",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "log4net, 2.0.10\n\nRecommendation:\n\nlog4net, 3.5.0",
+              "protected": "log4net, 2.0.10\n\nRecommendation:\n\nlog4net, 3.5.0"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "log4net, 2.0.10\n\nRecommendation:\n\nlog4net, 3.5.0",
+            "protectedSnippet": "log4net, 2.0.10\n\nRecommendation:\n\nlog4net, 3.5.0",
+            "label": "log4net 2.0.10",
+            "properties": {
+              "PackageId": "log4net",
+              "PackageVersion": "2.0.10",
+              "PackageNewVersion": "3.5.0",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "91d507d5-46b5-4dc0-a5da-180af6a44e21",
+          "ruleId": "NuGet.0005",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.ApplicationInsights, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights, and replace with new package Microsoft.ApplicationInsights, 3.2.0",
+              "protected": "Microsoft.ApplicationInsights, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights, and replace with new package Microsoft.ApplicationInsights, 3.2.0"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.ApplicationInsights, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights, and replace with new package Microsoft.ApplicationInsights, 3.2.0",
+            "protectedSnippet": "Microsoft.ApplicationInsights, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights, and replace with new package Microsoft.ApplicationInsights, 3.2.0",
+            "label": "Microsoft.ApplicationInsights 2.9.1",
+            "properties": {
+              "PackageId": "Microsoft.ApplicationInsights",
+              "PackageVersion": "2.9.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "fc29644c-99d9-423c-a5f2-35297a7924da",
+          "ruleId": "NuGet.0005",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.ApplicationInsights.DependencyCollector, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.DependencyCollector, and replace with new package Microsoft.ApplicationInsights.DependencyCollector, 2.23.0",
+              "protected": "Microsoft.ApplicationInsights.DependencyCollector, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.DependencyCollector, and replace with new package Microsoft.ApplicationInsights.DependencyCollector, 2.23.0"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.ApplicationInsights.DependencyCollector, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.DependencyCollector, and replace with new package Microsoft.ApplicationInsights.DependencyCollector, 2.23.0",
+            "protectedSnippet": "Microsoft.ApplicationInsights.DependencyCollector, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.DependencyCollector, and replace with new package Microsoft.ApplicationInsights.DependencyCollector, 2.23.0",
+            "label": "Microsoft.ApplicationInsights.DependencyCollector 2.9.1",
+            "properties": {
+              "PackageId": "Microsoft.ApplicationInsights.DependencyCollector",
+              "PackageVersion": "2.9.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "b57fb249-a333-4031-987a-77882faa984f",
+          "ruleId": "NuGet.0005",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.ApplicationInsights.PerfCounterCollector, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.PerfCounterCollector, and replace with new package Microsoft.ApplicationInsights.PerfCounterCollector, 2.23.0",
+              "protected": "Microsoft.ApplicationInsights.PerfCounterCollector, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.PerfCounterCollector, and replace with new package Microsoft.ApplicationInsights.PerfCounterCollector, 2.23.0"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.ApplicationInsights.PerfCounterCollector, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.PerfCounterCollector, and replace with new package Microsoft.ApplicationInsights.PerfCounterCollector, 2.23.0",
+            "protectedSnippet": "Microsoft.ApplicationInsights.PerfCounterCollector, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.PerfCounterCollector, and replace with new package Microsoft.ApplicationInsights.PerfCounterCollector, 2.23.0",
+            "label": "Microsoft.ApplicationInsights.PerfCounterCollector 2.9.1",
+            "properties": {
+              "PackageId": "Microsoft.ApplicationInsights.PerfCounterCollector",
+              "PackageVersion": "2.9.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "1ebc8657-1051-4db5-9ff7-fa86364bac6c",
+          "ruleId": "NuGet.0005",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.ApplicationInsights.Web, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.",
+              "protected": "Microsoft.ApplicationInsights.Web, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version."
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.ApplicationInsights.Web, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.",
+            "protectedSnippet": "Microsoft.ApplicationInsights.Web, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.",
+            "label": "Microsoft.ApplicationInsights.Web 2.9.1",
+            "properties": {
+              "PackageId": "Microsoft.ApplicationInsights.Web",
+              "PackageVersion": "2.9.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "8cb62778-dbdc-4aa6-90dd-789d9e494b8b",
+          "ruleId": "NuGet.0005",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.ApplicationInsights.WindowsServer, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.WindowsServer, and replace with new package Microsoft.ApplicationInsights.WindowsServer, 2.23.0",
+              "protected": "Microsoft.ApplicationInsights.WindowsServer, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.WindowsServer, and replace with new package Microsoft.ApplicationInsights.WindowsServer, 2.23.0"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.ApplicationInsights.WindowsServer, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.WindowsServer, and replace with new package Microsoft.ApplicationInsights.WindowsServer, 2.23.0",
+            "protectedSnippet": "Microsoft.ApplicationInsights.WindowsServer, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.WindowsServer, and replace with new package Microsoft.ApplicationInsights.WindowsServer, 2.23.0",
+            "label": "Microsoft.ApplicationInsights.WindowsServer 2.9.1",
+            "properties": {
+              "PackageId": "Microsoft.ApplicationInsights.WindowsServer",
+              "PackageVersion": "2.9.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "c48a3d98-95a7-4939-825b-2685dcac7d24",
+          "ruleId": "NuGet.0005",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, and replace with new package Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, 2.23.0",
+              "protected": "Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, and replace with new package Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, 2.23.0"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, and replace with new package Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, 2.23.0",
+            "protectedSnippet": "Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, 2.9.1\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, and replace with new package Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel, 2.23.0",
+            "label": "Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel 2.9.1",
+            "properties": {
+              "PackageId": "Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel",
+              "PackageVersion": "2.9.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "736276a8-4c51-4d6d-816a-e90f5c6aa71e",
+          "ruleId": "NuGet.0005",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nShould be replaced.\nRemove Microsoft.AspNet.Web.Optimization, and replace with new package LigerShark.WebOptimizer.Core, 3.0.477",
+              "protected": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nShould be replaced.\nRemove Microsoft.AspNet.Web.Optimization, and replace with new package LigerShark.WebOptimizer.Core, 3.0.477"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nShould be replaced.\nRemove Microsoft.AspNet.Web.Optimization, and replace with new package LigerShark.WebOptimizer.Core, 3.0.477",
+            "protectedSnippet": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nShould be replaced.\nRemove Microsoft.AspNet.Web.Optimization, and replace with new package LigerShark.WebOptimizer.Core, 3.0.477",
+            "label": "Microsoft.AspNet.Web.Optimization 1.1.3",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.Web.Optimization",
+              "PackageVersion": "1.1.3",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "10e48ace-dfaa-4bdb-9831-91efaf25853f",
+          "ruleId": "NuGet.0004",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Newtonsoft.Json, 12.0.1\n\nRecommendation:\n\nNewtonsoft.Json, 13.0.4",
+              "protected": "Newtonsoft.Json, 12.0.1\n\nRecommendation:\n\nNewtonsoft.Json, 13.0.4"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Newtonsoft.Json, 12.0.1\n\nRecommendation:\n\nNewtonsoft.Json, 13.0.4",
+            "protectedSnippet": "Newtonsoft.Json, 12.0.1\n\nRecommendation:\n\nNewtonsoft.Json, 13.0.4",
+            "label": "Newtonsoft.Json 12.0.1",
+            "properties": {
+              "PackageId": "Newtonsoft.Json",
+              "PackageVersion": "12.0.1",
+              "PackageNewVersion": "13.0.4",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "8716c4cd-ddb7-476c-a181-a73374a47ca1",
+          "ruleId": "Project.0001",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj"
+          }
+        },
+        {
+          "incidentId": "31885cb1-aa3a-4019-9a86-0216a6153ad4",
+          "ruleId": "Project.0002",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: .NETFramework,Version=v4.7.2\nRecommended target framework: net10.0",
+              "protected": "Current target framework: .NETFramework,Version=v4.7.2\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+            "snippet": "Current target framework: .NETFramework,Version=v4.7.2\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: .NETFramework,Version=v4.7.2\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": ".NETFramework,Version=v4.7.2",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "cc6b8a77-fafd-4506-9cab-688e80cb7e31",
+          "ruleId": "Feature.1000",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\Global.asax.cs"
+          }
+        },
+        {
+          "incidentId": "27041a86-92ea-4f4f-a236-21e0f8555727",
+          "ruleId": "Binding.0006",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Manual redirect for Newtonsoft.Json targets 12.0.0.0 but auto-generation would target 12.0.1 (MSB3836 conflict)",
+              "protected": "Manual redirect for Newtonsoft.Json targets 12.0.0.0 but auto-generation would target 12.0.1 (MSB3836 conflict)"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\Web.config",
+            "snippet": "Manual redirect for Newtonsoft.Json targets 12.0.0.0 but auto-generation would target 12.0.1 (MSB3836 conflict)",
+            "protectedSnippet": "Manual redirect for Newtonsoft.Json targets 12.0.0.0 but auto-generation would target 12.0.1 (MSB3836 conflict)",
+            "properties": {
+              "AssemblyName": "Newtonsoft.Json",
+              "AssemblyCurrentVersion": "12.0.0.0",
+              "AssemblyNewVersion": "12.0.1"
+            }
+          }
+        },
+        {
+          "incidentId": "ec0a82d9-43d6-403e-b33b-2550679040df",
+          "ruleId": "Binding.0006",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Manual redirect for WebGrease targets 1.6.5135.21930 but auto-generation would target 1.6.0 (MSB3836 conflict)",
+              "protected": "Manual redirect for WebGrease targets 1.6.5135.21930 but auto-generation would target 1.6.0 (MSB3836 conflict)"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\Web.config",
+            "snippet": "Manual redirect for WebGrease targets 1.6.5135.21930 but auto-generation would target 1.6.0 (MSB3836 conflict)",
+            "protectedSnippet": "Manual redirect for WebGrease targets 1.6.5135.21930 but auto-generation would target 1.6.0 (MSB3836 conflict)",
+            "properties": {
+              "AssemblyName": "WebGrease",
+              "AssemblyCurrentVersion": "1.6.5135.21930",
+              "AssemblyNewVersion": "1.6.0"
+            }
+          }
+        },
+        {
+          "incidentId": "80c15fe8-cf0c-4936-91c5-d0ad18c4dbcf",
+          "ruleId": "Binding.0006",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Manual redirect for System.Diagnostics.DiagnosticSource targets 4.0.3.1 but auto-generation would target 4.5.1 (MSB3836 conflict)",
+              "protected": "Manual redirect for System.Diagnostics.DiagnosticSource targets 4.0.3.1 but auto-generation would target 4.5.1 (MSB3836 conflict)"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\Web.config",
+            "snippet": "Manual redirect for System.Diagnostics.DiagnosticSource targets 4.0.3.1 but auto-generation would target 4.5.1 (MSB3836 conflict)",
+            "protectedSnippet": "Manual redirect for System.Diagnostics.DiagnosticSource targets 4.0.3.1 but auto-generation would target 4.5.1 (MSB3836 conflict)",
+            "properties": {
+              "AssemblyName": "System.Diagnostics.DiagnosticSource",
+              "AssemblyCurrentVersion": "4.0.3.1",
+              "AssemblyNewVersion": "4.5.1"
+            }
+          }
+        },
+        {
+          "incidentId": "fba3170f-a230-4c4b-bcc3-66ef1ebd1f68",
+          "ruleId": "Binding.0007",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Binding redirect for Newtonsoft.Json targets 12.0.0.0 but package provides 12.0.1",
+              "protected": "Binding redirect for Newtonsoft.Json targets 12.0.0.0 but package provides 12.0.1"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\Web.config",
+            "snippet": "Binding redirect for Newtonsoft.Json targets 12.0.0.0 but package provides 12.0.1",
+            "protectedSnippet": "Binding redirect for Newtonsoft.Json targets 12.0.0.0 but package provides 12.0.1",
+            "properties": {
+              "AssemblyName": "Newtonsoft.Json",
+              "AssemblyCurrentVersion": "12.0.0.0",
+              "AssemblyNewVersion": "12.0.1"
+            }
+          }
+        },
+        {
+          "incidentId": "554cb203-095d-4844-94c9-6a2826d05aee",
+          "ruleId": "Binding.0007",
+          "projectPath": "src\\eShopLegacyWebForms\\eShopLegacyWebForms.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Binding redirect for System.Diagnostics.DiagnosticSource targets 4.0.3.1 but package provides 4.5.1",
+              "protected": "Binding redirect for System.Diagnostics.DiagnosticSource targets 4.0.3.1 but package provides 4.5.1"
+            },
+            "kind": "File",
+            "path": "src\\eShopLegacyWebForms\\Web.config",
+            "snippet": "Binding redirect for System.Diagnostics.DiagnosticSource targets 4.0.3.1 but package provides 4.5.1",
+            "protectedSnippet": "Binding redirect for System.Diagnostics.DiagnosticSource targets 4.0.3.1 but package provides 4.5.1",
+            "properties": {
+              "AssemblyName": "System.Diagnostics.DiagnosticSource",
+              "AssemblyCurrentVersion": "4.0.3.1",
+              "AssemblyNewVersion": "4.5.1"
+            }
+          }
+        }
+      ],
+      "features": []
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0001": {
+      "id": "NuGet.0001",
+      "isFeature": false,
+      "description": "NuGet package is incompatible with selected target framework.\n\nPackage needs to be upgraded to a version supporting selected project target framework. If there no new package versions supporting new target framework, different package needs to be used and all code needs to be upgraded to new API.",
+      "label": "NuGet package is incompatible",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262529",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0003": {
+      "id": "NuGet.0003",
+      "isFeature": false,
+      "description": "NuGet package functionality is included with framework reference.\n\nPackage needs to be removed.",
+      "label": "NuGet package functionality is included with framework reference",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262609",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0005": {
+      "id": "NuGet.0005",
+      "isFeature": false,
+      "description": "NuGet package is deprecated.\n\nGo to its documentation and if there is a guidance for replacement of functionality provided by this package.",
+      "label": "NuGet package is deprecated",
+      "severity": "Optional",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262531",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0004": {
+      "id": "NuGet.0004",
+      "isFeature": false,
+      "description": "NuGet package contains security vulnerabilities.\n\nPackage needs to be upgraded to a newer version that addresses known security vulnerabilities.",
+      "label": "NuGet package contains security vulnerability",
+      "severity": "Optional",
+      "effort": 1
+    },
+    "Project.0001": {
+      "id": "Project.0001",
+      "isFeature": false,
+      "description": "Project file needs to be converted to SDK-style. Modern .NET framework projects require a change in the project file format and use SDK corresponding to project flavor and functionality.",
+      "label": "Project file needs to be converted to SDK-style",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Feature.1000": {
+      "id": "Feature.1000",
+      "isFeature": true,
+      "description": "Convert application initialization code from Global.asax.cs to .NET Core and clean up Global.asax.cs.",
+      "label": "Convert application initialization code from Global.asax.cs to .NET Core and clean up Global.asax.cs",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        }
+      ]
+    },
+    "Binding.0006": {
+      "id": "Binding.0006",
+      "isFeature": false,
+      "description": "An explicit binding redirect targets a different version than what auto-generation would produce. MSBuild will throw MSB3836 conflict error because it cannot determine which redirect wins.",
+      "label": "Manual redirect conflicts with auto-generated version",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Assembly binding redirection",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262689",
+          "isCustom": false
+        }
+      ]
+    },
+    "Binding.0007": {
+      "id": "Binding.0007",
+      "isFeature": false,
+      "description": "A binding redirect\u0027s newVersion is lower than the version provided by the NuGet package. This forced downgrade usually causes a load failure at runtime because the expected assembly version is not available.",
+      "label": "Binding redirect forces version downgrade",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Assembly binding redirection",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262689",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}
