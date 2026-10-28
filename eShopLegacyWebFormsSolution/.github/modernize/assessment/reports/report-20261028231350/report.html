@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Assessment - eShopLegacyWebForms</title>
+<style>
+:root {
+  --bg-primary: #ffffff;
+  --bg-card: #f8f9fa;
+  --bg-page: #f0f1f3;
+  --text-primary: #24292f;
+  --text-secondary: #57606a;
+  --text-muted: #6b7280;
+  --border-color: #d0d7de;
+  --border-light: #e1e4e8;
+  --link-color: #2563eb;
+  --color-mandatory: #E3008C;
+  --color-potential: #637CEF;
+  --color-optional: #A19F9D;
+  --font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  --font-mono: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-family); font-size: 13px; color: var(--text-primary); background: var(--bg-primary); line-height: 1.5; margin: 0; padding: 0; }
+a { color: var(--link-color); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Page layout ───────────────────────────────────────────── */
+.main { margin: 0; padding: 24px 32px; background: var(--bg-primary); }
+.back-link { color: var(--text-muted); font-size: 13px; margin-bottom: 16px; display: block; }
+h1 { font-weight: 600; font-size: 20px; color: var(--text-primary); margin-bottom: 20px; }
+
+/* ── Report cards (matches VS Code .vscode-report-card) ──── */
+.report-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 4px; padding: 12px; margin-bottom: 20px; }
+.report-card h2 { font-size: 14px; font-weight: 600; margin: 0; color: var(--text-primary); }
+.report-card-body { margin-top: 16px; }
+
+/* ── Component Information (two-column) ────────────────── */
+.app-info-container { display: flex; gap: 8px; flex-wrap: wrap; }
+.app-info-column { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 8px; }
+.app-info-row { display: flex; align-items: baseline; }
+.app-info-label { width: 136px; flex-shrink: 0; font-weight: 600; color: var(--text-primary); }
+.app-info-value { flex: 1; color: var(--text-primary); }
+
+/* ── Issue Summary (pie charts + legend) ─────────────────── */
+.cards-container { display: flex; align-items: stretch; gap: 20px; flex-wrap: wrap; }
+.issue-summary-card { flex: 2; }
+.domain-summary-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-around; }
+.domain-summary-item { flex: 1; min-width: 120px; text-align: center; padding: 0 16px; border-right: 1px solid var(--border-light); }
+.domain-summary-item:last-child { border-right: none; }
+.domain-summary-item h3 { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-top: 8px; }
+.domain-summary-item .count { font-size: 12px; color: var(--text-secondary); }
+.criticality-legend { display: flex; flex-wrap: wrap; gap: 15px; padding-top: 12px; justify-content: center; }
+.criticality-legend .legend-item { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-secondary); }
+.legend-swatch { display: inline-block; width: 1em; height: 1em; border-radius: 2px; }
+
+/* ── Issue list tables ───────────────────────────────────── */
+.issue-section { margin-top: 20px; }
+.issue-section h2 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.issue-table { width: 100%; border-collapse: collapse; table-layout: fixed; min-width: 600px; }
+.issue-table th { text-align: left; text-transform: uppercase; font-weight: 600; font-size: calc(13px * 0.875); padding: 6px 8px; background: var(--bg-card); border-bottom: 1px solid var(--border-color); color: var(--text-secondary); position: sticky; top: 0; z-index: 1; }
+.issue-table td { padding: 12px 8px; border-bottom: 1px solid var(--border-light); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: middle; }
+.col-issue { width: 55%; }
+.col-criticality { width: 25%; }
+.col-storypoint { width: 20%; }
+
+/* ── Target dropdown ─────────────────────────────────────── */
+.target-select-container { margin: 4px 0 16px 0; display: flex; align-items: center; gap: 8px; }
+.target-select-container label { font-weight: 600; color: var(--text-primary); font-size: 14px; }
+.target-select-container select { font-family: var(--font-family); font-size: 13px; padding: 4px 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary); cursor: pointer; }
+
+/* ── Filter bar ──────────────────────────────────────────── */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0 8px 0; align-items: center; }
+.multi-select { position: relative; display: inline-block; min-width: 140px; }
+.multi-select-btn { font-family: var(--font-family); font-size: 13px; padding: 4px 24px 4px 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary); cursor: pointer; width: 100%; text-align: left; position: relative; white-space: nowrap; }
+.multi-select-btn::after { content: '\25BE'; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 11px; color: var(--text-secondary); }
+.multi-select-dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 100%; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 100; margin-top: 2px; }
+.multi-select.open .multi-select-dropdown { display: block; }
+.multi-select-option { display: flex; align-items: center; gap: 6px; padding: 5px 10px; cursor: pointer; font-size: 13px; white-space: nowrap; }
+.multi-select-option:hover { background: var(--bg-secondary); }
+.multi-select-option input[type=checkbox] { margin: 0; cursor: pointer; }
+.clear-filters { font-size: 12px; color: var(--link-color); cursor: pointer; margin-left: 4px; }
+
+/* ── Criticality labels (colored square + text) ──────────── */
+.crit-label { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; white-space: nowrap; }
+.crit-square { display: inline-block; width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.crit-square-mandatory { background: var(--color-mandatory); }
+.crit-square-potential { background: var(--color-potential); }
+.crit-square-optional { background: var(--color-optional); }
+
+/* ── Expandable rows ─────────────────────────────────────── */
+.expand-btn { background: none; border: none; cursor: pointer; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 11px; transition: transform 0.15s; padding: 0; vertical-align: middle; flex-shrink: 0; }
+.expand-btn.open { transform: rotate(90deg); }
+.issue-title-cell { display: flex; align-items: center; gap: 4px; }
+.detail-row td { padding: 0; border-bottom: 1px solid var(--border-light); white-space: normal; overflow: visible; text-overflow: clip; }
+.detail-content { display: flex; gap: 0; padding: 8px 8px 8px 32px; min-width: 0; }
+.file-list { flex: 0 0 50%; min-width: 0; overflow: hidden; }
+.file-list table { width: 100%; border-collapse: collapse; }
+.file-list th { font-size: calc(13px * 0.875); text-transform: uppercase; font-weight: 600; color: var(--text-secondary); padding: 6px 8px; border-bottom: 1px solid var(--border-color); text-align: left; height: 32px; }
+.file-list td { font-size: 13px; padding: 6px 8px; border-bottom: 1px solid var(--border-light); color: var(--text-primary); }
+.file-list .file-path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 300px; display: block; }
+.file-list .position { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
+.explanation-panel { flex: 1; padding-left: 16px; min-width: 0; overflow-wrap: break-word; word-wrap: break-word; }
+.explanation-panel h4 { font-size: calc(13px * 0.875); text-transform: uppercase; font-weight: 600; color: var(--text-secondary); padding: 6px 0; border-bottom: 1px solid var(--border-color); height: 32px; margin: 0; }
+.explanation-panel p { font-size: 13px; padding: 8px 0; color: var(--text-primary); line-height: 1.6; white-space: normal; word-break: break-word; }
+
+/* ── Experimental badge ──────────────────────────────────── */
+.badge-experimental { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: #fef9c3; color: #854d0e; vertical-align: middle; margin-left: 8px; cursor: default; }
+
+/* ── Footer ──────────────────────────────────────────────── */
+.footer { text-align: center; margin-top: 24px; color: var(--text-muted); font-size: 13px; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 800px) {
+  .main { padding: 16px; }
+  .app-info-container { flex-direction: column; }
+  .domain-summary-container { flex-direction: column; }
+  .domain-summary-item { border-right: none; border-bottom: 1px solid var(--border-light); padding-bottom: 12px; }
+  .detail-content { flex-direction: column; }
+  .file-list { flex: none; width: 100%; }
+  .explanation-panel { padding-left: 0; padding-top: 8px; }
+}
+/* ── Tab navigation ──────────────────────────────────────── */
+.tab-nav { display: flex; gap: 0; border-bottom: 1px solid var(--border-color); margin-bottom: 28px; flex-wrap: wrap; }
+.tab-btn { background: none; border: none; border-bottom: 2px solid transparent; padding: 10px 18px; font-size: 13px; font-family: var(--font-family); color: var(--text-secondary); cursor: pointer; margin-bottom: -1px; white-space: nowrap; position: relative; }
+.tab-btn:hover { color: var(--text-primary); }
+.tab-btn.active { color: var(--link-color); border-bottom-color: var(--link-color); font-weight: 600; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── Tooltip on tab ──────────────────────────────────────── */
+.tab-btn[data-tooltip]::after { content: attr(data-tooltip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #24292f; color: #ffffff; font-size: 12px; font-weight: 400; padding: 6px 10px; border-radius: 4px; white-space: normal; width: max-content; max-width: 260px; text-align: center; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 100; }
+.tab-btn[data-tooltip]:hover::after { opacity: 1; }
+
+/* ── Fact content — prose column ─────────────────────────── */
+.fact-content { max-width: 860px; margin: 0 auto; line-height: 1.75; color: var(--text-primary); font-size: 14px; }
+.fact-content h1 { font-size: 22px; font-weight: 700; margin: 0 0 6px 0; color: var(--text-primary); letter-spacing: -0.01em; }
+.fact-content h1 + p { margin-top: 6px; color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; }
+.fact-content h2 { font-size: 17px; font-weight: 700; margin: 36px 0 12px 0; padding-bottom: 6px; border-bottom: 1px solid var(--border-color); color: var(--text-primary); letter-spacing: -0.01em; }
+.fact-content h3 { font-size: 14px; font-weight: 700; margin: 24px 0 8px 0; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; color: var(--text-secondary); }
+.fact-content p { margin: 10px 0; color: var(--text-primary); }
+.fact-content ul, .fact-content ol { margin: 10px 0 10px 22px; }
+.fact-content li { margin: 5px 0; }
+.fact-content a { color: var(--link-color); }
+.fact-content a:hover { text-decoration: underline; }
+
+/* ── Fact tables ─────────────────────────────────────────── */
+.table-wrap { overflow-x: auto; margin: 16px 0; }
+.fact-content table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 13px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border-color); }
+.fact-content thead { background: var(--bg-card); }
+.fact-content th { text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 14px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
+.fact-content td { padding: 9px 14px; border-bottom: 1px solid var(--border-light); vertical-align: top; color: var(--text-primary); }
+.fact-content tr:last-child td { border-bottom: none; }
+.fact-content tbody tr:hover { background: #f6f8fa; }
+
+/* ── Fact code ───────────────────────────────────────────── */
+.fact-content code { font-family: var(--font-mono); font-size: 12px; background: #f0f1f3; padding: 2px 6px; border-radius: 4px; color: #c7254e; }
+.fact-content pre { background: #f6f8fa; border: 1px solid var(--border-light); border-radius: 6px; padding: 14px 16px; overflow-x: auto; margin: 14px 0; }
+.fact-content pre code { background: none; color: var(--text-primary); padding: 0; border-radius: 0; }
+.fact-content hr { border: none; border-top: 1px solid var(--border-light); margin: 28px 0; }
+.fact-content strong { font-weight: 600; }
+.fact-content em { font-style: italic; }
+.fact-content blockquote { border-left: 3px solid var(--border-color); margin: 12px 0; padding: 4px 16px; color: var(--text-secondary); }
+.fact-unavailable { padding: 32px 0; }
+.fact-unavailable h3 { font-size: 16px; font-weight: 600; color: var(--text-primary); text-transform: none; letter-spacing: 0; margin: 0 0 12px 0; }
+.fact-unavailable p { margin: 0 0 8px 0; color: var(--text-secondary); }
+.fact-unavailable ol, .fact-unavailable ul { margin: 0 0 0 22px; color: var(--text-primary); }
+.fact-unavailable li { margin: 6px 0; }
+
+/* ── Mermaid diagram card ─────────────────────────────────── */
+.mermaid { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 8px; padding: 24px 16px; margin: 20px 0; overflow-x: auto; text-align: center; cursor: pointer; position: relative; }
+.mermaid:hover { border-color: var(--border-color); }
+.mermaid svg { max-width: 100%; height: auto !important; display: inline-block; }
+.mermaid-zoom-hint { position: absolute; top: 8px; right: 10px; font-size: 11px; color: var(--text-muted); opacity: 0; transition: opacity 0.15s; pointer-events: none; }
+.mermaid:hover .mermaid-zoom-hint { opacity: 1; }
+
+/* ── Diagram lightbox ────────────────────────────────────── */
+.diagram-lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.7); backdrop-filter: blur(2px); align-items: center; justify-content: center; cursor: zoom-out; padding: 48px 32px; }
+.diagram-lightbox.open { display: flex; }
+.diagram-lightbox-inner { background: #ffffff; border-radius: 10px; padding: 32px; width: 88vw; max-height: 88vh; overflow: hidden; cursor: default; box-shadow: 0 24px 64px rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: center; }
+.diagram-lightbox-inner svg { width: 100% !important; height: auto !important; max-height: 76vh; display: block; }
+.diagram-lightbox-close { position: fixed; top: 20px; right: 24px; background: #ffffff; border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text-primary); box-shadow: 0 2px 8px rgba(0,0,0,0.2); z-index: 1001; }
+.diagram-lightbox-close:hover { background: var(--bg-card); }
+.diagram-lightbox-hint { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.55); color: #ffffff; font-size: 12px; padding: 6px 14px; border-radius: 20px; pointer-events: none; white-space: nowrap; z-index: 1001; }
+</style>
+<script>
+window.__mermaidPending = [];
+window.__mermaidReady = false;
+window.__renderMermaidIn = function(container) {
+  if (container) { window.__mermaidPending.push(container); }
+};
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: false, theme: 'default', flowchart: { useMaxWidth: true }, sequence: { useMaxWidth: true } });
+
+window.__renderMermaidIn = function(container) {
+  var nodes = container ? container.querySelectorAll('.mermaid:not([data-processed])') : [];
+  if (nodes.length > 0) {
+    mermaid.run({ nodes: Array.from(nodes) }).then(function() {
+      nodes.forEach(function(node) {
+        if (!node.querySelector('.mermaid-zoom-hint')) {
+          var hint = document.createElement('span');
+          hint.className = 'mermaid-zoom-hint';
+          hint.textContent = 'Click to expand';
+          node.appendChild(hint);
+        }
+      });
+    });
+  }
+};
+
+var drained = new Set();
+(window.__mermaidPending || []).forEach(function(c) {
+  if (!drained.has(c)) { drained.add(c); window.__renderMermaidIn(c); }
+});
+window.__mermaidPending = [];
+window.__mermaidReady = true;
+
+function renderActivePanels() {
+  document.querySelectorAll('.tab-panel.active').forEach(function(p) {
+    if (!drained.has(p)) { drained.add(p); window.__renderMermaidIn(p); }
+  });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderActivePanels);
+} else {
+  renderActivePanels();
+}
+</script>
+</head><body>
+<div id="diagram-lightbox" class="diagram-lightbox" role="dialog" aria-modal="true">
+  <button class="diagram-lightbox-close" id="diagram-lightbox-close" aria-label="Close">&#x2715;</button>
+  <div class="diagram-lightbox-hint">Scroll to zoom &nbsp;&middot;&nbsp; Drag to pan &nbsp;&middot;&nbsp; Double-click to reset</div>
+  <div class="diagram-lightbox-inner" id="diagram-lightbox-inner"></div>
+</div>
+<div class="main">
+<h1>eShopLegacyWebForms</h1>
+<div class="report-card">
+  <h2>Component Information</h2>
+  <div class="report-card-body">
+    <div class="app-info-container">
+      <div class="app-info-column">
+        <div class="app-info-row"><span class="app-info-label">Component Name</span><span class="app-info-value">eShopLegacyWebForms</span></div>
+        <div class="app-info-row"><span class="app-info-label">Effort</span><span class="app-info-value" id="effort-display">L (total story points: 79)</span></div>
+      </div>
+      <div class="app-info-column">
+        <div class="app-info-row"><span class="app-info-label">Build Tools</span><span class="app-info-value">MSBuild</span></div>
+        <div class="app-info-row"><span class="app-info-label">Frameworks</span><span class="app-info-value">.NETFramework,Version=v4.7.2</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="tab-issues" data-tooltip="Issues detected in the source code">Issues</button>
+  <button class="tab-btn" data-tab="tab-arch" data-tooltip="How the app&#x27;s layers connect — from UI to data.">Architecture</button>
+  <button class="tab-btn" data-tab="tab-api" data-tooltip="Endpoints exposed by this app and how services communicate.">API Contracts</button>
+  <button class="tab-btn" data-tab="tab-config" data-tooltip="Environment settings, runtime profiles, and deployment manifests.">Configuration</button>
+  <button class="tab-btn" data-tab="tab-workflows" data-tooltip="Domain entities and the core flows users move through.">Business Workflows</button>
+  <button class="tab-btn" data-tab="tab-deps" data-tooltip="Libraries and frameworks this app depends on, grouped by category.">Dependencies</button>
+  <button class="tab-btn" data-tab="tab-data" data-tooltip="Database schema, entity relationships, and persistence behavior.">Data Model</button>
+</nav>
+<div id="tab-issues" class="tab-panel active">
+<div class="target-select-container">
+  <label for="target-select">Target Compute Service:</label>
+  <select id="target-select" onchange="onTargetChange(this.value)">
+    <option value="AppService.Windows">Azure App Service</option>
+    <option value="AppService.Linux">Azure Kubernetes Service</option>
+    <option value="AKS.Linux">Azure Container Apps</option>
+    <option value="AKS.Windows">Azure App Service Container</option>
+    <option value="ACA">Azure App Service Managed Instance</option>
+  </select>
+</div>
+<div class="report-card">
+  <h2>Issue Summary</h2>
+  <div class="report-card-body">
+    <div class="domain-summary-container" id="donut-container">
+      <div class="domain-summary-item">
+<svg viewBox="0 0 100 100" width="100" height="100" style="display:block;margin:0 auto;transform:rotate(-90deg);">
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-mandatory)" stroke-width="15" stroke-dasharray="61.33 219.91" stroke-dashoffset="-0.00"/>
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-potential)" stroke-width="15" stroke-dasharray="61.33 219.91" stroke-dashoffset="-62.83"/>
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-optional)" stroke-width="15" stroke-dasharray="92.75 219.91" stroke-dashoffset="-125.66"/>
+</svg>
+
+        <h3>Cloud Readiness</h3>
+        <div class="count">7 issues</div>
+      </div>
+      <div class="domain-summary-item">
+<svg viewBox="0 0 100 100" width="100" height="100" style="display:block;margin:0 auto;transform:rotate(-90deg);">
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-mandatory)" stroke-width="15" stroke-dasharray="130.45 219.91" stroke-dashoffset="-0.00"/>
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-potential)" stroke-width="15" stroke-dasharray="42.48 219.91" stroke-dashoffset="-131.95"/>
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-optional)" stroke-width="15" stroke-dasharray="42.48 219.91" stroke-dashoffset="-175.93"/>
+</svg>
+
+        <h3>DotNET Upgrade</h3>
+        <div class="count">10 issues</div>
+      </div>
+      <div class="domain-summary-item">
+<svg viewBox="0 0 100 100" width="100" height="100" style="display:block;margin:0 auto;transform:rotate(-90deg);">
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-mandatory)" stroke-width="15" stroke-dasharray="22.93 219.91" stroke-dashoffset="-0.00"/>
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-potential)" stroke-width="15" stroke-dasharray="169.54 219.91" stroke-dashoffset="-24.43"/>
+  <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-optional)" stroke-width="15" stroke-dasharray="22.93 219.91" stroke-dashoffset="-195.48"/>
+</svg>
+
+        <h3>Security</h3>
+        <div class="count">9 issues</div>
+      </div>
+    </div>
+    <div class="criticality-legend">
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--color-mandatory)"></span>Mandatory</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--color-potential)"></span>Potential</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--color-optional)"></span>Optional</div>
+    </div>
+  </div>
+</div>
+<div class="filter-bar" id="filter-bar">
+  <div class="multi-select" id="domain-ms">
+    <button class="multi-select-btn" onclick="toggleMultiSelect('domain-ms')">Domain</button>
+    <div class="multi-select-dropdown">
+      <label class="multi-select-option"><input type="checkbox" value="cloud-readiness" onchange="onMultiSelectChange('domain-ms','Domain')"/> Cloud Readiness</label>
+      <label class="multi-select-option"><input type="checkbox" value="dotnet-upgrade" onchange="onMultiSelectChange('domain-ms','Domain')"/> DotNET Upgrade</label>
+      <label class="multi-select-option"><input type="checkbox" value="security" onchange="onMultiSelectChange('domain-ms','Domain')"/> Security</label>
+    </div>
+  </div>
+  <div class="multi-select" id="criticality-ms">
+    <button class="multi-select-btn" onclick="toggleMultiSelect('criticality-ms')">Criticality</button>
+    <div class="multi-select-dropdown">
+      <label class="multi-select-option"><input type="checkbox" value="mandatory" onchange="onMultiSelectChange('criticality-ms','Criticality')"/> Mandatory</label>
+      <label class="multi-select-option"><input type="checkbox" value="potential" onchange="onMultiSelectChange('criticality-ms','Criticality')"/> Potential</label>
+      <label class="multi-select-option"><input type="checkbox" value="optional" onchange="onMultiSelectChange('criticality-ms','Criticality')"/> Optional</label>
+    </div>
+  </div>
+  <a class="clear-filters" href="javascript:void(0)" onclick="clearAllFilters()">Clear all</a>
+</div>
+<div class="issue-section" data-domain="cloud-readiness">
+  <h2>Cloud Readiness</h2>
+  <table class="issue-table">
+    <colgroup><col class="col-issue"/><col class="col-criticality"/><col class="col-storypoint"/></colgroup>
+    <thead><tr><th>Issue Category</th><th>Criticality</th><th>Story Point</th></tr></thead>
+    <tbody>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;ACA&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;information&quot;}}' data-default-effort="3" data-default-severity="mandatory" data-rule="Local.0004" onclick="toggleRow('row-cloudreadiness-0', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-0">&#x276F;</button> Logging to local or network paths detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-0" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\log4Net.xml">src\eShopLegacyWebForms\log4Net.xml</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Logging to local or network paths detected.</p><p>If you are targeting Managed Instance on Azure App Service, prefer Application Insights/App Service logging. If filesystem logs are required, write to a mounted Azure Files share configured via storage mounts and Key Vault secrets.</p><p>Logging APIs that write to disk might not work on Azure App Service or Container.</p><p>Use logging that stores logs in locations outside of the host unless its specifically required by your app. You can also use logging capabilities embedded in Azure, such as Azure App Service logging or Application Insights.</p><p>For migrating to AKS, use LogMonitor tool that can capture logs written to files, the console, or write logs and redirect them to Azure.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;ACA&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;mandatory&quot;}}' data-default-effort="3" data-default-severity="mandatory" data-rule="Identity.0002" onclick="toggleRow('row-cloudreadiness-1', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-1">&#x276F;</button> Windows authentication detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-1" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\Web.config">src\eShopLegacyWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Your app is using windows authentication which is not supported on Azure App Service, Azure Container Apps and Azure Kubernetes Service.</p><p>Azure App Service provides built-in authentication and authorization capabilities, so you can sign in users and access data by writing minimal or no code in your web app.</p><p>Follow the link below for more information.&quot;</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;ACA&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;}}' data-default-effort="3" data-default-severity="potential" data-rule="Connection.0001" onclick="toggleRow('row-cloudreadiness-2', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-2">&#x276F;</button> Connection string is detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-2" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\Web.config">src\eShopLegacyWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Connection string detected. It may not be available when your app is migrated to Azure.</p><p>Review and ensure it works from Azure. If you are connecting to a database, you might need to migrate the database to Azure. There are multiple ways to do it:<br/>    1. Migrate to Azure SQL Database for additional benefits (see the link below).<br/>    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don’t want to use a VM.<br/>    3. Migrate your database servers directly to SQL Server on Azure VMs.</p><p>To assess database migration effort, you can use Azure Migrate tool, see the link below.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;ACA&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;potential&quot;}}' data-default-effort="3" data-default-severity="potential" data-rule="Scale.0002" onclick="toggleRow('row-cloudreadiness-3', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-3">&#x276F;</button> Session state stored in-proc or in local process is detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-3" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\Web.config">src\eShopLegacyWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Session state stored in-proc or in local process is detected.</p><p>If you are targeting Managed Instance on Azure App Service, move session to Azure Cache for Redis or Cosmos DB. In-proc session impedes scale-out; Managed Instance does not change session semantics.</p><p>While if targeting other Azure compute services:</p><p>In-proc or local process stored session state not immediately prevents an application from working in Azure, however, is not recommended because it would make scaling the Azure App Service or Azure Kubernetes Service more difficult.</p><p>Azure provides multiple ways to store session state in a scalable way using Azure Cache for Redis, Azure Cosmos DB or other services.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;ACA&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;}}' data-default-effort="3" data-default-severity="optional" data-rule="Security.0002" onclick="toggleRow('row-cloudreadiness-4', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-4">&#x276F;</button> Connection strings without configuration builders detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-4" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\Web.config">src\eShopLegacyWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\Web.config">src\eShopLegacyWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Connection strings without configuration builders detected.  </p><p> Keeping connection strings directly in the app is not the best practice and might introduce security risks, increased maintenance, scalability challenges or compliance standards (such as PCI DSS, GDPR, etc.). </p><p> Instead, it is recommended to use configuration builders to get secrets from secure sources in Azure environment.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;ACA&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;}}' data-default-effort="3" data-default-severity="optional" data-rule="Scale.0001" onclick="toggleRow('row-cloudreadiness-5', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-5">&#x276F;</button> Static content detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-5" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\eShopLegacyWebForms.csproj">src\eShopLegacyWebForms\eShopLegacyWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Static content detected.</p><p>Your current approach of serving static content directly might lead to increased costs, performance issues, maintenance challenges (requiring application redeployment for content changes), and security risks.</p><p>Consider moving static content to Azure Blob Storage and adding Azure CDN.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" data-targets='{&quot;AppService.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppService.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AKS.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AKS.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;ACA&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceContainer.Linux&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceContainer.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;},&quot;AppServiceManagedInstance.Windows&quot;:{&quot;effort&quot;:3,&quot;severity&quot;:&quot;optional&quot;}}' data-default-effort="3" data-default-severity="optional" data-rule="Database.0003" onclick="toggleRow('row-cloudreadiness-6', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-cloudreadiness-6">&#x276F;</button> System.Data.SqlClient dependency detected</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-cloudreadiness-6" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\Web.config">src\eShopLegacyWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>System.Data.SqlClient dependency is detected.</p><p>While System.Data.SqlClient will work in Azure, the newer Microsoft.Data.SqlClient package is the primary .NET SQL client moving forward and receiving the latest features. For example, Microsoft.Data.SqlClient easily allows use of Azure Managed Identity from a connection string.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="issue-section" data-domain="dotnet-upgrade">
+  <h2>DotNET Upgrade <a href="scenarios/dotnet-version-upgrade/assessment.html" style="font-size:12px;font-weight:400;margin-left:12px;">View Details</a></h2>
+  <table class="issue-table">
+    <colgroup><col class="col-issue"/><col class="col-criticality"/><col class="col-storypoint"/></colgroup>
+    <thead><tr><th>Issue Category</th><th>Criticality</th><th>Story Point</th></tr></thead>
+    <tbody>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{}' data-default-effort="1" data-default-severity="mandatory" data-rule="NuGet.0001" onclick="toggleRow('row-dotnetupgrade-0', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-0">&#x276F;</button> NuGet package is incompatible</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-0" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\eShopLegacyWebForms.csproj">src\eShopLegacyWebForms\eShopLegacyWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>NuGet package is incompatible with selected target framework.</p><p>Package needs to be upgraded to a version supporting selected project target framework. If there no new package versions supporting new target framework, different package needs to be used and all code needs to be upgraded to new API.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{}' data-default-effort="1" data-default-severity="mandatory" data-rule="NuGet.0003" onclick="toggleRow('row-dotnetupgrade-1', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-1">&#x276F;</button> NuGet package functionality is included with framework reference</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-1" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\eShopLegacyWebForms.csproj">src\eShopLegacyWebForms\eShopLegacyWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>NuGet package functionality is included with framework reference.</p><p>Package needs to be removed.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{}' data-default-effort="1" data-default-severity="mandatory" data-rule="Binding.0006" onclick="toggleRow('row-dotnetupgrade-2', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-2">&#x276F;</button> Manual redirect conflicts with auto-generated version</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-2" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\Web.config">src\eShopLegacyWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>An explicit binding redirect targets a different version than what auto-generation would produce. MSBuild will throw MSB3836 conflict error because it cannot determine which redirect wins.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{}' data-default-effort="1" data-default-severity="mandatory" data-rule="Project.0001" onclick="toggleRow('row-dotnetupgrade-3', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-3">&#x276F;</button> Project file needs to be converted to SDK-style</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-3" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\eShopLegacyWebForms.csproj">src\eShopLegacyWebForms\eShopLegacyWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Project file needs to be converted to SDK-style. Modern .NET framework projects require a change in the project file format and use SDK corresponding to project flavor and functionality.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{}' data-default-effort="1" data-default-severity="mandatory" data-rule="Project.0002" onclick="toggleRow('row-dotnetupgrade-4', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-4">&#x276F;</button> Project&#x27;s target framework(s) needs to be changed</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-4" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\eShopLegacyWebForms.csproj">src\eShopLegacyWebForms\eShopLegacyWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Project&#x27;s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.</p><p>During upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="mandatory" data-targets='{}' data-default-effort="1" data-default-severity="mandatory" data-rule="Feature.1000" onclick="toggleRow('row-dotnetupgrade-5', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-5">&#x276F;</button> Convert application initialization code from Global.asax.cs to .NET Core and clean up Global.asax.cs</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-5" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\Global.asax.cs">src\eShopLegacyWebForms\Global.asax.cs</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>Convert application initialization code from Global.asax.cs to .NET Core and clean up Global.asax.cs.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" data-targets='{}' data-default-effort="1" data-default-severity="potential" data-rule="NuGet.0002" onclick="toggleRow('row-dotnetupgrade-6', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-6">&#x276F;</button> NuGet package upgrade is recommended</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-6" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\eShopLegacyWebForms.csproj">src\eShopLegacyWebForms\eShopLegacyWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>NuGet package upgrade is recommended for selected target framework.</p><p>Standard .NET packages are recommended to have versions matching version of .NET that project targets.</p><p>Some other packages also are known to work better for selected target frameworks.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" data-targets='{}' data-default-effort="1" data-default-severity="potential" data-rule="Binding.0007" onclick="toggleRow('row-dotnetupgrade-7', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-7">&#x276F;</button> Binding redirect forces version downgrade</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-7" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\Web.config">src\eShopLegacyWebForms\Web.config</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>A binding redirect&#x27;s newVersion is lower than the version provided by the NuGet package. This forced downgrade usually causes a load failure at runtime because the expected assembly version is not available.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" data-targets='{}' data-default-effort="1" data-default-severity="optional" data-rule="NuGet.0005" onclick="toggleRow('row-dotnetupgrade-8', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-8">&#x276F;</button> NuGet package is deprecated</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-8" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\eShopLegacyWebForms.csproj">src\eShopLegacyWebForms\eShopLegacyWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>NuGet package is deprecated.</p><p>Go to its documentation and if there is a guidance for replacement of functionality provided by this package.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" data-targets='{}' data-default-effort="1" data-default-severity="optional" data-rule="NuGet.0004" onclick="toggleRow('row-dotnetupgrade-9', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-dotnetupgrade-9">&#x276F;</button> NuGet package contains security vulnerability</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-dotnetupgrade-9" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><colgroup><col style="width:70%"/><col style="width:30%"/></colgroup>
+            <thead><tr><th>File</th><th>Position</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src\eShopLegacyWebForms\eShopLegacyWebForms.csproj">src\eShopLegacyWebForms\eShopLegacyWebForms.csproj</span></td><td><span class="position"></span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>NuGet package contains security vulnerabilities.</p><p>Package needs to be upgraded to a newer version that addresses known security vulnerabilities.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="issue-section" data-domain="security">
+  <h2>Security <span class="badge-experimental" title="These issues were generated by AI and may contain inaccuracies or incomplete information. Please review carefully.">Experimental</span></h2>
+  <table class="issue-table">
+    <colgroup><col class="col-issue"/><col class="col-criticality"/><col class="col-storypoint"/></colgroup>
+    <thead><tr><th>Issue Category</th><th>Criticality</th><th>Story Point</th></tr></thead>
+    <tbody>
+    <tr class="issue-row" data-criticality="mandatory" onclick="toggleRow('row-security-0', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-0">&#x276F;</button> CVE-2024-21907: Improper Handling of Exceptional Conditions in Newtonsoft.Json</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-mandatory"></span>Mandatory</span></td>
+      <td class="sp-cell">1</td>
+    </tr>
+    <tr class="detail-row" id="row-security-0" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/packages.config:31">src/eShopLegacyWebForms/packages.config:31</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p><a href="https://github.com/advisories/GHSA-5crp-9r3c-p9vr" target="_blank" rel="noopener noreferrer">CVE-2024-21907</a>: Newtonsoft.Json versions before 13.0.1 can be exposed to denial of service through deeply nested JSON input, resulting in excessive CPU or memory use or a stack overflow.</p><p>Severity: HIGH</p><p>Affected dependency: Newtonsoft.Json 12.0.1 (declared at src/eShopLegacyWebForms/packages.config:31).</p><p>Recommended fix: Upgrade Newtonsoft.Json to 13.0.1 or later, or configure a bounded MaxDepth for all relevant serializer operations.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-1', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-1">&#x276F;</button> CWE-662: Improper Synchronization</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">8</td>
+    </tr>
+    <tr class="detail-row" id="row-security-1" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:21,48-67">src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:21,48-67</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-2', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-2">&#x276F;</button> CWE-820: Missing Synchronization</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">8</td>
+    </tr>
+    <tr class="detail-row" id="row-security-2" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,21,48-67">src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,21,48-67</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the shared resource.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-3', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-3">&#x276F;</button> CWE-682: Incorrect Calculation</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">5</td>
+    </tr>
+    <tr class="detail-row" id="row-security-3" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Default.aspx.cs:26-28">src/eShopLegacyWebForms/Default.aspx.cs:26-28</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Services/CatalogService.cs:29-32">src/eShopLegacyWebForms/Services/CatalogService.cs:29-32</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/ViewModel/PaginatedItemsViewModel.cs:18-24">src/eShopLegacyWebForms/ViewModel/PaginatedItemsViewModel.cs:18-24</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-4', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-4">&#x276F;</button> CWE-789: Memory Allocation with Excessive Size Value</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">5</td>
+    </tr>
+    <tr class="detail-row" id="row-security-4" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Default.aspx.cs:26-28">src/eShopLegacyWebForms/Default.aspx.cs:26-28</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Services/CatalogService.cs:26-32">src/eShopLegacyWebForms/Services/CatalogService.cs:26-32</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-5', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-5">&#x276F;</button> CWE-543: Use of Singleton Pattern Without Synchronization in a Multithreaded Context</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">5</td>
+    </tr>
+    <tr class="detail-row" id="row-security-5" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22">src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12-16">src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12-16</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product uses the singleton pattern when creating a resource within a multithreaded environment.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-6', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-6">&#x276F;</button> CWE-567: Unsynchronized Access to Shared Data in a Multithreaded Context</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">5</td>
+    </tr>
+    <tr class="detail-row" id="row-security-6" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22">src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,48-67">src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,48-67</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Web.config:15">src/eShopLegacyWebForms/Web.config:15</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="potential" onclick="toggleRow('row-security-7', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-7">&#x276F;</button> CWE-681: Incorrect Conversion between Numeric Types</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-potential"></span>Potential</span></td>
+      <td class="sp-cell">3</td>
+    </tr>
+    <tr class="detail-row" id="row-security-7" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Models/CatalogItemHiLoGenerator.cs:22-24">src/eShopLegacyWebForms/Models/CatalogItemHiLoGenerator.cs:22-24</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Models/Infrastructure/CatalogDBInitializer.cs:327-328">src/eShopLegacyWebForms/Models/Infrastructure/CatalogDBInitializer.cs:327-328</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr class="issue-row" data-criticality="optional" onclick="toggleRow('row-security-8', this)" style="cursor:pointer;">
+      <td style="white-space:normal;"><div class="issue-title-cell"><button class="expand-btn" id="btn-row-security-8">&#x276F;</button> CWE-79: Improper Neutralization of Input During Web Page Generation (&#x27;Cross-site Scripting&#x27;)</div></td>
+      <td class="crit-cell"><span class="crit-label"><span class="crit-square crit-square-optional"></span>Optional</span></td>
+      <td class="sp-cell">8</td>
+    </tr>
+    <tr class="detail-row" id="row-security-8" style="display:none;">
+      <td colspan="3">
+        <div class="detail-content">
+          <div class="file-list">
+            <table><thead><tr><th>File</th></tr></thead><tbody>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Catalog/Create.aspx.cs:36">src/eShopLegacyWebForms/Catalog/Create.aspx.cs:36</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Catalog/Create.aspx.cs:37">src/eShopLegacyWebForms/Catalog/Create.aspx.cs:37</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Catalog/Details.aspx:14">src/eShopLegacyWebForms/Catalog/Details.aspx:14</span></td></tr>
+            <tr><td><span class="file-path" title="src/eShopLegacyWebForms/Catalog/Details.aspx:21">src/eShopLegacyWebForms/Catalog/Details.aspx:21</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="explanation-panel">
+            <h4>Explanation</h4>
+            <div><p>The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.</p></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</div><!-- #tab-issues -->
+<div id="tab-arch" class="tab-panel">
+  <div class="fact-content"><h1 id="architecture-diagram">Architecture Diagram</h1>
+<p>The application is a server-rendered catalog management site built with ASP.NET Web Forms on .NET Framework 4.7.2. Its catalog service can use either an in-memory mock or Entity Framework 6 backed by SQL Server LocalDB.</p>
+<h2 id="application-architecture">Application Architecture</h2>
+<div class="mermaid">
+flowchart TD
+    subgraph Client["Client Layer"]
+        Browser["Web Browser"]
+    end
+    subgraph App["Application Layer - ASP.NET Web Forms"]
+        Pages["Web Forms Pages"]
+        Services["Catalog Services"]
+        DI["Autofac Dependency Injection"]
+        Telemetry["Application Insights and log4net"]
+    end
+    subgraph Data["Data Layer"]
+        EF["Entity Framework 6"]
+        LocalDB[("SQL Server LocalDB")]
+        Mock["In-memory Mock Catalog"]
+    end
+
+    Browser -->|"HTTP requests"| Pages
+    Pages -->|"catalog operations"| Services
+    DI -.->|"registers"| Services
+    Services -->|"when mock data is disabled"| EF
+    EF -->|"SQL queries"| LocalDB
+    Services -->|"when mock data is enabled"| Mock
+    Pages -.->|"request telemetry and logs"| Telemetry
+</div>
+<h3 id="technology-stack-summary">Technology Stack Summary</h3>
+<div class="table-wrap"><table><thead><tr>
+<th>Layer</th><th>Technology</th><th>Version</th><th>Purpose</th>
+</tr></thead><tbody>
+<tr><td>Presentation</td><td>ASP.NET Web Forms</td><td>.NET Framework 4.7.2</td><td>Server-rendered catalog pages</td></tr>
+<tr><td>Business Logic</td><td>C# catalog services</td><td>.NET Framework 4.7.2</td><td>Catalog queries and create, update, and delete operations</td></tr>
+<tr><td>Dependency Injection</td><td>Autofac</td><td>4.9.1</td><td>Registers catalog services and data components</td></tr>
+<tr><td>Data Access</td><td>Entity Framework</td><td>6.2.0</td><td>Object-relational mapping and database operations</td></tr>
+<tr><td>Database</td><td>SQL Server LocalDB</td><td>LocalDB</td><td>Catalog item, brand, and type storage</td></tr>
+<tr><td>Telemetry and Logging</td><td>Application Insights and log4net</td><td>Application Insights 2.9.1; log4net 2.0.10</td><td>Request telemetry and application logging</td></tr>
+</tbody></table></div>
+<h3 id="data-storage-external-services">Data Storage & External Services</h3>
+<p>The configured database is SQL Server LocalDB, with Entity Framework mapping catalog items, brands, and types. When <code>UseMockData</code> is enabled, catalog operations instead use an in-memory mock service; the application also includes Application Insights instrumentation. No remote service endpoint is configured in the inspected application settings.</p>
+<h3 id="key-architectural-decisions">Key Architectural Decisions</h3>
+<ul>
+<li>ASP.NET Web Forms pages access catalog operations through the <code>ICatalogService</code> abstraction.</li>
+<li>Autofac selects an in-memory mock or Entity Framework-backed service using the <code>UseMockData</code> setting.</li>
+<li>Entity Framework 6 maps catalog items, brands, and types through <code>CatalogDBContext</code>.</li>
+</ul>
+<h2 id="component-relationships">Component Relationships</h2>
+<div class="mermaid">
+flowchart LR
+    subgraph Presentation["Presentation"]
+        CatalogPages["Catalog Web Forms Pages"]
+        SitePages["Shared and informational Web Forms Pages"]
+        Routes["RouteConfig and BundleConfig"]
+    end
+    subgraph Business["Business Logic"]
+        Interface["ICatalogService"]
+        CatalogService["CatalogService"]
+        MockService["CatalogServiceMock"]
+    end
+    subgraph DataAccess["Data Access"]
+        Context["CatalogDBContext"]
+        Entities["CatalogItem, CatalogBrand, CatalogType"]
+        Generator["CatalogItemHiLoGenerator"]
+        Database[("SQL Server LocalDB")]
+        MockStore["In-memory catalog data"]
+    end
+    subgraph Infrastructure["Infrastructure"]
+        Global["Global application startup"]
+        Autofac["ApplicationModule and Autofac"]
+        Initializer["CatalogDBInitializer"]
+        Telemetry["Application Insights and log4net"]
+    end
+
+    CatalogPages -->|"uses"| Interface
+    SitePages -->|"uses shared page infrastructure"| Routes
+    Interface -.->|"implemented by"| CatalogService
+    Interface -.->|"implemented by"| MockService
+    CatalogService -->|"queries and persists"| Context
+    CatalogService -->|"generates catalog IDs"| Generator
+    Context -->|"maps"| Entities
+    Context -->|"executes SQL"| Database
+    MockService -->|"reads and updates"| MockStore
+    Global -->|"registers routes, bundles, and container"| Routes
+    Global -->|"configures"| Autofac
+    Autofac -->|"selects implementation by UseMockData"| Interface
+    Autofac -->|"registers"| Context
+    Global -->|"initializes database when mock data is disabled"| Initializer
+    Global -.->|"records request telemetry and logs"| Telemetry
+</div>
+<h3 id="component-inventory">Component Inventory</h3>
+<div class="table-wrap"><table><thead><tr>
+<th>Component</th><th>Layer</th><th>Type</th><th>Responsibility</th>
+</tr></thead><tbody>
+<tr><td>Catalog Web Forms Pages</td><td>Presentation</td><td>ASP.NET Web Forms pages</td><td>Browse and manage catalog items</td></tr>
+<tr><td>Shared and informational Web Forms Pages</td><td>Presentation</td><td>ASP.NET Web Forms pages</td><td>Provide shared site and informational views</td></tr>
+<tr><td>RouteConfig and BundleConfig</td><td>Presentation</td><td>Application configuration</td><td>Register URL routes and client-side bundles</td></tr>
+<tr><td>ICatalogService</td><td>Business Logic</td><td>Service interface</td><td>Defines catalog operations used by pages</td></tr>
+<tr><td>CatalogService</td><td>Business Logic</td><td>Service implementation</td><td>Performs catalog operations through Entity Framework</td></tr>
+<tr><td>CatalogServiceMock</td><td>Business Logic</td><td>Mock service implementation</td><td>Provides in-memory catalog behavior</td></tr>
+<tr><td>CatalogDBContext</td><td>Data Access</td><td>Entity Framework DbContext</td><td>Maps and queries catalog entities</td></tr>
+<tr><td>CatalogItem, CatalogBrand, CatalogType</td><td>Data Access</td><td>Entity models</td><td>Represent catalog data</td></tr>
+<tr><td>CatalogItemHiLoGenerator</td><td>Data Access</td><td>ID generator</td><td>Allocates catalog item identifiers</td></tr>
+<tr><td>Global</td><td>Infrastructure</td><td>ASP.NET application class</td><td>Configures startup, dependency injection, database initialization, and request telemetry</td></tr>
+<tr><td>ApplicationModule and Autofac</td><td>Infrastructure</td><td>Dependency injection module</td><td>Registers services and data components</td></tr>
+<tr><td>CatalogDBInitializer</td><td>Infrastructure</td><td>Database initializer</td><td>Initializes catalog database data</td></tr>
+<tr><td>Application Insights and log4net</td><td>Infrastructure</td><td>Telemetry and logging</td><td>Captures application telemetry and logs</td></tr>
+</tbody></table></div></div>
+</div>
+<div id="tab-api" class="tab-panel">
+  <div class="fact-content"><h1 id="api-service-communication-contracts">API & Service Communication Contracts</h1>
+<p>The application exposes six server-rendered page routes and no REST, gRPC, or GraphQL API endpoints. Requests are handled synchronously in-process by Web Forms pages that call a catalog service.</p>
+<h2 id="service-catalog">Service Catalog</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Port</th><th>Category</th><th>Purpose</th>
+</tr></thead><tbody>
+<tr><td>eShopLegacyWebForms</td><td>Not specified</td><td>Business</td><td>Serves catalog management and informational pages; uses <code>ICatalogService</code> for catalog operations</td></tr>
+</tbody></table></div>
+<h2 id="api-endpoints-inventory">API Endpoints Inventory</h2>
+<p>These are page routes rather than REST API endpoints. Form submissions use Web Forms postbacks to the same page; successful create, update, and delete operations redirect to the application root.</p>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Method</th><th>Path</th><th>Request Type</th><th>Response Type</th>
+</tr></thead><tbody>
+<tr><td>eShopLegacyWebForms</td><td>GET</td><td><code>/Default</code></td><td>Optional paging parameters via <code>/Default/index/{index}/size/{size}</code></td><td>Rendered catalog page</td></tr>
+<tr><td>eShopLegacyWebForms</td><td>GET</td><td><code>/Default/index/{index}/size/{size}</code></td><td>Route parameters <code>index</code>, <code>size</code></td><td>Rendered paginated catalog page</td></tr>
+<tr><td>eShopLegacyWebForms</td><td>GET, POST</td><td><code>/Catalog/Create</code></td><td>Form values on postback; <code>CatalogItem</code> is assembled by the page</td><td>Rendered form or redirect to <code>/</code></td></tr>
+<tr><td>eShopLegacyWebForms</td><td>GET, POST</td><td><code>/Catalog/Edit/{id}</code></td><td>Route parameter <code>id</code>; form values on postback; <code>CatalogItem</code> is assembled by the page</td><td>Rendered form or redirect to <code>/</code></td></tr>
+<tr><td>eShopLegacyWebForms</td><td>GET</td><td><code>/Catalog/Details/{id}</code></td><td>Route parameter <code>id</code></td><td>Rendered catalog item details</td></tr>
+<tr><td>eShopLegacyWebForms</td><td>GET, POST</td><td><code>/Catalog/Delete/{id}</code></td><td>Route parameter <code>id</code>; delete confirmation postback</td><td>Rendered confirmation or redirect to <code>/</code></td></tr>
+</tbody></table></div>
+<p>No separate versioning scheme or REST endpoint contract was found.</p>
+<h2 id="management-observability-endpoints">Management & Observability Endpoints</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Endpoint</th><th>Custom Metrics (if any)</th>
+</tr></thead><tbody>
+<tr><td>eShopLegacyWebForms</td><td>No health-check, metrics, or management endpoint identified</td><td>No custom metric registration identified</td></tr>
+</tbody></table></div>
+<p>Application Insights instrumentation and log4net logging are configured, but no dedicated management endpoint was found.</p>
+<h2 id="dtos-contracts">DTOs & Contracts</h2>
+<p>The page/service contract is in-process and uses <code>CatalogItem</code>, <code>CatalogBrand</code>, and <code>CatalogType</code> as mutable domain model classes. <code>PaginatedItemsViewModel<CatalogItem></code> represents the paginated catalog response model. Create and edit postback values are read from Web Forms controls and assembled into <code>CatalogItem</code>; no separate immutable request or response DTOs, OpenAPI/Swagger specifications, protobuf schemas, or GraphQL schemas were found. JSON serialization is not part of the observed page contract.</p>
+<h2 id="communication-patterns">Communication Patterns</h2>
+<p>Browser communication is synchronous HTTP page rendering and Web Forms postback. Pages call <code>ICatalogService</code> directly; the selected implementation either uses Entity Framework synchronously or returns data from the in-memory mock service. There are no inter-service calls, message brokers, asynchronous communication patterns, API gateway, service discovery, load balancing, retries, circuit breakers, or configured timeout policies identified.</p>
+<p>No API-level authentication, authorization, or TLS configuration was identified in the inspected application configuration; the application does not show endpoint role checks or a security middleware setup.</p>
+<h2 id="service-technology-matrix">Service Technology Matrix</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Web</th><th>Data Access</th><th>Discovery</th><th>Gateway</th><th>Actuator</th><th>Cache</th><th>Metrics</th>
+</tr></thead><tbody>
+<tr><td>eShopLegacyWebForms</td><td>ASP.NET Web Forms</td><td>Entity Framework 6 or in-memory mock</td><td>None</td><td>None</td><td>None identified</td><td>None identified</td><td>Application Insights instrumentation</td></tr>
+</tbody></table></div>
+<h2 id="service-communication-sequence">Service Communication Sequence</h2>
+<div class="mermaid">
+sequenceDiagram
+    participant Browser as "Browser"
+    participant Page as "Web Forms Page"
+    participant Service as "ICatalogService"
+    participant Store as "Entity Framework or Mock Store"
+
+    Browser->>Page: GET /Catalog/Details/id
+    Page->>Service: FindCatalogItem id
+    Service->>Store: Query catalog item
+    Store-->>Service: CatalogItem
+    Service-->>Page: CatalogItem
+    Page-->>Browser: Rendered details page
+
+    Browser->>Page: POST /Catalog/Create
+    Page->>Page: Build CatalogItem from form values
+    Page->>Service: CreateCatalogItem item
+    Service->>Store: Save catalog item
+    Store-->>Service: Save completed
+    Service-->>Page: Operation completed
+    Page-->>Browser: Redirect to /
+</div></div>
+</div>
+<div id="tab-config" class="tab-panel">
+  <div class="fact-content"><h1 id="configuration-externalized-settings-inventory">Configuration & Externalized Settings Inventory</h1>
+<p>The project has a small, file-based configuration surface centered on <code>Web.config</code>, with build-time Debug and Release configurations and XML transforms. Two application settings select mock data and customization data; no external secret store or environment-variable binding was identified.</p>
+<h2 id="configuration-sources">Configuration Sources</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Source</th><th>Type</th><th>Path/Location</th><th>Notes</th>
+</tr></thead><tbody>
+<tr><td>Web.config</td><td>Runtime application configuration</td><td><code>src/eShopLegacyWebForms/Web.config</code></td><td>Connection string, application settings, ASP.NET runtime/session settings, modules, and Entity Framework provider</td></tr>
+<tr><td>Web.Debug.config</td><td>Build/publish transform</td><td><code>src/eShopLegacyWebForms/Web.Debug.config</code></td><td>Contains template examples; no active configuration transform</td></tr>
+<tr><td>Web.Release.config</td><td>Build/publish transform</td><td><code>src/eShopLegacyWebForms/Web.Release.config</code></td><td>Removes the <code>debug</code> compilation attribute; connection-string transform is only a commented example</td></tr>
+<tr><td>ApplicationInsights.config</td><td>Telemetry configuration</td><td><code>src/eShopLegacyWebForms/ApplicationInsights.config</code></td><td>Configures telemetry initializers, modules, processors, and channel; no instrumentation key is present</td></tr>
+<tr><td>packages.config</td><td>Dependency configuration</td><td><code>src/eShopLegacyWebForms/packages.config</code></td><td>Declares NuGet package versions for .NET Framework 4.7.2</td></tr>
+<tr><td>eShopLegacyWebForms.csproj</td><td>Build configuration</td><td><code>src/eShopLegacyWebForms/eShopLegacyWebForms.csproj</code></td><td>Legacy MSBuild project with Debug/Release groups and .NET Framework target</td></tr>
+<tr><td>.vsconfig</td><td>Development environment configuration</td><td><code>eShopLegacyWebFormsSolution/.vsconfig</code></td><td>Visual Studio component selection; not runtime configuration</td></tr>
+<tr><td>Customization CSV files</td><td>Optional seed data</td><td><code>src/eShopLegacyWebForms/Setup/</code></td><td>Catalog customization files are read when customization data is enabled</td></tr>
+</tbody></table></div>
+<p>No external configuration server, container configuration, or secret-store reference was identified in the target solution.</p>
+<h2 id="build-profiles">Build Profiles</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Profile</th><th>Activation</th><th>Purpose</th><th>Key Dependencies/Plugins</th>
+</tr></thead><tbody>
+<tr><td>Debug</td><td>MSBuild configuration `Debug</td><td>AnyCPU`</td><td>Development compilation with debug symbols and <code>DEBUG;TRACE</code> constants</td><td>.NET Framework 4.7.2; CodeDOM compiler provider</td></tr>
+<tr><td>Release</td><td>MSBuild configuration `Release</td><td>AnyCPU`</td><td>Optimized compilation with <code>TRACE</code>; Release transform removes the compilation <code>debug</code> attribute</td><td>Same project dependencies as Debug</td></tr>
+</tbody></table></div>
+<h2 id="runtime-profiles">Runtime Profiles</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Profile</th><th>Activation Method</th><th>Config Files</th><th>Key Overrides</th>
+</tr></thead><tbody>
+<tr><td>Default</td><td>No environment-specific profile mechanism identified</td><td><code>Web.config</code></td><td><code>UseMockData=true</code>; <code>UseCustomizationData=false</code>; ASP.NET compilation has debugging enabled</td></tr>
+<tr><td>Debug publish</td><td>Web project Debug transform</td><td><code>Web.Debug.config</code></td><td>No active overrides</td></tr>
+<tr><td>Release publish</td><td>Web project Release transform</td><td><code>Web.Release.config</code></td><td>Removes the <code>debug</code> attribute from the compilation element</td></tr>
+</tbody></table></div>
+<h2 id="properties-inventory">Properties Inventory</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Property Key</th><th>Default</th><th>Profiles</th><th>Source</th>
+</tr></thead><tbody>
+<tr><td>eShopLegacyWebForms</td><td><code>connectionStrings:CatalogDBContext</code></td><td>SQL Server LocalDB connection using integrated security; credentials are not embedded</td><td>Default; no active transform override</td><td><code>Web.config</code></td></tr>
+<tr><td>eShopLegacyWebForms</td><td><code>appSettings:UseMockData</code></td><td><code>true</code></td><td>Default</td><td><code>Web.config</code></td></tr>
+<tr><td>eShopLegacyWebForms</td><td><code>appSettings:UseCustomizationData</code></td><td><code>false</code></td><td>Default</td><td><code>Web.config</code></td></tr>
+<tr><td>eShopLegacyWebForms</td><td><code>system.web/compilation@debug</code></td><td><code>true</code></td><td>Removed by Release transform</td><td><code>Web.config</code>, <code>Web.Release.config</code></td></tr>
+<tr><td>eShopLegacyWebForms</td><td><code>system.web/compilation@targetFramework</code></td><td><code>4.7.2</code></td><td>Default</td><td><code>Web.config</code></td></tr>
+<tr><td>eShopLegacyWebForms</td><td><code>system.web/httpRuntime@targetFramework</code></td><td><code>4.6.1</code></td><td>Default</td><td><code>Web.config</code></td></tr>
+<tr><td>eShopLegacyWebForms</td><td><code>system.web/httpRuntime@requestValidationMode</code></td><td><code>2.0</code></td><td>Default</td><td><code>Web.config</code></td></tr>
+<tr><td>eShopLegacyWebForms</td><td><code>system.web/sessionState@mode</code></td><td><code>InProc</code></td><td>Default</td><td><code>Web.config</code></td></tr>
+<tr><td>eShopLegacyWebForms</td><td><code>system.web/globalization@uiCulture</code></td><td><code>en-US</code></td><td>Default</td><td><code>Web.config</code></td></tr>
+<tr><td>eShopLegacyWebForms</td><td><code>system.web/globalization@culture</code></td><td><code>en-US</code></td><td>Default</td><td><code>Web.config</code></td></tr>
+<tr><td>eShopLegacyWebForms</td><td><code>system.web/entityFramework/defaultConnectionFactory</code></td><td>Entity Framework LocalDB connection factory</td><td>Default</td><td><code>Web.config</code></td></tr>
+</tbody></table></div>
+<p>No <code>${ENV_VAR}</code> or <code>%ENV_VAR%</code> configuration placeholders were identified.</p>
+<h2 id="startup-parameters-resource-requirements">Startup Parameters & Resource Requirements</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>JVM/Runtime Options</th><th>Memory</th><th>Instance Count</th>
+</tr></thead><tbody>
+<tr><td>eShopLegacyWebForms</td><td>IIS/IIS Express-hosted .NET Framework application; no explicit startup parameters identified</td><td>Not specified</td><td>Not specified</td></tr>
+</tbody></table></div>
+<p>No container, CPU, memory, or scaling limits were found in the target solution.</p>
+<h2 id="startup-dependency-chain">Startup Dependency Chain</h2>
+<ol>
+<li>ASP.NET application startup registers URL routes and bundles, configures the Autofac container, and checks whether database initialization is required.</li>
+<li>With mock data enabled, the catalog service uses the mock implementation and does not require the database for catalog operations.</li>
+<li>With mock data disabled, the application configures the Entity Framework initializer for the catalog database.</li>
+</ol>
+<p>No external service readiness checks, health probes, or startup wait mechanisms were identified.</p>
+<h2 id="secrets-sensitive-configuration">Secrets & Sensitive Configuration</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Secret Reference</th><th>Type</th><th>Storage (masked)</th>
+</tr></thead><tbody>
+<tr><td><code>CatalogDBContext</code> connection string</td><td>Database connection</td><td>LocalDB and integrated authentication; no password or credential value is configured</td></tr>
+<tr><td>Application Insights instrumentation key</td><td>Telemetry credential</td><td>Not present in the inspected configuration; no value emitted</td></tr>
+</tbody></table></div>
+<p>No encrypted configuration, Key Vault, Vault, AWS Secrets Manager, or other secret provisioning integration was found.</p>
+<h3 id="secrets-provisioning-workflow">Secrets Provisioning Workflow</h3>
+<p>No secrets provisioning workflow is configured in the inspected project. The database connection uses integrated authentication without an embedded password, and the Application Insights configuration contains telemetry modules but no instrumentation key. No managed identity or secret-store access policy was identified.</p>
+<h2 id="feature-flags">Feature Flags</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Flag Name</th><th>Default</th><th>Controlled By</th>
+</tr></thead><tbody>
+<tr><td><code>UseMockData</code></td><td><code>true</code></td><td><code>appSettings</code> in <code>Web.config</code>; selects the in-memory catalog service or Entity Framework-backed service</td></tr>
+<tr><td><code>UseCustomizationData</code></td><td><code>false</code></td><td><code>appSettings</code> in <code>Web.config</code>; selects optional customization seed data during database initialization</td></tr>
+</tbody></table></div>
+<p>No feature-flag framework or remotely managed toggles were identified.</p>
+<h2 id="framework-runtime-versions">Framework & Runtime Versions</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Component</th><th>Version</th><th>Source</th>
+</tr></thead><tbody>
+<tr><td>.NET Framework target</td><td>4.7.2</td><td><code>eShopLegacyWebForms.csproj</code></td></tr>
+<tr><td>ASP.NET runtime target setting</td><td>4.6.1</td><td><code>Web.config</code></td></tr>
+<tr><td>Entity Framework</td><td>6.2.0</td><td><code>packages.config</code></td></tr>
+<tr><td>Autofac</td><td>4.9.1</td><td><code>packages.config</code></td></tr>
+<tr><td>Application Insights</td><td>2.9.1</td><td><code>packages.config</code></td></tr>
+<tr><td>log4net</td><td>2.0.10</td><td><code>packages.config</code></td></tr>
+<tr><td>MSBuild project format</td><td>Legacy non-SDK style</td><td><code>eShopLegacyWebForms.csproj</code></td></tr>
+<tr><td>NuGet package management</td><td><code>packages.config</code></td><td><code>packages.config</code></td></tr>
+<tr><td>Visual Studio solution format</td><td>Version 12.00</td><td><code>eShopLegacyWebForms.sln</code></td></tr>
+</tbody></table></div></div>
+</div>
+<div id="tab-workflows" class="tab-panel">
+  <div class="fact-content"><h1 id="core-business-workflows">Core Business Workflows</h1>
+<p>The application supports maintaining a product catalog for an online shop, including browsing, classifying, and editing catalog items. Catalog data is managed within one application boundary; no cross-service business workflows were identified.</p>
+<h2 id="domain-entities">Domain Entities</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Entity</th><th>Service / Bounded Context</th><th>Description</th><th>Key Relationships</th>
+</tr></thead><tbody>
+<tr><td>CatalogItem</td><td>eShopLegacyWebForms / Catalog Management</td><td>A product offered in the shop, with pricing, stock, and catalog presentation information</td><td>Belongs to one catalog brand and one catalog type</td></tr>
+<tr><td>CatalogBrand</td><td>eShopLegacyWebForms / Catalog Management</td><td>Groups products under a brand</td><td>Associated with catalog items</td></tr>
+<tr><td>CatalogType</td><td>eShopLegacyWebForms / Catalog Management</td><td>Classifies products by type</td><td>Associated with catalog items</td></tr>
+</tbody></table></div>
+<h2 id="service-to-domain-mapping">Service-to-Domain Mapping</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Domain Context</th><th>Owned Entities</th><th>External Dependencies</th>
+</tr></thead><tbody>
+<tr><td>eShopLegacyWebForms</td><td>Catalog Management</td><td>CatalogItem, CatalogBrand, CatalogType</td><td>SQL Server LocalDB when database mode is selected; otherwise an in-memory mock catalog</td></tr>
+</tbody></table></div>
+<p>All domain state is managed within the same application. No independently deployed service or cross-context data exchange was identified.</p>
+<h2 id="primary-workflows">Primary Workflows</h2>
+<h3 id="workflow-1-create-a-catalog-item">Workflow 1: Create a Catalog Item</h3>
+<ol>
+<li>A user opens the catalog item creation page and the application loads the available brands and types.</li>
+<li>The user submits the form. The page checks <code>ModelState.IsValid</code>; invalid submissions remain on the form without persisting an item.</li>
+<li>For a valid submission, the page creates a <code>CatalogItem</code> from the form and calls the catalog service.</li>
+<li>The service assigns an identifier and stores the new item through the selected data implementation.</li>
+<li>On success, the page redirects to the catalog landing page.</li>
+</ol>
+<h3 id="workflow-2-update-or-remove-a-catalog-item">Workflow 2: Update or Remove a Catalog Item</h3>
+<ol>
+<li>The user selects an existing item; the application loads it by route identifier and displays its details or edit/delete page.</li>
+<li>An edit submission is accepted only when <code>ModelState.IsValid</code>; the catalog service updates the item. A delete confirmation removes the selected item.</li>
+<li>Successful updates and removals redirect to the catalog landing page.</li>
+</ol>
+<h3 id="workflow-3-initialize-catalog-data">Workflow 3: Initialize Catalog Data</h3>
+<ol>
+<li>At application startup, database initialization is configured only when mock data is disabled.</li>
+<li>When a new database is created, the initializer creates sequence objects and seeds catalog types, brands, and items.</li>
+<li>Seed records come from predefined data by default; optional customization files are used when customization data is enabled.</li>
+</ol>
+<h2 id="cross-service-data-flows">Cross-Service Data Flows</h2>
+<p>No cross-service data composition or aggregation pattern was found. Catalog item, brand, and type data are read and written within the same application; in mock mode, the in-memory service supplies catalog operations instead of the database-backed implementation. No remote-service fallback behavior is configured.</p>
+<h2 id="business-workflow-sequence">Business Workflow Sequence</h2>
+<div class="mermaid">
+sequenceDiagram
+    participant User as "Catalog Manager"
+    participant Page as "Catalog Create Page"
+    participant Service as "Catalog Service"
+    participant Store as "Catalog Store"
+
+    User->>Page: Open item creation form
+    Page->>Service: Load catalog brands and types
+    Service->>Store: Read reference data
+    Store-->>Service: Brands and types
+    Service-->>Page: Reference data
+    Page-->>User: Display creation form
+
+    User->>Page: Submit catalog item
+    alt Form validation succeeds
+        Page->>Service: Create catalog item
+        Service->>Store: Assign identifier and save item
+        Store-->>Service: Save completed
+        Service-->>Page: Item created
+        Page-->>User: Redirect to catalog
+    else Form validation fails
+        Page-->>User: Redisplay form with validation state
+    end
+</div>
+<h2 id="business-rules-decision-logic">Business Rules & Decision Logic</h2>
+<ul>
+<li>Catalog changes are persisted only when the page model state is valid.</li>
+<li>Price input must be a non-negative value with no more than two decimal places and within the configured maximum range.</li>
+<li>Stock, restock threshold, and maximum stock values are constrained to the configured range from zero to ten million.</li>
+<li>Catalog items require associated brand and type records in database mode.</li>
+<li>Item identifiers are assigned by the catalog ID generator for newly created database-backed records.</li>
+<li><code>UseMockData</code> selects whether catalog operations use the mock or database-backed implementation; database initialization is only configured for database mode.</li>
+<li>Database initialization seeds types and brands before catalog items so that the item references can be resolved.</li>
+<li>Entity Framework <code>SaveChanges</code> persists individual mutations; no broader transaction orchestration, compensation, audit trail, or role-based authorization rule was identified.</li>
+</ul></div>
+</div>
+<div id="tab-deps" class="tab-panel">
+  <div class="fact-content"><h1 id="dependency-map">Dependency Map</h1>
+<p>The eShopLegacyWebForms application declares 44 NuGet packages in <code>packages.config</code>, all targeting .NET Framework 4.7.2. There are no test-scoped packages in the project manifest.</p>
+<h2 id="dependencies">Dependencies</h2>
+<div class="mermaid">
+flowchart LR
+    App["eShopLegacyWebForms"]
+    subgraph Web["Web Frameworks and UI"]
+        WebStack["ASP.NET Web Forms platform; FriendlyUrls 1.0.2 and Core 1.0.2; Web Optimization 1.1.3; Web Optimization WebForms 1.1.3; SessionState Module 1.1.0; TelemetryCorrelation 1.0.5"]
+        UiStack["Bootstrap 4.3.1; ScriptManager bootstrap 4.3.1; ScriptManager jQuery 3.3.1; jQuery 3.5.0; Popper.js 1.14.3"]
+        BrowserStack["ScriptManager MSAjax 5.0.0; ScriptManager WebForms 5.0.0; Modernizr 2.8.3; Respond 1.4.2"]
+    end
+    subgraph Data["Database and ORM"]
+        EntityFramework["EntityFramework 6.2.0"]
+    end
+    subgraph Logging["Logging"]
+        Log4net["log4net 2.0.10"]
+    end
+    subgraph Observe["Observability"]
+        Insights["ApplicationInsights 2.9.1; Agent.Intercept 2.4.0; DependencyCollector 2.9.1; PerfCounterCollector 2.9.1"]
+        InsightsWeb["ApplicationInsights.Web 2.9.1; WindowsServer 2.9.1; WindowsServer.TelemetryChannel 2.9.1"]
+    end
+    subgraph Utilities["Utilities and Build Support"]
+        Build["Antlr 3.5.0.2; CodeDom.Providers.DotNetCompilerPlatform 2.0.1; Microsoft.Net.Compilers 2.10.0"]
+        Json["Newtonsoft.Json 12.0.1"]
+        Infrastructure["Microsoft.Web.Infrastructure 1.0.0.0; WebGrease 1.6.0; Autofac 4.9.1; Autofac.Web 4.0.0"]
+        SystemPackages["Pipelines.Sockets.Unofficial 1.0.7; System.Buffers 4.4.0; DiagnosticSource 4.5.1; PerformanceCounter 4.5.0"]
+        RuntimePackages["IO.Compression 4.3.0; IO.Compression.ZipFile 4.3.0; IO.Pipelines 4.5.1; System.Memory 4.5.1"]
+        AsyncPackages["Numerics.Vectors 4.4.0; Runtime.CompilerServices.Unsafe 4.5.0; Threading.Channels 4.5.0; Tasks.Extensions 4.5.1"]
+    end
+
+    App -->|"presentation"| Web
+    App -->|"persistence"| Data
+    App -->|"logging"| Logging
+    App -->|"telemetry"| Observe
+    App -->|"support libraries"| Utilities
+</div>
+<h3 id="dependency-summary">Dependency Summary</h3>
+<div class="table-wrap"><table><thead><tr>
+<th>Category</th><th>Count</th><th>Key Libraries</th><th>Notes</th>
+</tr></thead><tbody>
+<tr><td>Web Frameworks and UI</td><td>15</td><td>ASP.NET Web Forms, Bootstrap 4.3.1, jQuery 3.5.0</td><td>Legacy server-rendered UI and browser assets</td></tr>
+<tr><td>Database / ORM</td><td>1</td><td>EntityFramework 6.2.0</td><td>Entity Framework 6, using the configured SQL Server provider</td></tr>
+<tr><td>Logging</td><td>1</td><td>log4net 2.0.10</td><td>Application logging</td></tr>
+<tr><td>Observability</td><td>7</td><td>Application Insights 2.9.1 and its collectors</td><td>Web, dependency, performance-counter, and server telemetry</td></tr>
+<tr><td>Utilities</td><td>20</td><td>Autofac 4.9.1, Newtonsoft.Json 12.0.1, System.* libraries</td><td>Includes build support and framework compatibility packages</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>44</strong></td><td></td><td>All packages target net472</td></tr>
+</tbody></table></div>
+<h3 id="version-compatibility-risks">Version & Compatibility Risks</h3>
+<p>The application targets .NET Framework 4.7.2 and uses legacy ASP.NET Web Forms, Entity Framework 6.2.0, and older UI and telemetry packages. These dependencies require compatibility review for modernization; the existing Web Forms application model is tied to .NET Framework, and moving to a newer .NET runtime is not a simple target-framework change.</p>
+<h3 id="notable-observations">Notable Observations</h3>
+<ul>
+<li>NuGet dependencies are managed through the legacy <code>packages.config</code> format rather than SDK-style project package references.</li>
+<li>The package inventory includes numerous .NET Framework support libraries and a compiler package, increasing the migration surface.</li>
+<li>No security-specific package or dedicated caching, messaging, or test framework dependency is declared.</li>
+</ul>
+<h2 id="test-dependencies">Test Dependencies</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Framework</th><th>Version</th><th>Notes</th>
+</tr></thead><tbody>
+<tr><td>None detected</td><td>—</td><td>No packages are declared as test dependencies in <code>packages.config</code>.</td></tr>
+</tbody></table></div>
+<p>Total test-scope dependencies: 0</p>
+<p>No test dependencies were detected in the project package manifest.</p></div>
+</div>
+<div id="tab-data" class="tab-panel">
+  <div class="fact-content"><h1 id="data-architecture-persistence-layer">Data Architecture & Persistence Layer</h1>
+<p>The data model contains three catalog entities persisted through Entity Framework 6 to SQL Server LocalDB when the application is configured for database-backed operation. A mock-data mode uses an in-memory catalog service instead.</p>
+<h2 id="database-configuration">Database Configuration</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service/Module</th><th>DB Type</th><th>Profile</th><th>Driver</th><th>Connection</th><th>Migration Tool</th>
+</tr></thead><tbody>
+<tr><td>eShopLegacyWebForms</td><td>SQL Server LocalDB</td><td>Mock data disabled</td><td>System.Data.SqlClient</td><td>LocalDB with integrated Windows authentication; no explicit connection-pool settings identified</td><td>No migration tool identified; database creation and seed initialization use Entity Framework</td></tr>
+<tr><td>eShopLegacyWebForms</td><td>In-memory mock data</td><td>Mock data enabled (configured default)</td><td>Not applicable</td><td>Process memory</td><td>Not applicable</td></tr>
+</tbody></table></div>
+<p>When database initialization is enabled, <code>CatalogDBInitializer</code> creates a database if it does not exist, executes SQL sequence scripts, and seeds catalog types, brands, and items. Seed data comes from preconfigured code data or optional customization files. No schema-versioned migration framework was found.</p>
+<h2 id="data-ownership-per-service">Data Ownership per Service</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Tables Owned</th><th>ORM Framework</th><th>Caching</th><th>Notes</th>
+</tr></thead><tbody>
+<tr><td>eShopLegacyWebForms</td><td>Catalog, CatalogBrand, CatalogType</td><td>Entity Framework 6.2.0</td><td>None identified</td><td>One application owns all catalog entities; optional in-memory mock service replaces database-backed operations</td></tr>
+</tbody></table></div>
+<h2 id="entity-model">Entity Model</h2>
+<div class="mermaid">
+erDiagram
+    CatalogBrand ||--o{ CatalogItem : "classifies"
+    CatalogType ||--o{ CatalogItem : "categorizes"
+    CatalogBrand {
+        int Id PK
+        string Brand
+    }
+    CatalogType {
+        int Id PK
+        string Type
+    }
+    CatalogItem {
+        int Id PK
+        string Name
+        string Description
+        decimal Price
+        string PictureFileName
+        int CatalogTypeId FK
+        int CatalogBrandId FK
+        int AvailableStock
+        int RestockThreshold
+        int MaxStockThreshold
+        bool OnReorder
+    }
+</div>
+<p><code>CatalogItem</code> is persisted as the <code>Catalog</code> table, with foreign keys to <code>CatalogBrand</code> and <code>CatalogType</code>. The EF relationship is unidirectional from the item to its brand and type; each item requires one of each. <code>PictureUri</code> is a non-persisted property. Entity definitions are in <code>src/eShopLegacyWebForms/Models/CatalogItem.cs</code>, <code>CatalogBrand.cs</code>, and <code>CatalogType.cs</code>; the mappings are in <code>src/eShopLegacyWebForms/Models/CatalogDBContext.cs</code>.</p>
+<h2 id="key-repository-methods">Key Repository Methods</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Service</th><th>Repository</th><th>Notable Methods</th><th>Purpose</th>
+</tr></thead><tbody>
+<tr><td>eShopLegacyWebForms</td><td><code>ICatalogService</code> / <code>CatalogService</code> (<code>src/eShopLegacyWebForms/Services/ICatalogService.cs</code>, <code>CatalogService.cs</code>)</td><td><code>GetCatalogItemsPaginated(pageSize, pageIndex)</code>, <code>FindCatalogItem(id)</code>, <code>GetCatalogTypes()</code>, <code>GetCatalogBrands()</code>, <code>CreateCatalogItem(item)</code>, <code>UpdateCatalogItem(item)</code>, <code>RemoveCatalogItem(item)</code></td><td>Queries and mutates catalog entities using <code>CatalogDBContext</code>; this is a service abstraction, not a separate repository interface</td></tr>
+</tbody></table></div>
+<p>No separate repository classes, custom repository query annotations, or explicit transaction-scope configuration were identified. Entity Framework <code>SaveChanges</code> is used for individual mutations.</p>
+<h2 id="caching-strategy">Caching Strategy</h2>
+<p>No caching provider or cache policy was identified. The in-memory mock service is an alternate data implementation, not a cache for the database-backed service. ASP.NET session state is configured in-process but is not used as a catalog cache.</p>
+<h2 id="data-ownership-boundaries">Data Ownership Boundaries</h2>
+<p>All catalog data is owned by the single Web Forms application and stored in one SQL Server LocalDB database in non-mock mode; no cross-service database access or service-level data separation was found. The <code>CatalogService</code> accesses data directly through <code>CatalogDBContext</code> and performs synchronous reads and writes. The mock-data configuration substitutes an in-memory catalog implementation. No CQRS or cross-service aggregation pattern was identified.</p>
+<h3 id="data-classification-sensitivity">Data Classification & Sensitivity</h3>
+<div class="table-wrap"><table><thead><tr>
+<th>Entity</th><th>Sensitive Fields</th><th>Classification (PII/PHI/PCI/None)</th><th>Controls in Place</th>
+</tr></thead><tbody>
+<tr><td>CatalogItem</td><td>None identified</td><td>None</td><td>No PII, PHI, or PCI fields identified</td></tr>
+<tr><td>CatalogBrand</td><td>None identified</td><td>None</td><td>No PII, PHI, or PCI fields identified</td></tr>
+<tr><td>CatalogType</td><td>None identified</td><td>None</td><td>No PII, PHI, or PCI fields identified</td></tr>
+</tbody></table></div>
+<p>No PII, PHI, or PCI data was detected in the catalog entity model.</p></div>
+</div>
+<p class="footer">Your feedback is invaluable &mdash; <a href="https://aka.ms/ghcp-appmod/feedback">Share feedback</a></p>
+<script>
+function toggleRow(rowId, triggerRow) {
+  var detail = document.getElementById(rowId);
+  var btn = document.getElementById('btn-' + rowId);
+  if (!detail) return;
+  var visible = detail.style.display !== 'none';
+  detail.style.display = visible ? 'none' : 'table-row';
+  if (btn) btn.classList.toggle('open', !visible);
+}
+(function() {
+  var nav = document.querySelector('.tab-nav');
+  if (!nav) return;
+  nav.addEventListener('click', function(e) {
+    var btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    var targetId = btn.getAttribute('data-tab');
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    var panel = document.getElementById(targetId);
+    if (panel) {
+      panel.classList.add('active');
+      if (window.__mermaidReady) { window.__renderMermaidIn(panel); }
+    }
+  });
+})();
+
+// ── Diagram lightbox ────────────────────────────────────────
+(function() {
+  var lightbox = document.getElementById('diagram-lightbox');
+  var inner = document.getElementById('diagram-lightbox-inner');
+  var closeBtn = document.getElementById('diagram-lightbox-close');
+  if (!lightbox || !inner || !closeBtn) return;
+
+  var scale = 1;
+  var translateX = 0;
+  var translateY = 0;
+  var isDragging = false;
+  var dragStartX = 0;
+  var dragStartY = 0;
+
+  function applyTransform() {
+    var svg = inner.querySelector('svg');
+    if (svg) {
+      svg.style.transform = 'translate(' + translateX + 'px, ' + translateY + 'px) scale(' + scale + ')';
+      svg.style.transformOrigin = 'center center';
+      svg.style.transition = 'none';
+    }
+  }
+
+  function resetTransform() {
+    scale = 1; translateX = 0; translateY = 0;
+    applyTransform();
+  }
+
+  function openLightbox(svgEl) {
+    inner.innerHTML = svgEl.outerHTML;
+    var injected = inner.querySelector('svg');
+    if (injected) {
+      injected.removeAttribute('width');
+      injected.removeAttribute('height');
+      injected.style.cursor = 'grab';
+    }
+    resetTransform();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    inner.innerHTML = '';
+    document.body.style.overflow = '';
+    resetTransform();
+  }
+
+  inner.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    var delta = e.deltaY > 0 ? 0.9 : 1.1;
+    scale = Math.min(Math.max(scale * delta, 0.3), 8);
+    applyTransform();
+  }, { passive: false });
+
+  inner.addEventListener('mousedown', function(e) {
+    if (e.button !== 0) return;
+    isDragging = true;
+    dragStartX = e.clientX - translateX;
+    dragStartY = e.clientY - translateY;
+    var svg = inner.querySelector('svg');
+    if (svg) { svg.style.cursor = 'grabbing'; }
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (!isDragging) return;
+    translateX = e.clientX - dragStartX;
+    translateY = e.clientY - dragStartY;
+    applyTransform();
+  });
+
+  document.addEventListener('mouseup', function() {
+    if (!isDragging) return;
+    isDragging = false;
+    var svg = inner.querySelector('svg');
+    if (svg) { svg.style.cursor = 'grab'; }
+  });
+
+  inner.addEventListener('dblclick', function() { resetTransform(); });
+
+  document.addEventListener('click', function(e) {
+    var card = e.target.closest('.mermaid');
+    if (!card) return;
+    if (e.target.closest('.diagram-lightbox-close')) return;
+    var svg = card.querySelector('svg');
+    if (svg) { openLightbox(svg); }
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) { closeLightbox(); }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { closeLightbox(); }
+  });
+})();
+
+var _currentTarget = '';
+
+function toggleMultiSelect(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  document.querySelectorAll('.multi-select.open').forEach(function(ms) { if (ms.id !== id) ms.classList.remove('open'); });
+  el.classList.toggle('open');
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.multi-select')) {
+    document.querySelectorAll('.multi-select.open').forEach(function(ms) { ms.classList.remove('open'); });
+  }
+});
+
+function getMultiSelectValues(msId) {
+  var el = document.getElementById(msId);
+  if (!el) return [];
+  var checked = el.querySelectorAll('input[type=checkbox]:checked');
+  var vals = [];
+  for (var i = 0; i < checked.length; i++) vals.push(checked[i].value);
+  return vals;
+}
+
+function onMultiSelectChange(msId, label) {
+  var el = document.getElementById(msId);
+  if (!el) return;
+  var vals = getMultiSelectValues(msId);
+  var total = el.querySelectorAll('input[type=checkbox]').length;
+  var btn = el.querySelector('.multi-select-btn');
+  if (btn) {
+    btn.textContent = vals.length > 0 && vals.length < total ? label + ' (' + vals.length + ')' : label;
+  }
+  applyFilters();
+}
+
+function applyFilters() {
+  var selectedDomains = getMultiSelectValues('domain-ms');
+  var selectedCrits = getMultiSelectValues('criticality-ms');
+
+  var sections = document.querySelectorAll('.issue-section');
+  for (var i = 0; i < sections.length; i++) {
+    var domain = sections[i].getAttribute('data-domain');
+    sections[i].style.display = (selectedDomains.length === 0 || selectedDomains.indexOf(domain) >= 0) ? '' : 'none';
+  }
+
+  var rows = document.querySelectorAll('.issue-row');
+  for (var i = 0; i < rows.length; i++) {
+    var row = rows[i];
+    var section = row.closest('.issue-section');
+    if (section && section.style.display === 'none') {
+      row.style.display = 'none';
+      var next = row.nextElementSibling;
+      if (next && next.classList.contains('detail-row')) next.style.display = 'none';
+      continue;
+    }
+
+    var show = true;
+    if (_currentTarget && row.hasAttribute('data-targets')) {
+      var targetsStr = row.getAttribute('data-targets');
+      if (targetsStr && targetsStr !== '{}') {
+        try {
+          var targets = JSON.parse(targetsStr);
+          if (Object.keys(targets).length > 0 && !targets[_currentTarget]) {
+            show = false;
+          }
+        } catch(e) {}
+      }
+    }
+
+    if (show && selectedCrits.length > 0) {
+      var crit = row.getAttribute('data-criticality');
+      if (selectedCrits.indexOf(crit) < 0) show = false;
+    }
+
+    row.style.display = show ? '' : 'none';
+    var nextRow = row.nextElementSibling;
+    if (nextRow && nextRow.classList.contains('detail-row')) {
+      if (!show) nextRow.style.display = 'none';
+    }
+  }
+}
+
+function clearAllFilters() {
+  document.querySelectorAll('.multi-select input[type=checkbox]').forEach(function(cb) { cb.checked = false; });
+  var domainBtn = document.querySelector('#domain-ms .multi-select-btn');
+  if (domainBtn) domainBtn.textContent = 'Domain';
+  var critBtn = document.querySelector('#criticality-ms .multi-select-btn');
+  if (critBtn) critBtn.textContent = 'Criticality';
+  applyFilters();
+}
+
+function onTargetChange(targetId) {
+  _currentTarget = targetId;
+  var rows = document.querySelectorAll('.issue-row[data-targets]');
+  var totalEffort = 0;
+  var domainCrits = {};
+
+  for (var i = 0; i < rows.length; i++) {
+    var row = rows[i];
+    var targets = JSON.parse(row.getAttribute('data-targets'));
+    var section = row.closest('.issue-section');
+    var domain = section ? section.getAttribute('data-domain') : '';
+
+    if (!targets || Object.keys(targets).length === 0) {
+      var sp = parseFloat(row.querySelector('.sp-cell').textContent) || 0;
+      totalEffort += sp;
+      if (!domainCrits[domain]) domainCrits[domain] = {mandatory:0,potential:0,optional:0};
+      var crit = row.getAttribute('data-criticality') || 'optional';
+      domainCrits[domain][crit] = (domainCrits[domain][crit] || 0) + 1;
+      continue;
+    }
+
+    var override = targets[targetId];
+    if (!override) {
+      continue;
+    }
+
+    var newSeverity = (override.severity || row.getAttribute('data-default-severity') || '').toLowerCase();
+    row.setAttribute('data-criticality', newSeverity);
+    var critCell = row.querySelector('.crit-cell');
+    if (critCell) {
+      var critText = newSeverity === 'mandatory' ? 'Mandatory' : newSeverity === 'potential' ? 'Potential' : 'Optional';
+      var cssClass = newSeverity === 'mandatory' ? 'crit-square-mandatory' : newSeverity === 'potential' ? 'crit-square-potential' : 'crit-square-optional';
+      critCell.innerHTML = '<span class="crit-label"><span class="crit-square ' + cssClass + '"></span>' + critText + '</span>';
+    }
+
+    var newEffort = override.effort !== undefined ? override.effort : parseFloat(row.getAttribute('data-default-effort')) || 0;
+    var spCell = row.querySelector('.sp-cell');
+    if (spCell) spCell.textContent = newEffort;
+    totalEffort += newEffort;
+
+    if (!domainCrits[domain]) domainCrits[domain] = {mandatory:0,potential:0,optional:0};
+    domainCrits[domain][newSeverity] = (domainCrits[domain][newSeverity] || 0) + 1;
+  }
+
+  var secSection = document.querySelector('.issue-section[data-domain="security"]');
+  if (secSection) {
+    var secRows = secSection.querySelectorAll('.issue-row');
+    for (var j = 0; j < secRows.length; j++) {
+      if (!secRows[j].hasAttribute('data-targets') || secRows[j].getAttribute('data-targets') === '') {
+        var sp = parseFloat(secRows[j].querySelector('.sp-cell').textContent) || 0;
+        totalEffort += sp;
+        if (!domainCrits['security']) domainCrits['security'] = {mandatory:0,potential:0,optional:0};
+        var sc = secRows[j].getAttribute('data-criticality') || 'optional';
+        domainCrits['security'][sc] = (domainCrits['security'][sc] || 0) + 1;
+      }
+    }
+  }
+
+  var label = totalEffort < 20 ? 'S' : totalEffort < 50 ? 'M' : totalEffort < 100 ? 'L' : 'XL';
+  var effortEl = document.getElementById('effort-display');
+  if (effortEl) effortEl.textContent = label + ' (total story points: ' + totalEffort + ')';
+
+  updateDonuts(domainCrits);
+  applyFilters();
+}
+
+function updateDonuts(domainCrits) {
+  var container = document.getElementById('donut-container');
+  if (!container) return;
+  container.innerHTML = '';
+  var domainNames = {'cloud-readiness':'Cloud Readiness','java-upgrade':'Java Upgrade','dotnet-upgrade':'DotNET Upgrade','security':'Security'};
+  var domainOrder = ['cloud-readiness','java-upgrade','dotnet-upgrade','security'];
+  for (var d = 0; d < domainOrder.length; d++) {
+    var key = domainOrder[d];
+    var c = domainCrits[key];
+    if (!c || (c.mandatory + c.potential + c.optional) === 0) continue;
+    var total = c.mandatory + c.potential + c.optional;
+    var div = document.createElement('div');
+    div.className = 'domain-summary-item';
+    div.innerHTML = buildDonutSvg(c.mandatory, c.potential, c.optional) +
+      '<h3>' + domainNames[key] + '</h3>' +
+      '<div class="count">' + total + ' issue' + (total !== 1 ? 's' : '') + '</div>';
+    container.appendChild(div);
+  }
+}
+
+function buildDonutSvg(m, p, o) {
+  var total = m + p + o;
+  if (total === 0) return '<svg viewBox="0 0 100 100" width="100" height="100" style="display:block;margin:0 auto;"><circle cx="50" cy="50" r="35" fill="none" stroke="#d0d7de" stroke-width="15" opacity="0.5"/></svg>';
+  var r = 35, circ = 2 * Math.PI * r, offset = 0;
+  var svg = '<svg viewBox="0 0 100 100" width="100" height="100" style="display:block;margin:0 auto;transform:rotate(-90deg);">';
+  var segs = [{c:m,color:'var(--color-mandatory)'},{c:p,color:'var(--color-potential)'},{c:o,color:'var(--color-optional)'}];
+  for (var i = 0; i < segs.length; i++) {
+    if (segs[i].c === 0) continue;
+    var segLen = (segs[i].c / total) * circ;
+    var gap = total > segs[i].c ? 1.5 : 0;
+    var drawLen = Math.max(segLen - gap, 0.5);
+    svg += '<circle cx="50" cy="50" r="' + r + '" fill="none" stroke="' + segs[i].color + '" stroke-width="15" stroke-dasharray="' + drawLen.toFixed(2) + ' ' + circ.toFixed(2) + '" stroke-dashoffset="' + (-offset).toFixed(2) + '"/>';
+    offset += segLen;
+  }
+  svg += '</svg>';
+  return svg;
+}
+</script>
+<script>document.addEventListener('DOMContentLoaded', function() { onTargetChange('AppService.Windows'); });</script>
+</div></body></html>
