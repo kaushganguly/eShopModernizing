@@ -1,0 +1,200 @@
+{
+  "GeneratedAt": "2026-10-28T23:09:35.244588+00:00",
+  "ProjectPath": "D:\\a\\eShopModernizing\\eShopModernizing\\eShopLegacyNTier",
+  "Summary": {
+    "TotalFindings": 13,
+    "CveCount": 1,
+    "CweCount": 12,
+    "BySeverity": {
+      "mandatory": 1,
+      "optional": 2,
+      "potential": 10
+    },
+    "ByCategory": {
+      "CVE": 1,
+      "Code Quality": 5,
+      "Concurrency & Synchronization": 3,
+      "Credentials & Secrets": 1,
+      "File & Path Security": 2,
+      "Injection Attacks": 1
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 47
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2024-21907",
+      "Name": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): HIGH severity denial of service from deeply nested JSON. Newtonsoft.Json 6.0.4 is within affected range < 13.0.1; upgrade to 13.0.1 or later supported release. Dependency vulnerability is confirmed, not remote exploitability. GitHub advisories queried for all three distinct manifest packages (also EntityFramework 6.1.3 and Microsoft.AspNet.WebApi.Client 5.2.3); withdrawn duplicate GHSA-8rfx-6mr3-5jh3 excluded. Coverage limitation: dotnet list package --include-transitive --format json failed because Microsoft.WebApplication.targets is missing. Fallback inspected packages.config and project references; transitive/runtime dependency completeness is not guaranteed.",
+      "Files": [
+        "src/eShopWinForms/packages.config:5"
+      ],
+      "Explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): HIGH severity denial of service from deeply nested JSON. Newtonsoft.Json 6.0.4 is within affected range < 13.0.1; upgrade to 13.0.1 or later supported release. Dependency vulnerability is confirmed, not remote exploitability. GitHub advisories queried for all three distinct manifest packages (also EntityFramework 6.1.3 and Microsoft.AspNet.WebApi.Client 5.2.3); withdrawn duplicate GHSA-8rfx-6mr3-5jh3 excluded. Coverage limitation: dotnet list package --include-transitive --format json failed because Microsoft.WebApplication.targets is missing. Fallback inspected packages.config and project references; transitive/runtime dependency completeness is not guaranteed."
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-606",
+      "Name": "Unchecked Input for Loop Condition",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not properly check inputs that are used for loop conditions, potentially leading to a denial of service or other consequences because of excessive looping.",
+      "Files": [
+        "src/eShopWinForms/Views/CatalogView.cs:48-61",
+        "src/eShopWCFService/CatalogService.svc.cs:56-70"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems loops over every service-provided item and loads/decodes/resizes one image per iteration without a count bound. CatalogService permits adding items and returns all matching items without paging. A large catalog drives excessive UI-thread work and unresponsiveness. Availability/code-quality finding; no infinite loop or demonstrated unauthenticated remote exploit is claimed."
+    },
+    {
+      "Id": "CWE-681",
+      "Name": "Incorrect Conversion between Numeric Types",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "Files": [
+        "src/eShopWinForms/Views/CatalogView.cs:52-61",
+        "src/eShopWCFService/EntityModel.cs:30-32",
+        "src/eShopWCFService/Models/CatalogItem.cs:21-23"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems converts decimal monetary Price to double through a string, losing precision for valid SQL money/decimal values. Verified using .NET numeric conversion: 900000000000000.01 renders as 900000000000000.00 after double parsing and F2 formatting, even with zero discount. This amount is within the SQL money range used by CatalogItem.Price and decimal(19,4) precision configuration. This affects displayed monetary calculations; no payment authorization effect established."
+    },
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "src/eShopWinForms/Views/CatalogView.cs:48-62"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems allocates Image img using Image.FromFile and creates a thumbnail, but never disposes the original image after thumbnail generation. Each catalog refresh repeats these allocations and retains native image resources until eventual finalization. Thumbnail disposal when rows are cleared is also not explicit. This is a resource-lifetime/availability issue, not unmanaged memory corruption."
+    },
+    {
+      "Id": "CWE-775",
+      "Name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "Files": [
+        "src/eShopWinForms/Views/CatalogView.cs:57-61"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems does not dispose the Image returned by Image.FromFile after producing its thumbnail. Image.FromFile keeps the source file locked until Image disposal; subsequent refreshes therefore leave file/native image handles awaiting finalization rather than releasing them at effective lifetime end. Same underlying image-lifetime issue as CWE-772."
+    },
+    {
+      "Id": "CWE-789",
+      "Name": "Memory Allocation with Excessive Size Value",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs:56-70"
+      ],
+      "Explanation": "CatalogService.GetCatalogItems calls ents.CatalogItems.ToList() before filtering and then allocates another list. CreateCatalogItem allows caller-provided records to grow the table without an application count limit. Result allocation scales with caller-influenced database cardinality rather than a bounded page, permitting excessive memory use for large catalogs. This is an availability pattern, not a measured memory exhaustion exploit; infrastructure quotas and WCF transport limits were not tested."
+    },
+    {
+      "Id": "CWE-567",
+      "Name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs:65-70",
+        "src/eShopWCFService/Models/CatalogItem.cs:13-15",
+        "src/eShopWCFService/CatalogService.svc.cs:99-116",
+        "src/eShopWCFService/Models/CatalogItemsStock.cs:22-25"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem reads the shared database MAX(Id), increments it, and inserts in a separate SaveChanges operation without synchronization spanning the read/allocate/write sequence. Id explicitly uses DatabaseGeneratedOption.None. Concurrent requests handled by different service instances can read the same maximum, choose the same primary key and cause one insert to fail. CreateAvailableStock repeats this pattern for StockId and has a non-atomic existence check. A per-instance WCF single-concurrency default does not serialize all service instances. Database constraints may reject a conflicting write but do not make allocation atomic. CWE-567/662/820 describe the same missing-synchronization root cause, not three independent vulnerabilities. No concurrent execution test performed."
+    },
+    {
+      "Id": "CWE-662",
+      "Name": "Improper Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs:65-70",
+        "src/eShopWCFService/Models/CatalogItem.cs:13-15",
+        "src/eShopWCFService/CatalogService.svc.cs:99-116",
+        "src/eShopWCFService/Models/CatalogItemsStock.cs:22-25"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem reads the shared database MAX(Id), increments it, and inserts in a separate SaveChanges operation without synchronization spanning the read/allocate/write sequence. Id explicitly uses DatabaseGeneratedOption.None. Concurrent requests handled by different service instances can read the same maximum, choose the same primary key and cause one insert to fail. CreateAvailableStock repeats this pattern for StockId and has a non-atomic existence check. A per-instance WCF single-concurrency default does not serialize all service instances. Database constraints may reject a conflicting write but do not make allocation atomic. CWE-567/662/820 describe the same missing-synchronization root cause, not three independent vulnerabilities. No concurrent execution test performed."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs:65-70",
+        "src/eShopWCFService/Models/CatalogItem.cs:13-15",
+        "src/eShopWCFService/CatalogService.svc.cs:99-116",
+        "src/eShopWCFService/Models/CatalogItemsStock.cs:22-25"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem reads the shared database MAX(Id), increments it, and inserts in a separate SaveChanges operation without synchronization spanning the read/allocate/write sequence. Id explicitly uses DatabaseGeneratedOption.None. Concurrent requests handled by different service instances can read the same maximum, choose the same primary key and cause one insert to fail. CreateAvailableStock repeats this pattern for StockId and has a non-atomic existence check. A per-instance WCF single-concurrency default does not serialize all service instances. Database constraints may reject a conflicting write but do not make allocation atomic. CWE-567/662/820 describe the same missing-synchronization root cause, not three independent vulnerabilities. No concurrent execution test performed."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs:65-82",
+        "src/eShopWCFService/Web.config:22-43"
+      ],
+      "Explanation": "CatalogService.CreateCatalogItem, UpdateCatalogItem and RemoveCatalogItem modify persistent catalog data and call SaveChanges without recording actor, operation, target or outcome. No application audit logger or configured WCF audit behavior was found. Consequently security-relevant changes cannot be attributed using application audit records. External IIS/database monitoring might exist but was not provided and cannot be inferred."
+    },
+    {
+      "Id": "CWE-22",
+      "Name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 8,
+      "Description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+      "Files": [
+        "src/eShopWinForms/Views/CatalogView.cs:55-59",
+        "src/eShopWCFService/CatalogService.svc.cs:65-76"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems concatenates service-provided Picturefilename into the catalog image directory and passes it to Image.FromFile without canonicalization or containment checking. Relative .. segments can escape that intended directory. CatalogService.CreateCatalogItem/UpdateCatalogItem persist supplied model filenames. Impact is loading an accessible image outside the catalog directory; arbitrary file disclosure or code execution is not established."
+    },
+    {
+      "Id": "CWE-23",
+      "Name": "Relative Path Traversal",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+      "Files": [
+        "src/eShopWinForms/Views/CatalogView.cs:55-59",
+        "src/eShopWCFService/CatalogService.svc.cs:65-76"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems concatenates service-provided Picturefilename into the catalog image directory and passes it to Image.FromFile without canonicalization or containment checking. Relative .. segments can escape that intended directory. CatalogService.CreateCatalogItem/UpdateCatalogItem persist supplied model filenames. Impact is loading an accessible image outside the catalog directory; arbitrary file disclosure or code execution is not established."
+    },
+    {
+      "Id": "CWE-99",
+      "Name": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "Category": "Injection Attacks",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "Files": [
+        "src/eShopWinForms/Views/CatalogView.cs:55-59",
+        "src/eShopWCFService/CatalogService.svc.cs:65-76"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems uses the upstream service Picturefilename as part of a local image resource identifier without directory containment checks. CatalogService accepts and persists this field. Relative traversal can select an accessible image outside the intended catalog directory. This is the same underlying path issue as CWE-22/23, not an independent exploit."
+    }
+  ]
+}
