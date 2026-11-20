@@ -1,0 +1,91 @@
+{
+  "GeneratedAt": "2026-11-20T06:43:55.5363155Z",
+  "ProjectPath": ".",
+  "Summary": {
+    "TotalFindings": 5,
+    "CveCount": 1,
+    "CweCount": 4,
+    "BySeverity": {
+      "mandatory": 1,
+      "optional": 2,
+      "potential": 2
+    },
+    "ByCategory": {
+      "CVE": 1,
+      "Code Quality": 1,
+      "Credentials & Secrets": 1,
+      "File & Path Security": 2
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 55
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2024-21907",
+      "Name": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: HIGH\n\nAffected dependencies:\n  - Newtonsoft.Json 6.0.4 (declared at src/eShopWinForms/packages.config:5)\n\nRecommended fix:\n  - Upgrade Newtonsoft.Json to 13.0.1 or later.",
+      "Files": [
+        "src/eShopWinForms/packages.config:5"
+      ],
+      "Explanation": "[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr): Improper Handling of Exceptional Conditions in Newtonsoft.Json\n\nSeverity: HIGH\n\nAffected dependencies:\n  - Newtonsoft.Json 6.0.4 (declared at src/eShopWinForms/packages.config:5)\n\nRecommended fix:\n  - Upgrade Newtonsoft.Json to 13.0.1 or later."
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-789",
+      "Name": "Memory Allocation with Excessive Size Value",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+      "Files": [
+        "src/eShopWinForms/Helpers/SettingsStorageExtensions.cs:101"
+      ],
+      "Explanation": "SettingsStorageExtensions.ReadBytesAsync allocates a byte array directly from StorageFile stream.Size without an application-defined upper bound. If a large file is supplied, the allocation can consume excessive process memory."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "Files": [
+        "src/eShopWCFService/CatalogService.svc.cs:65-82",
+        "src/eShopWCFService/CatalogService.svc.cs:99-117"
+      ],
+      "Explanation": "CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem, and CreateAvailableStock persist catalog or inventory mutations with SaveChanges but record no audit or security event. No logging calls are present in these handlers."
+    },
+    {
+      "Id": "CWE-22",
+      "Name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 8,
+      "Description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+      "Files": [
+        "src/eShopWinForms/Views/CatalogView.cs:57-58",
+        "src/eShopWCFService/ICatalogService.cs:27-30",
+        "src/eShopWCFService/CatalogService.svc.cs:65-76"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems concatenates CatalogItem.Picturefilename to the intended catalog image directory and passes the result to Image.FromFile without validating or canonicalizing the path. The filename is part of the service data contract and catalog create/update operations persist caller-supplied CatalogItem values, so relative traversal segments can escape the image directory."
+    },
+    {
+      "Id": "CWE-23",
+      "Name": "Relative Path Traversal",
+      "Category": "File & Path Security",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+      "Files": [
+        "src/eShopWinForms/Views/CatalogView.cs:57-58",
+        "src/eShopWCFService/ICatalogService.cs:27-30",
+        "src/eShopWCFService/CatalogService.svc.cs:65-76"
+      ],
+      "Explanation": "CatalogView.SetCatalogItems concatenates CatalogItem.Picturefilename to the intended catalog image directory and passes the result to Image.FromFile without validating or canonicalizing the path. The filename is part of the service data contract and catalog create/update operations persist caller-supplied CatalogItem values, so relative traversal segments can escape the image directory."
+    }
+  ]
+}
