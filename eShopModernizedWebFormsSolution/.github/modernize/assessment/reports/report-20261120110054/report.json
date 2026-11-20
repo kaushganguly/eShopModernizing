@@ -393,7 +393,7 @@
     },
     "Database.0002": {
       "id": "Database.0002",
-      "description": "SQL database connection detected.\n\nEnsure the database is available/reachable on Azure.\n\nIf it is not, there are multiple ways you can move your data to Azure:\n    1. Migrate to Azure SQL Database.\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don\u2019t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
+      "description": "SQL database connection detected.\n\nEnsure the database is available/reachable on Azure.\n\nIf it is not, there are multiple ways you can move your data to Azure:\n    1. Migrate to Azure SQL Database.\n    2. Consider Azure SQL Managed Instance if you need features that are not available in Azure SQL Database and you don’t want to use a VM.\n    3. Migrate your database servers directly to SQL Server on Azure VMs.\n\nTo assess database migration effort, you can use Azure Migrate tool, see the link below.",
       "title": "SQL database connection detected",
       "severity": "potential",
       "effort": 3,
@@ -462,5 +462,219 @@
       ],
       "labels": []
     }
-  }
+  },
+  "security": [
+    {
+      "storyPoint": 3,
+      "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "title": "Incorrect Conversion between Numeric Types",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "CatalogItemHiLoGenerator.GetNextSequenceValue and CatalogDBInitializer.GetSequenceIdFromSelectedDBSequence cast the Int64 value returned by a SQL sequence to int without a range check. Values beyond Int32 range can wrap/truncate and produce invalid or duplicate identifiers.",
+        "files": [
+          "src/eShopModernizedWebForms/Models/CatalogItemHiLoGenerator.cs:20",
+          "src/eShopModernizedWebForms/Models/Infrastructure/CatalogDBInitializer.cs:326"
+        ]
+      },
+      "category": "Code Quality",
+      "id": "CWE-681"
+    },
+    {
+      "storyPoint": 5,
+      "description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+      "title": "Incorrect Calculation",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "Default.aspx.cs accepts the route size as pageSize and passes it through. PaginatedItemsViewModel divides count by pageSize without validating that it is nonzero; a size of zero causes an unhandled divide-by-zero exception while building the response.",
+        "files": [
+          "src/eShopModernizedWebForms/Default.aspx.cs:26",
+          "src/eShopModernizedWebForms/ViewModel/PaginatedItemsViewModel.cs:20"
+        ]
+      },
+      "category": "Code Quality",
+      "id": "CWE-682"
+    },
+    {
+      "storyPoint": 3,
+      "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "title": "Missing Release of Resource after Effective Lifetime",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "ImageAzureStorage.UpLoadImageFromFile opens a FileStream with File.OpenRead and passes it to UploadFromStream, but does not dispose or close the stream after the upload, leaving the file handle open.",
+        "files": [
+          "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:109-114"
+        ]
+      },
+      "category": "Code Quality",
+      "id": "CWE-772"
+    },
+    {
+      "storyPoint": 3,
+      "description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "title": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "ImageAzureStorage.UpLoadImageFromFile opens a FileStream with File.OpenRead and passes it to UploadFromStream, but does not dispose or close the stream after the upload, leaving the file handle open.",
+        "files": [
+          "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:109-114"
+        ]
+      },
+      "category": "Code Quality",
+      "id": "CWE-775"
+    },
+    {
+      "storyPoint": 5,
+      "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "title": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a singleton. The singleton owns a mutable List<CatalogItem> that request handlers enumerate and mutate without a lock, allowing concurrent web requests to race.",
+        "files": [
+          "src/eShopModernizedWebForms/Modules/ApplicationModule.cs:25-27",
+          "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15"
+        ]
+      },
+      "category": "Concurrency & Synchronization",
+      "id": "CWE-543"
+    },
+    {
+      "storyPoint": 5,
+      "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "title": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a singleton. The singleton owns a mutable List<CatalogItem> that request handlers enumerate and mutate without a lock, allowing concurrent web requests to race.",
+        "files": [
+          "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11",
+          "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:34-65"
+        ]
+      },
+      "category": "Concurrency & Synchronization",
+      "id": "CWE-567"
+    },
+    {
+      "storyPoint": 8,
+      "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "title": "Improper Synchronization",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a singleton. The singleton owns a mutable List<CatalogItem> that request handlers enumerate and mutate without a lock, allowing concurrent web requests to race.",
+        "files": [
+          "src/eShopModernizedWebForms/Modules/ApplicationModule.cs:25-27",
+          "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:34-65"
+        ]
+      },
+      "category": "Concurrency & Synchronization",
+      "id": "CWE-662"
+    },
+    {
+      "storyPoint": 8,
+      "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "title": "Missing Synchronization",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as a singleton. The singleton owns a mutable List<CatalogItem> that request handlers enumerate and mutate without a lock, allowing concurrent web requests to race.",
+        "files": [
+          "src/eShopModernizedWebForms/Modules/ApplicationModule.cs:25-27",
+          "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:34-65"
+        ]
+      },
+      "category": "Concurrency & Synchronization",
+      "id": "CWE-820"
+    },
+    {
+      "storyPoint": 5,
+      "description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "title": "Use of Hard-coded Password",
+      "severity": "optional",
+      "evidence": {
+        "explanation": "The Compose configuration embeds the SQL Server administrator password in the database container environment and health-check command. The credential value is intentionally omitted from this assessment output.",
+        "files": [
+          "docker-compose.override.yml:21",
+          "docker-compose.override.yml:26"
+        ]
+      },
+      "category": "Credentials & Secrets",
+      "id": "CWE-259"
+    },
+    {
+      "storyPoint": 5,
+      "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
+      "title": "Incorrect Permission Assignment for Critical Resource",
+      "severity": "optional",
+      "evidence": {
+        "explanation": "ImageAzureStorage.InitializeCatalogImages assigns blob-level public read access to the pics container. UploadTempImage stores temporary user uploads in that same container, so temporary objects are also readable without application authentication.",
+        "files": [
+          "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:47",
+          "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:93"
+        ]
+      },
+      "category": "Credentials & Secrets",
+      "id": "CWE-732"
+    },
+    {
+      "storyPoint": 3,
+      "description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "title": "Insufficient Logging",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "The Create_Click, Save_Click, and Delete_Click mutation handlers do not emit audit events, and the OIDC AuthenticationFailed callback redirects without logging the failure. Page-load messages do not record the security-relevant outcome or changed item.",
+        "files": [
+          "src/eShopModernizedWebForms/Catalog/Create.aspx.cs:50",
+          "src/eShopModernizedWebForms/Catalog/Edit.aspx.cs:62",
+          "src/eShopModernizedWebForms/Catalog/Delete.aspx.cs:34",
+          "src/eShopModernizedWebForms/App_Start/Startup.Auth.cs:40"
+        ]
+      },
+      "category": "Credentials & Secrets",
+      "id": "CWE-778"
+    },
+    {
+      "storyPoint": 5,
+      "description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "title": "Use of Hard-coded Credentials",
+      "severity": "optional",
+      "evidence": {
+        "explanation": "The Compose configuration embeds a SQL Server administrator credential for the database container and its health check. The credential value is intentionally omitted from this assessment output.",
+        "files": [
+          "docker-compose.override.yml:21",
+          "docker-compose.override.yml:26"
+        ]
+      },
+      "category": "Credentials & Secrets",
+      "id": "CWE-798"
+    },
+    {
+      "storyPoint": 8,
+      "description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+      "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "severity": "optional",
+      "evidence": {
+        "explanation": "Catalog item Name and Description values are accepted from form input and persisted by CatalogService. Details.aspx and Delete.aspx render stored values with asp:Label Text data bindings rather than an HTML-encoding binding, allowing stored markup to be emitted as executable page content.",
+        "files": [
+          "src/eShopModernizedWebForms/Catalog/Details.aspx:16",
+          "src/eShopModernizedWebForms/Catalog/Delete.aspx:18",
+          "src/eShopModernizedWebForms/Catalog/Create.aspx.cs:56-57",
+          "src/eShopModernizedWebForms/Services/CatalogService.cs:50"
+        ]
+      },
+      "category": "Injection Attacks",
+      "id": "CWE-79"
+    },
+    {
+      "storyPoint": 3,
+      "description": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "title": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "severity": "potential",
+      "evidence": {
+        "explanation": "PicUploader passes an uploaded file to ImageAzureStorage.UploadTempImage, which builds the blob object identifier from the caller-controlled file.FileName without normalizing path separators. The container is fixed, but the client can influence the object key and path segments within that storage container.",
+        "files": [
+          "src/eShopModernizedWebForms/Catalog/PicUploader.asmx.cs:36-62",
+          "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:85-94"
+        ]
+      },
+      "category": "Injection Attacks",
+      "id": "CWE-99"
+    }
+  ]
 }
