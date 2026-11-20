@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "id": "20261120064634",
+    "generated_at": "2026-11-20T06:46:34.9883888Z",
+    "note": "Security-only fallback report; core AppCAT analysis failed because the scoped Service Fabric solution contains unsupported .sfproj projects."
+  },
+  "security": [
+    {
+      "id": "CWE-259",
+      "title": "Use of Hard-coded Password",
+      "category": "Credentials & Secrets",
+      "severity": "optional",
+      "description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "evidence": {
+        "files": [
+          "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24"
+        ],
+        "explanation": "The SQL container's environment declares a literal SA_PASSWORD value in the deployment manifest (value omitted). This supplies a fixed password for SQL Server rather than a runtime secret reference."
+      },
+      "storyPoint": 5
+    },
+    {
+      "id": "CWE-798",
+      "title": "Use of Hard-coded Credentials",
+      "category": "Credentials & Secrets",
+      "severity": "optional",
+      "description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "evidence": {
+        "files": [
+          "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24"
+        ],
+        "explanation": "The SQL container's environment declares a literal SA_PASSWORD value in the deployment manifest (value omitted), constituting a hard-coded authentication credential."
+      },
+      "storyPoint": 5
+    }
+  ]
+}
