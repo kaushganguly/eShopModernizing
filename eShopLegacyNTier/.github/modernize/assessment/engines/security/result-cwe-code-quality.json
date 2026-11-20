@@ -1,0 +1,228 @@
+{
+  "input_name": "CWE - Code Quality",
+  "result": {
+    "evidence": [
+      "Scanned source for length conversion, allocations, initialization, control-flow, obsolete APIs, and resource lifecycle patterns."
+    ],
+    "finding": "Assessed 16 CWE rules in Code Quality: 2 FOUND, 14 NOT_FOUND",
+    "values": [
+      {
+        "id": "CWE-130",
+        "status": "NOT_FOUND",
+        "storyPoint": 3,
+        "severity": "potential",
+        "description": "The product parses a formatted message or structure, but it does not handle or incorrectly handles a length field that is inconsistent with the actual length of the associated data.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Improper Handling of Length Parameter Inconsistency",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-456",
+        "status": "NOT_FOUND",
+        "storyPoint": 2,
+        "severity": "potential",
+        "description": "The product does not initialize critical variables, which causes the execution environment to use unexpected values.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Missing Initialization of a Variable",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-457",
+        "status": "NOT_FOUND",
+        "storyPoint": 2,
+        "severity": "potential",
+        "description": "The code uses a variable that has not been initialized, leading to unpredictable or unintended results.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Use of Uninitialized Variable",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-477",
+        "status": "NOT_FOUND",
+        "storyPoint": 1,
+        "severity": "optional",
+        "description": "The code uses deprecated or obsolete functions, which suggests that the code has not been actively reviewed or maintained.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Use of Obsolete Function",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-570",
+        "status": "NOT_FOUND",
+        "storyPoint": 1,
+        "severity": "optional",
+        "description": "The product contains an expression that will always evaluate to false.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Expression is Always False",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-571",
+        "status": "NOT_FOUND",
+        "storyPoint": 1,
+        "severity": "optional",
+        "description": "The product contains an expression that will always evaluate to true.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Expression is Always True",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-606",
+        "status": "NOT_FOUND",
+        "storyPoint": 3,
+        "severity": "potential",
+        "description": "The product does not properly check inputs that are used for loop conditions, potentially leading to a denial of service or other consequences because of excessive looping.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Unchecked Input for Loop Condition",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-665",
+        "status": "NOT_FOUND",
+        "storyPoint": 3,
+        "severity": "potential",
+        "description": "The product does not initialize or incorrectly initializes a resource, which might leave the resource in an unexpected state when it is accessed or used.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Improper Initialization",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-681",
+        "status": "FOUND",
+        "storyPoint": 3,
+        "severity": "potential",
+        "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+        "evidence": {
+          "files": [
+            "src/eShopWinForms/Helpers/SettingsStorageExtensions.cs:100"
+          ],
+          "explanation": "SettingsStorageExtensions.ReadBytesAsync casts the ulong StorageFile stream.Size to uint when calling DataReader.LoadAsync. For files larger than UInt32.MaxValue, the unchecked narrowing conversion truncates the length, so the reader is asked to load a different number of bytes than the file size."
+        },
+        "name": "Incorrect Conversion between Numeric Types",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-682",
+        "status": "NOT_FOUND",
+        "storyPoint": 5,
+        "severity": "potential",
+        "description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Incorrect Calculation",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-772",
+        "status": "NOT_FOUND",
+        "storyPoint": 3,
+        "severity": "potential",
+        "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Missing Release of Resource after Effective Lifetime",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-775",
+        "status": "NOT_FOUND",
+        "storyPoint": 3,
+        "severity": "potential",
+        "description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-783",
+        "status": "NOT_FOUND",
+        "storyPoint": 1,
+        "severity": "optional",
+        "description": "The product uses an expression in which operator precedence causes incorrect logic to be used.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Operator Precedence Logic Error",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-789",
+        "status": "FOUND",
+        "storyPoint": 5,
+        "severity": "potential",
+        "description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+        "evidence": {
+          "files": [
+            "src/eShopWinForms/Helpers/SettingsStorageExtensions.cs:101"
+          ],
+          "explanation": "SettingsStorageExtensions.ReadBytesAsync allocates a byte array directly from StorageFile stream.Size without an upper bound. A caller passing a very large file can force an excessive allocation and exhaust process memory."
+        },
+        "name": "Memory Allocation with Excessive Size Value",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-835",
+        "status": "NOT_FOUND",
+        "storyPoint": 3,
+        "severity": "potential",
+        "description": "The product contains an iteration or loop with an exit condition that cannot be reached, i.e., an infinite loop.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Loop with Unreachable Exit Condition ('Infinite Loop')",
+        "category": "Code Quality"
+      },
+      {
+        "id": "CWE-1057",
+        "status": "NOT_FOUND",
+        "storyPoint": 5,
+        "severity": "potential",
+        "description": "The product uses a dedicated, central data manager component as required by design, but it contains code that performs data-access operations that do not use this data manager.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "name": "Data Access Operations Outside of Expected Data Manager Component",
+        "category": "Code Quality"
+      }
+    ],
+    "confidence": "high"
+  },
+  "status": "success",
+  "analysis_method": "LLM",
+  "timestamp": "2026-11-20T10:58:39.6757347Z",
+  "execution_time_seconds": 0
+}
