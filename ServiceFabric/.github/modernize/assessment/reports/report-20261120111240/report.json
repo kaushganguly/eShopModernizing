@@ -1,0 +1,43 @@
+{
+  "security": [
+    {
+      "severity": "optional",
+      "evidence": {
+        "files": [
+          "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24",
+          "ServiceFabric-ARM-Templates-Scripts/pro-eshop-sfwin-cluster-ARM-SECURED-tests/parameters.json:17",
+          "ServiceFabric-ARM-Templates-Scripts/pro-eshop-sfwin-cluster-ARM-template-SECURED-NOFUNCI/parameters.json:17",
+          "ServiceFabric-ARM-Templates-Scripts/Sample-ServiceFabric-ARM/azuredeploy.parameters.json:17"
+        ],
+        "explanation": "The SQL container manifest provides SA_PASSWORD as a non-empty literal, and three checked-in ARM parameter files provide adminPassword as non-empty literals. Credential values are intentionally omitted."
+      },
+      "storyPoint": 5,
+      "description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "title": "Use of Hard-coded Password",
+      "category": "Credentials & Secrets",
+      "id": "CWE-259"
+    },
+    {
+      "severity": "optional",
+      "evidence": {
+        "files": [
+          "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24",
+          "ServiceFabric-ARM-Templates-Scripts/pro-eshop-sfwin-cluster-ARM-SECURED-tests/parameters.json:17",
+          "ServiceFabric-ARM-Templates-Scripts/pro-eshop-sfwin-cluster-ARM-template-SECURED-NOFUNCI/parameters.json:17",
+          "ServiceFabric-ARM-Templates-Scripts/Sample-ServiceFabric-ARM/azuredeploy.parameters.json:17"
+        ],
+        "explanation": "The SQL container manifest and checked-in ARM parameter files contain non-empty literal values for authentication parameters. The ARM DeploymentHelper credential fields are explicit placeholders, and values are omitted here."
+      },
+      "storyPoint": 5,
+      "description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "title": "Use of Hard-coded Credentials",
+      "category": "Credentials & Secrets",
+      "id": "CWE-798"
+    }
+  ],
+  "metadata": {
+    "id": "20261120111240",
+    "generated_at": "2026-11-20T11:12:40.8102871Z",
+    "note": "Security-only report (AppCAT was not run or failed)"
+  }
+}

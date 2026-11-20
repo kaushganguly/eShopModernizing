@@ -1,0 +1,211 @@
+{
+  "execution_time_seconds": 0,
+  "result": {
+    "confidence": "high",
+    "evidence": [
+      "Scanned both available C# deployment helpers; no unsafe blocks, pointer operations, unmanaged memory operations, or buffer APIs were found."
+    ],
+    "values": [
+      {
+        "description": "The product performs operations on a memory buffer, but it reads from or writes to a memory location outside the buffer's intended boundary. This may result in read or write operations on unexpected memory locations that could be linked to other variables, data structures, or internal program data.",
+        "status": "NOT_FOUND",
+        "storyPoint": 21,
+        "id": "CWE-119",
+        "category": "Memory Safety",
+        "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+        "severity": "mandatory",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer.",
+        "status": "NOT_FOUND",
+        "storyPoint": 13,
+        "id": "CWE-120",
+        "category": "Memory Safety",
+        "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')",
+        "severity": "mandatory",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "Any condition where the attacker has the ability to write an arbitrary value to an arbitrary location, often as the result of a buffer overflow.",
+        "status": "NOT_FOUND",
+        "storyPoint": 13,
+        "id": "CWE-123",
+        "category": "Memory Safety",
+        "name": "Write-what-where Condition",
+        "severity": "mandatory",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product reads data past the end, or before the beginning, of the intended buffer.",
+        "status": "NOT_FOUND",
+        "storyPoint": 8,
+        "id": "CWE-125",
+        "category": "Memory Safety",
+        "name": "Out-of-bounds Read",
+        "severity": "optional",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product calls free() twice on the same memory address.",
+        "status": "NOT_FOUND",
+        "storyPoint": 8,
+        "id": "CWE-415",
+        "category": "Memory Safety",
+        "name": "Double Free",
+        "severity": "optional",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product reuses or references memory after it has been freed. At some point afterward, the memory may be allocated again and saved in another pointer, while the original pointer references a location somewhere within the new allocation. Any operations using the original pointer are no longer valid because the memory belongs to the code that operates on the new pointer.",
+        "status": "NOT_FOUND",
+        "storyPoint": 13,
+        "id": "CWE-416",
+        "category": "Memory Safety",
+        "name": "Use After Free",
+        "severity": "mandatory",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product uses, accesses, or otherwise operates on a resource after that resource has been expired, released, or revoked.",
+        "status": "NOT_FOUND",
+        "storyPoint": 5,
+        "id": "CWE-672",
+        "category": "Memory Safety",
+        "name": "Operation on a Resource after Expiration or Release",
+        "severity": "potential",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product reads or writes to a buffer using an index or pointer that references a memory location prior to the beginning of the buffer.",
+        "status": "NOT_FOUND",
+        "storyPoint": 8,
+        "id": "CWE-786",
+        "category": "Memory Safety",
+        "name": "Access of Memory Location Before Start of Buffer",
+        "severity": "optional",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product writes data past the end, or before the beginning, of the intended buffer.",
+        "status": "NOT_FOUND",
+        "storyPoint": 13,
+        "id": "CWE-787",
+        "category": "Memory Safety",
+        "name": "Out-of-bounds Write",
+        "severity": "mandatory",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product reads or writes to a buffer using an index or pointer that references a memory location after the end of the buffer.",
+        "status": "NOT_FOUND",
+        "storyPoint": 8,
+        "id": "CWE-788",
+        "category": "Memory Safety",
+        "name": "Access of Memory Location After End of Buffer",
+        "severity": "optional",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product uses a sequential operation to read or write a buffer, but it uses an incorrect length value that causes it to access memory that is outside of the bounds of the buffer.",
+        "status": "NOT_FOUND",
+        "storyPoint": 8,
+        "id": "CWE-805",
+        "category": "Memory Safety",
+        "name": "Buffer Access with Incorrect Length Value",
+        "severity": "optional",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product obtains a value from an untrusted source, converts this value to a pointer, and dereferences the resulting pointer.",
+        "status": "NOT_FOUND",
+        "storyPoint": 8,
+        "id": "CWE-822",
+        "category": "Memory Safety",
+        "name": "Untrusted Pointer Dereference",
+        "severity": "optional",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product performs pointer arithmetic on a valid pointer, but it uses an offset that can point outside of the intended range of valid memory locations for the resulting pointer.",
+        "status": "NOT_FOUND",
+        "storyPoint": 8,
+        "id": "CWE-823",
+        "category": "Memory Safety",
+        "name": "Use of Out-of-range Pointer Offset",
+        "severity": "optional",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product accesses or uses a pointer that has not been initialized.",
+        "status": "NOT_FOUND",
+        "storyPoint": 5,
+        "id": "CWE-824",
+        "category": "Memory Safety",
+        "name": "Access of Uninitialized Pointer",
+        "severity": "optional",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "description": "The product dereferences a pointer that contains a location for memory that was previously valid, but is no longer valid.",
+        "status": "NOT_FOUND",
+        "storyPoint": 8,
+        "id": "CWE-825",
+        "category": "Memory Safety",
+        "name": "Expired Pointer Dereference",
+        "severity": "optional",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      }
+    ],
+    "finding": "Assessed 15 CWE rules in Memory Safety: 0 FOUND, 15 NOT_FOUND"
+  },
+  "analysis_method": "LLM",
+  "timestamp": "2026-11-20T11:10:02.1024755Z",
+  "input_name": "CWE - Memory Safety",
+  "status": "success"
+}

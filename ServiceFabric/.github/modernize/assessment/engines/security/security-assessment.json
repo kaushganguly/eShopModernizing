@@ -1,0 +1,52 @@
+{
+  "ProjectPath": "ServiceFabric",
+  "Summary": {
+    "ByCategory": {
+      "Credentials & Secrets": 2
+    },
+    "RulesPassed": 57.0,
+    "CveCount": 0,
+    "TotalFindings": 2,
+    "CweCount": 2,
+    "TotalRulesAssessed": 59.0,
+    "BySeverity": {
+      "potential": 0,
+      "mandatory": 0,
+      "optional": 2
+    }
+  },
+  "GeneratedAt": "2026-11-20T11:12:40.8102871Z",
+  "CveFindings": [],
+  "CweFindings": [
+    {
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Severity": "optional",
+      "Files": [
+        "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24",
+        "ServiceFabric-ARM-Templates-Scripts/pro-eshop-sfwin-cluster-ARM-SECURED-tests/parameters.json:17",
+        "ServiceFabric-ARM-Templates-Scripts/pro-eshop-sfwin-cluster-ARM-template-SECURED-NOFUNCI/parameters.json:17",
+        "ServiceFabric-ARM-Templates-Scripts/Sample-ServiceFabric-ARM/azuredeploy.parameters.json:17"
+      ],
+      "Explanation": "The SQL container manifest provides SA_PASSWORD as a non-empty literal, and three checked-in ARM parameter files provide adminPassword as non-empty literals. Credential values are intentionally omitted.",
+      "StoryPoint": 5,
+      "Category": "Credentials & Secrets"
+    },
+    {
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Severity": "optional",
+      "Files": [
+        "eShopModernizedSQL_ServiceFabricApp/ApplicationPackageRoot/SQL_ContainerPkg/ServiceManifest.xml:24",
+        "ServiceFabric-ARM-Templates-Scripts/pro-eshop-sfwin-cluster-ARM-SECURED-tests/parameters.json:17",
+        "ServiceFabric-ARM-Templates-Scripts/pro-eshop-sfwin-cluster-ARM-template-SECURED-NOFUNCI/parameters.json:17",
+        "ServiceFabric-ARM-Templates-Scripts/Sample-ServiceFabric-ARM/azuredeploy.parameters.json:17"
+      ],
+      "Explanation": "The SQL container manifest and checked-in ARM parameter files contain non-empty literal values for authentication parameters. The ARM DeploymentHelper credential fields are explicit placeholders, and values are omitted here.",
+      "StoryPoint": 5,
+      "Category": "Credentials & Secrets"
+    }
+  ]
+}
