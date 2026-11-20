@@ -1,0 +1,237 @@
+{
+  "input_name": "CWE - Code Quality",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Assessed 16 CWE rules in Code Quality: 3 FOUND, 13 NOT_FOUND",
+    "confidence": "high",
+    "evidence": [
+      "Scanned source for numeric conversions, input-dependent calculations, resource lifetime, obsolete APIs, and control-flow patterns"
+    ],
+    "values": [
+      {
+        "status": "NOT_FOUND",
+        "severity": "potential",
+        "name": "Improper Handling of Length Parameter Inconsistency",
+        "category": "Code Quality",
+        "description": "The product parses a formatted message or structure, but it does not handle or incorrectly handles a length field that is inconsistent with the actual length of the associated data.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 3,
+        "id": "CWE-130"
+      },
+      {
+        "status": "NOT_FOUND",
+        "severity": "potential",
+        "name": "Missing Initialization of a Variable",
+        "category": "Code Quality",
+        "description": "The product does not initialize critical variables, which causes the execution environment to use unexpected values.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 2,
+        "id": "CWE-456"
+      },
+      {
+        "status": "NOT_FOUND",
+        "severity": "potential",
+        "name": "Use of Uninitialized Variable",
+        "category": "Code Quality",
+        "description": "The code uses a variable that has not been initialized, leading to unpredictable or unintended results.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 2,
+        "id": "CWE-457"
+      },
+      {
+        "status": "FOUND",
+        "severity": "optional",
+        "name": "Use of Obsolete Function",
+        "category": "Code Quality",
+        "description": "The code uses deprecated or obsolete functions, which suggests that the code has not been actively reviewed or maintained.",
+        "evidence": {
+          "files": [
+            "eShopLegacy.Utilities/Serializing.cs:19"
+          ],
+          "explanation": "Serializing.DeserializeBinary invokes BinaryFormatter.Deserialize, an obsolete and unsafe serialization API in modern .NET; the call must be revisited for the requested net10.0 target."
+        },
+        "storyPoint": 1,
+        "id": "CWE-477"
+      },
+      {
+        "status": "NOT_FOUND",
+        "severity": "optional",
+        "name": "Expression is Always False",
+        "category": "Code Quality",
+        "description": "The product contains an expression that will always evaluate to false.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 1,
+        "id": "CWE-570"
+      },
+      {
+        "status": "NOT_FOUND",
+        "severity": "optional",
+        "name": "Expression is Always True",
+        "category": "Code Quality",
+        "description": "The product contains an expression that will always evaluate to true.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 1,
+        "id": "CWE-571"
+      },
+      {
+        "status": "NOT_FOUND",
+        "severity": "potential",
+        "name": "Unchecked Input for Loop Condition",
+        "category": "Code Quality",
+        "description": "The product does not properly check inputs that are used for loop conditions, potentially leading to a denial of service or other consequences because of excessive looping.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 3,
+        "id": "CWE-606"
+      },
+      {
+        "status": "NOT_FOUND",
+        "severity": "potential",
+        "name": "Improper Initialization",
+        "category": "Code Quality",
+        "description": "The product does not initialize or incorrectly initializes a resource, which might leave the resource in an unexpected state when it is accessed or used.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 3,
+        "id": "CWE-665"
+      },
+      {
+        "status": "FOUND",
+        "severity": "potential",
+        "name": "Incorrect Conversion between Numeric Types",
+        "category": "Code Quality",
+        "description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+        "evidence": {
+          "files": [
+            "src/eShopLegacyMVC/Models/CatalogItemHiLoGenerator.cs:23",
+            "src/eShopLegacyMVC/Models/Infrastructure/CatalogDBInitializer.cs:329"
+          ],
+          "explanation": "Both sequence readers receive Int64 values from SQL and cast them directly to Int32 without a range check. Sequence values beyond Int32.MaxValue can overflow and produce invalid catalog identifiers."
+        },
+        "storyPoint": 3,
+        "id": "CWE-681"
+      },
+      {
+        "status": "FOUND",
+        "severity": "potential",
+        "name": "Incorrect Calculation",
+        "category": "Code Quality",
+        "description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+        "evidence": {
+          "files": [
+            "src/eShopLegacyMVC/Services/CatalogService.cs:29",
+            "src/eShopLegacyMVC/ViewModel/PaginatedItemsViewModel.cs:23",
+            "src/eShopLegacyMVC/Controllers/CatalogController.cs:22",
+            "eShopPorted/Controllers/CatalogController.cs:23",
+            "eShopPorted/Services/CatalogService.cs:26",
+            "eShopPorted/Services/CatalogServiceMock.cs:25",
+            "eShopPorted/ViewModel/PaginatedItemsViewModel.cs:23"
+          ],
+          "explanation": "Index accepts pageSize and pageIndex from the request without bounds checks. Their product is used as the Skip offset and can overflow, while a zero pageSize later causes division by zero when TotalPages is calculated, yielding incorrect pagination or an exception. The ported application repeats the unbounded page parameters and offset calculation."
+        },
+        "storyPoint": 5,
+        "id": "CWE-682"
+      },
+      {
+        "status": "NOT_FOUND",
+        "severity": "potential",
+        "name": "Missing Release of Resource after Effective Lifetime",
+        "category": "Code Quality",
+        "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 3,
+        "id": "CWE-772"
+      },
+      {
+        "status": "NOT_FOUND",
+        "severity": "potential",
+        "name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+        "category": "Code Quality",
+        "description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 3,
+        "id": "CWE-775"
+      },
+      {
+        "status": "NOT_FOUND",
+        "severity": "optional",
+        "name": "Operator Precedence Logic Error",
+        "category": "Code Quality",
+        "description": "The product uses an expression in which operator precedence causes incorrect logic to be used.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 1,
+        "id": "CWE-783"
+      },
+      {
+        "status": "NOT_FOUND",
+        "severity": "potential",
+        "name": "Memory Allocation with Excessive Size Value",
+        "category": "Code Quality",
+        "description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 5,
+        "id": "CWE-789"
+      },
+      {
+        "status": "NOT_FOUND",
+        "severity": "potential",
+        "name": "Loop with Unreachable Exit Condition ('Infinite Loop')",
+        "category": "Code Quality",
+        "description": "The product contains an iteration or loop with an exit condition that cannot be reached, i.e., an infinite loop.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 3,
+        "id": "CWE-835"
+      },
+      {
+        "status": "NOT_FOUND",
+        "severity": "potential",
+        "name": "Data Access Operations Outside of Expected Data Manager Component",
+        "category": "Code Quality",
+        "description": "The product uses a dedicated, central data manager component as required by design, but it contains code that performs data-access operations that do not use this data manager.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "storyPoint": 5,
+        "id": "CWE-1057"
+      }
+    ]
+  },
+  "execution_time_seconds": 28,
+  "timestamp": "2026-11-20T06:39:02.8686812Z"
+}
