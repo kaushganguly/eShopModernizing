@@ -1,0 +1,195 @@
+{
+  "GeneratedAt": "2026-11-20T06:41:54.2034680Z",
+  "ProjectPath": ".",
+  "Summary": {
+    "TotalFindings": 13,
+    "CveCount": 2,
+    "CweCount": 11,
+    "BySeverity": {
+      "mandatory": 0,
+      "optional": 4,
+      "potential": 9
+    },
+    "ByCategory": {
+      "Code Quality": 4,
+      "Concurrency & Synchronization": 4,
+      "Credentials & Secrets": 3,
+      "CVE": 2
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 48
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2026-40021",
+      "Name": "Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net XML layout issue. Severity: MEDIUM. Affected dependency: log4net 2.0.12 (src/eShopModernizedMVC/packages.config), vulnerable range < 3.3.0. Recommended fix: upgrade to 3.3.0 or later.",
+      "Files": [
+        "src/eShopModernizedMVC/packages.config"
+      ],
+      "Explanation": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net XML layout issue. Severity: MEDIUM. Affected dependency: log4net 2.0.12 (src/eShopModernizedMVC/packages.config), vulnerable range < 3.3.0. Recommended fix: upgrade to 3.3.0 or later."
+    },
+    {
+      "Id": "CVE-2024-21319",
+      "Name": "Microsoft ASP.NET Core project templates vulnerable to denial of service",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Microsoft IdentityModel JWT denial of service. Severity: MEDIUM. Affected dependencies: System.IdentityModel.Tokens.Jwt 5.6.0 and Microsoft.IdentityModel.JsonWebTokens 5.6.0 (src/eShopModernizedMVC/packages.config); for both, the applicable range is < 5.7.0. Recommended fix: upgrade both to 5.7.0 or later.",
+      "Files": [
+        "src/eShopModernizedMVC/packages.config"
+      ],
+      "Explanation": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Microsoft IdentityModel JWT denial of service. Severity: MEDIUM. Affected dependencies: System.IdentityModel.Tokens.Jwt 5.6.0 and Microsoft.IdentityModel.JsonWebTokens 5.6.0 (src/eShopModernizedMVC/packages.config); for both, the applicable range is < 5.7.0. Recommended fix: upgrade both to 5.7.0 or later."
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-681",
+      "Name": "Incorrect Conversion between Numeric Types",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "Files": [
+        "src/eShopModernizedMVC/Models/CatalogItemHiLoGenerator.cs",
+        "src/eShopModernizedMVC/Models/Infrastructure/CatalogDBInitializer.cs"
+      ],
+      "Explanation": "GetNextSequenceValue casts a SQL Int64 sequence result to int at CatalogItemHiLoGenerator.cs:20; GetSequenceIdFromSelectedDBSequence repeats the cast at CatalogDBInitializer.cs:327. Values beyond Int32 range are truncated/wrapped and used as catalog IDs."
+    },
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "src/eShopModernizedMVC/Services/ImageAzureStorage.cs"
+      ],
+      "Explanation": "UpLoadImageFromFile opens a FileStream with File.OpenRead at ImageAzureStorage.cs:111 and passes it to UploadFromStream at line 116, but never disposes the stream after upload, retaining the file resource."
+    },
+    {
+      "Id": "CWE-775",
+      "Name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "Files": [
+        "src/eShopModernizedMVC/Services/ImageAzureStorage.cs"
+      ],
+      "Explanation": "UpLoadImageFromFile opens a file handle using File.OpenRead at ImageAzureStorage.cs:111 and never closes or disposes it after UploadFromStream completes at line 116."
+    },
+    {
+      "Id": "CWE-789",
+      "Name": "Memory Allocation with Excessive Size Value",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+      "Files": [
+        "src/eShopModernizedMVC/Controllers/CatalogController.cs",
+        "src/eShopModernizedMVC/Services/CatalogService.cs"
+      ],
+      "Explanation": "CatalogController.Index accepts the query-string pageSize without a maximum (CatalogController.cs:25), then CatalogService.GetCatalogItemsPaginated passes it to Take(pageSize) and materializes the result with ToList (CatalogService.cs:23-27). A very large pageSize can drive an unbounded database result into application memory."
+    },
+    {
+      "Id": "CWE-543",
+      "Name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "Files": [
+        "src/eShopModernizedMVC/Modules/ApplicationModule.cs",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs",
+        "src/eShopModernizedMVC/Web.config"
+      ],
+      "Explanation": "Web.config enables UseMockData by default at line 36. ApplicationModule registers CatalogServiceMock as a SingleInstance at lines 22-26, while the service shares a mutable List<CatalogItem> and performs unsynchronized reads, adds, replacements, and removals (CatalogServiceMock.cs:11-15, 19-66). Concurrent web requests can race on the same list."
+    },
+    {
+      "Id": "CWE-567",
+      "Name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "Files": [
+        "src/eShopModernizedMVC/Modules/ApplicationModule.cs",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs",
+        "src/eShopModernizedMVC/Web.config"
+      ],
+      "Explanation": "Web.config enables UseMockData by default at line 36. ApplicationModule registers CatalogServiceMock as a SingleInstance at lines 22-26, while the service shares a mutable List<CatalogItem> and performs unsynchronized reads, adds, replacements, and removals (CatalogServiceMock.cs:11-15, 19-66). Concurrent web requests can race on the same list."
+    },
+    {
+      "Id": "CWE-662",
+      "Name": "Improper Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "Files": [
+        "src/eShopModernizedMVC/Modules/ApplicationModule.cs",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs",
+        "src/eShopModernizedMVC/Web.config"
+      ],
+      "Explanation": "Web.config enables UseMockData by default at line 36. ApplicationModule registers CatalogServiceMock as a SingleInstance at lines 22-26, while the service shares a mutable List<CatalogItem> and performs unsynchronized reads, adds, replacements, and removals (CatalogServiceMock.cs:11-15, 19-66). Concurrent web requests can race on the same list."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "Files": [
+        "src/eShopModernizedMVC/Modules/ApplicationModule.cs",
+        "src/eShopModernizedMVC/Services/CatalogServiceMock.cs",
+        "src/eShopModernizedMVC/Web.config"
+      ],
+      "Explanation": "Web.config enables UseMockData by default at line 36. ApplicationModule registers CatalogServiceMock as a SingleInstance at lines 22-26, while the service shares a mutable List<CatalogItem> and performs unsynchronized reads, adds, replacements, and removals (CatalogServiceMock.cs:11-15, 19-66). Concurrent web requests can race on the same list."
+    },
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Files": [
+        "docker-compose.override.yml",
+        "docker-compose.override.nosql.yml"
+      ],
+      "Explanation": "The SQL Server container configuration supplies a literal SA_PASSWORD, and the application connection-string environment override also includes a literal SQL password (docker-compose.override.yml:6,21; docker-compose.override.nosql.yml:6). These development credentials are stored in version-controlled deployment configuration."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "Files": [
+        "src/eShopModernizedMVC/App_Start/Startup.Auth.cs",
+        "src/eShopModernizedMVC/Controllers/AccountController.cs"
+      ],
+      "Explanation": "The OpenID Connect AuthenticationFailed callback handles the failure and redirects with the exception message at Startup.Auth.cs:57-61, but does not log the failed authentication. AccountController.SignIn logs initiation only (AccountController.cs:14-18), so failed sign-in outcomes are not recorded."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Files": [
+        "docker-compose.override.yml",
+        "docker-compose.override.nosql.yml"
+      ],
+      "Explanation": "Both Docker override configurations contain literal SQL Server SA credentials for the database container and application connection string (docker-compose.override.yml:6,21; docker-compose.override.nosql.yml:6). The credential values are not repeated here."
+    }
+  ]
+}
