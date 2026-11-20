@@ -1,0 +1,106 @@
+{
+  "input_name": "CWE - Concurrency & Synchronization",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Assessed 6 CWE rules in Concurrency & Synchronization: 4 FOUND, 2 NOT_FOUND",
+    "confidence": "high",
+    "evidence": [
+      "Verified singleton registration and shared catalog list operations in mock mode; checked the sequence generator lock for lock-management concerns."
+    ],
+    "values": [
+      {
+        "id": "CWE-543",
+        "name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+        "evidence": {
+          "files": [
+            "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+            "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,16,19-21,35,48-66"
+          ],
+          "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as an Autofac singleton (ApplicationModule.cs:18-22). Its catalogItems list is shared across requests; CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and reads access or mutate it without synchronization (CatalogServiceMock.cs:12, 16, 19-21, 35, 48-66). Concurrent requests can race while enumerating or modifying the list."
+        }
+      },
+      {
+        "id": "CWE-567",
+        "name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 5,
+        "description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+        "evidence": {
+          "files": [
+            "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+            "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,16,19-21,35,48-66"
+          ],
+          "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as an Autofac singleton (ApplicationModule.cs:18-22). Its catalogItems list is shared across requests; CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and reads access or mutate it without synchronization (CatalogServiceMock.cs:12, 16, 19-21, 35, 48-66). Concurrent requests can race while enumerating or modifying the list."
+        }
+      },
+      {
+        "id": "CWE-662",
+        "name": "Improper Synchronization",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+        "evidence": {
+          "files": [
+            "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+            "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,16,19-21,35,48-66"
+          ],
+          "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as an Autofac singleton (ApplicationModule.cs:18-22). Its catalogItems list is shared across requests; CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and reads access or mutate it without synchronization (CatalogServiceMock.cs:12, 16, 19-21, 35, 48-66). Concurrent requests can race while enumerating or modifying the list."
+        }
+      },
+      {
+        "id": "CWE-667",
+        "name": "Improper Locking",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product does not properly acquire or release a lock on a resource, leading to unexpected resource state changes and behaviors.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      },
+      {
+        "id": "CWE-820",
+        "name": "Missing Synchronization",
+        "status": "FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the shared resource.",
+        "evidence": {
+          "files": [
+            "src/eShopLegacyWebForms/Modules/ApplicationModule.cs:18-22",
+            "src/eShopLegacyWebForms/Services/CatalogServiceMock.cs:12,16,19-21,35,48-66"
+          ],
+          "explanation": "When UseMockData is enabled, ApplicationModule registers CatalogServiceMock as an Autofac singleton (ApplicationModule.cs:18-22). Its catalogItems list is shared across requests; CreateCatalogItem, UpdateCatalogItem, RemoveCatalogItem and reads access or mutate it without synchronization (CatalogServiceMock.cs:12, 16, 19-21, 35, 48-66). Concurrent requests can race while enumerating or modifying the list."
+        }
+      },
+      {
+        "id": "CWE-821",
+        "name": "Incorrect Synchronization",
+        "status": "NOT_FOUND",
+        "category": "Concurrency & Synchronization",
+        "severity": "potential",
+        "storyPoint": 8,
+        "description": "The product utilizes a shared resource in a concurrent manner, but it does not correctly synchronize access to the shared resource.",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        }
+      }
+    ]
+  },
+  "execution_time_seconds": 40,
+  "timestamp": "2026-11-20T06:39:37.3272849Z"
+}
