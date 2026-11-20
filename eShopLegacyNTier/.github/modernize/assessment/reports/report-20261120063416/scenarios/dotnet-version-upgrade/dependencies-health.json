@@ -1,0 +1,657 @@
+{
+  "packageGovernance": {
+    "totalDistinctPackages": 3,
+    "totalVersionDriftInstances": 0,
+    "targetFramework": "net10.0",
+    "packages": [
+      {
+        "name": "EntityFramework",
+        "totalProjectCount": 2,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "6.5.2",
+        "isCompatible": true,
+        "description": "NuGet package upgrade is recommended",
+        "versions": [
+          {
+            "version": "6.1.3",
+            "projects": [
+              "eShopWCFService",
+              "eShopWinForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": "6.5.2"
+        }
+      },
+      {
+        "name": "Microsoft.AspNet.WebApi.Client",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "6.0.0",
+        "isCompatible": false,
+        "description": "NuGet package is incompatible",
+        "versions": [
+          {
+            "version": "5.2.3",
+            "projects": [
+              "eShopWinForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": "6.0.0"
+        }
+      },
+      {
+        "name": "Newtonsoft.Json",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "13.0.4",
+        "isCompatible": true,
+        "description": "NuGet package upgrade is recommended",
+        "versions": [
+          {
+            "version": "6.0.4",
+            "projects": [
+              "eShopWinForms"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "newVersion": "13.0.4"
+        }
+      }
+    ]
+  },
+  "projects": [
+    {
+      "name": "eShopWCFService",
+      "path": "src\\eShopWCFService\\eShopWCFService.csproj",
+      "isSdk": false,
+      "currentFrameworks": [
+        "net461"
+      ],
+      "targetFramework": "net10.0",
+      "dependencies": {
+        "packages": [
+          {
+            "name": "EntityFramework",
+            "version": "6.1.3",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\packages.config"
+              }
+            ],
+            "description": "NuGet package upgrade is recommended",
+            "compatibility": "valid",
+            "recommendedVersion": "6.5.2",
+            "upgrade": {
+              "newVersion": "6.5.2"
+            }
+          }
+        ],
+        "assemblies": [
+          {
+            "name": "EntityFramework",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "physicalPath": "src\\packages\\EntityFramework.6.1.3\\lib\\net45\\EntityFramework.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "EntityFramework.SqlServer",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "physicalPath": "src\\packages\\EntityFramework.6.1.3\\lib\\net45\\EntityFramework.SqlServer.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.CSharp",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.ComponentModel.DataAnnotations",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Data.DataSetExtensions",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Data.Entity.Design",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web.DynamicData",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web.Entity",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web.ApplicationServices",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Configuration",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Data",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Drawing",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.EnterpriseServices",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Runtime.Serialization",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.ServiceModel",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.ServiceModel.Web",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web.Extensions",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Web.Services",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Xml",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Xml.Linq",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWCFService\\eShopWCFService.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          }
+        ],
+        "projectReferences": [],
+        "frameworkReferences": []
+      }
+    },
+    {
+      "name": "eShopWinForms",
+      "path": "src\\eShopWinForms\\eShopWinForms.csproj",
+      "isSdk": false,
+      "currentFrameworks": [
+        "net47"
+      ],
+      "targetFramework": "net10.0",
+      "dependencies": {
+        "packages": [
+          {
+            "name": "EntityFramework",
+            "version": "6.1.3",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package upgrade is recommended",
+            "compatibility": "valid",
+            "recommendedVersion": "6.5.2",
+            "upgrade": {
+              "newVersion": "6.5.2"
+            }
+          },
+          {
+            "name": "Microsoft.AspNet.WebApi.Client",
+            "version": "5.2.3",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package is incompatible",
+            "compatibility": "newVersionNeeded",
+            "recommendedVersion": "6.0.0",
+            "upgrade": {
+              "newVersion": "6.0.0"
+            }
+          },
+          {
+            "name": "Newtonsoft.Json",
+            "version": "6.0.4",
+            "isTransitive": false,
+            "isGlobal": false,
+            "isImplicit": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\packages.config"
+              }
+            ],
+            "description": "NuGet package upgrade is recommended",
+            "compatibility": "valid",
+            "recommendedVersion": "13.0.4",
+            "upgrade": {
+              "newVersion": "13.0.4"
+            }
+          }
+        ],
+        "assemblies": [
+          {
+            "name": "EntityFramework",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "physicalPath": "src\\packages\\EntityFramework.6.1.3\\lib\\net45\\EntityFramework.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "EntityFramework.SqlServer",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "physicalPath": "src\\packages\\EntityFramework.6.1.3\\lib\\net45\\EntityFramework.SqlServer.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "Newtonsoft.Json",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "physicalPath": "src\\packages\\Newtonsoft.Json.6.0.4\\lib\\net45\\Newtonsoft.Json.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.ComponentModel.DataAnnotations",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Configuration",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Core",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.IO.Compression",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.IO.Compression.FileSystem",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Net.Http.Formatting",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "physicalPath": "src\\packages\\Microsoft.AspNet.WebApi.Client.5.2.3\\lib\\net45\\System.Net.Http.Formatting.dll",
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Runtime.Serialization",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.ServiceModel",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Xml.Linq",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Data.DataSetExtensions",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "Microsoft.CSharp",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Data",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Deployment",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Drawing",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Net.Http",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Windows.Forms",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          },
+          {
+            "name": "System.Xml",
+            "version": "",
+            "isTransitive": false,
+            "definedIn": [
+              {
+                "path": "src\\eShopWinForms\\eShopWinForms.csproj"
+              }
+            ],
+            "compatibility": "valid"
+          }
+        ],
+        "projectReferences": [],
+        "frameworkReferences": []
+      }
+    }
+  ]
+}
