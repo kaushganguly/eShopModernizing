@@ -1,0 +1,108 @@
+{
+  "input_name": "CWE - File & Path Security",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Assessed 5 CWE rules in File & Path Security: 3 FOUND, 2 NOT_FOUND",
+    "confidence": "high",
+    "evidence": [
+      "Scanned application source files for file & path security patterns"
+    ],
+    "values": [
+      {
+        "storyPoint": 8,
+        "id": "CWE-22",
+        "evidence": {
+          "files": [
+            "eShopPorted/Controllers/CatalogController.cs:101",
+            "eShopPorted/Controllers/CatalogController.cs:63",
+            "eShopPorted/Controllers/PicController.cs:40",
+            "eShopPorted/Controllers/PicController.cs:45",
+            "src/eShopLegacyMVC/Controllers/CatalogController.cs:100",
+            "src/eShopLegacyMVC/Controllers/CatalogController.cs:62",
+            "src/eShopLegacyMVC/Controllers/PicController.cs:39",
+            "src/eShopLegacyMVC/Controllers/PicController.cs:44"
+          ],
+          "explanation": "CatalogController.Create and Edit bind PictureFileName directly from POST input and persist the catalog item. PicController.Index combines that stored value with the Pics directory and reads the resulting path without verifying it remains under the restricted directory. A value containing traversal segments can therefore cause a read outside Pics. The ported application has the same flow: CatalogController binds PictureFileName from create/edit requests, then PicController combines it with an empty root and reads the resulting path without containment validation."
+        },
+        "description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+        "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+        "severity": "optional",
+        "status": "FOUND",
+        "category": "File & Path Security"
+      },
+      {
+        "storyPoint": 5,
+        "id": "CWE-23",
+        "evidence": {
+          "files": [
+            "eShopPorted/Controllers/CatalogController.cs:101",
+            "eShopPorted/Controllers/CatalogController.cs:63",
+            "eShopPorted/Controllers/PicController.cs:40",
+            "eShopPorted/Controllers/PicController.cs:45",
+            "src/eShopLegacyMVC/Controllers/CatalogController.cs:100",
+            "src/eShopLegacyMVC/Controllers/CatalogController.cs:62",
+            "src/eShopLegacyMVC/Controllers/PicController.cs:39",
+            "src/eShopLegacyMVC/Controllers/PicController.cs:44"
+          ],
+          "explanation": "CatalogController accepts PictureFileName from create/edit POSTs, and PicController.Index passes the stored value to Path.Combine with the Pics root before File.ReadAllBytes. No canonical-path containment check or rejection of relative traversal segments is performed, so a value such as ..\\\\..\\\\outside can escape Pics. The ported application has the same flow: CatalogController binds PictureFileName from create/edit requests, then PicController combines it with an empty root and reads the resulting path without containment validation."
+        },
+        "description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as .. that can resolve to a location that is outside of that directory.",
+        "name": "Relative Path Traversal",
+        "severity": "optional",
+        "status": "FOUND",
+        "category": "File & Path Security"
+      },
+      {
+        "storyPoint": 5,
+        "id": "CWE-36",
+        "evidence": {
+          "files": [
+            "eShopPorted/Controllers/CatalogController.cs:101",
+            "eShopPorted/Controllers/CatalogController.cs:63",
+            "eShopPorted/Controllers/PicController.cs:40",
+            "eShopPorted/Controllers/PicController.cs:45",
+            "src/eShopLegacyMVC/Controllers/CatalogController.cs:100",
+            "src/eShopLegacyMVC/Controllers/CatalogController.cs:62",
+            "src/eShopLegacyMVC/Controllers/PicController.cs:39",
+            "src/eShopLegacyMVC/Controllers/PicController.cs:44"
+          ],
+          "explanation": "CatalogController accepts PictureFileName from create/edit POSTs, and PicController.Index passes the stored value to Path.Combine with the Pics root before File.ReadAllBytes. No check rejects rooted paths or confirms the resolved path is beneath Pics, so an absolute filename may escape the intended directory. The ported application has the same flow: CatalogController binds PictureFileName from create/edit requests, then PicController combines it with an empty root and reads the resulting path without containment validation."
+        },
+        "description": "The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize absolute path sequences such as /abs/path that can resolve to a location that is outside of that directory.",
+        "name": "Absolute Path Traversal",
+        "severity": "optional",
+        "status": "FOUND",
+        "category": "File & Path Security"
+      },
+      {
+        "storyPoint": 8,
+        "id": "CWE-434",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "description": "The product allows the upload or transfer of dangerous file types that are automatically processed within its environment.",
+        "name": "Unrestricted Upload of File with Dangerous Type",
+        "severity": "mandatory",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security"
+      },
+      {
+        "storyPoint": 5,
+        "id": "CWE-611",
+        "evidence": {
+          "files": [],
+          "explanation": ""
+        },
+        "description": "The product processes an XML document that can contain XML entities with URIs that resolve to documents outside of the intended sphere of control, causing the product to embed incorrect documents into its output.",
+        "name": "Improper Restriction of XML External Entity Reference",
+        "severity": "optional",
+        "status": "NOT_FOUND",
+        "category": "File & Path Security"
+      }
+    ]
+  },
+  "execution_time_seconds": 18,
+  "timestamp": "2026-11-20T06:34:44.7398334Z"
+}
