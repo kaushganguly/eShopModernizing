@@ -2094,6 +2094,18 @@
         "src/eShopLegacyMVC/Controllers/PicController.cs:39-44"
       ],
       "Explanation": "CatalogController.Create binds the request-supplied PictureFileName into a catalog item (CatalogController.cs:62). PicController.Index uses that value to identify and read a file after combining it with the Pics directory without restricting the resulting resource to that directory (PicController.cs:39-44)."
+    },
+    {
+      "Id": "CWE-502",
+      "Name": "Deserialization of Untrusted Data",
+      "Category": "Injection Attacks",
+      "Severity": "mandatory",
+      "StoryPoint": 13,
+      "Description": "The product deserializes untrusted data without sufficiently ensuring that the resulting data will be valid.",
+      "Files": [
+        "eShopLegacy.Utilities/Serializing.cs:16-20"
+      ],
+      "Explanation": "Serializing.DeserializeBinary accepts a caller-provided Stream and passes it directly to BinaryFormatter.Deserialize without a binder or validation of the serialized types (Serializing.cs:16-20). No current call site for DeserializeBinary was found, so reachability from an external request was not established; the unsafe deserialization API is nevertheless present in the solution."
     }
   ]
 }
