@@ -1,0 +1,189 @@
+{
+  "GeneratedAt": "2026-11-20T06:54:10.171885Z",
+  "ProjectPath": ".",
+  "Summary": {
+    "TotalFindings": 13,
+    "CveCount": 2,
+    "CweCount": 11,
+    "BySeverity": {
+      "mandatory": 0,
+      "optional": 5,
+      "potential": 8
+    },
+    "ByCategory": {
+      "CVE": 2,
+      "Code Quality": 3,
+      "Concurrency & Synchronization": 4,
+      "Credentials & Secrets": 3,
+      "Injection Attacks": 1
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 48
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2026-40021",
+      "Name": "Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - log4net:2.0.10 (declared at src/eShopModernizedWebForms/packages.config:11); affected range: < 3.3.0; first patched: not specified\n\nRecommended fix: Upgrade affected dependencies to their first patched versions where available.",
+      "Files": [
+        "src/eShopModernizedWebForms/packages.config:11"
+      ],
+      "Explanation": "[CVE-2026-40021](https://github.com/advisories/GHSA-4f7c-pmjv-c25w): Apache Log4net: Silent log event loss in XmlLayout and XmlLayoutSchemaLog4J due to unescaped XML 1.0 forbidden characters\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - log4net:2.0.10 (declared at src/eShopModernizedWebForms/packages.config:11); affected range: < 3.3.0; first patched: not specified\n\nRecommended fix: Upgrade affected dependencies to their first patched versions where available."
+    },
+    {
+      "Id": "CVE-2024-21319",
+      "Name": "Microsoft ASP.NET Core project templates vulnerable to denial of service",
+      "Category": "CVE",
+      "Severity": "optional",
+      "StoryPoint": 1,
+      "Description": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Microsoft ASP.NET Core project templates vulnerable to denial of service\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - System.IdentityModel.Tokens.Jwt:5.6.0 (declared at src/eShopModernizedWebForms/packages.config:98); affected range: < 5.7.0; first patched: not specified\n  - System.IdentityModel.Tokens.Jwt:5.6.0 (declared at src/eShopModernizedWebForms/packages.config:98); affected range: >= 6.5.0, < 6.34.0; first patched: not specified\n  - System.IdentityModel.Tokens.Jwt:5.6.0 (declared at src/eShopModernizedWebForms/packages.config:98); affected range: >= 7.0.0-preview, < 7.1.2; first patched: not specified\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at src/eShopModernizedWebForms/packages.config:53); affected range: < 5.7.0; first patched: not specified\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at src/eShopModernizedWebForms/packages.config:53); affected range: >= 6.5.0, < 6.34.0; first patched: not specified\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at src/eShopModernizedWebForms/packages.config:53); affected range: >= 7.0.0-preview, < 7.1.2; first patched: not specified\n\nRecommended fix: Upgrade affected dependencies to their first patched versions where available.",
+      "Files": [
+        "src/eShopModernizedWebForms/packages.config:53",
+        "src/eShopModernizedWebForms/packages.config:98"
+      ],
+      "Explanation": "[CVE-2024-21319](https://github.com/advisories/GHSA-59j7-ghrg-fj52): Microsoft ASP.NET Core project templates vulnerable to denial of service\n\nSeverity: MEDIUM\n\nAffected dependencies:\n  - System.IdentityModel.Tokens.Jwt:5.6.0 (declared at src/eShopModernizedWebForms/packages.config:98); affected range: < 5.7.0; first patched: not specified\n  - System.IdentityModel.Tokens.Jwt:5.6.0 (declared at src/eShopModernizedWebForms/packages.config:98); affected range: >= 6.5.0, < 6.34.0; first patched: not specified\n  - System.IdentityModel.Tokens.Jwt:5.6.0 (declared at src/eShopModernizedWebForms/packages.config:98); affected range: >= 7.0.0-preview, < 7.1.2; first patched: not specified\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at src/eShopModernizedWebForms/packages.config:53); affected range: < 5.7.0; first patched: not specified\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at src/eShopModernizedWebForms/packages.config:53); affected range: >= 6.5.0, < 6.34.0; first patched: not specified\n  - Microsoft.IdentityModel.JsonWebTokens:5.6.0 (declared at src/eShopModernizedWebForms/packages.config:53); affected range: >= 7.0.0-preview, < 7.1.2; first patched: not specified\n\nRecommended fix: Upgrade affected dependencies to their first patched versions where available."
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-681",
+      "Name": "Incorrect Conversion between Numeric Types",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "Files": [
+        "src/eShopModernizedWebForms/Models/Infrastructure/CatalogDBInitializer.cs:326",
+        "src/eShopModernizedWebForms/Models/CatalogItemHiLoGenerator.cs:20"
+      ],
+      "Explanation": "Both sequence generators cast a database Int64 sequence result directly to int without a range check. If a sequence value exceeds the Int32 range, the conversion can overflow or fail and produce an invalid catalog identifier."
+    },
+    {
+      "Id": "CWE-772",
+      "Name": "Missing Release of Resource after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "Files": [
+        "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:107-114"
+      ],
+      "Explanation": "UpLoadImageFromFile opens a file stream with File.OpenRead and uploads it, but never disposes or closes the stream. InitializeCatalogImages calls this method for each seeded image, leaving file handles open for garbage collection rather than releasing them at the end of each upload."
+    },
+    {
+      "Id": "CWE-775",
+      "Name": "Missing Release of File Descriptor or Handle after Effective Lifetime",
+      "Category": "Code Quality",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "The product does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "Files": [
+        "src/eShopModernizedWebForms/Services/ImageAzureStorage.cs:107-114"
+      ],
+      "Explanation": "UpLoadImageFromFile opens a file handle using File.OpenRead and does not dispose it after uploading. Repeated image uploads during catalog initialization can retain file handles beyond their effective lifetime."
+    },
+    {
+      "Id": "CWE-543",
+      "Name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "Files": [
+        "src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27",
+        "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15,47-65"
+      ],
+      "Explanation": "When mock data is enabled, Autofac registers CatalogServiceMock as a single instance. Its catalogItems List is shared across requests, while create, update, and remove operations mutate the list without synchronization."
+    },
+    {
+      "Id": "CWE-567",
+      "Name": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 5,
+      "Description": "The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "Files": [
+        "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15,18-35,47-65"
+      ],
+      "Explanation": "The singleton's mutable catalogItems list is accessed by catalog reads and concurrent create, update, and remove requests without a lock or other synchronization, allowing collection races and inconsistent results."
+    },
+    {
+      "Id": "CWE-662",
+      "Name": "Improper Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "Files": [
+        "src/eShopModernizedWebForms/Modules/ApplicationModule.cs:23-27",
+        "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15,47-65"
+      ],
+      "Explanation": "Multiple web requests can concurrently reach the singleton's mutable catalog list. The service performs collection reads and mutations without serializing access, so concurrent operations can interfere with one another."
+    },
+    {
+      "Id": "CWE-820",
+      "Name": "Missing Synchronization",
+      "Category": "Concurrency & Synchronization",
+      "Severity": "potential",
+      "StoryPoint": 8,
+      "Description": "The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "Files": [
+        "src/eShopModernizedWebForms/Services/CatalogServiceMock.cs:11-15,18-35,47-65"
+      ],
+      "Explanation": "The shared catalog list is read and modified by request-serving methods without any synchronization mechanism."
+    },
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Files": [
+        "docker-compose.override.yml:21"
+      ],
+      "Explanation": "The SQL Server container is configured with a fixed SA password directly in the Compose environment. The health check also relies on that credential, making it a hard-coded password used for component communication."
+    },
+    {
+      "Id": "CWE-778",
+      "Name": "Insufficient Logging",
+      "Category": "Credentials & Secrets",
+      "Severity": "potential",
+      "StoryPoint": 3,
+      "Description": "When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "Files": [
+        "src/eShopModernizedWebForms/App_Start/Startup.Auth.cs:40-45"
+      ],
+      "Explanation": "The OpenID Connect AuthenticationFailed callback handles and redirects after an authentication failure but does not record the failure in the application log, leaving this security-relevant event unaudited."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Files": [
+        "docker-compose.override.yml:21"
+      ],
+      "Explanation": "The SQL Server container uses a fixed SA credential embedded in the Docker Compose environment configuration rather than a runtime-provided secret."
+    },
+    {
+      "Id": "CWE-79",
+      "Name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "Category": "Injection Attacks",
+      "Severity": "optional",
+      "StoryPoint": 8,
+      "Description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+      "Files": [
+        "src/eShopModernizedWebForms/Catalog/Create.aspx:1",
+        "src/eShopModernizedWebForms/Catalog/Create.aspx.cs:56-57",
+        "src/eShopModernizedWebForms/Catalog/Details.aspx:16,23"
+      ],
+      "Explanation": "Create.aspx disables request validation. Create_Click copies the submitted Name and Description fields to a catalog item, which is persisted by the catalog service. Details.aspx later binds those values directly to ASP.NET Label.Text using unencoded <%# ... %> expressions at lines 16 and 23, allowing stored markup or script from an item value to be rendered in other users' pages."
+    }
+  ]
+}
